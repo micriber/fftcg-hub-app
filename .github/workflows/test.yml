@@ -31,6 +31,8 @@ jobs:
         run: yarn
       - name: Generate .env file
         run: envsubst < ".env.dist" > ".env"
+        env:
+          GOOGLE_WEB_CLIENT_ID: ${{ secrets.GOOGLE_WEB_CLIENT_ID }}
       - name: Jest test
         run: yarn test
 #       TODO: Think when we need to build the apk
