@@ -31,12 +31,15 @@ jobs:
         run: yarn
       - name: Jest test
         run: yarn test
-      - name: Build Android Release
-        run: |
-          cd android && chmod +x ./gradlew && ./gradlew assembleRelease
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: ${{ runner.os }}_app-release.apk
-          path: android/app/build/outputs/apk/release/
+#       TODO: Think when we need to build the apk
+#         Disable cause it takes to long time for each pull request,
+#         And we don't want to waste free minutes build time
+#      - name: Build Android Release
+#        run: |
+#          cd android && chmod +x ./gradlew && ./gradlew assembleRelease
+#      - name: Upload Artifact
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: ${{ runner.os }}_app-release.apk
+#          path: android/app/build/outputs/apk/release/
 
