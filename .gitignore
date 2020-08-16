@@ -61,3 +61,11 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# Api Keys
+/ios/GoogleService-Info.plist
+firebase.json
+android/app/google-services.json
+
+# environment file
+.env
