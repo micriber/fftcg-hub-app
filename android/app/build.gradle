@@ -1,6 +1,12 @@
+project.ext.vectoricons = [
+    iconFontNames: [ 'AntDesign.ttf' ] // Name of the font files you want to copy
+    // see: https://oblador.github.io/react-native-vector-icons/ for more
+]
+
 apply plugin: "com.android.application"
 apply plugin: 'com.google.gms.google-services'
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 import com.android.build.OutputFile
 
