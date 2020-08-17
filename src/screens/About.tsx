@@ -30,11 +30,12 @@ import {StackNavigationProp} from '@react-navigation/stack';
 
 export type RootStackParamList = {
   Home: undefined;
+  About: undefined;
 };
 
 type ProfileScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'Home'
+  'About'
 >;
 
 type Props = {

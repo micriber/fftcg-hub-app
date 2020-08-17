@@ -2,13 +2,11 @@ import React from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {StyleSheet, SafeAreaView, Text, Alert} from 'react-native';
 import {
-  GoogleSignin,
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-community/google-signin';
 import isEmpty from 'lodash.isempty';
-
-import {config} from '../config';
+import {AuthContext} from '../AuthContext';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -32,36 +30,11 @@ type State = {
 };
 
 export default class Login extends React.Component<Props, State> {
+  static contextType = AuthContext;
+
   state: State = {
     error: null,
   };
-
-  async componentDidMount() {
-    this._configureGoogleSignIn();
-    await this._getCurrentUser();
-  }
-  _configureGoogleSignIn() {
-    GoogleSignin.configure({
-      webClientId: config.google.webClientId,
-      offlineAccess: false,
-    });
-  }
-
-  async _getCurrentUser() {
-    try {
-      const userInfo = await GoogleSignin.signInSilently();
-      if (userInfo) {
-        this.props.navigation.navigate('Home');
-      }
-      this.setState({error: null});
-    } catch (error) {
-      const errorMessage =
-        error.code === statusCodes.SIGN_IN_REQUIRED ? '' : error.message;
-      this.setState({
-        error: new Error(errorMessage),
-      });
-    }
-  }
 
   render() {
     return (
@@ -99,10 +72,7 @@ export default class Login extends React.Component<Props, State> {
 
   _signIn = async () => {
     try {
-      await GoogleSignin.hasPlayServices();
-      await GoogleSignin.signIn();
-      this.setState({error: null});
-      this.props.navigation.navigate('Home');
+      await this.context.signIn();
     } catch (error) {
       switch (error.code) {
         case statusCodes.SIGN_IN_CANCELLED:
