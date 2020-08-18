@@ -33,6 +33,7 @@ const Home = () => {
 
   if (!data) {
     signOut();
+    return null;
   }
 
   return (

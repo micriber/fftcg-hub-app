@@ -42,6 +42,7 @@
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^1.1.0",
+    "@testing-library/react-native": "^7.0.2",
     "@types/jest": "^25.2.3",
     "@types/lodash.isempty": "^4.4.6",
     "@types/react-native": "^0.63.2",
@@ -51,6 +52,7 @@
     "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.0.4",
@@ -62,6 +64,9 @@
     "setupFiles": [
       "./jest/setup.js"
     ],
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    },
     "moduleFileExtensions": [
       "ts",
       "tsx",
