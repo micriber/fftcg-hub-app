@@ -1,6 +1,8 @@
 import 'react-native-gesture-handler/jestSetup';
 import {mockUserInfo} from './mocks/google-signin';
 
+jest.setTimeout(10000);
+
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');
 
