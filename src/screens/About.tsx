@@ -27,6 +27,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {AuthContext} from '../AuthContext';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -44,6 +45,7 @@ type Props = {
 declare const global: {HermesInternal: null | {}};
 
 const About = ({navigation}: Props) => {
+  const {signOut} = React.useContext(AuthContext);
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -51,6 +53,7 @@ const About = ({navigation}: Props) => {
         title="Go to home page"
         onPress={() => navigation.navigate('Home')}
       />
+      <Button title="Logout" onPress={signOut} />
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"

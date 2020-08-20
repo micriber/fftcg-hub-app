@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  DarkTheme,
+  DarkTheme as RNDarkTheme,
   DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native';
@@ -8,19 +8,28 @@ import {AppearanceProvider, useColorScheme} from 'react-native-appearance';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/AntDesign';
+import AntIcon from 'react-native-vector-icons/AntDesign';
 import About from './screens/About';
 import Home from './screens/Home';
 import Login from './screens/Login';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {signOut} from './services/google';
 import {AuthContext} from './AuthContext';
+import {DarkTheme} from './utils/theme';
 import Loading from './screens/Loading';
+import Settings from './screens/Settings';
+
+interface ITabBarIcon {
+  color: string;
+  size: number;
+}
 
 const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
+
 const HomeStack = createStackNavigator();
 const AboutStack = createStackNavigator();
+const SettingsStack = createStackNavigator();
 
 const HomeStackScreen = () => (
   <HomeStack.Navigator>
@@ -42,8 +51,19 @@ const AboutStackScreen = () => (
   </AboutStack.Navigator>
 );
 
+const SettingsStackScreen = () => (
+  <SettingsStack.Navigator>
+    <SettingsStack.Screen
+      options={{headerShown: false}}
+      name="Settings"
+      component={Settings}
+    />
+  </SettingsStack.Navigator>
+);
+
 const App = () => {
   const scheme = useColorScheme();
+  const theme = scheme === 'dark' ? RNDarkTheme : DefaultTheme;
   const [isLoading, setIsLoading] = React.useState(true);
   const [isSignedIn, setIsSignedIn] = React.useState(false);
 
@@ -97,39 +117,40 @@ const App = () => {
     <AppearanceProvider>
       <SafeAreaProvider>
         <AuthContext.Provider value={authContext}>
-          <NavigationContainer
-            theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <NavigationContainer theme={theme}>
             {isSignedIn ? (
               <Tabs.Navigator
                 initialRouteName="Home"
                 tabBarOptions={{
-                  activeTintColor: '#0000ff',
+                  activeTintColor: theme.colors.primary,
                 }}>
-                <Tabs.Screen
-                  name="Home"
-                  component={HomeStackScreen}
-                  options={{
-                    tabBarLabel: 'Home',
-                    tabBarIcon: ({color, size}) => (
-                      <MaterialCommunityIcons
-                        name="home"
-                        color={color}
-                        size={size}
-                      />
-                    ),
-                  }}
-                />
                 <Tabs.Screen
                   name="About"
                   component={AboutStackScreen}
                   options={{
                     tabBarLabel: 'About',
-                    tabBarIcon: ({color, size}) => (
-                      <MaterialCommunityIcons
-                        name="user"
-                        color={color}
-                        size={size}
-                      />
+                    tabBarIcon: ({color, size}: ITabBarIcon) => (
+                      <AntIcon name="camera" color={color} size={size} />
+                    ),
+                  }}
+                />
+                <Tabs.Screen
+                  name="Home"
+                  component={HomeStackScreen}
+                  options={{
+                    tabBarLabel: 'Home',
+                    tabBarIcon: ({color, size}: ITabBarIcon) => (
+                      <AntIcon name="home" color={color} size={size} />
+                    ),
+                  }}
+                />
+                <Tabs.Screen
+                  name="Settings"
+                  component={SettingsStackScreen}
+                  options={{
+                    tabBarLabel: 'Settings',
+                    tabBarIcon: ({color, size}: ITabBarIcon) => (
+                      <AntIcon name="setting" color={color} size={size} />
                     ),
                   }}
                 />
