@@ -1,8 +1,9 @@
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
-import {AuthContext} from '../AuthContext';
 import ModalSelector from 'react-native-modal-selector';
+import {AuthContext} from '../AuthContext';
+import Card from '../components/Card';
 
 const Settings = () => {
   const {signOut} = React.useContext(AuthContext);
@@ -13,7 +14,7 @@ const Settings = () => {
     <View style={styles.containerMain}>
       <Text style={styles.heading}>Settings</Text>
       <Text style={styles.sectionHeading}>Interface</Text>
-      <View style={styles.section}>
+      <Card theme="light" style={styles.section}>
         <View style={styles.itemSection}>
           <Text>Language</Text>
           <ModalSelector
@@ -21,15 +22,15 @@ const Settings = () => {
               {key: 'fr', label: 'Français'},
               {key: 'en', label: 'English'},
             ]}
-            initValue="Français"
+            initValue={lang}
             scrollViewAccessibilityLabel={'Scrollable options'}
             cancelButtonAccessibilityLabel={'Cancel Button'}
             onChange={(option) => {
               setLang(option.label);
             }}>
-            <Text>
-              {lang} <AntIcon name="caretdown" size={10} />
-            </Text>
+            {/*<Text>*/}
+            {/*  {lang} <AntIcon name="caretdown" size={10} />*/}
+            {/*</Text>*/}
           </ModalSelector>
         </View>
         <View style={styles.itemSection}>
@@ -38,20 +39,19 @@ const Settings = () => {
             data={[
               {key: 'dark', label: 'Dark'},
               {key: 'light', label: 'Light'},
-              {key: 'system', label: 'System'},
             ]}
-            initValue="Français"
+            initValue={theme}
             scrollViewAccessibilityLabel={'Scrollable options'}
             cancelButtonAccessibilityLabel={'Cancel Button'}
             onChange={(option) => {
               setTheme(option.label);
             }}>
-            <Text>
-              {theme} <AntIcon name="caretdown" size={10} />
-            </Text>
+            {/*<Text>*/}
+            {/*  {theme} <AntIcon name="caretdown" size={10} />*/}
+            {/*</Text>*/}
           </ModalSelector>
         </View>
-      </View>
+      </Card>
       <View style={styles.bottomView}>
         <Button title="Logout" onPress={signOut} />
       </View>
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 30,
     marginBottom: 20,
+    alignItems: 'center',
   },
   sectionHeading: {
     fontSize: 15,
@@ -91,15 +92,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 1,
-    borderColor: '#000',
   },
 });
 
