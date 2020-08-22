@@ -9,15 +9,17 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
+import {AuthContext} from './AuthContext';
+// import {DarkTheme} from './utils/theme';
 import About from './screens/About';
 import Home from './screens/Home';
 import Login from './screens/Login';
-import {GoogleSignin} from '@react-native-community/google-signin';
-import {signOut} from './services/google';
-import {AuthContext} from './AuthContext';
-import {DarkTheme} from './utils/theme';
 import Loading from './screens/Loading';
 import Settings from './screens/Settings';
+import {signOut} from './services/google';
+import {googleLogin, UserInfo} from './services/api/user';
+import {Alert} from 'react-native';
 
 interface ITabBarIcon {
   color: string;
@@ -61,52 +63,83 @@ const SettingsStackScreen = () => (
   </SettingsStack.Navigator>
 );
 
+type UserState = {
+  isSignedIn: boolean;
+  info?: UserInfo;
+  idToken?: string;
+};
+
 const App = () => {
   const scheme = useColorScheme();
   const theme = scheme === 'dark' ? RNDarkTheme : DefaultTheme;
   const [isLoading, setIsLoading] = React.useState(true);
-  const [isSignedIn, setIsSignedIn] = React.useState(false);
+  const [user, setUser] = React.useState<UserState>({isSignedIn: false});
 
   const authContext = React.useMemo(() => {
     return {
-      getCurrentUser: async () => {
-        const userInfo = await GoogleSignin.getCurrentUser();
-        if (!userInfo) {
-          setIsSignedIn(false);
+      getCurrentUser: () => {
+        if (!user.isSignedIn || !user.info) {
+          return null;
         }
 
-        return userInfo;
+        return user.info;
       },
       getTokens: async () => {
         return await GoogleSignin.getTokens();
       },
-      signIn: async () => {
+      signIn: async (silently = false) => {
         setIsLoading(true);
         await GoogleSignin.hasPlayServices();
-        await GoogleSignin.signIn();
-        setIsSignedIn(true);
-        setIsLoading(false);
+        let userInfo;
+        try {
+          userInfo = silently
+            ? await GoogleSignin.signInSilently()
+            : await GoogleSignin.signIn();
+        } catch (e) {
+          if (e.code === statusCodes.SIGN_IN_REQUIRED) {
+            setIsLoading(false);
+            return;
+          }
+
+          console.log(e);
+        }
+
+        const idToken = userInfo?.idToken;
+        console.log({userInfo});
+        if (!idToken) {
+          Alert.alert(
+            'Erreur',
+            'Impossible de récupérer les informations requises depuis Google.',
+          );
+          setIsLoading(false);
+          return;
+        }
+        try {
+          const signedInUser = await googleLogin(idToken);
+          console.log(JSON.stringify(signedInUser, null, 2));
+          if ((signedInUser as UserInfo).id) {
+            setUser({isSignedIn: true, info: signedInUser as UserInfo});
+          }
+        } catch (e) {
+          Alert.alert(
+            'Erreur',
+            'Un problème avec votre connexion est survenue. Merci de réessayer ultérieurement.',
+          );
+        } finally {
+          setIsLoading(false);
+        }
       },
       signOut: async () => {
         setIsLoading(false);
-        setIsSignedIn(false);
+        setUser({isSignedIn: false});
         await signOut();
       },
     };
-  }, []);
+  }, [user.info, user.isSignedIn]);
 
   React.useEffect(() => {
-    const getIsSignedIn = async () => {
-      try {
-        const userInfo = await GoogleSignin.signInSilently();
-        userInfo && setIsSignedIn(true);
-      } catch (e) {
-        setIsSignedIn(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getIsSignedIn();
+    authContext.signIn(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {
@@ -118,7 +151,7 @@ const App = () => {
       <SafeAreaProvider>
         <AuthContext.Provider value={authContext}>
           <NavigationContainer theme={theme}>
-            {isSignedIn ? (
+            {user.isSignedIn ? (
               <Tabs.Navigator
                 initialRouteName="Home"
                 tabBarOptions={{

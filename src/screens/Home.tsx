@@ -1,17 +1,5 @@
 import React from 'react';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {
-  View,
-  Image,
-  StyleSheet,
-  FlatList,
-  Dimensions,
-  Text,
-  TextInput,
-} from 'react-native';
-import {useAsync} from 'react-async';
-import {AuthContext} from '../AuthContext';
-import Loading from './Loading';
+import {View, StyleSheet, FlatList, Dimensions, TextInput} from 'react-native';
 import cards from '../../jest/mocks/fftcg';
 import FastImage from 'react-native-fast-image';
 
@@ -21,33 +9,9 @@ export type RootStackParamList = {
   Login: undefined;
 };
 
-type ProfileScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'Home'
->;
-
-type Props = {
-  navigation: ProfileScreenNavigationProp;
-};
-
 const w = Dimensions.get('window');
 
 const Home = () => {
-  const {signOut, getCurrentUser} = React.useContext(AuthContext);
-
-  const {data, isLoading} = useAsync({
-    promiseFn: getCurrentUser,
-  });
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (!data) {
-    signOut();
-    return null;
-  }
-
   return (
     <View style={[styles.container]}>
       <TextInput
