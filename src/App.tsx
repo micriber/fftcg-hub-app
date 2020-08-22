@@ -11,7 +11,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {AuthContext} from './AuthContext';
-// import {DarkTheme} from './utils/theme';
 import About from './screens/About';
 import Home from './screens/Home';
 import Login from './screens/Login';
