@@ -1,8 +1,9 @@
 import React from 'react';
-import {StyleSheet, View, ViewStyle} from 'react-native';
+import {ImageStyle, StyleSheet, TextStyle, View, ViewStyle} from 'react-native';
 
 const baseStyles = {
   card: {
+    // flex: 1,
     // width: '100%',
     // flexDirection: 'row',
     // flexWrap: 'wrap',
@@ -31,14 +32,10 @@ const styles = StyleSheet.create({
 type Props = {
   theme: 'light' | 'dark';
   children: React.ReactNode;
-  style: ViewStyle;
+  style: ViewStyle | TextStyle | ImageStyle;
 };
 
-const Card = ({
-  children,
-  theme = 'light',
-  style = StyleSheet.create({}),
-}: Props) => {
+const Card = ({style, children, theme = 'light'}: Props) => {
   const currentStyles = styles[theme];
   return <View style={[currentStyles, style]}>{children}</View>;
 };

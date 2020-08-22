@@ -1,6 +1,9 @@
 import Config from 'react-native-config';
 
 export const config = {
+  api: {
+    baseUri: env('API_URI'),
+  },
   google: {
     webClientId: env('GOOGLE_WEB_CLIENT_ID'),
   },

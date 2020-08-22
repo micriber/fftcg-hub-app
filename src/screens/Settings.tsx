@@ -1,18 +1,19 @@
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
-import AntIcon from 'react-native-vector-icons/AntDesign';
 import ModalSelector from 'react-native-modal-selector';
 import {AuthContext} from '../AuthContext';
 import Card from '../components/Card';
 
 const Settings = () => {
-  const {signOut} = React.useContext(AuthContext);
+  const {signOut, getCurrentUser} = React.useContext(AuthContext);
   const [lang, setLang] = React.useState('Français');
   const [theme, setTheme] = React.useState('light');
+  const user = getCurrentUser();
 
   return (
     <View style={styles.containerMain}>
       <Text style={styles.heading}>Settings</Text>
+      <Text>Welcome {user?.firstName}</Text>
       <Text style={styles.sectionHeading}>Interface</Text>
       <Card theme="light" style={styles.section}>
         <View style={styles.itemSection}>
@@ -70,8 +71,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   itemSection: {
-    width: '100%',
-    marginBottom: 5,
+    // width: '100%',
+    // marginBottom: 5,
   },
   containerMain: {
     flex: 1,
@@ -89,9 +90,9 @@ const styles = StyleSheet.create({
   },
   section: {
     width: '100%',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    // flexDirection: 'row',
+    // flexWrap: 'wrap',
+    // justifyContent: 'space-between',
   },
 });
 

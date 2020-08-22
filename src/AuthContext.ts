@@ -1,8 +1,8 @@
 import React from 'react';
-import {User} from '@react-native-community/google-signin';
+import {UserInfo} from './services/api/user';
 
 export const AuthContext = React.createContext({
-  getCurrentUser: (): Promise<User | null> => Promise.resolve(null),
+  getCurrentUser: (): UserInfo | null => null,
   signIn: () => Promise.resolve(),
   signOut: () => Promise.resolve(),
 });
