@@ -16,11 +16,6 @@ import {Alert} from 'react-native';
 import {AuthStackScreen} from './screens/Auth';
 import {BottomTabsNavigator} from './screens/BottomTabs';
 
-interface ITabBarIcon {
-  color: string;
-  size: number;
-}
-
 type UserState = {
   isSignedIn: boolean;
   info?: UserInfo;
