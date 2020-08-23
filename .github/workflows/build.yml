@@ -3,7 +3,7 @@ name: Build APK
 on: [workflow_dispatch]
 
 jobs:
-  test:
+  build:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -34,6 +34,10 @@ jobs:
         env:
           GOOGLE_WEB_CLIENT_ID: ${{ secrets.GOOGLE_WEB_CLIENT_ID }}
           API_URI: ${{ secrets.API_URI }}
+      - name: Decrypt google services json file
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
       - name: Build Android Release
         run: |
           cd android && chmod +x ./gradlew && ./gradlew assembleRelease
