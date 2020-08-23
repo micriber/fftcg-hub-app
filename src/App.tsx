@@ -19,6 +19,9 @@ import Settings from './screens/Settings';
 import {signOut} from './services/google';
 import {googleLogin, UserInfo} from './services/api/user';
 import {Alert} from 'react-native';
+import Search from './screens/Search';
+import GlobalSearch from './screens/GlobalSearch';
+import SearchResult from './screens/SearchResult';
 
 interface ITabBarIcon {
   color: string;
@@ -29,6 +32,7 @@ const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 
 const HomeStack = createStackNavigator();
+const SearchStack = createStackNavigator();
 const AboutStack = createStackNavigator();
 const SettingsStack = createStackNavigator();
 
@@ -39,7 +43,19 @@ const HomeStackScreen = () => (
       name="Home"
       component={Home}
     />
+    <HomeStack.Screen name="CollectionSearch" component={Search} />
   </HomeStack.Navigator>
+);
+
+const SearchStackScreen = () => (
+  <SearchStack.Navigator>
+    <SearchStack.Screen
+      options={{headerShown: false}}
+      name="GlobalSearch"
+      component={GlobalSearch}
+    />
+    <SearchStack.Screen name="SearchResult" component={SearchResult} />
+  </SearchStack.Navigator>
 );
 
 const AboutStackScreen = () => (
@@ -167,10 +183,20 @@ const App = () => {
                   }}
                 />
                 <Tabs.Screen
+                  name="Search"
+                  component={SearchStackScreen}
+                  options={{
+                    tabBarLabel: 'Search',
+                    tabBarIcon: ({color, size}: ITabBarIcon) => (
+                      <AntIcon name="search1" color={color} size={size} />
+                    ),
+                  }}
+                />
+                <Tabs.Screen
                   name="Home"
                   component={HomeStackScreen}
                   options={{
-                    tabBarLabel: 'Home',
+                    tabBarLabel: 'Collection',
                     tabBarIcon: ({color, size}: ITabBarIcon) => (
                       <AntIcon name="home" color={color} size={size} />
                     ),
