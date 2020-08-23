@@ -6,77 +6,20 @@ import {
 } from '@react-navigation/native';
 import {AppearanceProvider, useColorScheme} from 'react-native-appearance';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import AntIcon from 'react-native-vector-icons/AntDesign';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {AuthContext} from './AuthContext';
-import About from './screens/About';
-import Home from './screens/Home';
-import Login from './screens/Login';
 import Loading from './screens/Loading';
-import Settings from './screens/Settings';
 import {signOut} from './services/google';
 import {googleLogin, UserInfo} from './services/api/user';
 import {Alert} from 'react-native';
-import Search from './screens/Search';
-import GlobalSearch from './screens/GlobalSearch';
-import SearchResult from './screens/SearchResult';
+
+import {AuthStackScreen} from './screens/Auth';
+import {BottomTabsNavigator} from './screens/BottomTabs';
 
 interface ITabBarIcon {
   color: string;
   size: number;
 }
-
-const AuthStack = createStackNavigator();
-const Tabs = createBottomTabNavigator();
-
-const HomeStack = createStackNavigator();
-const SearchStack = createStackNavigator();
-const AboutStack = createStackNavigator();
-const SettingsStack = createStackNavigator();
-
-const HomeStackScreen = () => (
-  <HomeStack.Navigator>
-    <HomeStack.Screen
-      options={{headerShown: false}}
-      name="Home"
-      component={Home}
-    />
-    <HomeStack.Screen name="CollectionSearch" component={Search} />
-  </HomeStack.Navigator>
-);
-
-const SearchStackScreen = () => (
-  <SearchStack.Navigator>
-    <SearchStack.Screen
-      options={{headerShown: false}}
-      name="GlobalSearch"
-      component={GlobalSearch}
-    />
-    <SearchStack.Screen name="SearchResult" component={SearchResult} />
-  </SearchStack.Navigator>
-);
-
-const AboutStackScreen = () => (
-  <AboutStack.Navigator>
-    <AboutStack.Screen
-      options={{headerShown: false}}
-      name="About"
-      component={About}
-    />
-  </AboutStack.Navigator>
-);
-
-const SettingsStackScreen = () => (
-  <SettingsStack.Navigator>
-    <SettingsStack.Screen
-      options={{headerShown: false}}
-      name="Settings"
-      component={Settings}
-    />
-  </SettingsStack.Navigator>
-);
 
 type UserState = {
   isSignedIn: boolean;
@@ -167,59 +110,9 @@ const App = () => {
         <AuthContext.Provider value={authContext}>
           <NavigationContainer theme={theme}>
             {user.isSignedIn ? (
-              <Tabs.Navigator
-                initialRouteName="Home"
-                tabBarOptions={{
-                  activeTintColor: theme.colors.primary,
-                }}>
-                <Tabs.Screen
-                  name="About"
-                  component={AboutStackScreen}
-                  options={{
-                    tabBarLabel: 'About',
-                    tabBarIcon: ({color, size}: ITabBarIcon) => (
-                      <AntIcon name="camera" color={color} size={size} />
-                    ),
-                  }}
-                />
-                <Tabs.Screen
-                  name="Search"
-                  component={SearchStackScreen}
-                  options={{
-                    tabBarLabel: 'Search',
-                    tabBarIcon: ({color, size}: ITabBarIcon) => (
-                      <AntIcon name="search1" color={color} size={size} />
-                    ),
-                  }}
-                />
-                <Tabs.Screen
-                  name="Home"
-                  component={HomeStackScreen}
-                  options={{
-                    tabBarLabel: 'Collection',
-                    tabBarIcon: ({color, size}: ITabBarIcon) => (
-                      <AntIcon name="home" color={color} size={size} />
-                    ),
-                  }}
-                />
-                <Tabs.Screen
-                  name="Settings"
-                  component={SettingsStackScreen}
-                  options={{
-                    tabBarLabel: 'Settings',
-                    tabBarIcon: ({color, size}: ITabBarIcon) => (
-                      <AntIcon name="setting" color={color} size={size} />
-                    ),
-                  }}
-                />
-              </Tabs.Navigator>
+              <BottomTabsNavigator theme={theme} />
             ) : (
-              <AuthStack.Navigator
-                screenOptions={{
-                  headerShown: false,
-                }}>
-                <AuthStack.Screen name="Login" component={Login} />
-              </AuthStack.Navigator>
+              <AuthStackScreen />
             )}
           </NavigationContainer>
         </AuthContext.Provider>

@@ -2,11 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
-
-export type SearchStackParamList = {
-  GlobalSearch: undefined;
-  SearchResult: {previousScreen?: string; filter: {search: string}};
-};
+import {SearchStackParamList} from './type';
 
 type SearchResultScreenNavigationProp = StackNavigationProp<
   SearchStackParamList,
