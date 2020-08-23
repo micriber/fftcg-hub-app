@@ -10,14 +10,6 @@ import {
 import cards from '../../../jest/mocks/fftcg';
 import FastImage from 'react-native-fast-image';
 import AntIcon from 'react-native-vector-icons/AntDesign';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {HomeStackParamList} from './type';
-
-type HomeScreenNavigationProp = StackNavigationProp<HomeStackParamList, 'Home'>;
-
-type Props = {
-  navigation: HomeScreenNavigationProp;
-};
 
 const w = Dimensions.get('window');
 
@@ -44,7 +36,7 @@ const Home = () => {
           data={cards}
           keyExtractor={(item) => item.Code}
           renderItem={({item}) => (
-            <View style={{flex: 1, flexDirection: 'column', margin: 1}}>
+            <View style={styles.cardView}>
               <FastImage
                 // style={styles.image}
                 style={{width: w.width / 4, height: w.height / 4}}
@@ -82,6 +74,11 @@ const styles = StyleSheet.create({
     // flexDirection: 'row',
     // alignItems: 'flex-start',
     // justifyContent: 'space-between',
+  },
+  cardView: {
+    flex: 1,
+    flexDirection: 'column',
+    margin: 1,
   },
   bottomView: {
     width: '100%',
