@@ -1,27 +1,13 @@
 import React from 'react';
-import {StackNavigationProp} from '@react-navigation/stack';
 import {StyleSheet, SafeAreaView, Text, Alert} from 'react-native';
 import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-community/google-signin';
 import isEmpty from 'lodash.isempty';
-import {AuthContext} from '../AuthContext';
+import {AuthContext} from '../../AuthContext';
 
-export type RootStackParamList = {
-  Home: undefined;
-  About: undefined;
-  Login: undefined;
-};
-
-type ProfileScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'Login'
->;
-
-type Props = {
-  navigation: ProfileScreenNavigationProp;
-};
+type Props = {};
 
 type ErrorWithCode = Error & {code?: string};
 

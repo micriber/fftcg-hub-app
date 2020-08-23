@@ -26,33 +26,15 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {AuthContext} from '../AuthContext';
+import {AuthContext} from '../../AuthContext';
 
-export type RootStackParamList = {
-  Home: undefined;
-  About: undefined;
-};
-
-type ProfileScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'About'
->;
-
-type Props = {
-  navigation: ProfileScreenNavigationProp;
-};
 declare const global: {HermesInternal: null | {}};
 
-const About = ({navigation}: Props) => {
+const About = () => {
   const {signOut} = React.useContext(AuthContext);
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <Button
-        title="Go to home page"
-        onPress={() => navigation.navigate('Home')}
-      />
       <Button title="Logout" onPress={signOut} />
       <SafeAreaView>
         <ScrollView

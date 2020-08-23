@@ -1,11 +1,7 @@
 import React from 'react';
 import {View, Button, TextInput, StyleSheet} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
-
-export type HomeStackParamList = {
-  CollectionSearch: undefined;
-  Home: undefined;
-};
+import {HomeStackParamList} from './type';
 
 type SearchScreenNavigationProp = StackNavigationProp<
   HomeStackParamList,

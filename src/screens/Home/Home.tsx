@@ -7,15 +7,11 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import cards from '../../jest/mocks/fftcg';
+import cards from '../../../jest/mocks/fftcg';
 import FastImage from 'react-native-fast-image';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import {StackNavigationProp} from '@react-navigation/stack';
-
-export type HomeStackParamList = {
-  CollectionSearch: undefined;
-  Home: undefined;
-};
+import {HomeStackParamList} from './type';
 
 type HomeScreenNavigationProp = StackNavigationProp<HomeStackParamList, 'Home'>;
 
