@@ -7,16 +7,41 @@ import {
   TouchableOpacity,
   Alert,
   Switch,
+  Text,
 } from 'react-native';
-import cards from '../../../jest/mocks/fftcg';
 import FastImage from 'react-native-fast-image';
 import AntIcon from 'react-native-vector-icons/AntDesign';
-import {LightTheme} from '../../utils/theme';
+import {getCardImageUrl} from '../../utils/image';
+import {useAsync} from 'react-async';
+import {getCards, UnauthorizedError} from '../../services/api/card';
+import {AuthContext} from '../../AuthContext';
+import Loading from '../Loading';
 
 const w = Dimensions.get('window');
 
 const Home = () => {
   const [isListView, setIsListView] = React.useState(false);
+  const {getIdToken} = React.useContext(AuthContext);
+  const token = getIdToken();
+  const {data, error, isLoading, isPending} = useAsync({
+    promiseFn: getCards,
+    token,
+  });
+
+  console.log({data, error, isLoading, isPending});
+
+  if (isLoading || isPending) {
+    return <Loading />;
+  }
+  if (error) {
+    return <Text>{error}</Text>;
+  }
+  if (!data || (data && 'message' in data)) {
+    return <Text>{JSON.stringify((data as UnauthorizedError).message)}</Text>;
+  }
+
+  const cards = data.cards;
+
   return (
     <>
       <View style={styles.header}>
@@ -24,48 +49,58 @@ const Home = () => {
         <Switch value={isListView} onValueChange={setIsListView} />
         <AntIcon name="bars" size={22} />
       </View>
-      <View style={[styles.container]}>
-        {/*<TextInput*/}
-        {/*  blurOnSubmit*/}
-        {/*  autoCapitalize="none"*/}
-        {/*  placeholder={'Rechercher "1-001R"'}*/}
-        {/*  autoCorrect={false}*/}
-        {/*  style={{*/}
-        {/*    borderRadius: 25,*/}
-        {/*    borderColor: '#333',*/}
-        {/*    backgroundColor: '#fff',*/}
-        {/*    paddingLeft: 50,*/}
-        {/*  }}*/}
-        {/*  // textStyle={{color: '#000'}}*/}
-        {/*/>*/}
-        <View style={[styles.cardContainer]}>
-          <FlatList
-            initialNumToRender={2}
-            numColumns={3}
-            data={cards}
-            keyExtractor={(item) => item.Code}
-            renderItem={({item}) => (
-              <View style={styles.cardView}>
+      <View style={[isListView ? styles.listContainer : styles.gridContainer]}>
+        <FlatList
+          initialNumToRender={2}
+          numColumns={isListView ? 1 : 2}
+          key={isListView ? 0 : 1}
+          data={cards}
+          keyExtractor={(item) => item.code}
+          renderItem={({item}) => (
+            <View
+              key={item.code}
+              style={[
+                isListView
+                  ? styles.cardListContainer
+                  : styles.cardGridContainer,
+              ]}>
+              <TouchableOpacity
+                activeOpacity={0.3}
+                onPress={() => Alert.alert(`Click on ${item.name}`)}>
                 <FastImage
                   // style={styles.image}
-                  style={{width: w.width / 4, height: w.height / 4}}
+                  style={{width: w.width / 2.5, height: w.height / 3}}
                   source={{
-                    uri: `https://fftcg.cdn.sewest.net/images/cards/thumbs/${item.Code}_fr.jpg`,
+                    uri: getCardImageUrl(item.code),
                   }}
-                  resizeMode="contain"
+                  resizeMode={isListView ? 'stretch' : 'contain'}
                 />
-              </View>
-            )}
-          />
-        </View>
-        <View style={styles.bottomView}>
-          <TouchableOpacity
-            style={styles.searchButton}
-            // onPress={() => navigation.navigate('CollectionSearch')}>
-            onPress={() => Alert.alert('Search button pressed')}>
-            <AntIcon name="search1" size={20} />
-          </TouchableOpacity>
-        </View>
+              </TouchableOpacity>
+              {isListView && (
+                <View
+                  style={[
+                    styles.cardDescription,
+                    // {height:},
+                  ]}>
+                  <Text>Code: {item.code}</Text>
+                  <Text>Nom: {item.name}</Text>
+                  <Text>Type: {item.type}</Text>
+                  <Text>Element: {item.element}</Text>
+                  <Text />
+                  <Text>Description: {item.text}</Text>
+                </View>
+              )}
+            </View>
+          )}
+        />
+      </View>
+      <View style={styles.bottomView}>
+        <TouchableOpacity
+          style={styles.searchButton}
+          // onPress={() => navigation.navigate('CollectionSearch')}>
+          onPress={() => Alert.alert('Search button pressed')}>
+          <AntIcon name="search1" size={20} />
+        </TouchableOpacity>
       </View>
     </>
   );
@@ -79,25 +114,33 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 10,
     paddingBottom: 10,
-    backgroundColor: LightTheme.colors.primary,
+    backgroundColor: '#878683', //LightTheme.colors.primary,
   },
-  container: {
-    // marginTop: 30,
+  gridContainer: {
     marginLeft: 20,
-    marginRight: 20,
+    flexDirection: 'row',
   },
-  cardContainer: {
-    // flex: 1,
+  listContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    width: '100%',
+  },
+  cardGridContainer: {
     marginTop: 3,
     marginLeft: 15,
-    // flexDirection: 'row',
-    // alignItems: 'flex-start',
-    // justifyContent: 'space-between',
   },
-  cardView: {
-    flex: 1,
-    flexDirection: 'column',
-    margin: 1,
+  cardListContainer: {
+    // width: '100%',
+    flexDirection: 'row',
+    height: w.height / 3,
+  },
+  cardDescription: {
+    borderColor: '#000',
+    borderWidth: 1,
+    height: w.height / 3,
+    width: (w.width / 2.5) * 1.5,
+    // width: w.width / 4,
+    // height: w.height / 4,
   },
   bottomView: {
     width: '100%',
@@ -105,7 +148,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-end',
     position: 'absolute',
-    bottom: 60,
+    bottom: 20,
   },
   searchButton: {
     backgroundColor: '#00BCD4',
@@ -116,6 +159,7 @@ const styles = StyleSheet.create({
     height: 60,
     alignItems: 'center',
     justifyContent: 'center',
+    marginRight: 20,
   },
   // image: {
   //   height: '25%',

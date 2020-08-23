@@ -37,6 +37,13 @@ const App = () => {
 
         return user.info;
       },
+      getIdToken: () => {
+        if (!user.isSignedIn || !user.idToken) {
+          return null;
+        }
+
+        return user.idToken;
+      },
       getTokens: async () => {
         return await GoogleSignin.getTokens();
       },
@@ -71,7 +78,11 @@ const App = () => {
           const signedInUser = await googleLogin(idToken);
           console.log(JSON.stringify(signedInUser, null, 2));
           if ((signedInUser as UserInfo).id) {
-            setUser({isSignedIn: true, info: signedInUser as UserInfo});
+            setUser({
+              isSignedIn: true,
+              info: signedInUser as UserInfo,
+              idToken,
+            });
           }
         } catch (e) {
           Alert.alert(
@@ -84,11 +95,11 @@ const App = () => {
       },
       signOut: async () => {
         setIsLoading(false);
-        setUser({isSignedIn: false});
+        setUser({isSignedIn: false, info: undefined, idToken: undefined});
         await signOut();
       },
     };
-  }, [user.info, user.isSignedIn]);
+  }, [user.idToken, user.info, user.isSignedIn]);
 
   React.useEffect(() => {
     authContext.signIn(true);
