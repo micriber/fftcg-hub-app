@@ -19,6 +19,11 @@ type Props = {
 const w = Dimensions.get('window');
 
 const FFCardSimple = ({card, isListView}: Props) => {
+  const [isFallbackImage, setIsFallbackImage] = React.useState(false);
+  const [src, setSrc] = React.useState(
+    getCardImageUrl(card.code, 'full', 'fr'),
+  );
+  const enSrc = () => getCardImageUrl(card.code, 'full', 'eg');
   return (
     <View
       key={card.code}
@@ -32,10 +37,14 @@ const FFCardSimple = ({card, isListView}: Props) => {
         <FastImage
           // style={styles.image}
           style={{width: w.width / 2.5, height: w.height / 3}}
-          source={{
-            uri: getCardImageUrl(card.code),
-          }}
+          source={{uri: src}}
           resizeMode={isListView ? 'stretch' : 'contain'}
+          onError={() => {
+            if (!isFallbackImage) {
+              setSrc(enSrc);
+              setIsFallbackImage(true);
+            }
+          }}
         />
       </TouchableOpacity>
       {isListView && (
