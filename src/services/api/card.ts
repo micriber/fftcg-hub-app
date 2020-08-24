@@ -27,11 +27,9 @@ export type UnauthorizedError = {
   message: string[];
 };
 
-export const getCards = ({
-  token,
-}: {
-  token: string;
-}): Promise<GetCardsResponse | UnauthorizedError> => {
+export const getCards = async (
+  token: string,
+): Promise<GetCardsResponse | UnauthorizedError> => {
   return fetch(`${config.api.baseUri}/api/v1/cards`, {
     method: 'GET',
     headers: {
