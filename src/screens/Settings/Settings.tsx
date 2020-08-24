@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import ModalSelector from 'react-native-modal-selector';
 import {AuthContext} from '../../AuthContext';
-import Card from '../../components/Card';
+import Card from '../../components/common/Card';
 
 const Settings = () => {
   const {signOut, getCurrentUser} = React.useContext(AuthContext);
