@@ -10,12 +10,9 @@ import BottomRightButton from '../../components/common/BottomRightButton';
 
 const Home = () => {
   const [isListView, setIsListView] = React.useState(false);
-  const {getIdToken, signOut} = React.useContext(AuthContext);
+  const {getIdToken} = React.useContext(AuthContext);
   const token = getIdToken();
-  if (!token) {
-    return signOut();
-  }
-  const {result, error, loading} = useAsync(getCards, [token]);
+  const {result, error, loading} = useAsync(getCards, [token!]);
 
   console.log({result, error, loading});
 
