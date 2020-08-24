@@ -6,9 +6,18 @@ import {Cards} from '../services/api/card';
 type Props = {
   isListView: boolean;
   cards: Cards;
+  children?: React.ReactNode;
+  onEndReached?: () => void;
+  onEndReachedThreshold?: number;
 };
 
-const FFCardsList = ({isListView, cards}: Props) => {
+const FFCardsList = ({
+  isListView,
+  cards,
+  children,
+  onEndReached = () => {},
+  onEndReachedThreshold = 1,
+}: Props) => {
   return (
     <View style={[isListView ? styles.listContainer : styles.gridContainer]}>
       <FlatList
@@ -20,7 +29,10 @@ const FFCardsList = ({isListView, cards}: Props) => {
         renderItem={({item}) => (
           <FFCardSimple card={item} isListView={isListView} />
         )}
+        onEndReached={onEndReached}
+        onEndReachedThreshold={onEndReachedThreshold}
       />
+      {React.Children.count(children) ? children : null}
     </View>
   );
 };

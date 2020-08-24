@@ -1,4 +1,4 @@
 export type SearchStackParamList = {
   GlobalSearch: undefined;
-  SearchResult: {previousScreen?: string; filter: {search: string}};
+  SearchResult: {previousScreen?: string; filter: {code: string}};
 };

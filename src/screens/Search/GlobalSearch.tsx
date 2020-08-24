@@ -16,7 +16,7 @@ type Props = {
 };
 
 const Search = ({navigation, route}: Props) => {
-  const [search, setSearch] = React.useState('');
+  const [searchCode, setSearchCode] = React.useState('');
 
   return (
     <View style={styles.container}>
@@ -26,8 +26,8 @@ const Search = ({navigation, route}: Props) => {
         placeholder={'Rechercher "1-001R"'}
         autoCorrect={false}
         style={[styles.searchInput2]}
-        value={search}
-        onChangeText={setSearch}
+        value={searchCode}
+        onChangeText={setSearchCode}
       />
       <Text>{route.name}</Text>
       <Button
@@ -35,7 +35,9 @@ const Search = ({navigation, route}: Props) => {
         onPress={() =>
           navigation.navigate('SearchResult', {
             previousScreen: route.name,
-            filter: {search},
+            filter: {
+              code: searchCode,
+            },
           })
         }
       />

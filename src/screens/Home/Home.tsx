@@ -1,7 +1,7 @@
 import React from 'react';
 import {Alert, Text} from 'react-native';
-import {useAsync} from 'react-async-hook';
-import {getCards, UnauthorizedError} from '../../services/api/card';
+import {useAsync} from 'react-async';
+import {getCards} from '../../services/api/card';
 import {AuthContext} from '../../AuthContext';
 import Loading from '../Loading';
 import FFCardsList from '../../components/FFCardsList';
@@ -11,22 +11,28 @@ import BottomRightButton from '../../components/common/BottomRightButton';
 const Home = () => {
   const [isListView, setIsListView] = React.useState(false);
   const {getIdToken} = React.useContext(AuthContext);
-  const token = getIdToken();
-  const {result, error, loading} = useAsync(getCards, [token!]);
+  const idToken = getIdToken();
+  const params = {
+    token: idToken!,
+    params: {},
+  };
+  // TODO: find a way to pass params type instead of AsyncOptions<T>
+  // @ts-ignore
+  const {data, error, isLoading} = useAsync(getCards, params);
 
-  console.log({result, error, loading});
+  console.log({data, error, isLoading});
 
-  if (loading) {
+  if (isLoading) {
     return <Loading />;
   }
   if (error) {
     return <Text>{error}</Text>;
   }
-  if (!result || (result && 'message' in result)) {
-    return <Text>{JSON.stringify((result as UnauthorizedError).message)}</Text>;
+  if (!data || (data && 'message' in data)) {
+    return <Text>{JSON.stringify(data?.message)}</Text>;
   }
 
-  const cards = result.cards;
+  const cards = data.data;
 
   return (
     <>
