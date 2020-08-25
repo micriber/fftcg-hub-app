@@ -54,4 +54,22 @@ describe('[Component] BottomRightButton', () => {
 
     expect(root.toJSON()).toMatchSnapshot();
   });
+
+  it('renders correctly with twice callback', async () => {
+    const Sample = () => <FFCardSimple card={card} isListView={false} />;
+    const root = render(<Sample />);
+    fireEvent(root.getByTestId(`Image-${card.code}`), 'onError');
+    root.update(<Sample />);
+    await waitFor(() => root.getByTestId(`Image-${card.code}`));
+    fireEvent(root.getByTestId(`Image-${card.code}`), 'onError');
+    root.update(<Sample />);
+    await waitFor(() => root.getByTestId(`Image-${card.code}`));
+    const element = root.getByTestId(`Image-${card.code}`);
+    console.log(element.props.source.uri);
+    expect(element.props.source.uri).toBe(
+      getCardImageUrl(card.code, 'full', 'eg'),
+    );
+
+    expect(root.toJSON()).toMatchSnapshot();
+  });
 });

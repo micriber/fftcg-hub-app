@@ -178,7 +178,7 @@ Array [
             >
               <View
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -240,7 +240,7 @@ Array [
             >
               <View
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -315,7 +315,7 @@ Array [
             >
               <View
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}

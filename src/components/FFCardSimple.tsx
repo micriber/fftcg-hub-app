@@ -14,11 +14,13 @@ import {Card} from '../services/api/card';
 type Props = {
   card: Card;
   isListView: boolean;
+  onPress?: () => void;
+  onLongPress?: () => void;
 };
 
 const w = Dimensions.get('window');
 
-const FFCardSimple = ({card, isListView}: Props) => {
+const FFCardSimple = ({card, isListView, onPress, onLongPress}: Props) => {
   const [isFallbackImage, setIsFallbackImage] = React.useState(false);
   const [src, setSrc] = React.useState(
     getCardImageUrl(card.code, 'full', 'fr'),
@@ -33,8 +35,8 @@ const FFCardSimple = ({card, isListView}: Props) => {
       ]}>
       <TouchableOpacity
         activeOpacity={0.3}
-        onPress={() => Alert.alert(`Short press on ${card.name}`)}
-        onLongPress={() => Alert.alert(`Long press on ${card.name}`)}>
+        onPress={onPress}
+        onLongPress={onLongPress}>
         <FastImage
           // style={styles.image}
           style={{width: w.width / 2.5, height: w.height / 3}}
