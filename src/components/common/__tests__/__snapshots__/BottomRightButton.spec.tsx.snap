@@ -37,6 +37,7 @@ exports[`[Component] BottomRightButton renders correctly 1`] = `
         "width": 60,
       }
     }
+    testID="BottomRightButton"
   >
     <Text
       allowFontScaling={false}
