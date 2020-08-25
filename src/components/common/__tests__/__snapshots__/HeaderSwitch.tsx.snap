@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] HeaderSwitch Switch value change 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#878683",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "paddingBottom": 10,
+      "paddingTop": 10,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 20,
+        },
+        undefined,
+        Object {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+  <RCTSwitch
+    accessibilityRole="switch"
+    onChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "height": 31,
+        "width": 51,
+      }
+    }
+    testID="SwitcherState-0"
+    value={false}
+  />
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 22,
+        },
+        undefined,
+        Object {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`[Component] HeaderSwitch Switch value change 2`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#878683",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "paddingBottom": 10,
+      "paddingTop": 10,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 20,
+        },
+        undefined,
+        Object {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+  <RCTSwitch
+    accessibilityRole="switch"
+    onChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "height": 31,
+        "width": 51,
+      }
+    }
+    testID="SwitcherState-1"
+    value={true}
+  />
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 22,
+        },
+        undefined,
+        Object {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#878683",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "paddingBottom": 10,
+      "paddingTop": 10,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 20,
+        },
+        undefined,
+        Object {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+  <RCTSwitch
+    accessibilityRole="switch"
+    onChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "height": 31,
+        "width": 51,
+      }
+    }
+    testID="SwitcherState-0"
+    value={false}
+  />
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 22,
+        },
+        undefined,
+        Object {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`[Component] HeaderSwitch renders correctly with switch right 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#878683",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "paddingBottom": 10,
+      "paddingTop": 10,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 20,
+        },
+        undefined,
+        Object {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+  <RCTSwitch
+    accessibilityRole="switch"
+    onChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "height": 31,
+        "width": 51,
+      }
+    }
+    testID="SwitcherState-1"
+    value={true}
+  />
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 22,
+        },
+        undefined,
+        Object {
+          "fontFamily": "anticon",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;

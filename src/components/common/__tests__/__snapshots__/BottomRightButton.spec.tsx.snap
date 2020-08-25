@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] BottomRightButton renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "flex-end",
+      "bottom": 20,
+      "height": 75,
+      "justifyContent": "center",
+      "position": "absolute",
+      "width": "100%",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#00BCD4",
+        "borderColor": "#fff",
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "height": 60,
+        "justifyContent": "center",
+        "marginRight": 20,
+        "opacity": 1,
+        "width": 60,
+      }
+    }
+  >
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": undefined,
+            "fontSize": 20,
+          },
+          undefined,
+          Object {
+            "fontFamily": "anticon",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
+</View>
+`;
