@@ -14,7 +14,7 @@ exports[`[Component] BottomRightButton renders correctly but with fallback image
 >
   <View
     accessible={true}
-    focusable={true}
+    focusable={false}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -79,7 +79,7 @@ exports[`[Component] BottomRightButton renders correctly in grid view 1`] = `
 >
   <View
     accessible={true}
-    focusable={true}
+    focusable={false}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -144,7 +144,7 @@ exports[`[Component] BottomRightButton renders correctly in list view 1`] = `
 >
   <View
     accessible={true}
-    focusable={true}
+    focusable={false}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -225,6 +225,71 @@ exports[`[Component] BottomRightButton renders correctly in list view 1`] = `
       Description: 
       billy
     </Text>
+  </View>
+</View>
+`;
+
+exports[`[Component] BottomRightButton renders correctly with twice callback 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginLeft": 15,
+        "marginTop": 3,
+      },
+    ]
+  }
+  testID="SimpleFFCard"
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "overflow": "hidden",
+          },
+          Object {
+            "height": 444.6666666666667,
+            "width": 300,
+          },
+        ]
+      }
+    >
+      <FastImageView
+        onFastImageError={[Function]}
+        resizeMode="contain"
+        source={
+          Object {
+            "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-001H_eg.jpg",
+          }
+        }
+        style={
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+        testID="Image-1-001H"
+      />
+    </View>
   </View>
 </View>
 `;
