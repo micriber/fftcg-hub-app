@@ -405,6 +405,7 @@ Array [
           "width": 60,
         }
       }
+      testID="BottomRightButton"
     >
       <Text
         allowFontScaling={false}
