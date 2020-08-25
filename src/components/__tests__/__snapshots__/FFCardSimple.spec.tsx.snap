@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] BottomRightButton renders correctly in grid view 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginLeft": 15,
+        "marginTop": 3,
+      },
+    ]
+  }
+  testID="SimpleFFCard"
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "overflow": "hidden",
+          },
+          Object {
+            "height": 444.6666666666667,
+            "width": 300,
+          },
+        ]
+      }
+    >
+      <FastImageView
+        onFastImageError={[Function]}
+        resizeMode="contain"
+        source={
+          Object {
+            "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-001H_fr.jpg",
+          }
+        }
+        style={
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`[Component] BottomRightButton renders correctly in list view 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "height": 444.6666666666667,
+      },
+    ]
+  }
+  testID="SimpleFFCard"
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "overflow": "hidden",
+          },
+          Object {
+            "height": 444.6666666666667,
+            "width": 300,
+          },
+        ]
+      }
+    >
+      <FastImageView
+        onFastImageError={[Function]}
+        resizeMode="stretch"
+        source={
+          Object {
+            "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-001H_fr.jpg",
+          }
+        }
+        style={
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "borderColor": "#000",
+          "borderWidth": 1,
+          "height": 444.6666666666667,
+          "width": 450,
+        },
+      ]
+    }
+  >
+    <Text>
+      Code: 
+      1-001H
+    </Text>
+    <Text>
+      Nom: 
+      Boulou
+    </Text>
+    <Text>
+      Type: 
+      fire
+    </Text>
+    <Text>
+      Element: 
+      blue
+    </Text>
+    <Text />
+    <Text>
+      Description: 
+      billy
+    </Text>
+  </View>
+</View>
+`;
