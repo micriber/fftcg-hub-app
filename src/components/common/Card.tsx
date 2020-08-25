@@ -30,9 +30,9 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  theme: 'light' | 'dark';
+  theme?: 'light' | 'dark';
   children: React.ReactNode;
-  style: ViewStyle | TextStyle | ImageStyle;
+  style?: ViewStyle | TextStyle | ImageStyle;
 };
 
 const Card = ({style, children, theme = 'light'}: Props) => {

@@ -70,6 +70,7 @@ Array [
           "width": 51,
         }
       }
+      testID="SwitcherState-0"
       value={false}
     />
     <Text

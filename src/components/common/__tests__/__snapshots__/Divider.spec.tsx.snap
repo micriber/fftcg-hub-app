@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] Divider renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderBottomColor": "#000000",
+        "borderBottomWidth": 0.5,
+        "padding": 1,
+        "width": "100%",
+      },
+      undefined,
+    ]
+  }
+/>
+`;

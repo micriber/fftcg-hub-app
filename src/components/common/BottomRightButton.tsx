@@ -15,11 +15,7 @@ type Props = {
 const BottomRightButton = ({iconName, onPress}: Props) => {
   return (
     <View style={styles.bottomView}>
-      <TouchableOpacity
-        style={styles.searchButton}
-        // onPress={() => navigation.navigate('CollectionSearch')}>
-        // onPress={() => Alert.alert('Search button pressed')}>
-        onPress={onPress}>
+      <TouchableOpacity style={styles.searchButton} onPress={onPress}>
         <AntIcon name={iconName} size={20} />
       </TouchableOpacity>
     </View>

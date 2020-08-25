@@ -18,7 +18,11 @@ const HeaderSwitch = ({
   return (
     <View style={styles.header}>
       {leftIconName && <AntIcon name={leftIconName} size={20} />}
-      <Switch value={value} onValueChange={onValueChange} />
+      <Switch
+        value={value}
+        onValueChange={onValueChange}
+        testID={`SwitcherState-${+value}`}
+      />
       {rightIconName && <AntIcon name={rightIconName} size={22} />}
     </View>
   );
