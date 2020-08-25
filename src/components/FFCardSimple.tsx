@@ -23,7 +23,7 @@ const FFCardSimple = ({card, isListView}: Props) => {
   const [src, setSrc] = React.useState(
     getCardImageUrl(card.code, 'full', 'fr'),
   );
-  const enSrc = () => getCardImageUrl(card.code, 'full', 'eg');
+  const enSrc = getCardImageUrl(card.code, 'full', 'eg');
   return (
     <View
       testID="SimpleFFCard"
@@ -46,6 +46,7 @@ const FFCardSimple = ({card, isListView}: Props) => {
               setIsFallbackImage(true);
             }
           }}
+          testID={`Image-${card.code}`}
         />
       </TouchableOpacity>
       {isListView && (

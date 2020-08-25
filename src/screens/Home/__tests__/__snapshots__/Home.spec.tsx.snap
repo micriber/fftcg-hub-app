@@ -222,6 +222,7 @@ Array [
                         "top": 0,
                       }
                     }
+                    testID="Image-1-001H"
                   />
                 </View>
               </View>
@@ -283,6 +284,7 @@ Array [
                         "top": 0,
                       }
                     }
+                    testID="Image-1-002R"
                   />
                 </View>
               </View>
@@ -357,6 +359,7 @@ Array [
                         "top": 0,
                       }
                     }
+                    testID="Image-1-003C"
                   />
                 </View>
               </View>
