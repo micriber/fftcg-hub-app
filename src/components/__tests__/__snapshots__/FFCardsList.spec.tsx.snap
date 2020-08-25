@@ -1,0 +1,778 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "marginLeft": 20,
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "category1": "",
+          "category2": "",
+          "code": "1-001H",
+          "cost": "1000",
+          "element": "blue",
+          "exBurst": "",
+          "id": "1234-1234-1234-1234",
+          "job": "Soutien",
+          "multicard": "",
+          "name": "Boulou",
+          "power": "",
+          "rarity": "H",
+          "text": "billy",
+          "type": "fire",
+        },
+        Object {
+          "category1": "",
+          "category2": "",
+          "code": "1-002H",
+          "cost": "1000",
+          "element": "blue",
+          "exBurst": "",
+          "id": "1234-1234-1234-1234",
+          "job": "Soutien",
+          "multicard": "",
+          "name": "Boulou",
+          "power": "",
+          "rarity": "H",
+          "text": "billy",
+          "type": "fire",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={2}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReached={[Function]}
+    onEndReachedThreshold={1}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginLeft": 15,
+                  "marginTop": 3,
+                },
+              ]
+            }
+            testID="SimpleFFCard"
+          >
+            <View
+              accessible={true}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "height": 444.6666666666667,
+                      "width": 300,
+                    },
+                  ]
+                }
+              >
+                <FastImageView
+                  onFastImageError={[Function]}
+                  resizeMode="contain"
+                  source={
+                    Object {
+                      "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-001H_fr.jpg",
+                    }
+                  }
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                  testID="Image-1-001H"
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "marginLeft": 15,
+                  "marginTop": 3,
+                },
+              ]
+            }
+            testID="SimpleFFCard"
+          >
+            <View
+              accessible={true}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "height": 444.6666666666667,
+                      "width": 300,
+                    },
+                  ]
+                }
+              >
+                <FastImageView
+                  onFastImageError={[Function]}
+                  resizeMode="contain"
+                  source={
+                    Object {
+                      "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-002H_fr.jpg",
+                    }
+                  }
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                  testID="Image-1-002H"
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`[Component] FFCardsList renders correctly in list view 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "column",
+        "justifyContent": "flex-start",
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "category1": "",
+          "category2": "",
+          "code": "1-001H",
+          "cost": "1000",
+          "element": "blue",
+          "exBurst": "",
+          "id": "1234-1234-1234-1234",
+          "job": "Soutien",
+          "multicard": "",
+          "name": "Boulou",
+          "power": "",
+          "rarity": "H",
+          "text": "billy",
+          "type": "fire",
+        },
+        Object {
+          "category1": "",
+          "category2": "",
+          "code": "1-002H",
+          "cost": "1000",
+          "element": "blue",
+          "exBurst": "",
+          "id": "1234-1234-1234-1234",
+          "job": "Soutien",
+          "multicard": "",
+          "name": "Boulou",
+          "power": "",
+          "rarity": "H",
+          "text": "billy",
+          "type": "fire",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={2}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReached={[Function]}
+    onEndReachedThreshold={1}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "height": 444.6666666666667,
+              },
+            ]
+          }
+          testID="SimpleFFCard"
+        >
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "height": 444.6666666666667,
+                    "width": 300,
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                onFastImageError={[Function]}
+                resizeMode="stretch"
+                source={
+                  Object {
+                    "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-001H_fr.jpg",
+                  }
+                }
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+                testID="Image-1-001H"
+              />
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "borderColor": "#000",
+                  "borderWidth": 1,
+                  "height": 444.6666666666667,
+                  "width": 450,
+                },
+              ]
+            }
+          >
+            <Text>
+              Code: 
+              1-001H
+            </Text>
+            <Text>
+              Nom: 
+              Boulou
+            </Text>
+            <Text>
+              Type: 
+              fire
+            </Text>
+            <Text>
+              Element: 
+              blue
+            </Text>
+            <Text />
+            <Text>
+              Description: 
+              billy
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "height": 444.6666666666667,
+              },
+            ]
+          }
+          testID="SimpleFFCard"
+        >
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "height": 444.6666666666667,
+                    "width": 300,
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                onFastImageError={[Function]}
+                resizeMode="stretch"
+                source={
+                  Object {
+                    "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-002H_fr.jpg",
+                  }
+                }
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+                testID="Image-1-002H"
+              />
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "borderColor": "#000",
+                  "borderWidth": 1,
+                  "height": 444.6666666666667,
+                  "width": 450,
+                },
+              ]
+            }
+          >
+            <Text>
+              Code: 
+              1-002H
+            </Text>
+            <Text>
+              Nom: 
+              Boulou
+            </Text>
+            <Text>
+              Type: 
+              fire
+            </Text>
+            <Text>
+              Element: 
+              blue
+            </Text>
+            <Text />
+            <Text>
+              Description: 
+              billy
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`[Component] FFCardsList renders correctly with children 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "column",
+        "justifyContent": "flex-start",
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "category1": "",
+          "category2": "",
+          "code": "1-001H",
+          "cost": "1000",
+          "element": "blue",
+          "exBurst": "",
+          "id": "1234-1234-1234-1234",
+          "job": "Soutien",
+          "multicard": "",
+          "name": "Boulou",
+          "power": "",
+          "rarity": "H",
+          "text": "billy",
+          "type": "fire",
+        },
+        Object {
+          "category1": "",
+          "category2": "",
+          "code": "1-002H",
+          "cost": "1000",
+          "element": "blue",
+          "exBurst": "",
+          "id": "1234-1234-1234-1234",
+          "job": "Soutien",
+          "multicard": "",
+          "name": "Boulou",
+          "power": "",
+          "rarity": "H",
+          "text": "billy",
+          "type": "fire",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={2}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReached={[Function]}
+    onEndReachedThreshold={1}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "height": 444.6666666666667,
+              },
+            ]
+          }
+          testID="SimpleFFCard"
+        >
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "height": 444.6666666666667,
+                    "width": 300,
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                onFastImageError={[Function]}
+                resizeMode="stretch"
+                source={
+                  Object {
+                    "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-001H_fr.jpg",
+                  }
+                }
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+                testID="Image-1-001H"
+              />
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "borderColor": "#000",
+                  "borderWidth": 1,
+                  "height": 444.6666666666667,
+                  "width": 450,
+                },
+              ]
+            }
+          >
+            <Text>
+              Code: 
+              1-001H
+            </Text>
+            <Text>
+              Nom: 
+              Boulou
+            </Text>
+            <Text>
+              Type: 
+              fire
+            </Text>
+            <Text>
+              Element: 
+              blue
+            </Text>
+            <Text />
+            <Text>
+              Description: 
+              billy
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "height": 444.6666666666667,
+              },
+            ]
+          }
+          testID="SimpleFFCard"
+        >
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "overflow": "hidden",
+                  },
+                  Object {
+                    "height": 444.6666666666667,
+                    "width": 300,
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                onFastImageError={[Function]}
+                resizeMode="stretch"
+                source={
+                  Object {
+                    "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-002H_fr.jpg",
+                  }
+                }
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+                testID="Image-1-002H"
+              />
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "borderColor": "#000",
+                  "borderWidth": 1,
+                  "height": 444.6666666666667,
+                  "width": 450,
+                },
+              ]
+            }
+          >
+            <Text>
+              Code: 
+              1-002H
+            </Text>
+            <Text>
+              Nom: 
+              Boulou
+            </Text>
+            <Text>
+              Type: 
+              fire
+            </Text>
+            <Text>
+              Element: 
+              blue
+            </Text>
+            <Text />
+            <Text>
+              Description: 
+              billy
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+  <Text>
+    End of list
+  </Text>
+</View>
+`;

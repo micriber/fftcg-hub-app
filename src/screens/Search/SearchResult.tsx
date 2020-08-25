@@ -54,12 +54,6 @@ const Search = () => {
       setStopFetch(true);
     }
   };
-  console.log({value: state.value});
-  // const {
-  //   result: initialResult,
-  //   error: initialError,
-  //   loading: initialLoading,
-  // } = useAsync(getCards, [token!, {page}]);
 
   if (state.loading && page === 1) {
     return <Loading />;

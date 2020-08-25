@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[Component] BottomRightButton renders correctly but with fallback image 1`] = `
+exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] = `
 <View
   style={
     Array [
@@ -65,7 +65,7 @@ exports[`[Component] BottomRightButton renders correctly but with fallback image
 </View>
 `;
 
-exports[`[Component] BottomRightButton renders correctly in grid view 1`] = `
+exports[`[Component] FFCardSimple renders correctly in grid view 1`] = `
 <View
   style={
     Array [
@@ -130,7 +130,7 @@ exports[`[Component] BottomRightButton renders correctly in grid view 1`] = `
 </View>
 `;
 
-exports[`[Component] BottomRightButton renders correctly in list view 1`] = `
+exports[`[Component] FFCardSimple renders correctly in list view 1`] = `
 <View
   style={
     Array [
@@ -229,7 +229,7 @@ exports[`[Component] BottomRightButton renders correctly in list view 1`] = `
 </View>
 `;
 
-exports[`[Component] BottomRightButton renders correctly with twice callback 1`] = `
+exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
 <View
   style={
     Array [

@@ -430,3 +430,63 @@ Array [
   </View>,
 ]
 `;
+
+exports[`[Page] Home should show a backend error message 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "bottom": 0,
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  testID="Loader"
+>
+  <ActivityIndicator
+    animating={true}
+    color="#0000ff"
+    hidesWhenStopped={true}
+    size="large"
+  />
+</View>
+`;
+
+exports[`[Page] Home should show a backend error message 2`] = `
+<Text>
+  "401 Unauthorized"
+</Text>
+`;
+
+exports[`[Page] Home should show error 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "bottom": 0,
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  testID="Loader"
+>
+  <ActivityIndicator
+    animating={true}
+    color="#0000ff"
+    hidesWhenStopped={true}
+    size="large"
+  />
+</View>
+`;
+
+exports[`[Page] Home should show error 2`] = `
+<Text>
+  {"message":"INTERNAL_SERVER_ERROR"}
+</Text>
+`;
