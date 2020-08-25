@@ -1,0 +1,428 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Page] Home renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "bottom": 0,
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  testID="Loader"
+>
+  <ActivityIndicator
+    animating={true}
+    color="#0000ff"
+    hidesWhenStopped={true}
+    size="large"
+  />
+</View>
+`;
+
+exports[`[Page] Home renders correctly 2`] = `
+Array [
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#878683",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingBottom": 10,
+        "paddingTop": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": undefined,
+            "fontSize": 20,
+          },
+          undefined,
+          Object {
+            "fontFamily": "anticon",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
+    <RCTSwitch
+      accessibilityRole="switch"
+      onChange={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "height": 31,
+          "width": 51,
+        }
+      }
+      value={false}
+    />
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": undefined,
+            "fontSize": 22,
+          },
+          undefined,
+          Object {
+            "fontFamily": "anticon",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "marginLeft": 20,
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      data={
+        Array [
+          Object {
+            "code": "1-001H",
+            "element": "blue",
+            "name": "Boulou",
+            "text": "billy",
+            "type": "fire",
+          },
+          Object {
+            "code": "1-002R",
+            "element": "blue",
+            "name": "Boulou",
+            "text": "billy",
+            "type": "fire",
+          },
+          Object {
+            "code": "1-003C",
+            "element": "blue",
+            "name": "Boulou",
+            "text": "billy",
+            "type": "fire",
+          },
+        ]
+      }
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={2}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      onContentSizeChange={[Function]}
+      onEndReached={[Function]}
+      onEndReachedThreshold={1}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginLeft": 15,
+                    "marginTop": 3,
+                  },
+                ]
+              }
+              testID="SimpleFFCard"
+            >
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Object {
+                        "height": 444.6666666666667,
+                        "width": 300,
+                      },
+                    ]
+                  }
+                >
+                  <FastImageView
+                    onFastImageError={[Function]}
+                    resizeMode="contain"
+                    source={
+                      Object {
+                        "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-001H_fr.jpg",
+                      }
+                    }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginLeft": 15,
+                    "marginTop": 3,
+                  },
+                ]
+              }
+              testID="SimpleFFCard"
+            >
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Object {
+                        "height": 444.6666666666667,
+                        "width": 300,
+                      },
+                    ]
+                  }
+                >
+                  <FastImageView
+                    onFastImageError={[Function]}
+                    resizeMode="contain"
+                    source={
+                      Object {
+                        "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-002R_fr.jpg",
+                      }
+                    }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginLeft": 15,
+                    "marginTop": 3,
+                  },
+                ]
+              }
+              testID="SimpleFFCard"
+            >
+              <View
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
+                      },
+                      Object {
+                        "height": 444.6666666666667,
+                        "width": 300,
+                      },
+                    ]
+                  }
+                >
+                  <FastImageView
+                    onFastImageError={[Function]}
+                    resizeMode="contain"
+                    source={
+                      Object {
+                        "uri": "https://fftcg.cdn.sewest.net/images/cards/full/1-003C_fr.jpg",
+                      }
+                    }
+                    style={
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      }
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>,
+  <View
+    style={
+      Object {
+        "alignItems": "flex-end",
+        "bottom": 20,
+        "height": 75,
+        "justifyContent": "center",
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#00BCD4",
+          "borderColor": "#fff",
+          "borderRadius": 50,
+          "borderWidth": 1,
+          "height": 60,
+          "justifyContent": "center",
+          "marginRight": 20,
+          "opacity": 1,
+          "width": 60,
+        }
+      }
+    >
+      <Text
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "color": undefined,
+              "fontSize": 20,
+            },
+            undefined,
+            Object {
+              "fontFamily": "anticon",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+  </View>,
+]
+`;

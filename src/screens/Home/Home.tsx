@@ -1,6 +1,6 @@
 import React from 'react';
 import {Alert, Text} from 'react-native';
-import {useAsync} from 'react-async';
+import useAsync from '../../utils/hooks/useAsync';
 import {getCards} from '../../services/api/card';
 import {AuthContext} from '../../AuthContext';
 import Loading from '../Loading';
@@ -11,28 +11,22 @@ import BottomRightButton from '../../components/common/BottomRightButton';
 const Home = () => {
   const [isListView, setIsListView] = React.useState(false);
   const {getIdToken} = React.useContext(AuthContext);
-  const idToken = getIdToken();
-  const params = {
-    token: idToken!,
-    params: {},
-  };
-  // TODO: find a way to pass params type instead of AsyncOptions<T>
-  // @ts-ignore
-  const {data, error, isLoading} = useAsync(getCards, params);
+  const token = getIdToken();
+  const state = useAsync(async () => {
+    return await getCards({token: token!, params: {}});
+  }, []);
 
-  console.log({data, error, isLoading});
-
-  if (isLoading) {
+  if (state.loading) {
     return <Loading />;
   }
-  if (error) {
-    return <Text>{error}</Text>;
+  if (state.error) {
+    return <Text>{state.error}</Text>;
   }
-  if (!data || (data && 'message' in data)) {
-    return <Text>{JSON.stringify(data?.message)}</Text>;
+  if (!state.value || (state.value && 'message' in state.value)) {
+    return <Text>{JSON.stringify(state.value?.message)}</Text>;
   }
 
-  const cards = data.data;
+  const cards = state.value.data;
 
   return (
     <>

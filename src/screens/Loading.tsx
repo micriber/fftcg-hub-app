@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, ActivityIndicator} from 'react-native';
 
 const Loading = () => (
-  <View style={styles.loading}>
+  <View style={styles.loading} testID="Loader">
     <ActivityIndicator size="large" color="#0000ff" />
   </View>
 );
