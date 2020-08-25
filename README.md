@@ -10,7 +10,7 @@ values. Or, if you have all of the environment variables setup you can run this 
 `envsubst < ".env.dist" > ".env"`
 
 - You need to have a google-services.json file placed in android/app/ folder. To create one, use this command:
-`./.github/scripts/decrypt_secret.sh`, this script will ask you for the passphrase,
+`PASSPHRASE=${my_passphrase} ./.github/scripts/decrypt_secret.sh`,
 you can retrieve it [here](https://start.1password.com/open/i?a=IKJM5VUB2RFBJAUDDVWQAPK5NE&h=my.1password.com&i=dbe2jw4bejmaad4ioxpuly66si&v=2fkjkdj3wbyycogwphul6jocxq)
 
 - Simply run a `yarn` command to install the project dependency.
