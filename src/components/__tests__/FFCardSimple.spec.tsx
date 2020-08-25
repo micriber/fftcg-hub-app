@@ -5,7 +5,8 @@
 import 'react-native';
 import React from 'react';
 import FFCardSimple from '../FFCardSimple';
-import {render} from '@testing-library/react-native';
+import {fireEvent, render, waitFor} from '@testing-library/react-native';
+import {getCardImageUrl} from '../../utils/image';
 
 const card = {
   code: '1-001H',
@@ -35,6 +36,21 @@ describe('[Component] BottomRightButton', () => {
 
   it('renders correctly in list view', async () => {
     const root = render(<FFCardSimple card={card} isListView={true} />);
+
+    expect(root.toJSON()).toMatchSnapshot();
+  });
+
+  it('renders correctly but with fallback image', async () => {
+    const Sample = () => <FFCardSimple card={card} isListView={false} />;
+    const root = render(<Sample />);
+    fireEvent(root.getByTestId(`Image-${card.code}`), 'onError');
+    root.update(<Sample />);
+    await waitFor(() => root.getByTestId(`Image-${card.code}`));
+    const element = root.getByTestId(`Image-${card.code}`);
+    console.log(element.props.source.uri);
+    expect(element.props.source.uri).toBe(
+      getCardImageUrl(card.code, 'full', 'eg'),
+    );
 
     expect(root.toJSON()).toMatchSnapshot();
   });
