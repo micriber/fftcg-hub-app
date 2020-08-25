@@ -26,6 +26,7 @@ const FFCardSimple = ({card, isListView}: Props) => {
   const enSrc = () => getCardImageUrl(card.code, 'full', 'eg');
   return (
     <View
+      testID="SimpleFFCard"
       key={card.code}
       style={[
         isListView ? styles.cardListContainer : styles.cardGridContainer,

@@ -4,7 +4,6 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
 import {SearchStackParamList} from './type';
 import {AuthContext} from '../../AuthContext';
-// import {useAsync} from 'react-async';
 import useAsync from '../../utils/hooks/useAsync';
 import {Cards, getCards} from '../../services/api/card';
 import Loading from '../Loading';
