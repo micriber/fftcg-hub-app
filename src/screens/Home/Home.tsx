@@ -20,7 +20,7 @@ const Home = () => {
     return <Loading />;
   }
   if (state.error) {
-    return <Text>{state.error}</Text>;
+    return <Text>{JSON.stringify(state.error)}</Text>;
   }
   if (!state.value || (state.value && 'message' in state.value)) {
     return <Text>{JSON.stringify(state.value?.message)}</Text>;

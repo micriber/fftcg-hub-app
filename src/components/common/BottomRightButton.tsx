@@ -15,7 +15,10 @@ type Props = {
 const BottomRightButton = ({iconName, onPress}: Props) => {
   return (
     <View style={styles.bottomView}>
-      <TouchableOpacity style={styles.searchButton} onPress={onPress}>
+      <TouchableOpacity
+        style={styles.searchButton}
+        onPress={onPress}
+        testID="BottomRightButton">
         <AntIcon name={iconName} size={20} />
       </TouchableOpacity>
     </View>

@@ -27,7 +27,7 @@ const card = {
 
 // More about testing in this repository:
 // https://github.com/bamlab/react-native-testing/blob/master/src/pages/Home/__tests__/Home.test.tsx
-describe('[Component] BottomRightButton', () => {
+describe('[Component] FFCardSimple', () => {
   it('renders correctly in grid view', async () => {
     const root = render(<FFCardSimple card={card} isListView={false} />);
 
