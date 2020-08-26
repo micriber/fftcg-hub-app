@@ -34,6 +34,8 @@ jobs:
         env:
           GOOGLE_WEB_CLIENT_ID: ${{ secrets.GOOGLE_WEB_CLIENT_ID }}
           API_URI: ${{ secrets.API_URI }}
+      - name: chmod on decrypt_secret script
+        run: chmod +x ./.github/scripts/decrypt_secret.sh
       - name: Decrypt google services json file
         run: ./.github/scripts/decrypt_secret.sh
         env:
