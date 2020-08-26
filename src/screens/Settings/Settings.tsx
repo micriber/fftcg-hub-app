@@ -3,6 +3,7 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import ModalSelector from 'react-native-modal-selector';
 import {AuthContext} from '../../AuthContext';
 import Card from '../../components/common/Card';
+import FireIcon from '../../components/icons/elements/fire';
 
 const Settings = () => {
   const {signOut, getCurrentUser} = React.useContext(AuthContext);
@@ -14,6 +15,8 @@ const Settings = () => {
     <View style={styles.containerMain}>
       <Text style={styles.heading}>Settings</Text>
       <Text>Welcome {user?.firstName}</Text>
+      <FireIcon />
+      <FireIcon inactiveColor="gray" />
       <Text style={styles.sectionHeading}>Interface</Text>
       <Card theme="light" style={styles.section}>
         <View style={styles.itemSection}>
