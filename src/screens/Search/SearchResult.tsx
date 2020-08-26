@@ -26,7 +26,7 @@ type Props = {
   route: SearchResultScreenRouteProp;
 };
 
-const Search = () => {
+const Search = ({route}: Props) => {
   const perPage = 50;
   const {getIdToken} = React.useContext(AuthContext);
   const [isListView, setIsListView] = React.useState(false);
@@ -35,8 +35,12 @@ const Search = () => {
   const [cards, setCards] = React.useState<Cards>([]);
   const addCards = (newCards: Cards) => setCards([...cards, ...newCards]);
   const token = getIdToken();
+  const search = route.params.filter.search;
   const state = useAsync(async () => {
-    const data = await getCards({token: token!, params: {page, perPage}});
+    const data = await getCards({
+      token: token!,
+      params: {page, perPage, search},
+    });
     if (data && 'data' in data) {
       addCards(data.data);
     }

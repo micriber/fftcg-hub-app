@@ -35,7 +35,7 @@ export type UnauthorizedError = {
 
 export type GetCardsParams = {
   page?: number;
-  code?: string;
+  search?: string;
   perPage?: number;
 };
 
@@ -46,16 +46,18 @@ export const getCards = async ({
   token: string;
   params: GetCardsParams;
 }): Promise<GetCardsResponse | UnauthorizedError> => {
-  console.log('BILLY');
-  console.log({token, params});
   const page = params.page ? `page=${params.page}` : 'page=1';
   const perPage = params.perPage ? `&per_page=${params.perPage}` : '';
-  return fetch(`${config.api.baseUri}/api/v1/cards?${page}${perPage}`, {
-    method: 'GET',
-    headers: {
-      authorization: `bearer ${token}`,
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+  const search = params.search ? `&search=${params.search}` : '';
+  return fetch(
+    `${config.api.baseUri}/api/v1/cards?${page}${perPage}${search}`,
+    {
+      method: 'GET',
+      headers: {
+        authorization: `bearer ${token}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
     },
-  }).then((response) => response.json());
+  ).then((response) => response.json());
 };
