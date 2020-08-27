@@ -9,7 +9,7 @@ import {
 import FastImage from 'react-native-fast-image';
 import {getCardImageUrl} from '../utils/image';
 import {Card} from '../services/api/card';
-import replaceTextByIcon from '../utils/icon';
+import replaceTextByIconOrStyle from '../utils/icon';
 
 type Props = {
   card: Card;
@@ -60,9 +60,9 @@ const FFCardSimple = ({card, isListView, onPress, onLongPress}: Props) => {
           <Text>Code: {card.code}</Text>
           <Text>Nom: {card.name}</Text>
           <Text>Type: {card.type}</Text>
-          <Text>Element: {replaceTextByIcon(card.element)}</Text>
+          <Text>Element: {replaceTextByIconOrStyle(card.element)}</Text>
           <Text />
-          <Text>Description: {replaceTextByIcon(card.text)}</Text>
+          <Text>Description: {replaceTextByIconOrStyle(card.text)}</Text>
         </View>
       )}
     </View>

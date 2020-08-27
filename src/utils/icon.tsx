@@ -1,8 +1,9 @@
+import React from 'react';
+import {Text} from 'react-native';
 import reactStringReplace from 'react-string-replace';
 import {compose} from './fp';
 import GameIcon from '../components/icons/GameIcon';
 import {ElementIconFile, GameActionIconFile} from '../enums/element';
-import React from 'react';
 import {makeID} from './string';
 
 const _replaceTextByIcon = (
@@ -11,6 +12,14 @@ const _replaceTextByIcon = (
 ) => (text: string) => {
   return reactStringReplace(text, typeToMatch, () => (
     <GameIcon name={iconReplacement} key={makeID()} />
+  ));
+};
+
+const _styllishBBCode = (regex: RegExp, styles: Object) => (text: string) => {
+  return reactStringReplace(text, regex, (match) => (
+    <Text key={makeID()} style={[styles]}>
+      {match}
+    </Text>
   ));
 };
 
@@ -32,7 +41,18 @@ export const replaceDownArrowType = _replaceTextByIcon(
   GameActionIconFile.DOWN_ARROW,
 );
 
-const replaceTextByIcon = (text: string) =>
+export const replaceTagS = _styllishBBCode(
+  /\[\[[a-zA-Z0-9!$* \t\r\n-]]](.*)\[\[\/]]/gm,
+  {
+    color: '#f80',
+    fontStyle: 'italic',
+    textShadowColor: 'rgba(0, 0, 0, 0.2)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
+  },
+);
+
+const replaceTextByIconOrStyle = (text: string) =>
   compose(
     _replaceWrapper(replaceFireType),
     _replaceWrapper(replaceIceType),
@@ -43,6 +63,7 @@ const replaceTextByIcon = (text: string) =>
     _replaceWrapper(replaceLightType),
     _replaceWrapper(replaceDarkType),
     _replaceWrapper(replaceDownArrowType),
+    _replaceWrapper(replaceTagS),
   )(text);
 
-export default replaceTextByIcon;
+export default replaceTextByIconOrStyle;
