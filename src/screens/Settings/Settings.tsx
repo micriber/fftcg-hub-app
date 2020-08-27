@@ -2,8 +2,9 @@ import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import ModalSelector from 'react-native-modal-selector';
 import {AuthContext} from '../../AuthContext';
+import {ElementIconFile} from '../../enums/element';
 import Card from '../../components/common/Card';
-import FireIcon from '../../components/icons/elements/fire';
+import GameIcon from '../../components/icons/GameIcon';
 
 const Settings = () => {
   const {signOut, getCurrentUser} = React.useContext(AuthContext);
@@ -14,9 +15,10 @@ const Settings = () => {
   return (
     <View style={styles.containerMain}>
       <Text style={styles.heading}>Settings</Text>
+      <Text>
+        Hello <GameIcon name={ElementIconFile.FIRE} />
+      </Text>
       <Text>Welcome {user?.firstName}</Text>
-      <FireIcon />
-      <FireIcon inactiveColor="gray" />
       <Text style={styles.sectionHeading}>Interface</Text>
       <Card theme="light" style={styles.section}>
         <View style={styles.itemSection}>

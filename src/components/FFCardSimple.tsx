@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Alert,
   Dimensions,
   StyleSheet,
   Text,
@@ -10,6 +9,7 @@ import {
 import FastImage from 'react-native-fast-image';
 import {getCardImageUrl} from '../utils/image';
 import {Card} from '../services/api/card';
+import replaceTextByIcon from '../utils/icon';
 
 type Props = {
   card: Card;
@@ -60,9 +60,9 @@ const FFCardSimple = ({card, isListView, onPress, onLongPress}: Props) => {
           <Text>Code: {card.code}</Text>
           <Text>Nom: {card.name}</Text>
           <Text>Type: {card.type}</Text>
-          <Text>Element: {card.element}</Text>
+          <Text>Element: {replaceTextByIcon(card.element)}</Text>
           <Text />
-          <Text>Description: {card.text}</Text>
+          <Text>Description: {replaceTextByIcon(card.text)}</Text>
         </View>
       )}
     </View>
