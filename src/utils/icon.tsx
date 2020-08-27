@@ -16,11 +16,16 @@ const _replaceTextByIcon = (
 };
 
 const _styllishBBCode = (regex: RegExp, styles: Object) => (text: string) => {
-  return reactStringReplace(text, regex, (match) => (
-    <Text key={makeID()} style={[styles]}>
-      {match}
-    </Text>
-  ));
+  return reactStringReplace(
+    text,
+    regex,
+    (match) =>
+      match !== 'br' && (
+        <Text key={makeID()} style={[styles]}>
+          {match}
+        </Text>
+      ),
+  );
 };
 
 const _replaceWrapper = (fn: Function) => (text: string) => fn(text);
@@ -52,6 +57,17 @@ export const replaceTagS = _styllishBBCode(
   },
 );
 
+export const replaceTagEX = _styllishBBCode(/\[\[ex]](.*)\[\[\/]]/gm, {
+  color: '#332a9d',
+  fontStyle: 'italic',
+  fontSize: 15,
+  textShadowColor: 'rgba(0, 0, 0, 0.2)',
+  textShadowOffset: {width: -1, height: 1},
+  textShadowRadius: 10,
+});
+
+export const replaceTagBR = _styllishBBCode(/\[\[(br)]]/gm, {});
+
 const replaceTextByIconOrStyle = (text: string) =>
   compose(
     _replaceWrapper(replaceFireType),
@@ -63,7 +79,9 @@ const replaceTextByIconOrStyle = (text: string) =>
     _replaceWrapper(replaceLightType),
     _replaceWrapper(replaceDarkType),
     _replaceWrapper(replaceDownArrowType),
+    _replaceWrapper(replaceTagEX),
     _replaceWrapper(replaceTagS),
+    _replaceWrapper(replaceTagBR),
   )(text);
 
 export default replaceTextByIconOrStyle;
