@@ -16,7 +16,7 @@ const Settings = () => {
     <View style={styles.containerMain}>
       <Text style={styles.heading}>Settings</Text>
       <Text>
-        Hello <GameIcon name={ElementIconFile.FIRE} />
+        Hello <GameIcon circle={true} name={ElementIconFile.FIRE} />
       </Text>
       <Text>Welcome {user?.firstName}</Text>
       <Text style={styles.sectionHeading}>Interface</Text>

@@ -62,7 +62,7 @@ const FFCardSimple = ({card, isListView, onPress, onLongPress}: Props) => {
           <Text>Type: {card.type}</Text>
           <Text>Element: {replaceTextByIconOrStyle(card.element)}</Text>
           <Text />
-          <Text>Description: {replaceTextByIconOrStyle(card.text)}</Text>
+          <Text>{replaceTextByIconOrStyle(card.text)}</Text>
         </View>
       )}
     </View>
