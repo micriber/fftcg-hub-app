@@ -11,4 +11,5 @@ export enum ElementIconFile {
 
 export enum GameActionIconFile {
   'DOWN_ARROW' = require('../assets/icons/downarrow.png'),
+  'SPECIAL' = require('../assets/icons/special.png'),
 }

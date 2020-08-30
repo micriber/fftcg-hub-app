@@ -6,12 +6,22 @@ import GameIcon from '../components/icons/GameIcon';
 import {ElementIconFile, GameActionIconFile} from '../enums/element';
 import {makeID} from './string';
 
+const circleEnum: {[integer: number]: string} = {
+  1: '\u2776',
+  2: '\u2777',
+  3: '\u2778',
+  4: '\u2779',
+  5: '\u277a',
+  6: '\u277b',
+  9: '\u277e',
+};
+
 const _replaceTextByIcon = (
   typeToMatch: string,
   iconReplacement: ElementIconFile | GameActionIconFile,
 ) => (text: string) => {
   return reactStringReplace(text, typeToMatch, () => (
-    <GameIcon name={iconReplacement} key={makeID()} />
+    <GameIcon circle={true} name={iconReplacement} key={makeID()} />
   ));
 };
 
@@ -28,6 +38,18 @@ const _styllishBBCode = (regex: RegExp, styles: Object) => (text: string) => {
   );
 };
 
+const _styllishNumber = (regex: RegExp, styles: Object) => (text: string) => {
+  return reactStringReplace(text, regex, (match) => {
+    const matchNumber = parseInt(match, 10);
+    const circleUnicode: string | null = circleEnum[matchNumber];
+    return (
+      <Text key={makeID()} style={[styles]}>
+        {circleUnicode}
+      </Text>
+    );
+  });
+};
+
 const _replaceWrapper = (fn: Function) => (text: string) => fn(text);
 
 export const replaceFireType = _replaceTextByIcon('火', ElementIconFile.FIRE);
@@ -41,9 +63,13 @@ export const replaceLightningType = _replaceTextByIcon(
 export const replaceWaterType = _replaceTextByIcon('水', ElementIconFile.WATER);
 export const replaceLightType = _replaceTextByIcon('光', ElementIconFile.LIGHT);
 export const replaceDarkType = _replaceTextByIcon('闇', ElementIconFile.DARK);
-export const replaceDownArrowType = _replaceTextByIcon(
+export const replaceDownArrowAction = _replaceTextByIcon(
   'ダル',
   GameActionIconFile.DOWN_ARROW,
+);
+export const replaceSpecialAction = _replaceTextByIcon(
+  '《S》',
+  GameActionIconFile.SPECIAL,
 );
 
 export const replaceTagS = _styllishBBCode(
@@ -68,6 +94,15 @@ export const replaceTagEX = _styllishBBCode(/\[\[ex]](.*)\[\[\/]]/gm, {
 
 export const replaceTagBR = _styllishBBCode(/\[\[(br)]]/gm, {});
 
+export const styllishNumber = _styllishNumber(/《(1|2|3|4|5|6|9)》/gm, {
+  height: 20,
+  width: 20,
+  fontSize: 18,
+  borderRadius: 80,
+  borderWidth: 100,
+  borderColor: '#333',
+});
+
 const replaceTextByIconOrStyle = (text: string) =>
   compose(
     _replaceWrapper(replaceFireType),
@@ -78,10 +113,12 @@ const replaceTextByIconOrStyle = (text: string) =>
     _replaceWrapper(replaceWaterType),
     _replaceWrapper(replaceLightType),
     _replaceWrapper(replaceDarkType),
-    _replaceWrapper(replaceDownArrowType),
+    _replaceWrapper(replaceDownArrowAction),
+    _replaceWrapper(replaceSpecialAction),
     _replaceWrapper(replaceTagEX),
     _replaceWrapper(replaceTagS),
     _replaceWrapper(replaceTagBR),
+    _replaceWrapper(styllishNumber),
   )(text);
 
 export default replaceTextByIconOrStyle;
