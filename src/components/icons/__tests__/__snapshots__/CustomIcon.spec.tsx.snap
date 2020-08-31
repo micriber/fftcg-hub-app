@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[Component] FFCardsList renders correctly 1`] = `
+exports[`[Component] CustomIcon renders correctly 1`] = `
 <Image
   source="test-file-stub"
   style={
@@ -15,7 +15,7 @@ exports[`[Component] FFCardsList renders correctly 1`] = `
 />
 `;
 
-exports[`[Component] FFCardsList renders correctly in circle 1`] = `
+exports[`[Component] CustomIcon renders correctly in circle 1`] = `
 <Image
   source="test-file-stub"
   style={
@@ -34,7 +34,7 @@ exports[`[Component] FFCardsList renders correctly in circle 1`] = `
 />
 `;
 
-exports[`[Component] FFCardsList renders correctly in circle with custom size 1`] = `
+exports[`[Component] CustomIcon renders correctly in circle with custom size 1`] = `
 <Image
   source="test-file-stub"
   style={
@@ -53,7 +53,7 @@ exports[`[Component] FFCardsList renders correctly in circle with custom size 1`
 />
 `;
 
-exports[`[Component] FFCardsList renders correctly with custom size 1`] = `
+exports[`[Component] CustomIcon renders correctly with custom size 1`] = `
 <Image
   source="test-file-stub"
   style={

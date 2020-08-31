@@ -19,7 +19,7 @@ const circleEnum: {[integer: number]: string} = {
 };
 
 const _replaceTextByIcon = (
-  typeToMatch: string,
+  typeToMatch: string | RegExp,
   iconReplacement: ElementIconFile | GameActionIconFile,
 ) => (text: string) => {
   return reactStringReplace(text, typeToMatch, () => (
@@ -75,7 +75,7 @@ export const replaceSpecialAction = _replaceTextByIcon(
 );
 
 export const replaceTagS = _styllishBBCode(
-  /\[\[[a-zA-Z0-9!$* \t\r\n-]]](.*)\[\[\/]]/gm,
+  /\[\[[a-zA-Z0-9!$* \t\r\n-]]]([\w ]+)\[\[\/]]/gm,
   {
     color: '#f80',
     fontStyle: 'italic',
@@ -85,7 +85,7 @@ export const replaceTagS = _styllishBBCode(
   },
 );
 
-export const replaceTagEX = _styllishBBCode(/\[\[ex]](.*)\[\[\/]]/gm, {
+export const replaceTagEX = _styllishBBCode(/\[\[ex]]([\w ]+)\[\[\/]]/gm, {
   color: '#332a9d',
   fontStyle: 'italic',
   fontSize: 15,
@@ -96,7 +96,7 @@ export const replaceTagEX = _styllishBBCode(/\[\[ex]](.*)\[\[\/]]/gm, {
 
 export const replaceTagBR = _styllishBBCode(/\[\[(br)]]/gm, {});
 
-export const styllishNumber = _styllishNumber(/《(1|2|3|4|5|6|9)》/gm, {
+export const replaceNumber = _styllishNumber(/《([123456789])》/gm, {
   height: 20,
   width: 20,
   fontSize: 18,
@@ -120,7 +120,7 @@ const replaceTextByIconOrStyle = (text: string) =>
     _replaceWrapper(replaceTagEX),
     _replaceWrapper(replaceTagS),
     _replaceWrapper(replaceTagBR),
-    _replaceWrapper(styllishNumber),
+    _replaceWrapper(replaceNumber),
   )(text);
 
 export default replaceTextByIconOrStyle;
