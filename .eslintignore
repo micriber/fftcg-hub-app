@@ -2,3 +2,4 @@ jest
 node_modules
 ios
 android
+coverage
