@@ -12,8 +12,8 @@ const cards = [
   {
     code: '1-001H',
     name: 'Boulou',
-    text: 'billy',
-    type: 'fire',
+    text: '《火》《2》《ダル》',
+    type: '風',
     element: 'blue',
     id: '1234-1234-1234-1234',
     rarity: 'H',
@@ -28,8 +28,8 @@ const cards = [
   {
     code: '1-002H',
     name: 'Boulou',
-    text: 'billy',
-    type: 'fire',
+    text: '《火》《3》《ダル》',
+    type: '風',
     element: 'blue',
     id: '1234-1234-1234-1234',
     rarity: 'H',

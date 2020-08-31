@@ -27,8 +27,8 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
           "name": "Boulou",
           "power": "",
           "rarity": "H",
-          "text": "billy",
-          "type": "fire",
+          "text": "《火》《2》《ダル》",
+          "type": "風",
         },
         Object {
           "category1": "",
@@ -43,8 +43,8 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
           "name": "Boulou",
           "power": "",
           "rarity": "H",
-          "text": "billy",
-          "type": "fire",
+          "text": "《火》《3》《ダル》",
+          "type": "風",
         },
       ]
     }
@@ -242,8 +242,8 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
           "name": "Boulou",
           "power": "",
           "rarity": "H",
-          "text": "billy",
-          "type": "fire",
+          "text": "《火》《2》《ダル》",
+          "type": "風",
         },
         Object {
           "category1": "",
@@ -258,8 +258,8 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
           "name": "Boulou",
           "power": "",
           "rarity": "H",
-          "text": "billy",
-          "type": "fire",
+          "text": "《火》《3》《ダル》",
+          "type": "風",
         },
       ]
     }
@@ -374,7 +374,7 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
             </Text>
             <Text>
               Type: 
-              fire
+              風
             </Text>
             <Text>
               Element: 
@@ -382,8 +382,50 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
             </Text>
             <Text />
             <Text>
-              Description: 
-              billy
+              《
+              <Image
+                source="test-file-stub"
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "width": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              />
+              》
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "borderColor": "#333",
+                      "borderRadius": 80,
+                      "borderWidth": 100,
+                      "fontSize": 18,
+                      "height": 20,
+                      "width": 20,
+                    },
+                  ]
+                }
+              >
+                ❷
+              </Text>
+              《
+              <Image
+                source="test-file-stub"
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "width": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              />
+              》
             </Text>
           </View>
         </View>
@@ -475,7 +517,7 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
             </Text>
             <Text>
               Type: 
-              fire
+              風
             </Text>
             <Text>
               Element: 
@@ -483,8 +525,50 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
             </Text>
             <Text />
             <Text>
-              Description: 
-              billy
+              《
+              <Image
+                source="test-file-stub"
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "width": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              />
+              》
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "borderColor": "#333",
+                      "borderRadius": 80,
+                      "borderWidth": 100,
+                      "fontSize": 18,
+                      "height": 20,
+                      "width": 20,
+                    },
+                  ]
+                }
+              >
+                ❸
+              </Text>
+              《
+              <Image
+                source="test-file-stub"
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "width": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              />
+              》
             </Text>
           </View>
         </View>
@@ -522,8 +606,8 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
           "name": "Boulou",
           "power": "",
           "rarity": "H",
-          "text": "billy",
-          "type": "fire",
+          "text": "《火》《2》《ダル》",
+          "type": "風",
         },
         Object {
           "category1": "",
@@ -538,8 +622,8 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
           "name": "Boulou",
           "power": "",
           "rarity": "H",
-          "text": "billy",
-          "type": "fire",
+          "text": "《火》《3》《ダル》",
+          "type": "風",
         },
       ]
     }
@@ -654,7 +738,7 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
             </Text>
             <Text>
               Type: 
-              fire
+              風
             </Text>
             <Text>
               Element: 
@@ -662,8 +746,50 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
             </Text>
             <Text />
             <Text>
-              Description: 
-              billy
+              《
+              <Image
+                source="test-file-stub"
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "width": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              />
+              》
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "borderColor": "#333",
+                      "borderRadius": 80,
+                      "borderWidth": 100,
+                      "fontSize": 18,
+                      "height": 20,
+                      "width": 20,
+                    },
+                  ]
+                }
+              >
+                ❷
+              </Text>
+              《
+              <Image
+                source="test-file-stub"
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "width": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              />
+              》
             </Text>
           </View>
         </View>
@@ -755,7 +881,7 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
             </Text>
             <Text>
               Type: 
-              fire
+              風
             </Text>
             <Text>
               Element: 
@@ -763,8 +889,50 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
             </Text>
             <Text />
             <Text>
-              Description: 
-              billy
+              《
+              <Image
+                source="test-file-stub"
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "width": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              />
+              》
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "borderColor": "#333",
+                      "borderRadius": 80,
+                      "borderWidth": 100,
+                      "fontSize": 18,
+                      "height": 20,
+                      "width": 20,
+                    },
+                  ]
+                }
+              >
+                ❸
+              </Text>
+              《
+              <Image
+                source="test-file-stub"
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "width": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              />
+              》
             </Text>
           </View>
         </View>
