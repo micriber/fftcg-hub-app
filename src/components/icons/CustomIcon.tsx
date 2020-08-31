@@ -3,12 +3,11 @@ import {Image, ImageSourcePropType, StyleSheet} from 'react-native';
 
 type Props = {
   size?: {width: number; height: number};
-  inactiveColor?: 'gray';
   circle: boolean;
   src: ImageSourcePropType;
 };
 
-const CustomIcon = ({circle, inactiveColor, src, size}: Props) => {
+const CustomIcon = ({circle, src, size}: Props) => {
   const defaultWidth = 20;
   const defaultHeight = 20;
   const styles = StyleSheet.create({
@@ -24,7 +23,6 @@ const CustomIcon = ({circle, inactiveColor, src, size}: Props) => {
   });
 
   const stylesExtended = {
-    ...(inactiveColor ? {tintColor: inactiveColor} : {}),
     ...(circle ? styles.circle : {}),
   };
 
