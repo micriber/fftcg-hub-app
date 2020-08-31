@@ -13,6 +13,8 @@ const circleEnum: {[integer: number]: string} = {
   4: '\u2779',
   5: '\u277a',
   6: '\u277b',
+  7: '\u277c',
+  8: '\u277d',
   9: '\u277e',
 };
 
