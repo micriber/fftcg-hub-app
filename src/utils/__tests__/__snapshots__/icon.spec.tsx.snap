@@ -1,0 +1,1183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Util] icon [BR] tag deeply replace BR mark 1`] = `
+Array [
+  "[[ex]]EX BURST 1[[/]] ",
+  " - [[s]]EX BURST 2[[/]] ",
+  "",
+]
+`;
+
+exports[`[Util] icon [BR] tag replace BR mark 1`] = `
+Array [
+  "[[ex]]EX BURST[[/]] ",
+  "",
+]
+`;
+
+exports[`[Util] icon [BR] tag replace nothing 1`] = `"《1》《闇》 br"`;
+
+exports[`[Util] icon [DARK] type deeply replace dark mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " - ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [DARK] type replace dark mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [DARK] type replace nothing 1`] = `"《1》《ダル》"`;
+
+exports[`[Util] icon [DOWN_ARROW] action deeply replace down arrow mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " - ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [DOWN_ARROW] action replace down arrow mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [DOWN_ARROW] action replace nothing 1`] = `"《1》《闇》"`;
+
+exports[`[Util] icon [EARTH] type deeply replace earth mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " - ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [EARTH] type replace earth mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [EARTH] type replace nothing 1`] = `"《1》《ダル》"`;
+
+exports[`[Util] icon [EX] tag deeply replace EX mark 1`] = `
+Array [
+  "",
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#332a9d",
+          "fontSize": 15,
+          "fontStyle": "italic",
+          "textShadowColor": "rgba(0, 0, 0, 0.2)",
+          "textShadowOffset": Object {
+            "height": 1,
+            "width": -1,
+          },
+          "textShadowRadius": 10,
+        },
+      ]
+    }
+  >
+    EX BURST 1
+  </Text>,
+  " - ",
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#332a9d",
+          "fontSize": 15,
+          "fontStyle": "italic",
+          "textShadowColor": "rgba(0, 0, 0, 0.2)",
+          "textShadowOffset": Object {
+            "height": 1,
+            "width": -1,
+          },
+          "textShadowRadius": 10,
+        },
+      ]
+    }
+  >
+    EX BURST 2
+  </Text>,
+  "",
+]
+`;
+
+exports[`[Util] icon [EX] tag replace EX mark 1`] = `
+Array [
+  "",
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#332a9d",
+          "fontSize": 15,
+          "fontStyle": "italic",
+          "textShadowColor": "rgba(0, 0, 0, 0.2)",
+          "textShadowOffset": Object {
+            "height": 1,
+            "width": -1,
+          },
+          "textShadowRadius": 10,
+        },
+      ]
+    }
+  >
+    EX BURST
+  </Text>,
+  "",
+]
+`;
+
+exports[`[Util] icon [EX] tag replace nothing 1`] = `"《1》《闇》"`;
+
+exports[`[Util] icon [FIRE] type deeply replace fire mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " - ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [FIRE] type replace fire mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [FIRE] type replace nothing 1`] = `"《1》《ダル》"`;
+
+exports[`[Util] icon [GLOBAL] all tag replace all mark 1`] = `
+Array [
+  "",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❶
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❷
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❸
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❹
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❺
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❻
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❼
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❽
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❾
+  </Text>,
+  " ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#f80",
+          "fontStyle": "italic",
+          "textShadowColor": "rgba(0, 0, 0, 0.2)",
+          "textShadowOffset": Object {
+            "height": 1,
+            "width": -1,
+          },
+          "textShadowRadius": 10,
+        },
+      ]
+    }
+  >
+    boulou
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#332a9d",
+          "fontSize": 15,
+          "fontStyle": "italic",
+          "textShadowColor": "rgba(0, 0, 0, 0.2)",
+          "textShadowOffset": Object {
+            "height": 1,
+            "width": -1,
+          },
+          "textShadowRadius": 10,
+        },
+      ]
+    }
+  >
+    EX BURST
+  </Text>,
+  " ",
+  "",
+]
+`;
+
+exports[`[Util] icon [ICE] type deeply replace ice mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " - ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [ICE] type replace ice mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [ICE] type replace nothing 1`] = `"《1》《ダル》"`;
+
+exports[`[Util] icon [LIGHT] type deeply replace light mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " - ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [LIGHT] type replace light mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [LIGHT] type replace nothing 1`] = `"《1》《ダル》"`;
+
+exports[`[Util] icon [LIGHTNING] type deeply replace lightning mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " - ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [LIGHTNING] type replace earth mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [LIGHTNING] type replace nothing 1`] = `"《1》《ダル》"`;
+
+exports[`[Util] icon [Number] tag replace nothing 1`] = `"《闇》 br"`;
+
+exports[`[Util] icon [Number] tag replace number mark 1`] = `
+Array [
+  "",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❶
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❷
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❸
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❹
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❺
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❻
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❼
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❽
+  </Text>,
+  " ",
+  <Text
+    style={
+      Array [
+        Object {
+          "borderColor": "#333",
+          "borderRadius": 80,
+          "borderWidth": 100,
+          "fontSize": 18,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+  >
+    ❾
+  </Text>,
+  "",
+]
+`;
+
+exports[`[Util] icon [S] tag deeply replace S mark 1`] = `
+Array [
+  "",
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#f80",
+          "fontStyle": "italic",
+          "textShadowColor": "rgba(0, 0, 0, 0.2)",
+          "textShadowOffset": Object {
+            "height": 1,
+            "width": -1,
+          },
+          "textShadowRadius": 10,
+        },
+      ]
+    }
+  >
+    Boulou le
+  </Text>,
+  " - ",
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#f80",
+          "fontStyle": "italic",
+          "textShadowColor": "rgba(0, 0, 0, 0.2)",
+          "textShadowOffset": Object {
+            "height": 1,
+            "width": -1,
+          },
+          "textShadowRadius": 10,
+        },
+      ]
+    }
+  >
+    Billy
+  </Text>,
+  "",
+]
+`;
+
+exports[`[Util] icon [S] tag replace S mark 1`] = `
+Array [
+  "",
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#f80",
+          "fontStyle": "italic",
+          "textShadowColor": "rgba(0, 0, 0, 0.2)",
+          "textShadowOffset": Object {
+            "height": 1,
+            "width": -1,
+          },
+          "textShadowRadius": 10,
+        },
+      ]
+    }
+  >
+     boulou 
+  </Text>,
+  "",
+]
+`;
+
+exports[`[Util] icon [S] tag replace nothing 1`] = `"《1》《闇》"`;
+
+exports[`[Util] icon [SPECIAL] action deeply replace special mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " - ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [SPECIAL] action replace nothing 1`] = `"《1》《闇》"`;
+
+exports[`[Util] icon [SPECIAL] action replace special mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [WATER] type deeply replace water mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " - ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [WATER] type replace nothing 1`] = `"《1》《ダル》"`;
+
+exports[`[Util] icon [WATER] type replace water mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [WIND] type deeply replace wind mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  " - ",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
+
+exports[`[Util] icon [WIND] type replace nothing 1`] = `"《1》《ダル》"`;
+
+exports[`[Util] icon [WIND] type replace wind mark 1`] = `
+Array [
+  "",
+  <Image
+    source="test-file-stub"
+    style={
+      Array [
+        Object {
+          "height": 20,
+          "width": 20,
+        },
+        Object {},
+      ]
+    }
+  />,
+  "",
+]
+`;
