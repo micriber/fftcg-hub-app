@@ -23,7 +23,7 @@ const _replaceTextByIcon = (
   iconReplacement: ElementIconFile | GameActionIconFile,
 ) => (text: string) => {
   return reactStringReplace(text, typeToMatch, () => (
-    <GameIcon circle={true} name={iconReplacement} key={makeID()} />
+    <GameIcon name={iconReplacement} key={makeID()} />
   ));
 };
 

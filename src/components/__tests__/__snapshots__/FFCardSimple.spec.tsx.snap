@@ -214,16 +214,71 @@ exports[`[Component] FFCardSimple renders correctly in list view 1`] = `
     </Text>
     <Text>
       Type: 
-      fire
+      blue
     </Text>
     <Text>
       Element: 
-      blue
+      
+      <Image
+        source="test-file-stub"
+        style={
+          Array [
+            Object {
+              "height": 20,
+              "width": 20,
+            },
+            Object {},
+          ]
+        }
+      />
+      
     </Text>
     <Text />
     <Text>
-      Description: 
-      billy
+      billy 《
+      <Image
+        source="test-file-stub"
+        style={
+          Array [
+            Object {
+              "height": 20,
+              "width": 20,
+            },
+            Object {},
+          ]
+        }
+      />
+      》
+      <Text
+        style={
+          Array [
+            Object {
+              "borderColor": "#333",
+              "borderRadius": 80,
+              "borderWidth": 100,
+              "fontSize": 18,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+      >
+        ❶
+      </Text>
+      《
+      <Image
+        source="test-file-stub"
+        style={
+          Array [
+            Object {
+              "height": 20,
+              "width": 20,
+            },
+            Object {},
+          ]
+        }
+      />
+      》
     </Text>
   </View>
 </View>

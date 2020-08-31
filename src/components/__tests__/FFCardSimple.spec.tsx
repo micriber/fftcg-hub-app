@@ -11,9 +11,9 @@ import {getCardImageUrl} from '../../utils/image';
 const card = {
   code: '1-001H',
   name: 'Boulou',
-  text: 'billy',
-  type: 'fire',
-  element: 'blue',
+  text: 'billy 《火》《1》《ダル》',
+  type: 'blue',
+  element: '火',
   id: '1234-1234-1234-1234',
   rarity: 'H',
   cost: '1000',
