@@ -1,5 +1,10 @@
 import {config} from '../../config';
 
+export type UserCard = {
+  quantity: number;
+  version: 'classic' | 'foil' | 'full-art';
+};
+
 export type Card = {
   id: string;
   code: string;
@@ -15,18 +20,15 @@ export type Card = {
   type: string;
   job: string;
   text: string;
+  userCard: UserCard[];
 };
 
 export type Cards = Card[];
 export type GetCardsResponse = {
   data: Cards;
   total: number;
-  current_page: number;
-  from: number;
-  next_page: number | null;
-  per_page: number;
-  prev_page: number | null;
-  to: number;
+  page: number;
+  perPage: number;
 };
 
 export type UnauthorizedError = {
@@ -47,7 +49,7 @@ export const getCards = async ({
   params: GetCardsParams;
 }): Promise<GetCardsResponse | UnauthorizedError> => {
   const page = params.page ? `page=${params.page}` : 'page=1';
-  const perPage = params.perPage ? `&per_page=${params.perPage}` : '';
+  const perPage = params.perPage ? `&perPage=${params.perPage}` : '';
   const search = params.search ? `&search=${params.search}` : '';
   return fetch(
     `${config.api.baseUri}/api/v1/cards?${page}${perPage}${search}`,
