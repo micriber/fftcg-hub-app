@@ -1,7 +1,7 @@
 import React from 'react';
 import FFCardSimple from './FFCardSimple';
 import {FlatList, StyleSheet, View} from 'react-native';
-import {Cards} from '../services/api/card';
+import {Card, Cards} from '../services/api/card';
 
 type Props = {
   displayOwnPin?: boolean;
@@ -10,6 +10,7 @@ type Props = {
   children?: React.ReactNode;
   onEndReached?: () => void;
   onEndReachedThreshold?: number;
+  onCardPress?: (card: Card) => void;
 };
 
 const FFCardsList = ({
@@ -19,6 +20,7 @@ const FFCardsList = ({
   displayOwnPin = false,
   onEndReached = () => {},
   onEndReachedThreshold = 1,
+  onCardPress = () => {},
 }: Props) => {
   return (
     <View style={[isListView ? styles.listContainer : styles.gridContainer]}>
@@ -33,6 +35,7 @@ const FFCardsList = ({
             card={item}
             isListView={isListView}
             displayOwnPin={displayOwnPin}
+            onPress={onCardPress}
           />
         )}
         onEndReached={onEndReached}

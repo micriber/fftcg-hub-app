@@ -1,10 +1,12 @@
 import React from 'react';
 import {
   Dimensions,
+  ImageStyle,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  ViewStyle,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import AntIcon from 'react-native-vector-icons/AntDesign';
@@ -16,8 +18,10 @@ type Props = {
   displayOwnPin?: boolean;
   card: Card;
   isListView: boolean;
-  onPress?: () => void;
+  onPress?: (card: Card) => void;
   onLongPress?: () => void;
+  imageStyle?: ImageStyle;
+  containerStyle?: ViewStyle;
 };
 
 const w = Dimensions.get('window');
@@ -28,6 +32,8 @@ const FFCardSimple = ({
   onPress,
   onLongPress,
   displayOwnPin = false,
+  imageStyle,
+  containerStyle,
 }: Props) => {
   const [isFallbackImage, setIsFallbackImage] = React.useState(false);
   const [src, setSrc] = React.useState(
@@ -40,13 +46,21 @@ const FFCardSimple = ({
       key={card.code}
       style={[
         isListView ? styles.cardListContainer : styles.cardGridContainer,
+        containerStyle,
       ]}>
       <TouchableOpacity
         activeOpacity={0.3}
-        onPress={onPress}
+        onPress={onPress ? () => onPress(card) : undefined}
         onLongPress={onLongPress}>
         <FastImage
-          style={{width: w.width / 2.5, height: w.height / 3}}
+          style={[
+            {
+              width: w.width / 2.5,
+              height: w.height / 3,
+            },
+            // TODO: Find the correct type for this style
+            imageStyle as any,
+          ]}
           source={{uri: src}}
           resizeMode={isListView ? 'stretch' : 'contain'}
           onError={() => {

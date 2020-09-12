@@ -26,7 +26,7 @@ const Home = () => {
     return <Text>{JSON.stringify(state.value?.message)}</Text>;
   }
 
-  const cards = state.value.data;
+  const cards = state.value.cards;
 
   return (
     <>

@@ -14,7 +14,16 @@ const SearchStackScreen = () => (
       component={GlobalSearch}
     />
     <SearchStack.Screen name="SearchResult" component={SearchResult} />
-    <SearchStack.Screen name="CardDetails" component={CardDetails} />
+    <SearchStack.Screen
+      name="CardDetails"
+      component={CardDetails}
+      // TODO: Remove this any
+      options={({route}: any) =>
+        route.params && (route.params as any).pageTitle
+          ? {title: route.params.pageTitle}
+          : {}
+      }
+    />
   </SearchStack.Navigator>
 );
 
