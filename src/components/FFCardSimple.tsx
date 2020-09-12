@@ -7,11 +7,13 @@ import {
   View,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import AntIcon from 'react-native-vector-icons/AntDesign';
 import {getCardImageUrl} from '../utils/image';
 import {Card} from '../services/api/card';
 import replaceTextByIconOrStyle from '../utils/icon';
 
 type Props = {
+  displayOwnPin?: boolean;
   card: Card;
   isListView: boolean;
   onPress?: () => void;
@@ -20,7 +22,13 @@ type Props = {
 
 const w = Dimensions.get('window');
 
-const FFCardSimple = ({card, isListView, onPress, onLongPress}: Props) => {
+const FFCardSimple = ({
+  card,
+  isListView,
+  onPress,
+  onLongPress,
+  displayOwnPin = false,
+}: Props) => {
   const [isFallbackImage, setIsFallbackImage] = React.useState(false);
   const [src, setSrc] = React.useState(
     getCardImageUrl(card.code, 'full', 'fr'),
@@ -38,7 +46,6 @@ const FFCardSimple = ({card, isListView, onPress, onLongPress}: Props) => {
         onPress={onPress}
         onLongPress={onLongPress}>
         <FastImage
-          // style={styles.image}
           style={{width: w.width / 2.5, height: w.height / 3}}
           source={{uri: src}}
           resizeMode={isListView ? 'stretch' : 'contain'}
@@ -50,13 +57,12 @@ const FFCardSimple = ({card, isListView, onPress, onLongPress}: Props) => {
           }}
           testID={`Image-${card.code}`}
         />
+        {displayOwnPin && card.userCard.length > 0 && (
+          <AntIcon name="check" style={styles.ownPin} size={20} />
+        )}
       </TouchableOpacity>
       {isListView && (
-        <View
-          style={[
-            styles.cardDescription,
-            // {height:},
-          ]}>
+        <View style={[styles.cardDescription]}>
           <Text>Code: {card.code}</Text>
           <Text>Nom: {card.name}</Text>
           <Text>Type: {card.type}</Text>
@@ -75,7 +81,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   cardListContainer: {
-    // width: '100%',
     flexDirection: 'row',
     height: w.height / 3,
   },
@@ -84,8 +89,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     height: w.height / 3,
     width: (w.width / 2.5) * 1.5,
-    // width: w.width / 4,
-    // height: w.height / 4,
+  },
+  ownPin: {
+    color: '#238F23',
+    elevation: 1,
   },
 });
 

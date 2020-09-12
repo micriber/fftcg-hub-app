@@ -50,8 +50,8 @@ const Search = ({route}: Props) => {
   const handleLoadMore = () => {
     if (
       state.value &&
-      'next_page' in state.value &&
-      state.value?.next_page &&
+      'total' in state.value &&
+      state.value.total > cards.length &&
       !stopFetch
     ) {
       setPage(page + 1);

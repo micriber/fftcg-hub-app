@@ -65,7 +65,7 @@ const App = () => {
         }
 
         const idToken = userInfo?.idToken;
-        console.log({userInfo});
+
         if (!idToken) {
           Alert.alert(
             'Erreur',
@@ -76,7 +76,7 @@ const App = () => {
         }
         try {
           const signedInUser = await googleLogin(idToken);
-          console.log(JSON.stringify(signedInUser, null, 2));
+
           if ((signedInUser as UserInfo).id) {
             setUser({
               isSignedIn: true,

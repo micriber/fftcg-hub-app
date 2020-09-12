@@ -23,6 +23,7 @@ const card = {
   category2: '',
   multicard: '',
   exBurst: '',
+  userCard: [],
 };
 
 // More about testing in this repository:
@@ -47,7 +48,6 @@ describe('[Component] FFCardSimple', () => {
     root.update(<Sample />);
     await waitFor(() => root.getByTestId(`Image-${card.code}`));
     const element = root.getByTestId(`Image-${card.code}`);
-    console.log(element.props.source.uri);
     expect(element.props.source.uri).toBe(
       getCardImageUrl(card.code, 'full', 'eg'),
     );
@@ -65,7 +65,6 @@ describe('[Component] FFCardSimple', () => {
     root.update(<Sample />);
     await waitFor(() => root.getByTestId(`Image-${card.code}`));
     const element = root.getByTestId(`Image-${card.code}`);
-    console.log(element.props.source.uri);
     expect(element.props.source.uri).toBe(
       getCardImageUrl(card.code, 'full', 'eg'),
     );
