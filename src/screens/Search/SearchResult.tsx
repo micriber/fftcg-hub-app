@@ -5,7 +5,7 @@ import {RouteProp} from '@react-navigation/native';
 import {SearchStackParamList} from './type';
 import {AuthContext} from '../../AuthContext';
 import useAsync from '../../utils/hooks/useAsync';
-import {Cards, getCards} from '../../services/api/card';
+import {Card, Cards, getCards} from '../../services/api/card';
 import Loading from '../Loading';
 import HeaderSwitch from '../../components/common/HeaderSwitch';
 import FFCardsList from '../../components/FFCardsList';
@@ -26,8 +26,13 @@ type Props = {
   route: SearchResultScreenRouteProp;
 };
 
-const Search = ({route}: Props) => {
+const Search = ({route, navigation}: Props) => {
   const perPage = 50;
+  const onCardPress = (card: Card) =>
+    navigation.navigate('CardDetails', {
+      card,
+      pageTitle: `${card.name} | ${card.code}`,
+    });
   const {getIdToken} = React.useContext(AuthContext);
   const [isListView, setIsListView] = React.useState(false);
   const [stopFetch, setStopFetch] = React.useState(false);
@@ -41,8 +46,9 @@ const Search = ({route}: Props) => {
       token: token!,
       params: {page, perPage, search},
     });
-    if (data && 'data' in data) {
-      addCards(data.data);
+    console.log({data});
+    if (data && 'cards' in data) {
+      addCards(data.cards);
     }
     setStopFetch(false);
     return data;
@@ -72,6 +78,8 @@ const Search = ({route}: Props) => {
     return <Text>{JSON.stringify(state.value?.message)}</Text>;
   }
 
+  console.log({state});
+
   return (
     <>
       <HeaderSwitch
@@ -84,7 +92,8 @@ const Search = ({route}: Props) => {
         isListView={isListView}
         cards={cards}
         onEndReached={handleLoadMore}
-        onEndReachedThreshold={5}>
+        onEndReachedThreshold={5}
+        onCardPress={onCardPress}>
         {state.loading && <Loading />}
         {state.error && <Text>{state.error}</Text>}
         {state.value && 'message' in state.value && (

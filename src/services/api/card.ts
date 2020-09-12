@@ -25,7 +25,7 @@ export type Card = {
 
 export type Cards = Card[];
 export type GetCardsResponse = {
-  data: Cards;
+  cards: Cards;
   total: number;
   page: number;
   perPage: number;
