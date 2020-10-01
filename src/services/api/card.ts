@@ -63,3 +63,20 @@ export const getCards = async ({
     },
   ).then((response) => response.json());
 };
+
+export const addCard = ({
+  token,
+  code
+}: {
+  token: string,
+  code: string
+}) => {
+  return fetch(`${config.api.baseUri}/api/v1/cards/${code}/add`, {
+    method: 'POST',
+    headers: {
+      authorization: `bearer ${token}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  }).then((response) => response.json());
+}
