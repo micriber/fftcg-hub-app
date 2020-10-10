@@ -1,5 +1,5 @@
 project.ext.vectoricons = [
-    iconFontNames: [ 'AntDesign.ttf' ] // Name of the font files you want to copy
+    iconFontNames: [ 'AntDesign.ttf', 'Ionicons.ttf' ] // Name of the font files you want to copy
     // see: https://oblador.github.io/react-native-vector-icons/ for more
 ]
 

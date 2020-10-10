@@ -70,3 +70,4 @@ android/app/google-services.json
 
 # environment file
 .env
+.env.dev

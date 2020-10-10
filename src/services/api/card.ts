@@ -1,8 +1,10 @@
 import {config} from '../../config';
 
+export type CardVersion = 'classic' | 'foil' | 'full-art';
+
 export type UserCard = {
   quantity: number;
-  version: 'classic' | 'foil' | 'full-art';
+  version: CardVersion;
 };
 
 export type Card = {
@@ -66,10 +68,14 @@ export const getCards = async ({
 
 export const addCard = ({
   token,
-  code
+  code,
+  version,
+  quantity = 1,
 }: {
-  token: string,
-  code: string
+  token: string;
+  code: string;
+  version: CardVersion;
+  quantity?: number;
 }) => {
   return fetch(`${config.api.baseUri}/api/v1/cards/${code}/add`, {
     method: 'POST',
@@ -78,5 +84,34 @@ export const addCard = ({
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-  }).then((response) => response.json());
-}
+    body: JSON.stringify({
+      version,
+      quantity,
+    }),
+  }).then((response) => response.text());
+};
+
+export const subtractCard = ({
+  token,
+  code,
+  version,
+  quantity = 1,
+}: {
+  token: string;
+  code: string;
+  version: CardVersion;
+  quantity?: number;
+}): Promise<string | UnauthorizedError> => {
+  return fetch(`${config.api.baseUri}/api/v1/cards/${code}/subtract`, {
+    method: 'POST',
+    headers: {
+      authorization: `bearer ${token}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      version,
+      quantity,
+    }),
+  }).then((response) => response.text());
+};

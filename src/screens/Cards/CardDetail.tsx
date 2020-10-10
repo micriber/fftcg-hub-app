@@ -1,9 +1,9 @@
 import React from 'react';
-import {Text, Dimensions, StyleSheet, View, Alert} from 'react-native';
+import {Dimensions, View} from 'react-native';
 import {Card} from '../../services/api/card';
 import FFCardSimple from '../../components/FFCardSimple';
-import MinusButton from '../../components/common/Buttons/Minus';
-import PlusButton from '../../components/common/Buttons/Plus';
+import {AuthContext} from '../../AuthContext';
+import FFCardQuantityActions from '../../components/FFCardQuantityActions';
 
 type Props = {
   route: {params: {card: Card}};
@@ -13,6 +13,9 @@ const w = Dimensions.get('window');
 
 const CardDetail = ({route}: Props) => {
   const card = route.params.card;
+  const {getIdToken} = React.useContext(AuthContext);
+  const token = getIdToken();
+
   return (
     <View>
       <FFCardSimple
@@ -26,43 +29,28 @@ const CardDetail = ({route}: Props) => {
           marginLeft: w.width / 128,
         }}
       />
-      <Text style={[styles.headingButtonGroup, styles.textStyle]}>
-        Normal:{' '}
-      </Text>
-      <View style={styles.container}>
-        <MinusButton />
-        <View style={[styles.counterDisplayStyle]}>
-          <Text style={[styles.textStyle]}>1</Text>
-        </View>
-        <PlusButton onPress={() => Alert.alert('boulou')} />
+      <View style={{alignItems: 'center'}}>
+        <FFCardQuantityActions
+          card={card}
+          version="classic"
+          token={token!}
+          label="Classic"
+        />
+        <FFCardQuantityActions
+          card={card}
+          version="foil"
+          token={token!}
+          label="Foil"
+        />
+        <FFCardQuantityActions
+          card={card}
+          version="full-art"
+          token={token!}
+          label="Full Art"
+        />
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 40,
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  counterDisplayStyle: {
-    backgroundColor: 'rgb(240,240,240)',
-    borderRadius: 30,
-    borderColor: 'rgb(240,240,240)',
-    borderWidth: 1,
-    width: 60,
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  headingButtonGroup: {color: 'black', textAlign: 'center'},
-  textStyle: {
-    fontSize: 28,
-  },
-});
 
 export default CardDetail;
