@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
+// import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 type Props = {
@@ -8,7 +9,10 @@ type Props = {
 
 const PlusButton = ({onPress}: Props) => {
   return (
-    <TouchableOpacity onPress={onPress} testID="PlusButton">
+    <TouchableOpacity
+      onPress={onPress}
+      testID="PlusButton"
+      hitSlop={{top: 60, bottom: 60}}>
       <View style={[styles.incrementStyle]}>
         <Icon name="plus" size={30} color={'white'} />
       </View>

@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-  DarkTheme as RNDarkTheme,
-  DefaultTheme,
-  NavigationContainer,
-} from '@react-navigation/native';
-import {AppearanceProvider, useColorScheme} from 'react-native-appearance';
+import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
+import {AppearanceProvider} from 'react-native-appearance';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {AuthContext} from './AuthContext';
@@ -23,8 +19,9 @@ type UserState = {
 };
 
 const App = () => {
-  const scheme = useColorScheme();
-  const theme = scheme === 'dark' ? RNDarkTheme : DefaultTheme;
+  // const scheme = useColorScheme();
+  // const theme = scheme === 'dark' ? RNDarkTheme : DefaultTheme;
+  const theme = DefaultTheme;
   const [isLoading, setIsLoading] = React.useState(true);
   const [user, setUser] = React.useState<UserState>({isSignedIn: false});
 

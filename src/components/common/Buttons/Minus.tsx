@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/AntDesign';
-import AntIcon from 'react-native-vector-icons/AntDesign';
 
 type Props = {
   onPress?: () => void;
