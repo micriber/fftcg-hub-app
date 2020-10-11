@@ -65,6 +65,7 @@ const FFCardQuantityActions = ({card, token, label, version}: Props) => {
       <NumericInput
         value={quantity}
         onChange={(value) => (value < quantity ? subtractUnity() : addUnity())}
+        minValue={0}
       />
       {/*<View style={styles.container}>*/}
       {/*  <MinusButton onPress={subtractUnity} />*/}
