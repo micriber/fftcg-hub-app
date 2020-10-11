@@ -29,6 +29,7 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
           "rarity": "H",
           "text": "《火》《2》《ダル》",
           "type": "風",
+          "userCard": Array [],
         },
         Object {
           "category1": "",
@@ -45,6 +46,7 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
           "rarity": "H",
           "text": "《火》《3》《ダル》",
           "type": "風",
+          "userCard": Array [],
         },
       ]
     }
@@ -90,13 +92,14 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
                   "marginLeft": 15,
                   "marginTop": 3,
                 },
+                undefined,
               ]
             }
             testID="SimpleFFCard"
           >
             <View
               accessible={true}
-              focusable={false}
+              focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -116,10 +119,13 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
                     Object {
                       "overflow": "hidden",
                     },
-                    Object {
-                      "height": 444.6666666666667,
-                      "width": 300,
-                    },
+                    Array [
+                      Object {
+                        "height": 444.6666666666667,
+                        "width": 300,
+                      },
+                      undefined,
+                    ],
                   ]
                 }
               >
@@ -152,13 +158,14 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
                   "marginLeft": 15,
                   "marginTop": 3,
                 },
+                undefined,
               ]
             }
             testID="SimpleFFCard"
           >
             <View
               accessible={true}
-              focusable={false}
+              focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -178,10 +185,13 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
                     Object {
                       "overflow": "hidden",
                     },
-                    Object {
-                      "height": 444.6666666666667,
-                      "width": 300,
-                    },
+                    Array [
+                      Object {
+                        "height": 444.6666666666667,
+                        "width": 300,
+                      },
+                      undefined,
+                    ],
                   ]
                 }
               >
@@ -244,6 +254,7 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
           "rarity": "H",
           "text": "《火》《2》《ダル》",
           "type": "風",
+          "userCard": Array [],
         },
         Object {
           "category1": "",
@@ -260,6 +271,7 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
           "rarity": "H",
           "text": "《火》《3》《ダル》",
           "type": "風",
+          "userCard": Array [],
         },
       ]
     }
@@ -298,13 +310,14 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
                 "flexDirection": "row",
                 "height": 444.6666666666667,
               },
+              undefined,
             ]
           }
           testID="SimpleFFCard"
         >
           <View
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -324,10 +337,13 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
                   Object {
                     "overflow": "hidden",
                   },
-                  Object {
-                    "height": 444.6666666666667,
-                    "width": 300,
-                  },
+                  Array [
+                    Object {
+                      "height": 444.6666666666667,
+                      "width": 300,
+                    },
+                    undefined,
+                  ],
                 ]
               }
             >
@@ -441,13 +457,14 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
                 "flexDirection": "row",
                 "height": 444.6666666666667,
               },
+              undefined,
             ]
           }
           testID="SimpleFFCard"
         >
           <View
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -467,10 +484,13 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
                   Object {
                     "overflow": "hidden",
                   },
-                  Object {
-                    "height": 444.6666666666667,
-                    "width": 300,
-                  },
+                  Array [
+                    Object {
+                      "height": 444.6666666666667,
+                      "width": 300,
+                    },
+                    undefined,
+                  ],
                 ]
               }
             >
@@ -608,6 +628,7 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
           "rarity": "H",
           "text": "《火》《2》《ダル》",
           "type": "風",
+          "userCard": Array [],
         },
         Object {
           "category1": "",
@@ -624,6 +645,7 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
           "rarity": "H",
           "text": "《火》《3》《ダル》",
           "type": "風",
+          "userCard": Array [],
         },
       ]
     }
@@ -662,13 +684,14 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
                 "flexDirection": "row",
                 "height": 444.6666666666667,
               },
+              undefined,
             ]
           }
           testID="SimpleFFCard"
         >
           <View
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -688,10 +711,13 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
                   Object {
                     "overflow": "hidden",
                   },
-                  Object {
-                    "height": 444.6666666666667,
-                    "width": 300,
-                  },
+                  Array [
+                    Object {
+                      "height": 444.6666666666667,
+                      "width": 300,
+                    },
+                    undefined,
+                  ],
                 ]
               }
             >
@@ -805,13 +831,14 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
                 "flexDirection": "row",
                 "height": 444.6666666666667,
               },
+              undefined,
             ]
           }
           testID="SimpleFFCard"
         >
           <View
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -831,10 +858,13 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
                   Object {
                     "overflow": "hidden",
                   },
-                  Object {
-                    "height": 444.6666666666667,
-                    "width": 300,
-                  },
+                  Array [
+                    Object {
+                      "height": 444.6666666666667,
+                      "width": 300,
+                    },
+                    undefined,
+                  ],
                 ]
               }
             >
