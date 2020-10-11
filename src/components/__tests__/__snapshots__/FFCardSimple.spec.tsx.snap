@@ -8,6 +8,7 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
         "marginLeft": 15,
         "marginTop": 3,
       },
+      undefined,
     ]
   }
   testID="SimpleFFCard"
@@ -34,10 +35,13 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
           Object {
             "overflow": "hidden",
           },
-          Object {
-            "height": 444.6666666666667,
-            "width": 300,
-          },
+          Array [
+            Object {
+              "height": 444.6666666666667,
+              "width": 300,
+            },
+            undefined,
+          ],
         ]
       }
     >
@@ -73,6 +77,7 @@ exports[`[Component] FFCardSimple renders correctly in grid view 1`] = `
         "marginLeft": 15,
         "marginTop": 3,
       },
+      undefined,
     ]
   }
   testID="SimpleFFCard"
@@ -99,10 +104,13 @@ exports[`[Component] FFCardSimple renders correctly in grid view 1`] = `
           Object {
             "overflow": "hidden",
           },
-          Object {
-            "height": 444.6666666666667,
-            "width": 300,
-          },
+          Array [
+            Object {
+              "height": 444.6666666666667,
+              "width": 300,
+            },
+            undefined,
+          ],
         ]
       }
     >
@@ -138,6 +146,7 @@ exports[`[Component] FFCardSimple renders correctly in list view 1`] = `
         "flexDirection": "row",
         "height": 444.6666666666667,
       },
+      undefined,
     ]
   }
   testID="SimpleFFCard"
@@ -164,10 +173,13 @@ exports[`[Component] FFCardSimple renders correctly in list view 1`] = `
           Object {
             "overflow": "hidden",
           },
-          Object {
-            "height": 444.6666666666667,
-            "width": 300,
-          },
+          Array [
+            Object {
+              "height": 444.6666666666667,
+              "width": 300,
+            },
+            undefined,
+          ],
         ]
       }
     >
@@ -292,6 +304,7 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
         "marginLeft": 15,
         "marginTop": 3,
       },
+      undefined,
     ]
   }
   testID="SimpleFFCard"
@@ -318,10 +331,13 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
           Object {
             "overflow": "hidden",
           },
-          Object {
-            "height": 444.6666666666667,
-            "width": 300,
-          },
+          Array [
+            Object {
+              "height": 444.6666666666667,
+              "width": 300,
+            },
+            undefined,
+          ],
         ]
       }
     >

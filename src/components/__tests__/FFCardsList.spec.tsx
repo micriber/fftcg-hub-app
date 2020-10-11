@@ -24,6 +24,7 @@ const cards = [
     category2: '',
     multicard: '',
     exBurst: '',
+    userCard: [],
   },
   {
     code: '1-002H',
@@ -40,6 +41,7 @@ const cards = [
     category2: '',
     multicard: '',
     exBurst: '',
+    userCard: [],
   },
 ];
 
