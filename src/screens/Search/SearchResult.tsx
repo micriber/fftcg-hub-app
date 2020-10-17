@@ -46,7 +46,7 @@ const Search = ({route, navigation}: Props) => {
       token: token!,
       params: {page, perPage, search},
     });
-    console.log({data});
+
     if (data && 'cards' in data) {
       addCards(data.cards);
     }
@@ -77,8 +77,6 @@ const Search = ({route, navigation}: Props) => {
   ) {
     return <Text>{JSON.stringify(state.value?.message)}</Text>;
   }
-
-  console.log({state});
 
   return (
     <>
