@@ -40,6 +40,7 @@ export type UnauthorizedError = {
 export type GetCardsParams = {
   page?: number;
   search?: string;
+  owned?: boolean;
   perPage?: number;
 };
 
@@ -53,8 +54,9 @@ export const getCards = async ({
   const page = params.page ? `page=${params.page}` : 'page=1';
   const perPage = params.perPage ? `&perPage=${params.perPage}` : '';
   const search = params.search ? `&search=${params.search}` : '';
+  const owned = params.owned ? '&owned=true' : '';
   return fetch(
-    `${config.api.baseUri}/api/v1/cards?${page}${perPage}${search}`,
+    `${config.api.baseUri}/api/v1/cards?${page}${perPage}${search}${owned}`,
     {
       method: 'GET',
       headers: {
