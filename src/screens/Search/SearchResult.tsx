@@ -5,8 +5,8 @@ import {RouteProp} from '@react-navigation/native';
 import {SearchStackParamList} from './type';
 import {Card} from '../../services/api/card';
 import HeaderSwitch from '../../components/common/HeaderSwitch';
-import FFCardsList from '../../components/FFCardsList';
 import BottomRightButton from '../../components/common/BottomRightButton';
+import FFCardsListContainer from '../../components/FFCardsListContainer';
 
 type SearchResultScreenNavigationProp = StackNavigationProp<
   SearchStackParamList,
@@ -41,10 +41,10 @@ const Search = ({route, navigation}: Props) => {
         value={isListView}
         onValueChange={setIsListView}
       />
-      <FFCardsList
+      <FFCardsListContainer
         isListView={isListView}
         onCardPress={onCardPress}
-        getCardsParams={{search}}
+        cardsFilter={{search}}
       />
       <BottomRightButton
         iconName="search1"

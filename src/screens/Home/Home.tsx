@@ -1,9 +1,9 @@
 import React from 'react';
 import {Alert} from 'react-native';
 import {Card} from '../../services/api/card';
-import FFCardsList from '../../components/FFCardsList';
 import HeaderSwitch from '../../components/common/HeaderSwitch';
 import BottomRightButton from '../../components/common/BottomRightButton';
+import FFCardsListContainer from '../../components/FFCardsListContainer';
 
 const Home = ({navigation}) => {
   const [isListView, setIsListView] = React.useState(false);
@@ -22,10 +22,10 @@ const Home = ({navigation}) => {
         value={isListView}
         onValueChange={setIsListView}
       />
-      <FFCardsList
+      <FFCardsListContainer
         isListView={isListView}
         onCardPress={onCardPress}
-        getCardsParams={{owned: true}}
+        cardsFilter={{owned: true}}
       />
       <BottomRightButton
         iconName="search1"
