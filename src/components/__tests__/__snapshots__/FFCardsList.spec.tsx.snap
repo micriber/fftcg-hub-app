@@ -62,9 +62,17 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
     onEndReachedThreshold={1}
     onLayout={[Function]}
     onMomentumScrollEnd={[Function]}
+    onRefresh={[Function]}
     onScroll={[Function]}
     onScrollBeginDrag={[Function]}
     onScrollEndDrag={[Function]}
+    refreshControl={
+      <RefreshControlMock
+        onRefresh={[Function]}
+        refreshing={false}
+      />
+    }
+    refreshing={false}
     removeClippedSubviews={false}
     renderItem={[Function]}
     scrollEventThrottle={50}
@@ -73,6 +81,7 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}
   >
+    <RCTRefreshControl />
     <View>
       <View
         onLayout={[Function]}
@@ -287,9 +296,17 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
     onEndReachedThreshold={1}
     onLayout={[Function]}
     onMomentumScrollEnd={[Function]}
+    onRefresh={[Function]}
     onScroll={[Function]}
     onScrollBeginDrag={[Function]}
     onScrollEndDrag={[Function]}
+    refreshControl={
+      <RefreshControlMock
+        onRefresh={[Function]}
+        refreshing={false}
+      />
+    }
+    refreshing={false}
     removeClippedSubviews={false}
     renderItem={[Function]}
     scrollEventThrottle={50}
@@ -298,6 +315,7 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}
   >
+    <RCTRefreshControl />
     <View>
       <View
         onLayout={[Function]}
@@ -661,9 +679,17 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
     onEndReachedThreshold={1}
     onLayout={[Function]}
     onMomentumScrollEnd={[Function]}
+    onRefresh={[Function]}
     onScroll={[Function]}
     onScrollBeginDrag={[Function]}
     onScrollEndDrag={[Function]}
+    refreshControl={
+      <RefreshControlMock
+        onRefresh={[Function]}
+        refreshing={false}
+      />
+    }
+    refreshing={false}
     removeClippedSubviews={false}
     renderItem={[Function]}
     scrollEventThrottle={50}
@@ -672,6 +698,7 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}
   >
+    <RCTRefreshControl />
     <View>
       <View
         onLayout={[Function]}
@@ -969,8 +996,5 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
       </View>
     </View>
   </RCTScrollView>
-  <Text>
-    End of list
-  </Text>
 </View>
 `;
