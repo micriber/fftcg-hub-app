@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text} from 'react-native';
 import {Card, Cards, getCards, GetCardsParams} from '../services/api/card';
 import {AuthContext} from '../AuthContext';
@@ -44,14 +44,19 @@ const FFCardsListContainer = ({
     return data;
   };
 
+  useEffect(() => {
+    if (cards.length === 0 && refreshing) {
+      loadCards();
+    }
+  }, [cards]);
+
   const state = useAsync(loadCards, [page]);
 
   const refresh = () => {
     if (!stopFetch) {
-      setCards([]);
-      setPage(1);
       setRefreshing(true);
-      loadCards();
+      setPage(1);
+      setCards([]);
     }
   };
 
