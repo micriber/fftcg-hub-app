@@ -1,26 +1,26 @@
 import React from 'react';
 import FFCardSimple from './FFCardSimple';
 import {FlatList, StyleSheet, View} from 'react-native';
-import {Card, Cards} from '../services/api/card';
+import {Card} from '../services/api/card';
 
 type Props = {
-  displayOwnPin?: boolean;
   isListView: boolean;
-  cards: Cards;
-  children?: React.ReactNode;
-  onEndReached?: () => void;
-  onEndReachedThreshold?: number;
+  cards?: Card[];
   onCardPress?: (card: Card) => void;
+  onEndReached?: () => void;
+  onRefresh?: () => void;
+  displayOwnPin?: boolean;
+  refreshing?: boolean;
 };
 
 const FFCardsList = ({
   isListView,
-  cards,
-  children,
+  cards = [],
   displayOwnPin = false,
-  onEndReached = () => {},
-  onEndReachedThreshold = 1,
+  refreshing = false,
   onCardPress = () => {},
+  onRefresh = () => {},
+  onEndReached = () => {},
 }: Props) => {
   return (
     <View style={[isListView ? styles.listContainer : styles.gridContainer]}>
@@ -39,9 +39,10 @@ const FFCardsList = ({
           />
         )}
         onEndReached={onEndReached}
-        onEndReachedThreshold={onEndReachedThreshold}
+        onEndReachedThreshold={1}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
       />
-      {React.Children.count(children) ? children : null}
     </View>
   );
 };
