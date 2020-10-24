@@ -228,13 +228,28 @@ Array [
     style={
       Array [
         Object {
-          "flexDirection": "row",
-          "marginLeft": 20,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "justifyContent": "flex-start",
+          "width": "100%",
         },
       ]
     }
   >
     <RCTScrollView
+      ListEmptyComponent={
+        <Text
+          style={
+            Object {
+              "marginTop": "50%",
+              "textAlign": "center",
+              "width": "100%",
+            }
+          }
+        >
+          No result
+        </Text>
+      }
       data={Array []}
       disableVirtualization={false}
       getItem={[Function]}
@@ -268,7 +283,20 @@ Array [
       windowSize={21}
     >
       <RCTRefreshControl />
-      <View />
+      <View>
+        <Text
+          onLayout={[Function]}
+          style={
+            Object {
+              "marginTop": "50%",
+              "textAlign": "center",
+              "width": "100%",
+            }
+          }
+        >
+          No result
+        </Text>
+      </View>
     </RCTScrollView>
   </View>,
   <View

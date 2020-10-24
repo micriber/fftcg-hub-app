@@ -12,6 +12,19 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
   }
 >
   <RCTScrollView
+    ListEmptyComponent={
+      <Text
+        style={
+          Object {
+            "marginTop": "50%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        No result
+      </Text>
+    }
     data={
       Array [
         Object {
@@ -239,6 +252,7 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
     Array [
       Object {
         "flexDirection": "column",
+        "flexGrow": 1,
         "justifyContent": "flex-start",
         "width": "100%",
       },
@@ -246,6 +260,19 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
   }
 >
   <RCTScrollView
+    ListEmptyComponent={
+      <Text
+        style={
+          Object {
+            "marginTop": "50%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        No result
+      </Text>
+    }
     data={
       Array [
         Object {
@@ -622,6 +649,7 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
     Array [
       Object {
         "flexDirection": "column",
+        "flexGrow": 1,
         "justifyContent": "flex-start",
         "width": "100%",
       },
@@ -629,6 +657,19 @@ exports[`[Component] FFCardsList renders correctly with children 1`] = `
   }
 >
   <RCTScrollView
+    ListEmptyComponent={
+      <Text
+        style={
+          Object {
+            "marginTop": "50%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        No result
+      </Text>
+    }
     data={
       Array [
         Object {
