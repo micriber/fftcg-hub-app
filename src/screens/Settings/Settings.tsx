@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import ModalSelector from 'react-native-modal-selector';
-import {AuthContext} from '../../AuthContext';
+import {AuthContext} from '../../contexts/AuthContext';
 import {ElementIconFile} from '../../enums/element';
 import Card from '../../components/common/Card';
 import GameIcon from '../../components/icons/GameIcon';

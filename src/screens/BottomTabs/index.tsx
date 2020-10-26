@@ -24,16 +24,16 @@ const BottomTabsNavigator = ({theme}: Props) => (
     tabBarOptions={{
       activeTintColor: theme.colors.primary,
     }}>
-    <Tabs.Screen
-      name="About"
-      component={AboutStackScreen}
-      options={{
-        tabBarLabel: 'About',
-        tabBarIcon: ({color, size}: ITabBarIcon) => (
-          <AntIcon name="camera" color={color} size={size} />
-        ),
-      }}
-    />
+    {/*<Tabs.Screen*/}
+    {/*  name="About"*/}
+    {/*  component={AboutStackScreen}*/}
+    {/*  options={{*/}
+    {/*    tabBarLabel: 'About',*/}
+    {/*    tabBarIcon: ({color, size}: ITabBarIcon) => (*/}
+    {/*      <AntIcon name="camera" color={color} size={size} />*/}
+    {/*    ),*/}
+    {/*  }}*/}
+    {/*/>*/}
     <Tabs.Screen
       name="Search"
       component={SearchStackScreen}

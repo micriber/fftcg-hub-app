@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Text} from 'react-native';
 import {Card, Cards, getCards, GetCardsParams} from '../services/api/card';
-import {AuthContext} from '../AuthContext';
+import {AuthContext} from '../contexts/AuthContext';
 import useAsync from '../utils/hooks/useAsync';
 import Loading from '../screens/Loading';
 import FFCardsList from './FFCardsList';

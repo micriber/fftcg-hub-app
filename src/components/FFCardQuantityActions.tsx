@@ -8,9 +8,16 @@ type Props = {
   version: CardVersion;
   token: string;
   label?: string;
+  onChange?: () => {};
 };
 
-const FFCardQuantityActions = ({card, token, label, version}: Props) => {
+const FFCardQuantityActions = ({
+  card,
+  token,
+  label,
+  version,
+  onChange,
+}: Props) => {
   const initialQuantity =
     card.userCard.find((c) => c.version === version)?.quantity || 0;
   const [quantity, setQuantity] = React.useState(initialQuantity);
@@ -22,6 +29,7 @@ const FFCardQuantityActions = ({card, token, label, version}: Props) => {
       try {
         await addCard({token: token!, code: card.code, version});
         setQuantity(quantity + 1);
+        onChange ? onChange() : undefined;
       } catch (e) {
         Alert.alert(
           `Cant add unity for ${card.code} version ${version}`,
@@ -43,6 +51,7 @@ const FFCardQuantityActions = ({card, token, label, version}: Props) => {
           version,
         });
         setQuantity(quantity - 1);
+        onChange ? onChange() : undefined;
       } catch (e) {
         Alert.alert(
           `Cant subtract unity for ${card.code} version ${version}`,
@@ -66,6 +75,7 @@ const FFCardQuantityActions = ({card, token, label, version}: Props) => {
         value={quantity}
         onChange={(value) => (value < quantity ? subtractUnity() : addUnity())}
         minValue={0}
+        editable={false}
       />
       {/*<View style={styles.container}>*/}
       {/*  <MinusButton onPress={subtractUnity} />*/}
