@@ -4,6 +4,7 @@ import {AppearanceProvider} from 'react-native-appearance';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AuthStackScreen} from './screens/Auth';
 import AuthContextProvider from './contexts/AuthContextProvider';
+import CardsContextProvider from './contexts/CardsContextProvider';
 
 const App = () => {
   // const scheme = useColorScheme();
@@ -14,9 +15,11 @@ const App = () => {
     <AppearanceProvider>
       <SafeAreaProvider>
         <AuthContextProvider>
-          <NavigationContainer theme={theme}>
-            <AuthStackScreen theme={theme} />
-          </NavigationContainer>
+          <CardsContextProvider>
+            <NavigationContainer theme={theme}>
+              <AuthStackScreen theme={theme} />
+            </NavigationContainer>
+          </CardsContextProvider>
         </AuthContextProvider>
       </SafeAreaProvider>
     </AppearanceProvider>

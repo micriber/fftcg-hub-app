@@ -5,12 +5,15 @@ import {AuthContext} from '../contexts/AuthContext';
 import useAsync from '../utils/hooks/useAsync';
 import Loading from '../screens/Loading';
 import FFCardsList from './FFCardsList';
+import {CardsContext} from '../contexts/CardsContext';
+import {useFocusEffect} from '@react-navigation/native';
 
 type Props = {
   cardsFilter?: GetCardsParams;
   displayOwnPin?: boolean;
   isListView: boolean;
   onCardPress?: (card: Card) => void;
+  collection: boolean;
 };
 
 const FFCardsListContainer = ({
@@ -18,8 +21,10 @@ const FFCardsListContainer = ({
   displayOwnPin = false,
   cardsFilter = {},
   onCardPress = () => {},
+  collection = true,
 }: Props) => {
   const {getIdToken} = React.useContext(AuthContext);
+  const cardContext = React.useContext(CardsContext);
   const token = getIdToken();
   const perPage = 6;
   const [page, setPage] = React.useState(1);
@@ -27,6 +32,7 @@ const FFCardsListContainer = ({
   const addCards = (newCards: Cards) => setCards([...cards, ...newCards]);
   const [stopFetch, setStopFetch] = React.useState(false);
   const [refreshing, setRefreshing] = React.useState(false);
+  const [search, setSearch] = React.useState({});
 
   const loadCards = async () => {
     const data = await getCards({
@@ -35,14 +41,34 @@ const FFCardsListContainer = ({
     });
 
     if (data && 'cards' in data) {
+      if (collection) {
+        cardContext.setCollectionCardsList([
+          ...(cardsFilter !== search ? [] : cardContext.collectionCardsList),
+          ...data.cards,
+        ]);
+      } else {
+        cardContext.setSearchCardsList([
+          ...(cardsFilter !== search ? [] : cardContext.searchCardsList),
+          ...data.cards,
+        ]);
+      }
       addCards(data.cards);
     }
 
+    setSearch(cardsFilter);
     setStopFetch(false);
     setRefreshing(false);
 
     return data;
   };
+
+  useFocusEffect(() => {
+    if (collection) {
+      setCards(cardContext.collectionCardsList);
+    } else {
+      setCards(cardContext.searchCardsList);
+    }
+  });
 
   useEffect(() => {
     if (cards.length === 0 && refreshing) {
@@ -55,6 +81,11 @@ const FFCardsListContainer = ({
   const refresh = () => {
     if (!stopFetch) {
       setRefreshing(true);
+      if (collection) {
+        cardContext.setCollectionCardsList([]);
+      } else {
+        cardContext.setSearchCardsList([]);
+      }
       setPage(1);
       setCards([]);
     }

@@ -5,7 +5,7 @@ import {Card} from '../services/api/card';
 
 type Props = {
   isListView: boolean;
-  cards?: Card[];
+  cards?: Card[] | null;
   onCardPress?: (card: Card) => void;
   onEndReached?: () => void;
   onRefresh?: () => void;
@@ -25,7 +25,7 @@ const FFCardsList = ({
   return (
     <View
       style={[
-        isListView || cards.length === 0
+        isListView || (cards && cards.length === 0)
           ? styles.listContainer
           : styles.gridContainer,
       ]}>

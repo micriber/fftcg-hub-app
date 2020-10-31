@@ -26,6 +26,7 @@ const Home = ({navigation}) => {
         isListView={isListView}
         onCardPress={onCardPress}
         cardsFilter={{owned: true}}
+        collection={true}
       />
       <BottomRightButton
         iconName="search1"

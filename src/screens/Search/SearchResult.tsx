@@ -45,6 +45,7 @@ const Search = ({route, navigation}: Props) => {
         isListView={isListView}
         onCardPress={onCardPress}
         cardsFilter={{search}}
+        collection={false}
       />
       <BottomRightButton
         iconName="search1"

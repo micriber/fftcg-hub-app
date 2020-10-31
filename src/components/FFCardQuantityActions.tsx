@@ -1,35 +1,40 @@
 import React from 'react';
-import {addCard, Card, CardVersion, subtractCard} from '../services/api/card';
+import {
+  addCard,
+  Card,
+  CardVersion,
+  subtractCard,
+  UserCard,
+} from '../services/api/card';
 import {Alert, StyleSheet, Text} from 'react-native';
 import NumericInput from 'react-native-numeric-input';
+import {CardsContext} from '../contexts/CardsContext';
 
 type Props = {
   card: Card;
   version: CardVersion;
   token: string;
   label?: string;
-  onChange?: () => {};
 };
 
-const FFCardQuantityActions = ({
-  card,
-  token,
-  label,
-  version,
-  onChange,
-}: Props) => {
+const FFCardQuantityActions = ({card, token, label, version}: Props) => {
   const initialQuantity =
     card.userCard.find((c) => c.version === version)?.quantity || 0;
   const [quantity, setQuantity] = React.useState(initialQuantity);
   const [isLoading, setLoading] = React.useState(false);
-
+  const cardContext = React.useContext(CardsContext);
   const addUnity = async () => {
     if (!isLoading) {
       setLoading(true);
       try {
         await addCard({token: token!, code: card.code, version});
         setQuantity(quantity + 1);
-        onChange ? onChange() : undefined;
+        cardContext.setCollectionCardsList(
+          updateContext(cardContext.collectionCardsList, true, true),
+        );
+        cardContext.setSearchCardsList(
+          updateContext(cardContext.searchCardsList, true, false),
+        );
       } catch (e) {
         Alert.alert(
           `Cant add unity for ${card.code} version ${version}`,
@@ -51,7 +56,12 @@ const FFCardQuantityActions = ({
           version,
         });
         setQuantity(quantity - 1);
-        onChange ? onChange() : undefined;
+        cardContext.setCollectionCardsList(
+          updateContext(cardContext.collectionCardsList, false, true),
+        );
+        cardContext.setSearchCardsList(
+          updateContext(cardContext.searchCardsList, false, false),
+        );
       } catch (e) {
         Alert.alert(
           `Cant subtract unity for ${card.code} version ${version}`,
@@ -61,6 +71,63 @@ const FFCardQuantityActions = ({
         setLoading(false);
       }
     }
+  };
+
+  const updateContext = (
+    cardsList: Card[],
+    add: boolean = true,
+    collection: boolean = true,
+  ) => {
+    if (add && !cardsList.find((c: Card) => c.code === card.code)) {
+      const localCard = {...card};
+      localCard.userCard = [
+        {
+          quantity: 1,
+          version,
+        },
+      ];
+      cardsList.push(localCard);
+      return cardsList;
+    }
+
+    const newCardList = cardsList.map((mapCard: Card) => {
+      if (mapCard.code === card.code) {
+        if (!mapCard.userCard.find((uc) => uc.version === version)) {
+          if (add) {
+            mapCard.userCard.push({
+              quantity: 1,
+              version,
+            });
+          }
+        } else {
+          mapCard.userCard = mapCard.userCard.map((mapUserCard: UserCard) => {
+            if (mapUserCard.version === version) {
+              if (add) {
+                mapUserCard.quantity++;
+              } else {
+                mapUserCard.quantity--;
+              }
+            }
+            return mapUserCard;
+          });
+        }
+      }
+      return mapCard;
+    });
+
+    return !collection || add
+      ? newCardList
+      : newCardList.filter((cardFilter: Card) => {
+          const userCard = cardFilter.userCard.find((uc: UserCard) => {
+            if (uc.quantity > 0) {
+              return uc;
+            }
+          });
+
+          if (userCard) {
+            return cardFilter;
+          }
+        });
   };
 
   return (
