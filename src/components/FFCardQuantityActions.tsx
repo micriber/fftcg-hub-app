@@ -137,6 +137,14 @@ const FFCardQuantityActions = ({card, token, label, version}: Props) => {
     });
   };
 
+  const onChange = (value: number) => {
+    if (value < quantity) {
+      subtractUnity();
+    } else if (value > quantity) {
+      addUnity();
+    }
+  };
+
   return (
     <>
       {label && (
@@ -147,7 +155,7 @@ const FFCardQuantityActions = ({card, token, label, version}: Props) => {
       {/* TODO: Replace the library react-native-numeric-input when we'll have a style framework */}
       <NumericInput
         value={quantity}
-        onChange={(value) => (value < quantity ? subtractUnity() : addUnity())}
+        onChange={onChange}
         minValue={0}
         editable={false}
       />
