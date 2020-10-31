@@ -7,6 +7,7 @@ import {Card} from '../../services/api/card';
 import HeaderSwitch from '../../components/common/HeaderSwitch';
 import BottomRightButton from '../../components/common/BottomRightButton';
 import FFCardsListContainer from '../../components/FFCardsListContainer';
+import {SearchCardsContext} from '../../contexts/SearchCardsContext';
 
 type SearchResultScreenNavigationProp = StackNavigationProp<
   SearchStackParamList,
@@ -45,7 +46,7 @@ const Search = ({route, navigation}: Props) => {
         isListView={isListView}
         onCardPress={onCardPress}
         cardsFilter={{search}}
-        collection={false}
+        cardsContext={SearchCardsContext}
       />
       <BottomRightButton
         iconName="search1"
