@@ -1,16 +1,18 @@
-import React, {useEffect} from 'react';
+import React, {Context, useEffect} from 'react';
 import {Text} from 'react-native';
-import {Card, Cards, getCards, GetCardsParams} from '../services/api/card';
-import {AuthContext} from '../AuthContext';
+import {Card, getCards, GetCardsParams} from '../services/api/card';
+import {AuthContext} from '../contexts/AuthContext';
 import useAsync from '../utils/hooks/useAsync';
 import Loading from '../screens/Loading';
 import FFCardsList from './FFCardsList';
+import {defaultValue, SearchCardsContext} from '../contexts/SearchCardsContext';
 
 type Props = {
   cardsFilter?: GetCardsParams;
   displayOwnPin?: boolean;
   isListView: boolean;
   onCardPress?: (card: Card) => void;
+  cardsContext: Context<defaultValue>;
 };
 
 const FFCardsListContainer = ({
@@ -18,15 +20,16 @@ const FFCardsListContainer = ({
   displayOwnPin = false,
   cardsFilter = {},
   onCardPress = () => {},
+  cardsContext = SearchCardsContext,
 }: Props) => {
   const {getIdToken} = React.useContext(AuthContext);
+  const cardContext = React.useContext(cardsContext);
   const token = getIdToken();
   const perPage = 6;
   const [page, setPage] = React.useState(1);
-  const [cards, setCards] = React.useState<Cards>([]);
-  const addCards = (newCards: Cards) => setCards([...cards, ...newCards]);
   const [stopFetch, setStopFetch] = React.useState(false);
   const [refreshing, setRefreshing] = React.useState(false);
+  const [search, setSearch] = React.useState({});
 
   const loadCards = async () => {
     const data = await getCards({
@@ -35,9 +38,13 @@ const FFCardsListContainer = ({
     });
 
     if (data && 'cards' in data) {
-      addCards(data.cards);
+      cardContext.setCardsList([
+        ...(cardsFilter !== search ? [] : cardContext.cardsList),
+        ...data.cards,
+      ]);
     }
 
+    setSearch(cardsFilter);
     setStopFetch(false);
     setRefreshing(false);
 
@@ -45,18 +52,18 @@ const FFCardsListContainer = ({
   };
 
   useEffect(() => {
-    if (cards.length === 0 && refreshing) {
+    if (cardContext.cardsList.length === 0 && refreshing) {
       loadCards();
     }
-  }, [cards]);
+  }, [cardContext.cardsList]);
 
   const state = useAsync(loadCards, [page]);
 
   const refresh = () => {
     if (!stopFetch) {
       setRefreshing(true);
+      cardContext.setCardsList([]);
       setPage(1);
-      setCards([]);
     }
   };
 
@@ -64,7 +71,7 @@ const FFCardsListContainer = ({
     if (
       state.value &&
       'total' in state.value &&
-      state.value.total > cards.length &&
+      state.value.total > cardContext.cardsList.length &&
       !stopFetch
     ) {
       setPage(page + 1);
@@ -88,7 +95,7 @@ const FFCardsListContainer = ({
   return (
     <FFCardsList
       isListView={isListView}
-      cards={cards}
+      cards={cardContext.cardsList}
       displayOwnPin={displayOwnPin}
       onCardPress={onCardPress}
       onRefresh={refresh}

@@ -5,7 +5,7 @@ import {
   statusCodes,
 } from '@react-native-community/google-signin';
 import isEmpty from 'lodash.isempty';
-import {AuthContext} from '../../AuthContext';
+import {AuthContext} from '../../contexts/AuthContext';
 
 type Props = {};
 

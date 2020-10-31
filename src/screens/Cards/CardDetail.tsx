@@ -2,7 +2,7 @@ import React from 'react';
 import {Dimensions, View} from 'react-native';
 import {Card} from '../../services/api/card';
 import FFCardSimple from '../../components/FFCardSimple';
-import {AuthContext} from '../../AuthContext';
+import {AuthContext} from '../../contexts/AuthContext';
 import FFCardQuantityActions from '../../components/FFCardQuantityActions';
 
 type Props = {

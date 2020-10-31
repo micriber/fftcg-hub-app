@@ -26,7 +26,7 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import {AuthContext} from '../../AuthContext';
+import {AuthContext} from '../../contexts/AuthContext';
 
 declare const global: {HermesInternal: null | {}};
 

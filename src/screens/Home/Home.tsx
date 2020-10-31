@@ -4,6 +4,7 @@ import {Card} from '../../services/api/card';
 import HeaderSwitch from '../../components/common/HeaderSwitch';
 import BottomRightButton from '../../components/common/BottomRightButton';
 import FFCardsListContainer from '../../components/FFCardsListContainer';
+import {CollectionCardsContext} from '../../contexts/CollectionCardsContext';
 
 const Home = ({navigation}) => {
   const [isListView, setIsListView] = React.useState(false);
@@ -26,6 +27,7 @@ const Home = ({navigation}) => {
         isListView={isListView}
         onCardPress={onCardPress}
         cardsFilter={{owned: true}}
+        cardsContext={CollectionCardsContext}
       />
       <BottomRightButton
         iconName="search1"
