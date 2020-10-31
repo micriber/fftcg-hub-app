@@ -4,4 +4,7 @@ export const getCardImageUrl = (
   code: string,
   type = 'full',
   lang: lang = 'fr',
-) => `https://fftcg.cdn.sewest.net/images/cards/${type}/${code}_${lang}.jpg`;
+) => {
+  const cleanCode = code.split('/')[0];
+  return `https://fftcg.cdn.sewest.net/images/cards/${type}/${cleanCode}_${lang}.jpg`;
+};
