@@ -15,11 +15,10 @@ import cloneDeep from 'lodash.clonedeep';
 type Props = {
   card: Card;
   version: CardVersion;
-  token: string;
   label?: string;
 };
 
-const FFCardQuantityActions = ({card, token, label, version}: Props) => {
+const FFCardQuantityActions = ({card, label, version}: Props) => {
   const initialQuantity =
     card.userCard.find((c) => c.version === version)?.quantity || 0;
   const [quantity, setQuantity] = React.useState(initialQuantity);
@@ -30,7 +29,7 @@ const FFCardQuantityActions = ({card, token, label, version}: Props) => {
     if (!isLoading) {
       setLoading(true);
       try {
-        await addCard({token: token!, code: card.code, version});
+        await addCard({code: card.code, version});
         setQuantity(quantity + 1);
         collectionCardsContext.setCardsList(
           updateContext(collectionCardsContext.cardsList, true, true),
@@ -54,7 +53,6 @@ const FFCardQuantityActions = ({card, token, label, version}: Props) => {
       setLoading(true);
       try {
         await subtractCard({
-          token: token!,
           code: card.code,
           version,
         });
