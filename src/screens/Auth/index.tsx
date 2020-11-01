@@ -35,9 +35,11 @@ const AuthStackScreen = ({theme}: Props) => {
     return <BottomTabsNavigator theme={theme} />;
   }
 
-  return isLoading ? (
-    <Loading />
-  ) : !user.isSignedIn ? (
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  return !user.isSignedIn ? (
     loginScreen()
   ) : (
     loggedScreen()

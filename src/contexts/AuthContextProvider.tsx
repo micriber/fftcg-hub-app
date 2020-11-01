@@ -91,7 +91,7 @@ const AuthContextProvider = ({children}) => {
         await signOut();
       },
     };
-  }, [user.idToken, user.info, user.isSignedIn]);
+  }, [user.idToken, user.info, user.isSignedIn, isLoading]);
 
   return (
     <AuthContext.Provider value={authContext}>{children}</AuthContext.Provider>
