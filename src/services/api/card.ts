@@ -1,4 +1,5 @@
 import {config} from '../../config';
+import {Api} from './index';
 
 export type CardVersion = 'classic' | 'foil' | 'full-art';
 
@@ -44,13 +45,13 @@ export type GetCardsParams = {
   perPage?: number;
 };
 
-export const getCards = async ({
+export const _getCards = async ({
   token,
   params = {},
 }: {
   token: string;
   params: GetCardsParams;
-}): Promise<GetCardsResponse | UnauthorizedError> => {
+}): Promise<Response> => {
   const page = params.page ? `page=${params.page}` : 'page=1';
   const perPage = params.perPage ? `&perPage=${params.perPage}` : '';
   const search = params.search ? `&search=${params.search}` : '';
@@ -65,7 +66,17 @@ export const getCards = async ({
         'Content-Type': 'application/json',
       },
     },
-  ).then((response) => response.json());
+  );
+};
+
+export const getCards = async ({
+  params = {},
+}: {
+  params: GetCardsParams;
+}): Promise<GetCardsResponse | UnauthorizedError> => {
+  const api = Api.getInstance();
+  const callback = (token: string) => _getCards({token, params})
+  return await api.refreshWrapper(callback, {json: true});
 };
 
 export const addCard = ({

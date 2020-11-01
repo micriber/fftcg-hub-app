@@ -1,6 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import Login from './Login';
 import * as React from 'react';
+import { Api } from "../../services/api";
+import Login from './Login';
 import {AuthContext} from '../../contexts/AuthContext';
 import {Theme} from '@react-navigation/native';
 import {BottomTabsNavigator} from '../BottomTabs';
@@ -16,6 +17,7 @@ const AuthStackScreen = ({theme}: Props) => {
   const {user, signIn, isLoading} = React.useContext(AuthContext);
 
   React.useEffect(() => {
+    Api.configure({ refreshCallback: () => signIn(true) })
     signIn(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
