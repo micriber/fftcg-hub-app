@@ -48,7 +48,7 @@ export class Api {
       return response.json();
     }
 
-    return response;
+    return response.text();
   }
 
   public async refreshWrapper(

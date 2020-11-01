@@ -2,7 +2,6 @@ import React from 'react';
 import {Dimensions, View} from 'react-native';
 import {Card} from '../../services/api/card';
 import FFCardSimple from '../../components/FFCardSimple';
-import {AuthContext} from '../../contexts/AuthContext';
 import FFCardQuantityActions from '../../components/FFCardQuantityActions';
 
 type Props = {
@@ -13,8 +12,6 @@ const w = Dimensions.get('window');
 
 const CardDetail = ({route}: Props) => {
   const card = route.params.card;
-  const {getIdToken} = React.useContext(AuthContext);
-  const token = getIdToken();
 
   return (
     <View>
@@ -33,19 +30,16 @@ const CardDetail = ({route}: Props) => {
         <FFCardQuantityActions
           card={card}
           version="classic"
-          token={token!}
           label="Classic"
         />
         <FFCardQuantityActions
           card={card}
           version="foil"
-          token={token!}
           label="Foil"
         />
         <FFCardQuantityActions
           card={card}
           version="full-art"
-          token={token!}
           label="Full Art"
         />
       </View>

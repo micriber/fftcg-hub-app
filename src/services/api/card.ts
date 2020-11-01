@@ -45,7 +45,7 @@ export type GetCardsParams = {
   perPage?: number;
 };
 
-export const _getCards = async ({
+const _getCards = async ({
   token,
   params = {},
 }: {
@@ -75,11 +75,11 @@ export const getCards = async ({
   params: GetCardsParams;
 }): Promise<GetCardsResponse | UnauthorizedError> => {
   const api = Api.getInstance();
-  const callback = (token: string) => _getCards({token, params})
+  const callback = (token: string) => _getCards({token, params});
   return await api.refreshWrapper(callback, {json: true});
 };
 
-export const addCard = ({
+const _addCard = ({
   token,
   code,
   version,
@@ -101,10 +101,25 @@ export const addCard = ({
       version,
       quantity,
     }),
-  }).then((response) => response.text());
+  });
 };
 
-export const subtractCard = ({
+export const addCard = async ({
+  code,
+  version,
+  quantity = 1,
+}: {
+  code: string;
+  version: CardVersion;
+  quantity?: number;
+}) => {
+  const api = Api.getInstance();
+  const callback = (token: string) =>
+    _addCard({token, code, version, quantity});
+  return await api.refreshWrapper(callback, {json: false});
+};
+
+const _subtractCard = ({
   token,
   code,
   version,
@@ -114,7 +129,7 @@ export const subtractCard = ({
   code: string;
   version: CardVersion;
   quantity?: number;
-}): Promise<string | UnauthorizedError> => {
+}) => {
   return fetch(`${config.api.baseUri}/api/v1/cards/${code}/subtract`, {
     method: 'POST',
     headers: {
@@ -126,5 +141,20 @@ export const subtractCard = ({
       version,
       quantity,
     }),
-  }).then((response) => response.text());
+  });
+};
+
+export const subtractCard = async ({
+  code,
+  version,
+  quantity = 1,
+}: {
+  code: string;
+  version: CardVersion;
+  quantity?: number;
+}) => {
+  const api = Api.getInstance();
+  const callback = (token: string) =>
+    _subtractCard({token, code, version, quantity});
+  return await api.refreshWrapper(callback, {json: false});
 };
