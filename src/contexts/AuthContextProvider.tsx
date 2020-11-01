@@ -1,5 +1,6 @@
 import React from 'react';
 import {Alert} from 'react-native';
+import { Api } from "../services/api";
 import {googleLogin, UserInfo} from '../services/api/user';
 import {signOut} from '../services/google';
 import {
@@ -75,6 +76,7 @@ const AuthContextProvider = ({children}) => {
               info: signedInUser as UserInfo,
               idToken,
             });
+            Api.configure({ token: idToken })
           }
         } catch (e) {
           Alert.alert(
@@ -88,6 +90,7 @@ const AuthContextProvider = ({children}) => {
       signOut: async () => {
         setIsLoading(false);
         setUser({isSignedIn: false, info: undefined, idToken: undefined});
+        Api.Token = undefined;
         await signOut();
       },
     };

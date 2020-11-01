@@ -1,7 +1,6 @@
 import React, {Context, useEffect} from 'react';
 import {Text} from 'react-native';
 import {Card, getCards, GetCardsParams} from '../services/api/card';
-import {AuthContext} from '../contexts/AuthContext';
 import useAsync from '../utils/hooks/useAsync';
 import Loading from '../screens/Loading';
 import FFCardsList from './FFCardsList';
@@ -22,9 +21,7 @@ const FFCardsListContainer = ({
   onCardPress = () => {},
   cardsContext = SearchCardsContext,
 }: Props) => {
-  const {getIdToken} = React.useContext(AuthContext);
   const cardContext = React.useContext(cardsContext);
-  const token = getIdToken();
   const perPage = 6;
   const [page, setPage] = React.useState(1);
   const [stopFetch, setStopFetch] = React.useState(false);
@@ -33,7 +30,6 @@ const FFCardsListContainer = ({
 
   const loadCards = async () => {
     const data = await getCards({
-      token: token!,
       params: {...cardsFilter, page, perPage},
     });
 
