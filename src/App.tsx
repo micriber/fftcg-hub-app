@@ -6,6 +6,7 @@ import {AuthStackScreen} from './screens/Auth';
 import AuthContextProvider from './contexts/AuthContextProvider';
 import CollectionCardsContextProvider from './contexts/CollectionCardsContextProvider';
 import SearchCardsContextProvider from './contexts/SearchCardsContextProvider';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 const App = () => {
   // const scheme = useColorScheme();
@@ -13,19 +14,21 @@ const App = () => {
   const theme = DefaultTheme;
 
   return (
-    <AppearanceProvider>
-      <SafeAreaProvider>
-        <AuthContextProvider>
-          <CollectionCardsContextProvider>
-            <SearchCardsContextProvider>
-              <NavigationContainer theme={theme}>
-                <AuthStackScreen theme={theme} />
-              </NavigationContainer>
-            </SearchCardsContextProvider>
-          </CollectionCardsContextProvider>
-        </AuthContextProvider>
-      </SafeAreaProvider>
-    </AppearanceProvider>
+    <PaperProvider>
+      <AppearanceProvider>
+        <SafeAreaProvider>
+          <AuthContextProvider>
+            <CollectionCardsContextProvider>
+              <SearchCardsContextProvider>
+                <NavigationContainer theme={theme}>
+                  <AuthStackScreen theme={theme} />
+                </NavigationContainer>
+              </SearchCardsContextProvider>
+            </CollectionCardsContextProvider>
+          </AuthContextProvider>
+        </SafeAreaProvider>
+      </AppearanceProvider>
+    </PaperProvider>
   );
 };
 

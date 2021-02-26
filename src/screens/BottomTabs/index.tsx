@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {AboutStackScreen} from '../About';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+// import {AboutStackScreen} from '../About';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import {SearchStackScreen} from '../Search';
 import {HomeStackScreen} from '../Home';
@@ -12,7 +12,7 @@ interface ITabBarIcon {
   size: number;
 }
 
-const Tabs = createBottomTabNavigator();
+const Tabs = createMaterialBottomTabNavigator();
 
 type Props = {
   theme: Theme;
@@ -21,9 +21,8 @@ type Props = {
 const BottomTabsNavigator = ({theme}: Props) => (
   <Tabs.Navigator
     initialRouteName="Home"
-    tabBarOptions={{
-      activeTintColor: theme.colors.primary,
-    }}>
+    shifting={true}
+    barStyle={{backgroundColor: '#694fad'}}>
     {/*<Tabs.Screen*/}
     {/*  name="About"*/}
     {/*  component={AboutStackScreen}*/}
@@ -39,8 +38,9 @@ const BottomTabsNavigator = ({theme}: Props) => (
       component={SearchStackScreen}
       options={{
         tabBarLabel: 'Search',
-        tabBarIcon: ({color, size}: ITabBarIcon) => (
-          <AntIcon name="search1" color={color} size={size} />
+        tabBarColor: 'rgba(255, 0, 0, 0.5)',
+        tabBarIcon: ({color}: ITabBarIcon) => (
+          <AntIcon name="search1" color={color} size={26} />
         ),
       }}
     />
@@ -49,8 +49,9 @@ const BottomTabsNavigator = ({theme}: Props) => (
       component={HomeStackScreen}
       options={{
         tabBarLabel: 'Collection',
-        tabBarIcon: ({color, size}: ITabBarIcon) => (
-          <AntIcon name="home" color={color} size={size} />
+        tabBarColor: 'rgba(0, 255, 0, 0.5)',
+        tabBarIcon: ({color}: ITabBarIcon) => (
+          <AntIcon name="home" color={color} size={26} />
         ),
       }}
     />
@@ -59,8 +60,9 @@ const BottomTabsNavigator = ({theme}: Props) => (
       component={SettingsStackScreen}
       options={{
         tabBarLabel: 'Settings',
-        tabBarIcon: ({color, size}: ITabBarIcon) => (
-          <AntIcon name="setting" color={color} size={size} />
+        tabBarColor: 'rgba(0, 0, 255, 0.5)',
+        tabBarIcon: ({color}: ITabBarIcon) => (
+          <AntIcon name="setting" color={color} size={26} />
         ),
       }}
     />
