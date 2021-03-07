@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 // import {AboutStackScreen} from '../About';
-import AntIcon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SearchStackScreen} from '../Search';
 import {HomeStackScreen} from '../Home';
 import {SettingsStackScreen} from '../Settings';
@@ -18,11 +18,10 @@ type Props = {
   theme: Theme;
 };
 
-const BottomTabsNavigator = ({theme}: Props) => (
-  <Tabs.Navigator
-    initialRouteName="Home"
-    shifting={true}
-    barStyle={{backgroundColor: '#694fad'}}>
+const barStyle = {backgroundColor: '#694fad'};
+
+const BottomTabsNavigator = ({}: Props) => (
+  <Tabs.Navigator initialRouteName="Home" shifting={true} barStyle={barStyle}>
     {/*<Tabs.Screen*/}
     {/*  name="About"*/}
     {/*  component={AboutStackScreen}*/}
@@ -40,7 +39,7 @@ const BottomTabsNavigator = ({theme}: Props) => (
         tabBarLabel: 'Search',
         tabBarColor: 'rgba(255, 0, 0, 0.5)',
         tabBarIcon: ({color}: ITabBarIcon) => (
-          <AntIcon name="search1" color={color} size={26} />
+          <Icon name="magnify" color={color} size={26} />
         ),
       }}
     />
@@ -51,7 +50,7 @@ const BottomTabsNavigator = ({theme}: Props) => (
         tabBarLabel: 'Collection',
         tabBarColor: 'rgba(0, 255, 0, 0.5)',
         tabBarIcon: ({color}: ITabBarIcon) => (
-          <AntIcon name="home" color={color} size={26} />
+          <Icon name="home" color={color} size={26} />
         ),
       }}
     />
@@ -62,7 +61,7 @@ const BottomTabsNavigator = ({theme}: Props) => (
         tabBarLabel: 'Settings',
         tabBarColor: 'rgba(0, 0, 255, 0.5)',
         tabBarIcon: ({color}: ITabBarIcon) => (
-          <AntIcon name="setting" color={color} size={26} />
+          <Icon name="cog" color={color} size={26} />
         ),
       }}
     />

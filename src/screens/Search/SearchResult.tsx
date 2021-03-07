@@ -1,11 +1,11 @@
 import React from 'react';
-import {Alert} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
+import {FAB} from 'react-native-paper';
 import {SearchStackParamList} from './type';
 import {Card} from '../../services/api/card';
 import HeaderSwitch from '../../components/common/HeaderSwitch';
-import BottomRightButton from '../../components/common/BottomRightButton';
 import FFCardsListContainer from '../../components/FFCardsListContainer';
 import {SearchCardsContext} from '../../contexts/SearchCardsContext';
 
@@ -37,8 +37,8 @@ const Search = ({route, navigation}: Props) => {
   return (
     <>
       <HeaderSwitch
-        leftIconName="appstore-o"
-        rightIconName="bars"
+        leftIconName="view-grid"
+        rightIconName="format-list-bulleted"
         value={isListView}
         onValueChange={setIsListView}
       />
@@ -48,12 +48,18 @@ const Search = ({route, navigation}: Props) => {
         cardsFilter={{search}}
         cardsContext={SearchCardsContext}
       />
-      <BottomRightButton
-        iconName="search1"
-        onPress={() => Alert.alert('Search button pressed')}
-      />
+      <FAB style={styles.fab} icon="arrow-up" onPress={() => {}} />
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
+});
 
 export default Search;
