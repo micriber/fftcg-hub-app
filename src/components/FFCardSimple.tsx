@@ -12,17 +12,19 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {getCardImageUrl} from '../utils/image';
 import {Card} from '../services/api/card';
 import replaceTextByIconOrStyle from '../utils/icon';
-import {Divider, Surface, Text} from 'react-native-paper';
+import {Text} from 'react-native-paper';
 
 type Props = {
   displayOwnPin?: boolean;
   card: Card;
-  isListView: boolean;
   onPress?: (card: Card) => void;
   onLongPress?: () => void;
   imageStyle?: ImageStyle;
+  viewType: ViewType;
   containerStyle?: ViewStyle;
 };
+
+type ViewType = 'single' | 'list' | 'grid';
 
 const w = Dimensions.get('window');
 // orientation must fixed
@@ -31,7 +33,7 @@ const SCREEN_HEIGHT = w.width < w.height ? w.height : w.width;
 
 const FFCardSimple = ({
   card,
-  isListView,
+  viewType,
   onPress,
   onLongPress,
   displayOwnPin = false,
@@ -48,17 +50,26 @@ const FFCardSimple = ({
     height: SCREEN_HEIGHT / 3.3,
   };
   return (
-    <TouchableOpacity
-      activeOpacity={0.3}
-      onPress={onPress ? () => onPress(card) : undefined}
-      onLongPress={onLongPress}>
-      <Surface
-        style={[
-          isListView ? styles.cardListContainer : styles.cardGridContainer,
-          styles.surface,
-          containerStyle,
-          imageSize,
-        ]}>
+    <View
+      testID="SimpleFFCard"
+      key={card.code}
+      style={[
+        viewType === 'list'
+          ? styles.cardListContainer
+          : styles.cardGridContainer,
+        containerStyle,
+      ]}>
+      <TouchableOpacity
+        activeOpacity={0.3}
+        onPress={onPress ? () => onPress(card) : undefined}
+        onLongPress={onLongPress}>
+        {/*<Surface*/}
+        {/*  style={[*/}
+        {/*    isListView ? styles.cardListContainer : styles.cardGridContainer,*/}
+        {/*    styles.surface,*/}
+        {/*    containerStyle,*/}
+        {/*    imageSize,*/}
+        {/*  ]}>*/}
         <FastImage
           style={[
             imageSize,
@@ -66,45 +77,52 @@ const FFCardSimple = ({
             imageStyle as any,
           ]}
           source={{uri: src}}
-          resizeMode={isListView ? 'stretch' : 'contain'}
+          resizeMode={viewType === 'list' ? 'stretch' : 'contain'}
           onError={() => {
             if (!isFallbackImage) {
               setSrc(enSrc);
               setIsFallbackImage(true);
             }
           }}
-          testID={`Image-${card.code}`}
+          testID={`${viewType}-Image-${card.code}`}
         />
         {displayOwnPin && card.userCard.length > 0 && (
           <Icon name="check" style={styles.ownPin} size={20} />
         )}
-        {isListView && (
-          <>
-            <View style={[styles.cardDescription]}>
-              <Text>Code: {card.code}</Text>
-              <Text>Nom: {card.name}</Text>
-              <Text>Type: {card.type}</Text>
-              <Text>Element: {replaceTextByIconOrStyle(card.element)}</Text>
-              <Text />
-              <Text>{replaceTextByIconOrStyle(card.text)}</Text>
-            </View>
-            <Divider />
-          </>
+        {viewType === 'list' && (
+          <View style={[styles.cardDescription]}>
+            <Text>Code: {card.code}</Text>
+            <Text>Nom: {card.name}</Text>
+            <Text>Type: {card.type}</Text>
+            <Text>Element: {replaceTextByIconOrStyle(card.element)}</Text>
+            <Text />
+            <Text>{replaceTextByIconOrStyle(card.text)}</Text>
+          </View>
         )}
-      </Surface>
-    </TouchableOpacity>
+        {/*</Surface>*/}
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  cardGridContainer: {},
+  cardGridContainer: {
+    justifyContent: 'flex-end',
+    borderRadius: 5,
+  },
   cardListContainer: {
+    // width: '100%',
     flexDirection: 'row',
-    height: w.height / 3,
+    alignContent: 'stretch',
+    // justifyContent: 'center',
+    // height: SCREEN_HEIGHT / 3.2,
+    // alignItems: 'flex-end',
+    // alignItems: 'flex-start',
   },
   cardDescription: {
-    height: w.height / 3,
-    width: (w.width / 2.5) * 1.5,
+    // justifyContent: 'flex-start',
+    // height: SCREEN_HEIGHT / 3,
+    width: SCREEN_WIDTH / 2,
   },
   ownPin: {
     color: '#238F23',

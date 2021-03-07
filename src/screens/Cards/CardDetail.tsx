@@ -17,7 +17,7 @@ const CardDetail = ({route}: Props) => {
     <View>
       <FFCardSimple
         card={card}
-        isListView={false}
+        viewType={'single'}
         imageStyle={{
           width: w.width,
           height: w.height / 2,
@@ -27,16 +27,8 @@ const CardDetail = ({route}: Props) => {
         }}
       />
       <View style={{alignItems: 'center'}}>
-        <FFCardQuantityActions
-          card={card}
-          version="classic"
-          label="Classic"
-        />
-        <FFCardQuantityActions
-          card={card}
-          version="foil"
-          label="Foil"
-        />
+        <FFCardQuantityActions card={card} version="classic" label="Classic" />
+        <FFCardQuantityActions card={card} version="foil" label="Foil" />
         <FFCardQuantityActions
           card={card}
           version="full-art"
