@@ -89,18 +89,20 @@ const FFCardSimple = ({
         {displayOwnPin && card.userCard.length > 0 && (
           <Icon name="check" style={styles.ownPin} size={20} />
         )}
-        {viewType === 'list' && (
-          <View style={[styles.cardDescription]}>
-            <Text>Code: {card.code}</Text>
-            <Text>Nom: {card.name}</Text>
-            <Text>Type: {card.type}</Text>
-            <Text>Element: {replaceTextByIconOrStyle(card.element)}</Text>
-            <Text />
-            <Text>{replaceTextByIconOrStyle(card.text)}</Text>
-          </View>
-        )}
-        {/*</Surface>*/}
       </TouchableOpacity>
+      {viewType === 'list' && (
+        <View style={[styles.cardDescription]}>
+          <Text>Code: {card.code}</Text>
+          <Text>Nom: {card.name}</Text>
+          <Text>Type: {card.type}</Text>
+          <Text>Element: {replaceTextByIconOrStyle(card.element)}</Text>
+          <Text />
+          <Text numberOfLines={6} style={styles.cardTextDescription}>
+            {replaceTextByIconOrStyle(card.text)}
+          </Text>
+        </View>
+      )}
+      {/*</Surface>*/}
     </View>
   );
 };
@@ -113,17 +115,19 @@ const styles = StyleSheet.create({
   cardListContainer: {
     // width: '100%',
     flexDirection: 'row',
-    alignContent: 'stretch',
+    // alignContent: 'stretch',
     // justifyContent: 'center',
-    // height: SCREEN_HEIGHT / 3.2,
+    height: SCREEN_HEIGHT / 3.3,
     // alignItems: 'flex-end',
     // alignItems: 'flex-start',
   },
   cardDescription: {
+    flex: 1,
     // justifyContent: 'flex-start',
-    // height: SCREEN_HEIGHT / 3,
-    width: SCREEN_WIDTH / 2,
+    height: SCREEN_HEIGHT / 3.3,
+    // width: SCREEN_WIDTH / 2.2,
   },
+  cardTextDescription: {flex: 1},
   ownPin: {
     color: '#238F23',
     elevation: 1,

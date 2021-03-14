@@ -75,17 +75,4 @@ describe('[Page] Home', () => {
     await waitForElementToBeRemoved(() => root.getByTestId('Loader'));
     expect(root.toJSON()).toMatchSnapshot(); // Home page loaded with cards
   });
-
-  it('should show an alert on press', async () => {
-    (getCards as jest.Mock).mockResolvedValue({data});
-    Alert.alert = jest.fn();
-
-    const root = render(<Home />);
-
-    // expect(root.toJSON()).toMatchSnapshot(); // Loading screen
-    await waitForElementToBeRemoved(() => root.getByTestId('Loader'));
-    fireEvent(root.getByTestId('BottomRightButton'), 'onPress');
-    expect(Alert.alert).toHaveBeenCalledTimes(1);
-    // expect(root.toJSON()).toMatchSnapshot(); // Home page loaded with cards
-  });
 });
