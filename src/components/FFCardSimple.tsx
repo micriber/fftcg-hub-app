@@ -63,13 +63,6 @@ const FFCardSimple = ({
         activeOpacity={0.3}
         onPress={onPress ? () => onPress(card) : undefined}
         onLongPress={onLongPress}>
-        {/*<Surface*/}
-        {/*  style={[*/}
-        {/*    isListView ? styles.cardListContainer : styles.cardGridContainer,*/}
-        {/*    styles.surface,*/}
-        {/*    containerStyle,*/}
-        {/*    imageSize,*/}
-        {/*  ]}>*/}
         <FastImage
           style={[
             imageSize,
@@ -102,7 +95,6 @@ const FFCardSimple = ({
           </Text>
         </View>
       )}
-      {/*</Surface>*/}
     </View>
   );
 };
@@ -113,29 +105,17 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   cardListContainer: {
-    // width: '100%',
     flexDirection: 'row',
-    // alignContent: 'stretch',
-    // justifyContent: 'center',
     height: SCREEN_HEIGHT / 3.3,
-    // alignItems: 'flex-end',
-    // alignItems: 'flex-start',
   },
   cardDescription: {
     flex: 1,
-    // justifyContent: 'flex-start',
     height: SCREEN_HEIGHT / 3.3,
-    // width: SCREEN_WIDTH / 2.2,
   },
   cardTextDescription: {flex: 1},
   ownPin: {
     color: '#238F23',
     elevation: 1,
-  },
-  surface: {
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // elevation: 4,
   },
 });
 

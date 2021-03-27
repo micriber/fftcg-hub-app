@@ -55,10 +55,6 @@ const FFCardsList = ({
 
 const styles = StyleSheet.create({
   listContainer: {
-    // flex: 1,
-    // flexDirection: 'row',
-    // justifyContent: 'flex-start',
-    // width: '100%',
     flexGrow: 1,
   },
   emptyMessage: {
