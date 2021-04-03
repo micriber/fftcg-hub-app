@@ -1,6 +1,7 @@
 import React from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
-import {Divider, useTheme} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import {FlatGrid} from 'react-native-super-grid';
+import {useTheme} from 'react-native-paper';
 import FFCardSimple from './FFCardSimple';
 import FFCardsListEmpty from './FFCardsListEmpty';
 import {Card} from '../services/api/card';
@@ -14,7 +15,7 @@ type Props = {
   refreshing?: boolean;
 };
 
-const FFCardsList = ({
+const FFCardsGridList = ({
   cards = [],
   displayOwnPin = false,
   refreshing = false,
@@ -24,27 +25,23 @@ const FFCardsList = ({
 }: Props) => {
   const {colors} = useTheme();
   const renderItem = ({item}: {item: Card}) => (
-    <>
-      <FFCardSimple
-        card={item}
-        viewType={'list'}
-        displayOwnPin={displayOwnPin}
-        onPress={onCardPress}
-      />
-      <Divider />
-    </>
+    <FFCardSimple
+      card={item}
+      viewType={'grid'}
+      displayOwnPin={displayOwnPin}
+      onPress={onCardPress}
+    />
   );
   return (
-    <View style={[styles.listContainer, {backgroundColor: colors.background}]}>
-      <FlatList
-        initialNumToRender={1}
-        numColumns={1}
-        key={0}
-        data={cards}
+    <View style={[styles.gridContainer, {backgroundColor: colors.background}]}>
+      <FlatGrid
+        key={1}
+        spacing={10}
         keyExtractor={(item) => item.code}
+        itemDimension={160}
+        data={cards || []}
         renderItem={renderItem}
         onEndReached={onEndReached}
-        onEndReachedThreshold={1}
         refreshing={refreshing}
         onRefresh={onRefresh}
         ListEmptyComponent={!refreshing ? <FFCardsListEmpty /> : null}
@@ -54,14 +51,9 @@ const FFCardsList = ({
 };
 
 const styles = StyleSheet.create({
-  listContainer: {
-    flexGrow: 1,
-  },
-  emptyMessage: {
-    textAlign: 'center',
-    marginTop: '50%',
-    width: '100%',
+  gridContainer: {
+    flex: 1,
   },
 });
 
-export default FFCardsList;
+export default FFCardsGridList;

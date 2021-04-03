@@ -3,32 +3,37 @@ import {
   Dimensions,
   ImageStyle,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import AntIcon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {getCardImageUrl} from '../utils/image';
 import {Card} from '../services/api/card';
 import replaceTextByIconOrStyle from '../utils/icon';
+import {Text} from 'react-native-paper';
 
 type Props = {
   displayOwnPin?: boolean;
   card: Card;
-  isListView: boolean;
   onPress?: (card: Card) => void;
   onLongPress?: () => void;
   imageStyle?: ImageStyle;
+  viewType: ViewType;
   containerStyle?: ViewStyle;
 };
 
+type ViewType = 'single' | 'list' | 'grid';
+
 const w = Dimensions.get('window');
+// orientation must fixed
+const SCREEN_WIDTH = w.width < w.height ? w.width : w.height;
+const SCREEN_HEIGHT = w.width < w.height ? w.height : w.width;
 
 const FFCardSimple = ({
   card,
-  isListView,
+  viewType,
   onPress,
   onLongPress,
   displayOwnPin = false,
@@ -40,12 +45,18 @@ const FFCardSimple = ({
     getCardImageUrl(card.code, 'full', 'fr'),
   );
   const enSrc = getCardImageUrl(card.code, 'full', 'eg');
+  const imageSize = {
+    width: SCREEN_WIDTH / 2.2,
+    height: SCREEN_HEIGHT / 3.3,
+  };
   return (
     <View
       testID="SimpleFFCard"
       key={card.code}
       style={[
-        isListView ? styles.cardListContainer : styles.cardGridContainer,
+        viewType === 'list'
+          ? styles.cardListContainer
+          : styles.cardGridContainer,
         containerStyle,
       ]}>
       <TouchableOpacity
@@ -54,35 +65,34 @@ const FFCardSimple = ({
         onLongPress={onLongPress}>
         <FastImage
           style={[
-            {
-              width: w.width / 2.5,
-              height: w.height / 3,
-            },
+            imageSize,
             // TODO: Find the correct type for this style
             imageStyle as any,
           ]}
           source={{uri: src}}
-          resizeMode={isListView ? 'stretch' : 'contain'}
+          resizeMode={viewType === 'list' ? 'stretch' : 'contain'}
           onError={() => {
             if (!isFallbackImage) {
               setSrc(enSrc);
               setIsFallbackImage(true);
             }
           }}
-          testID={`Image-${card.code}`}
+          testID={`${viewType}-Image-${card.code}`}
         />
         {displayOwnPin && card.userCard.length > 0 && (
-          <AntIcon name="check" style={styles.ownPin} size={20} />
+          <Icon name="check" style={styles.ownPin} size={20} />
         )}
       </TouchableOpacity>
-      {isListView && (
+      {viewType === 'list' && (
         <View style={[styles.cardDescription]}>
           <Text>Code: {card.code}</Text>
           <Text>Nom: {card.name}</Text>
           <Text>Type: {card.type}</Text>
           <Text>Element: {replaceTextByIconOrStyle(card.element)}</Text>
           <Text />
-          <Text>{replaceTextByIconOrStyle(card.text)}</Text>
+          <Text numberOfLines={6} style={styles.cardTextDescription}>
+            {replaceTextByIconOrStyle(card.text)}
+          </Text>
         </View>
       )}
     </View>
@@ -91,19 +101,18 @@ const FFCardSimple = ({
 
 const styles = StyleSheet.create({
   cardGridContainer: {
-    marginTop: 3,
-    marginLeft: 15,
+    justifyContent: 'flex-end',
+    borderRadius: 5,
   },
   cardListContainer: {
     flexDirection: 'row',
-    height: w.height / 3,
+    height: SCREEN_HEIGHT / 3.3,
   },
   cardDescription: {
-    borderColor: '#000',
-    borderWidth: 1,
-    height: w.height / 3,
-    width: (w.width / 2.5) * 1.5,
+    flex: 1,
+    height: SCREEN_HEIGHT / 3.3,
   },
+  cardTextDescription: {flex: 1},
   ownPin: {
     color: '#238F23',
     elevation: 1,

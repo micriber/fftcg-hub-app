@@ -30,24 +30,24 @@ const card = {
 // https://github.com/bamlab/react-native-testing/blob/master/src/pages/Home/__tests__/Home.test.tsx
 describe('[Component] FFCardSimple', () => {
   it('renders correctly in grid view', async () => {
-    const root = render(<FFCardSimple card={card} isListView={false} />);
+    const root = render(<FFCardSimple card={card} viewType={'single'} />);
 
     expect(root.toJSON()).toMatchSnapshot();
   });
 
   it('renders correctly in list view', async () => {
-    const root = render(<FFCardSimple card={card} isListView={true} />);
+    const root = render(<FFCardSimple card={card} viewType={'list'} />);
 
     expect(root.toJSON()).toMatchSnapshot();
   });
 
   it('renders correctly but with fallback image', async () => {
-    const Sample = () => <FFCardSimple card={card} isListView={false} />;
+    const Sample = () => <FFCardSimple card={card} viewType={'grid'} />;
     const root = render(<Sample />);
-    fireEvent(root.getByTestId(`Image-${card.code}`), 'onError');
+    fireEvent(root.getByTestId(`grid-Image-${card.code}`), 'onError');
     root.update(<Sample />);
-    await waitFor(() => root.getByTestId(`Image-${card.code}`));
-    const element = root.getByTestId(`Image-${card.code}`);
+    await waitFor(() => root.getByTestId(`grid-Image-${card.code}`));
+    const element = root.getByTestId(`grid-Image-${card.code}`);
     expect(element.props.source.uri).toBe(
       getCardImageUrl(card.code, 'full', 'eg'),
     );
@@ -56,15 +56,15 @@ describe('[Component] FFCardSimple', () => {
   });
 
   it('renders correctly with twice callback', async () => {
-    const Sample = () => <FFCardSimple card={card} isListView={false} />;
+    const Sample = () => <FFCardSimple card={card} viewType={'grid'} />;
     const root = render(<Sample />);
-    fireEvent(root.getByTestId(`Image-${card.code}`), 'onError');
+    fireEvent(root.getByTestId(`grid-Image-${card.code}`), 'onError');
     root.update(<Sample />);
-    await waitFor(() => root.getByTestId(`Image-${card.code}`));
-    fireEvent(root.getByTestId(`Image-${card.code}`), 'onError');
+    await waitFor(() => root.getByTestId(`grid-Image-${card.code}`));
+    fireEvent(root.getByTestId(`grid-Image-${card.code}`), 'onError');
     root.update(<Sample />);
-    await waitFor(() => root.getByTestId(`Image-${card.code}`));
-    const element = root.getByTestId(`Image-${card.code}`);
+    await waitFor(() => root.getByTestId(`grid-Image-${card.code}`));
+    const element = root.getByTestId(`grid-Image-${card.code}`);
     expect(element.props.source.uri).toBe(
       getCardImageUrl(card.code, 'full', 'eg'),
     );

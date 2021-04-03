@@ -1,19 +1,21 @@
 import * as React from 'react';
+import {Appearance} from 'react-native';
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
-import {AppearanceProvider} from 'react-native-appearance';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AuthStackScreen} from './screens/Auth';
 import AuthContextProvider from './contexts/AuthContextProvider';
 import CollectionCardsContextProvider from './contexts/CollectionCardsContextProvider';
 import SearchCardsContextProvider from './contexts/SearchCardsContextProvider';
+import {Provider as PaperProvider} from 'react-native-paper';
+import themes from './theme';
 
 const App = () => {
-  // const scheme = useColorScheme();
-  // const theme = scheme === 'dark' ? RNDarkTheme : DefaultTheme;
+  const colorScheme = Appearance.getColorScheme();
   const theme = DefaultTheme;
 
   return (
-    <AppearanceProvider>
+    <PaperProvider
+      theme={colorScheme === 'dark' ? themes.primaryDark : themes.primary}>
       <SafeAreaProvider>
         <AuthContextProvider>
           <CollectionCardsContextProvider>
@@ -25,7 +27,7 @@ const App = () => {
           </CollectionCardsContextProvider>
         </AuthContextProvider>
       </SafeAreaProvider>
-    </AppearanceProvider>
+    </PaperProvider>
   );
 };
 

@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text, Button, TextInput, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
 import {SearchStackParamList} from './type';
+import {TextInput, Button} from 'react-native-paper';
 
 type SearchScreenNavigationProp = StackNavigationProp<
   SearchStackParamList,
@@ -25,13 +26,14 @@ const Search = ({navigation, route}: Props) => {
         autoCapitalize="none"
         placeholder={'Rechercher "1-001R", "Séphiroth"'}
         autoCorrect={false}
-        style={[styles.searchInput2]}
+        style={[styles.searchInput]}
         value={search}
         onChangeText={setSearch}
+        mode="outlined"
+        label={route.name}
       />
-      <Text>{route.name}</Text>
       <Button
-        title="Submit"
+        mode="contained"
         onPress={() =>
           navigation.navigate('SearchResult', {
             previousScreen: route.name,
@@ -39,8 +41,9 @@ const Search = ({navigation, route}: Props) => {
               search,
             },
           })
-        }
-      />
+        }>
+        Submit
+      </Button>
     </View>
   );
 };
@@ -52,20 +55,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   searchInput: {
-    borderRadius: 25,
-    borderColor: '#333',
-    backgroundColor: '#fff',
-    paddingLeft: 50,
-    // borderWidth: 1,
-    // borderColor: 'gray',
-  },
-  searchInput2: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: 'gray',
-    paddingLeft: 20,
     margin: 10,
-    borderRadius: 20,
   },
 });
 

@@ -13,8 +13,8 @@ describe('[Component] HeaderSwitch', () => {
   it('renders correctly with switch false', async () => {
     const root = render(
       <HeaderSwitch
-        leftIconName="appstore-o"
-        rightIconName="bars"
+        leftIconName="view-grid"
+        rightIconName="format-list-bulleted"
         value={false}
         onValueChange={() => {}}
       />,
@@ -26,8 +26,8 @@ describe('[Component] HeaderSwitch', () => {
   it('renders correctly with switch right', () => {
     const root = render(
       <HeaderSwitch
-        leftIconName="appstore-o"
-        rightIconName="bars"
+        leftIconName="view-grid"
+        rightIconName="format-list-bulleted"
         value={true}
         onValueChange={() => {}}
       />,
@@ -41,8 +41,8 @@ describe('[Component] HeaderSwitch', () => {
     const onValueChange = jest.fn((val) => (value = val));
     const Sample = () => (
       <HeaderSwitch
-        leftIconName="appstore-o"
-        rightIconName="bars"
+        leftIconName="view-grid"
+        rightIconName="format-list-bulleted"
         value={value}
         onValueChange={onValueChange}
       />

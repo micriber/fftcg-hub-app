@@ -1,6 +1,6 @@
 import React from 'react';
-import AntIcon from 'react-native-vector-icons/AntDesign';
-import {StyleSheet, Switch, View} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {Appbar, Switch} from 'react-native-paper';
 
 type Props = {
   leftIconName?: string;
@@ -16,27 +16,27 @@ const HeaderSwitch = ({
   onValueChange,
 }: Props) => {
   return (
-    <View style={styles.header}>
-      {leftIconName && <AntIcon name={leftIconName} size={20} />}
+    <Appbar style={styles.header}>
+      {leftIconName && <Appbar.Action icon={leftIconName} size={20} />}
       <Switch
         value={value}
         onValueChange={onValueChange}
         testID={`SwitcherState-${+value}`}
       />
-      {rightIconName && <AntIcon name={rightIconName} size={22} />}
-    </View>
+      {rightIconName && <Appbar.Action icon={rightIconName} size={22} />}
+    </Appbar>
   );
 };
 
 const styles = StyleSheet.create({
   header: {
-    width: '100%',
-    alignItems: 'center',
+    // width: '100%',
+    // alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
-    paddingTop: 10,
-    paddingBottom: 10,
-    backgroundColor: '#878683', //LightTheme.colors.primary,
+    // flexDirection: 'row',
+    // paddingTop: 10,
+    // paddingBottom: 10,
+    // backgroundColor: '#878683', //LightTheme.colors.primary,
   },
 });
 

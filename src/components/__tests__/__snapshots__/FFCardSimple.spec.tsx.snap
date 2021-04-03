@@ -5,8 +5,8 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
   style={
     Array [
       Object {
-        "marginLeft": 15,
-        "marginTop": 3,
+        "borderRadius": 5,
+        "justifyContent": "flex-end",
       },
       undefined,
     ]
@@ -37,8 +37,8 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
           },
           Array [
             Object {
-              "height": 444.6666666666667,
-              "width": 300,
+              "height": 404.24242424242425,
+              "width": 340.9090909090909,
             },
             undefined,
           ],
@@ -62,7 +62,7 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
             "top": 0,
           }
         }
-        testID="Image-1-001H"
+        testID="grid-Image-1-001H"
       />
     </View>
   </View>
@@ -74,8 +74,8 @@ exports[`[Component] FFCardSimple renders correctly in grid view 1`] = `
   style={
     Array [
       Object {
-        "marginLeft": 15,
-        "marginTop": 3,
+        "borderRadius": 5,
+        "justifyContent": "flex-end",
       },
       undefined,
     ]
@@ -106,8 +106,8 @@ exports[`[Component] FFCardSimple renders correctly in grid view 1`] = `
           },
           Array [
             Object {
-              "height": 444.6666666666667,
-              "width": 300,
+              "height": 404.24242424242425,
+              "width": 340.9090909090909,
             },
             undefined,
           ],
@@ -131,7 +131,7 @@ exports[`[Component] FFCardSimple renders correctly in grid view 1`] = `
             "top": 0,
           }
         }
-        testID="Image-1-001H"
+        testID="single-Image-1-001H"
       />
     </View>
   </View>
@@ -144,7 +144,7 @@ exports[`[Component] FFCardSimple renders correctly in list view 1`] = `
     Array [
       Object {
         "flexDirection": "row",
-        "height": 444.6666666666667,
+        "height": 404.24242424242425,
       },
       undefined,
     ]
@@ -175,8 +175,8 @@ exports[`[Component] FFCardSimple renders correctly in list view 1`] = `
           },
           Array [
             Object {
-              "height": 444.6666666666667,
-              "width": 300,
+              "height": 404.24242424242425,
+              "width": 340.9090909090909,
             },
             undefined,
           ],
@@ -200,7 +200,7 @@ exports[`[Component] FFCardSimple renders correctly in list view 1`] = `
             "top": 0,
           }
         }
-        testID="Image-1-001H"
+        testID="list-Image-1-001H"
       />
     </View>
   </View>
@@ -208,27 +208,73 @@ exports[`[Component] FFCardSimple renders correctly in list view 1`] = `
     style={
       Array [
         Object {
-          "borderColor": "#000",
-          "borderWidth": 1,
-          "height": 444.6666666666667,
-          "width": 450,
+          "flex": 1,
+          "height": 404.24242424242425,
         },
       ]
     }
   >
-    <Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "textAlign": "left",
+          },
+          undefined,
+        ]
+      }
+    >
       Code: 
       1-001H
     </Text>
-    <Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "textAlign": "left",
+          },
+          undefined,
+        ]
+      }
+    >
       Nom: 
       Boulou
     </Text>
-    <Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "textAlign": "left",
+          },
+          undefined,
+        ]
+      }
+    >
       Type: 
       blue
     </Text>
-    <Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "textAlign": "left",
+          },
+          undefined,
+        ]
+      }
+    >
       Element: 
       
       <Image
@@ -245,8 +291,35 @@ exports[`[Component] FFCardSimple renders correctly in list view 1`] = `
       />
       
     </Text>
-    <Text />
-    <Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "textAlign": "left",
+          },
+          undefined,
+        ]
+      }
+    />
+    <Text
+      numberOfLines={6}
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "textAlign": "left",
+          },
+          Object {
+            "flex": 1,
+          },
+        ]
+      }
+    >
       billy 《
       <Image
         source="test-file-stub"
@@ -301,8 +374,8 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
   style={
     Array [
       Object {
-        "marginLeft": 15,
-        "marginTop": 3,
+        "borderRadius": 5,
+        "justifyContent": "flex-end",
       },
       undefined,
     ]
@@ -333,8 +406,8 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
           },
           Array [
             Object {
-              "height": 444.6666666666667,
-              "width": 300,
+              "height": 404.24242424242425,
+              "width": 340.9090909090909,
             },
             undefined,
           ],
@@ -358,7 +431,7 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
             "top": 0,
           }
         }
-        testID="Image-1-001H"
+        testID="grid-Image-1-001H"
       />
     </View>
   </View>

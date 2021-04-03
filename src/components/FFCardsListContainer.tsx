@@ -5,6 +5,7 @@ import useAsync from '../utils/hooks/useAsync';
 import Loading from '../screens/Loading';
 import FFCardsList from './FFCardsList';
 import {defaultValue, SearchCardsContext} from '../contexts/SearchCardsContext';
+import FFCardsGridList from './FFCardsGridList';
 
 type Props = {
   cardsFilter?: GetCardsParams;
@@ -88,9 +89,21 @@ const FFCardsListContainer = ({
     return <Text>{JSON.stringify(state.value?.message)}</Text>;
   }
 
+  if (!isListView) {
+    return (
+      <FFCardsGridList
+        cards={cardContext.cardsList}
+        displayOwnPin={displayOwnPin}
+        onCardPress={onCardPress}
+        onRefresh={refresh}
+        onEndReached={handleLoadMore}
+        refreshing={refreshing}
+      />
+    );
+  }
+
   return (
     <FFCardsList
-      isListView={isListView}
       cards={cardContext.cardsList}
       displayOwnPin={displayOwnPin}
       onCardPress={onCardPress}
