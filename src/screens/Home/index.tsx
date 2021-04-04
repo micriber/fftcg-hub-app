@@ -8,12 +8,14 @@ import Header from '../../components/navigation/header';
 const HomeStack = createStackNavigator();
 
 const HomeStackScreen = () => (
-  <HomeStack.Navigator>
+  <HomeStack.Navigator
+    screenOptions={{
+      header: (headerProps: StackHeaderProps) => <Header {...headerProps} />,
+    }}>
     <HomeStack.Screen
       options={{
         headerTitle: 'Home',
         headerShown: true,
-        header: (headerProps) => <Header {...headerProps} />,
       }}
       name="Home"
       component={Home}
@@ -29,9 +31,6 @@ const HomeStackScreen = () => (
         return {
           ...(pageTitle ? {title: pageTitle} : {}),
           headerShown: true,
-          header: (headerProps: StackHeaderProps) => (
-            <Header {...headerProps} />
-          ),
         };
       }}
     />
