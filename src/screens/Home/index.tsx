@@ -1,15 +1,20 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, StackHeaderProps} from '@react-navigation/stack';
 import Home from './Home';
 import Search from './Search';
 import CardDetails from '../Cards/CardDetail';
+import Header from '../../components/navigation/header';
 
 const HomeStack = createStackNavigator();
 
 const HomeStackScreen = () => (
   <HomeStack.Navigator>
     <HomeStack.Screen
-      options={{headerShown: false}}
+      options={{
+        headerTitle: 'Home',
+        headerShown: true,
+        header: (headerProps) => <Header {...headerProps} />,
+      }}
       name="Home"
       component={Home}
     />
@@ -18,11 +23,17 @@ const HomeStackScreen = () => (
       name="CardDetails"
       component={CardDetails}
       // TODO: Remove this any
-      options={({route}: any) =>
-        route.params && (route.params as any).pageTitle
-          ? {title: route.params.pageTitle}
-          : {}
-      }
+      options={(props) => {
+        const {route} = props;
+        const pageTitle = route.params && (route.params as any).pageTitle;
+        return {
+          ...(pageTitle ? {title: pageTitle} : {}),
+          headerShown: true,
+          header: (headerProps: StackHeaderProps) => (
+            <Header {...headerProps} />
+          ),
+        };
+      }}
     />
   </HomeStack.Navigator>
 );
