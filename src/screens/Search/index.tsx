@@ -1,15 +1,19 @@
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, StackHeaderProps} from '@react-navigation/stack';
 import GlobalSearch from './GlobalSearch';
 import SearchResult from './SearchResult';
 import CardDetails from '../Cards/CardDetail';
 import * as React from 'react';
+import Header from '../../components/navigation/header';
 
 const SearchStack = createStackNavigator();
 
 const SearchStackScreen = () => (
-  <SearchStack.Navigator>
+  <SearchStack.Navigator
+    screenOptions={{
+      header: (headerProps: StackHeaderProps) => <Header {...headerProps} />,
+    }}>
     <SearchStack.Screen
-      options={{headerShown: false}}
+      options={{headerShown: true}}
       name="GlobalSearch"
       component={GlobalSearch}
     />
