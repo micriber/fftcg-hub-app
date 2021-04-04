@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SearchStackScreen} from '../Search';
 import {HomeStackScreen} from '../Home';
 import {SettingsStackScreen} from '../Settings';
-import {Theme} from '@react-navigation/native';
+import {Theme} from 'react-native-paper/lib/typescript/types';
 
 interface ITabBarIcon {
   color: string;

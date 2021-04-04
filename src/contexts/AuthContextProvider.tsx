@@ -1,6 +1,6 @@
 import React from 'react';
 import {Alert} from 'react-native';
-import { Api } from "../services/api";
+import {Api} from '../services/api';
 import {googleLogin, UserInfo} from '../services/api/user';
 import {signOut} from '../services/google';
 import {
@@ -59,14 +59,11 @@ const AuthContextProvider = ({children}) => {
 
         const idToken = userInfo?.idToken;
 
-        if (!idToken) {
-          Alert.alert(
-            'Erreur',
-            'Impossible de récupérer les informations requises depuis Google.',
-          );
+        if (!idToken || userInfo?.serverAuthCode === statusCodes.SIGN_IN_CANCELLED) {
           setIsLoading(false);
           return;
         }
+
         try {
           const signedInUser = await googleLogin(idToken);
           setIsLoading(false);
@@ -76,7 +73,7 @@ const AuthContextProvider = ({children}) => {
               info: signedInUser as UserInfo,
               idToken,
             });
-            Api.configure({ token: idToken })
+            Api.configure({token: idToken});
           }
         } catch (e) {
           Alert.alert(

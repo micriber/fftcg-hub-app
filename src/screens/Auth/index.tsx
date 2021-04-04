@@ -3,9 +3,9 @@ import * as React from 'react';
 import { Api } from "../../services/api";
 import Login from './Login';
 import {AuthContext} from '../../contexts/AuthContext';
-import {Theme} from '@react-navigation/native';
 import {BottomTabsNavigator} from '../BottomTabs';
 import Loading from '../Loading';
+import {Theme} from 'react-native-paper/lib/typescript/types';
 
 const AuthStack = createStackNavigator();
 
