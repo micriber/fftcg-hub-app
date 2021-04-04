@@ -1,10 +1,11 @@
-import {createStackNavigator} from '@react-navigation/stack';
 import * as React from 'react';
+
+import {createStackNavigator} from '@react-navigation/stack';
 import {Api} from '../../services/api';
 import Login from './Login';
 import {AuthContext} from '../../contexts/AuthContext';
-import {BottomTabsNavigator} from '../BottomTabs';
 import Loading from '../Loading';
+import DrawerNavigator from '../../components/navigation/drawer';
 import {Theme} from 'react-native-paper/lib/typescript/types';
 
 const AuthStack = createStackNavigator();
@@ -13,7 +14,8 @@ type Props = {
   theme: Theme;
 };
 
-const AuthStackScreen = ({theme}: Props) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const AuthStackScreen = (props: Props) => {
   const {user, signIn, isLoading} = React.useContext(AuthContext);
 
   React.useEffect(() => {
@@ -34,7 +36,7 @@ const AuthStackScreen = ({theme}: Props) => {
   }
 
   function loggedScreen() {
-    return <BottomTabsNavigator theme={theme} />;
+    return <DrawerNavigator />;
   }
 
   if (isLoading) {

@@ -1,6 +1,7 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import {Appbar, Switch} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import {Switch} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type Props = {
   leftIconName?: string;
@@ -16,27 +17,31 @@ const HeaderSwitch = ({
   onValueChange,
 }: Props) => {
   return (
-    <Appbar style={styles.header}>
-      {leftIconName && <Appbar.Action icon={leftIconName} size={20} />}
+    <View style={styles.header}>
+      {leftIconName && <Icon name={leftIconName} color="white" size={20} />}
       <Switch
         value={value}
         onValueChange={onValueChange}
+        style={styles.switch}
         testID={`SwitcherState-${+value}`}
       />
-      {rightIconName && <Appbar.Action icon={rightIconName} size={22} />}
-    </Appbar>
+      {rightIconName && <Icon name={rightIconName} color="white" size={22} />}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   header: {
-    // width: '100%',
-    // alignItems: 'center',
+    alignItems: 'center',
     justifyContent: 'center',
-    // flexDirection: 'row',
-    // paddingTop: 10,
-    // paddingBottom: 10,
-    // backgroundColor: '#878683', //LightTheme.colors.primary,
+    flexDirection: 'row',
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginLeft: 10,
+    marginRight: 5,
+  },
+  switch: {
+    marginLeft: 2,
   },
 });
 
