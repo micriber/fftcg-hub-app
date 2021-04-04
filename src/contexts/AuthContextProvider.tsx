@@ -3,10 +3,7 @@ import {Alert} from 'react-native';
 import {Api} from '../services/api';
 import {googleLogin, UserInfo} from '../services/api/user';
 import {signOut} from '../services/google';
-import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-community/google-signin/index';
+import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {AuthContext} from './AuthContext';
 
 type UserState = {

@@ -16,7 +16,7 @@ type Props = {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const AuthStackScreen = (props: Props) => {
-  const {user, signIn, isLoading} = React.useContext(AuthContext);
+  const {user, signIn, isLoading, signOut} = React.useContext(AuthContext);
 
   React.useEffect(() => {
     Api.configure({refreshCallback: () => signIn(true)});
@@ -36,7 +36,7 @@ const AuthStackScreen = (props: Props) => {
   }
 
   function loggedScreen() {
-    return <DrawerNavigator />;
+    return <DrawerNavigator signOut={signOut} />;
   }
 
   if (isLoading) {

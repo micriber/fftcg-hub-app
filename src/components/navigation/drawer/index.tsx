@@ -7,10 +7,14 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerNavigator = () => {
+type Props = {
+  signOut: () => {};
+};
+
+const DrawerNavigator = ({signOut}: Props) => {
   return (
     <Drawer.Navigator
-      drawerContent={DrawerContent}
+      drawerContent={(props) => <DrawerContent {...props} signOut={signOut} />}
       initialRouteName="Home"
       drawerContentOptions={{activeTintColor: '#000000'}}>
       <Drawer.Screen
@@ -31,11 +35,6 @@ const DrawerNavigator = () => {
           drawerIcon: () => <Icon name="magnify" size={26} />,
         }}
       />
-      {/*<Drawer.Screen*/}
-      {/*  name="Settings"*/}
-      {/*  component={SettingsStackScreen}*/}
-      {/*  options={{drawerLabel: 'Settings', drawerIcon: () => <></>}}*/}
-      {/*/>*/}
     </Drawer.Navigator>
   );
 };
