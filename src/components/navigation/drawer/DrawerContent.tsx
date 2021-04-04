@@ -4,10 +4,16 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerContentComponentProps,
+  DrawerItem,
 } from '@react-navigation/drawer';
 import {Avatar, Title, Drawer, Caption} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export const DrawerContent = (props: DrawerContentComponentProps) => {
+type Props = {
+  signOut: () => {};
+} & DrawerContentComponentProps;
+
+export const DrawerContent = (props: Props) => {
   return (
     <DrawerContentScrollView
       {...props}
@@ -25,6 +31,11 @@ export const DrawerContent = (props: DrawerContentComponentProps) => {
         </View>
         <Drawer.Section style={styles.drawerSection}>
           <DrawerItemList {...props} />
+          <DrawerItem
+            label="Logout"
+            onPress={props.signOut}
+            icon={() => <Icon name="logout" size={26} />}
+          />
         </Drawer.Section>
       </View>
     </DrawerContentScrollView>
