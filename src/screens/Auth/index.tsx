@@ -1,11 +1,11 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import * as React from 'react';
-import { Api } from "../../services/api";
+import {Api} from '../../services/api';
 import Login from './Login';
 import {AuthContext} from '../../contexts/AuthContext';
-import {Theme} from '@react-navigation/native';
 import {BottomTabsNavigator} from '../BottomTabs';
 import Loading from '../Loading';
+import {Theme} from 'react-native-paper/lib/typescript/types';
 
 const AuthStack = createStackNavigator();
 
@@ -17,7 +17,7 @@ const AuthStackScreen = ({theme}: Props) => {
   const {user, signIn, isLoading} = React.useContext(AuthContext);
 
   React.useEffect(() => {
-    Api.configure({ refreshCallback: () => signIn(true) })
+    Api.configure({refreshCallback: () => signIn(true)});
     signIn(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -41,11 +41,7 @@ const AuthStackScreen = ({theme}: Props) => {
     return <Loading />;
   }
 
-  return !user.isSignedIn ? (
-    loginScreen()
-  ) : (
-    loggedScreen()
-  );
+  return !user.isSignedIn ? loginScreen() : loggedScreen();
 };
 
 export {AuthStack, AuthStackScreen};

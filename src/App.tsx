@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Appearance} from 'react-native';
-import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
+import {Appearance, StatusBar} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AuthStackScreen} from './screens/Auth';
 import AuthContextProvider from './contexts/AuthContextProvider';
@@ -11,16 +11,16 @@ import themes from './theme';
 
 const App = () => {
   const colorScheme = Appearance.getColorScheme();
-  const theme = DefaultTheme;
+  const theme = colorScheme === 'dark' ? themes.primaryDark : themes.primary;
 
   return (
-    <PaperProvider
-      theme={colorScheme === 'dark' ? themes.primaryDark : themes.primary}>
+    <PaperProvider theme={theme}>
+      <StatusBar backgroundColor={theme.colors.accent} />
       <SafeAreaProvider>
         <AuthContextProvider>
           <CollectionCardsContextProvider>
             <SearchCardsContextProvider>
-              <NavigationContainer theme={theme}>
+              <NavigationContainer>
                 <AuthStackScreen theme={theme} />
               </NavigationContainer>
             </SearchCardsContextProvider>

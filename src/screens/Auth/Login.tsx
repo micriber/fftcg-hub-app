@@ -1,13 +1,16 @@
 import React from 'react';
-import {StyleSheet, SafeAreaView, Text, Alert} from 'react-native';
+import {SafeAreaView, Text, View, Dimensions, Image} from 'react-native';
 import {
   GoogleSigninButton,
-  statusCodes,
 } from '@react-native-community/google-signin';
-import isEmpty from 'lodash.isempty';
 import {AuthContext} from '../../contexts/AuthContext';
+import {withTheme} from 'react-native-paper';
+import Vector from '../../assets/svg/login.svg';
+import {screenFonts} from '../../theme';
 
-type Props = {};
+type Props = {
+  theme: ReactNativePaper.Theme;
+};
 
 type ErrorWithCode = Error & {code?: string};
 
@@ -15,7 +18,7 @@ type State = {
   error: ErrorWithCode | null;
 };
 
-export default class Login extends React.Component<Props, State> {
+class Login extends React.Component<Props, State> {
   static contextType = AuthContext;
 
   state: State = {
@@ -23,84 +26,52 @@ export default class Login extends React.Component<Props, State> {
   };
 
   render() {
+    const w = Dimensions.get('window');
     return (
-      <SafeAreaView style={[styles.container, styles.pageContainer]}>
-        {this.renderSignInButton()}
-      </SafeAreaView>
+      <View style={{flex: 1, backgroundColor: this.props.theme.colors.active}}>
+        <View style={{flex: 1}}>
+          <Vector
+            height={(w.width + 10) / 2.25}
+            width={w.width + 10}
+            fill={this.props.theme.colors.accent}
+          />
+        </View>
+        <View
+          style={{alignItems: 'center', flex: 1, justifyContent: 'flex-start'}}>
+          <Image source={require('../../assets/logo/round.png')} />
+          <Text
+            style={{
+              fontSize: 48,
+              color: this.props.theme.colors.lightGrey,
+              fontFamily: screenFonts.login.title,
+            }}>
+            FFTCG Hub
+          </Text>
+        </View>
+        <SafeAreaView
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            flex: 1,
+          }}>
+          <GoogleSigninButton
+            size={GoogleSigninButton.Size.Standard}
+            color={GoogleSigninButton.Color.Light}
+            onPress={async () => {
+              this.context.signIn();
+            }}
+          />
+        </SafeAreaView>
+        <View style={{rotation: 180}}>
+          <Vector
+            height={(w.width + 10) / 2.25}
+            width={w.width + 10}
+            fill={this.props.theme.colors.accent}
+          />
+        </View>
+      </View>
     );
   }
-
-  renderSignInButton() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <GoogleSigninButton
-          size={GoogleSigninButton.Size.Wide}
-          color={GoogleSigninButton.Color.Dark}
-          onPress={this._signIn}
-        />
-        {this.renderError()}
-      </SafeAreaView>
-    );
-  }
-
-  renderError() {
-    const {error} = this.state;
-
-    if (error && !isEmpty(error)) {
-      const msg = `${JSON.stringify(this.state)} | ${error.toString()} ${
-        error.code ? error.code : ''
-      }`;
-      return <Text>{msg}</Text>;
-    }
-
-    return null;
-  }
-
-  _signIn = async () => {
-    try {
-      await this.context.signIn();
-    } catch (error) {
-      switch (error.code) {
-        case statusCodes.SIGN_IN_CANCELLED:
-          // sign in was cancelled
-          Alert.alert('Connexion interrompue.');
-          break;
-        case statusCodes.IN_PROGRESS:
-          // operation (eg. sign in) already in progress
-          Alert.alert('Connexion en cours.');
-          break;
-        case statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
-          // android only
-          Alert.alert(
-            "Play services n'est pas installé ou est une version trop ancienne.",
-          );
-          break;
-        default:
-          Alert.alert('Something went wrong', error.toString());
-          this.setState({
-            error,
-          });
-      }
-    }
-  };
 }
 
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  userInfo: {fontSize: 18, fontWeight: 'bold', marginBottom: 20},
-  pageContainer: {flex: 1},
-});
+export default withTheme(Login);

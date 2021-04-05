@@ -40,15 +40,24 @@ const fontConfig: {ios: Fonts; android: Fonts} = {
   },
 };
 
-const primary = {
+const screenFonts = {
+  login: {
+    title: 'AbhayaLibre-Regular',
+  },
+};
+
+const primary: ReactNativePaper.Theme = {
   dark: false,
   roundness: 4,
   colors: {
-    primary: '#034748',
-    accent: '#11B5E4',
-    background: '#FFFFFF',
+    primary: '#5286C5',
+    accent: '#1D2F45',
+    background: '#F2F2F2',
+    active: '#3D6391',
+    lightGrey: '#D1DEEE',
+    darkGrey: '#94AECE',
     surface: '#FFFFFF',
-    text: '#001021',
+    text: '#1D2F45',
     error: '#B71F0E',
     disabled: '#BEC6C6',
     placeholder: '#1481BA',
@@ -61,22 +70,25 @@ const primary = {
   animation: {scale: 1.0},
 };
 
-const primaryDark = {
+const primaryDark: ReactNativePaper.Theme = {
   dark: true,
   roundness: 4,
   colors: {
-    primary: '#1481BA',
-    accent: '#11B5E4',
-    background: '#343434',
-    surface: '#3a3a3a',
-    text: '#FFFFFF',
+    primary: '#5286C5',
+    accent: '#1D2F45',
+    background: '#F2F2F2',
+    active: '#3D6391',
+    lightGrey: '#D1DEEE',
+    darkGrey: '#94AECE',
+    surface: '#FFFFFF',
+    text: '#1D2F45',
     error: '#B71F0E',
-    disabled: '#FFFFFF',
-    placeholder: '#034748',
-    backdrop: '#343434',
-    onSurface: '#FFFFFF',
-    onBackground: '#FFFFFF',
-    notification: '#ff80ab',
+    disabled: '#BEC6C6',
+    placeholder: '#1481BA',
+    backdrop: '#001021',
+    onSurface: '#000000',
+    onBackground: '#000000',
+    notification: '#f50057',
   },
   fonts: configureFonts(fontConfig),
   animation: {scale: 1.0},
@@ -86,3 +98,5 @@ export default {
   primary,
   primaryDark,
 };
+
+export { screenFonts };
