@@ -22,7 +22,6 @@ const DrawerNavigator = ({signOut}: Props) => {
         component={HomeStackScreen}
         options={{
           drawerLabel: 'Home',
-          // headerTitle: 'Home',
           drawerIcon: () => <Icon name="home" size={26} />,
         }}
       />
@@ -30,7 +29,6 @@ const DrawerNavigator = ({signOut}: Props) => {
         name="Search"
         component={SearchStackScreen}
         options={{
-          // header: Header,
           drawerLabel: 'Search',
           drawerIcon: () => <Icon name="magnify" size={26} />,
         }}

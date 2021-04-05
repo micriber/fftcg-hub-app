@@ -12,8 +12,6 @@ export type HomeScreenNavigationProp = StackNavigationProp<
   'Home'
 >;
 
-// type HomeScreenRouteProp = RouteProp<HomeStackParamList, 'Home'>;
-
 type Props = {
   navigation: HomeScreenNavigationProp;
 };
@@ -26,7 +24,6 @@ const Home = ({navigation}: Props) => {
       header: (headerProps) => (
         <Header
           {...headerProps}
-          // navigation={navigation}
           headerRight={
             <HeaderSwitch
               leftIconName="view-grid"

@@ -6,7 +6,7 @@ import {
   DrawerContentComponentProps,
   DrawerItem,
 } from '@react-navigation/drawer';
-import {Avatar, Title, Drawer, Caption} from 'react-native-paper';
+import {Avatar, Title, Drawer, Caption, useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type Props = {
@@ -14,17 +14,22 @@ type Props = {
 } & DrawerContentComponentProps;
 
 export const DrawerContent = (props: Props) => {
+  const theme = useTheme();
   return (
     <DrawerContentScrollView
       {...props}
       contentContainerStyle={styles.contentContainerStyle}>
       <View style={styles.drawerContent}>
-        <View style={styles.userInfoSection}>
+        <View
+          style={[
+            styles.userInfoSection,
+            {backgroundColor: theme.colors.active},
+          ]}>
           <Avatar.Image
             source={require('../../../assets/logo/ic_launcher_round.png')}
             size={75}
           />
-          <View style={{marginLeft: 15, flexDirection: 'column'}}>
+          <View style={styles.userInfoHeader}>
             <Title style={styles.title}>FFTCG Hub</Title>
             <Caption style={styles.caption}>Christophe Coquelet</Caption>
           </View>
@@ -55,10 +60,13 @@ const styles = StyleSheet.create({
   },
   userInfoSection: {
     paddingLeft: 20,
-    backgroundColor: '#3d6391',
     flexDirection: 'row',
     paddingTop: 20,
     paddingBottom: 20,
+  },
+  userInfoHeader: {
+    marginLeft: 15,
+    flexDirection: 'column',
   },
   drawerContent: {
     flex: 1,
