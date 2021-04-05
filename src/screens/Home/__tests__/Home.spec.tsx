@@ -5,12 +5,12 @@
 import 'react-native';
 import React from 'react';
 import Home from '../Home';
+import {HomeScreenNavigationProp} from '../Home';
 import {
   fireEvent,
   render,
   waitForElementToBeRemoved,
 } from '@testing-library/react-native';
-import {Alert} from 'react-native';
 jest.mock('../../../services/api/card', () => ({
   getCards: jest.fn(),
 }));
@@ -40,12 +40,34 @@ const data = [
   },
 ];
 
+let navigation = {
+  // state: {params: {}},
+  dispatch: jest.fn(),
+  goBack: jest.fn(),
+  // dismiss: jest.fn(),
+  navigate: jest.fn(),
+  // openDrawer: jest.fn(),
+  // closeDrawer: jest.fn(),
+  // toggleDrawer: jest.fn(),
+  // getParam: jest.fn(),
+  setOptions: jest.fn(),
+  setParams: jest.fn(),
+  addListener: jest.fn(),
+  push: jest.fn(),
+  replace: jest.fn(),
+  pop: jest.fn(),
+  popToTop: jest.fn(),
+  isFocused: jest.fn(),
+};
+
 // More about testing in this repository:
 // https://github.com/bamlab/react-native-testing/blob/master/src/pages/Home/__tests__/Home.test.tsx
 describe('[Page] Home', () => {
   it('renders correctly', async () => {
     (getCards as jest.Mock).mockResolvedValue({data});
-    const root = render(<Home />);
+    const root = render(
+      <Home navigation={(navigation as unknown) as HomeScreenNavigationProp} />,
+    );
 
     expect(root.toJSON()).toMatchSnapshot(); // Loading screen
     await waitForElementToBeRemoved(() => root.getByTestId('Loader'));
@@ -57,7 +79,9 @@ describe('[Page] Home', () => {
       message: 'INTERNAL_SERVER_ERROR',
     });
 
-    const root = render(<Home />);
+    const root = render(
+      <Home navigation={(navigation as unknown) as HomeScreenNavigationProp} />,
+    );
 
     expect(root.toJSON()).toMatchSnapshot(); // Loading screen
     await waitForElementToBeRemoved(() => root.getByTestId('Loader'));
@@ -69,7 +93,9 @@ describe('[Page] Home', () => {
       message: '401 Unauthorized',
     });
 
-    const root = render(<Home />);
+    const root = render(
+      <Home navigation={(navigation as unknown) as HomeScreenNavigationProp} />,
+    );
 
     expect(root.toJSON()).toMatchSnapshot(); // Loading screen
     await waitForElementToBeRemoved(() => root.getByTestId('Loader'));

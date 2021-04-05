@@ -7,7 +7,10 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {HomeStackParamList} from './type';
 import Header from '../../components/navigation/header';
 
-type HomeScreenNavigationProp = StackNavigationProp<HomeStackParamList, 'Home'>;
+export type HomeScreenNavigationProp = StackNavigationProp<
+  HomeStackParamList,
+  'Home'
+>;
 
 // type HomeScreenRouteProp = RouteProp<HomeStackParamList, 'Home'>;
 

@@ -49,23 +49,13 @@ const cards = [
 // https://github.com/bamlab/react-native-testing/blob/master/src/pages/Home/__tests__/Home.test.tsx
 describe('[Component] FFCardsList', () => {
   it('renders correctly in grid view', async () => {
-    const root = render(<FFCardsList isListView={false} cards={cards} />);
+    const root = render(<FFCardsList cards={cards} />);
 
     expect(root.toJSON()).toMatchSnapshot();
   });
 
   it('renders correctly in list view', async () => {
-    const root = render(<FFCardsList isListView={true} cards={cards} />);
-
-    expect(root.toJSON()).toMatchSnapshot();
-  });
-
-  it('renders correctly with children', async () => {
-    const root = render(
-      <FFCardsList isListView={true} cards={cards}>
-        <Text>End of list</Text>
-      </FFCardsList>,
-    );
+    const root = render(<FFCardsList cards={cards} />);
 
     expect(root.toJSON()).toMatchSnapshot();
   });
