@@ -34,7 +34,6 @@ const Search = ({route, navigation}: Props) => {
       header: (headerProps) => (
         <Header
           {...headerProps}
-          // navigation={navigation}
           headerRight={
             <HeaderSwitch
               leftIconName="view-grid"

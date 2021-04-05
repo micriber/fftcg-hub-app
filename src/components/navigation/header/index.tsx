@@ -45,7 +45,6 @@ const Header = (props: Props) => {
           <Icon name="menu" size={30} color="white" />
         </TouchableOpacity>
       )}
-      {/*<Appbar.Content color={'white'} title={previous ? title : ''} />*/}
       <Appbar.Content color={'white'} title={title} />
       {headerRight}
     </Appbar.Header>
