@@ -6,6 +6,7 @@ import {
 import {AuthContext} from '../../contexts/AuthContext';
 import {withTheme} from 'react-native-paper';
 import Vector from '../../assets/svg/login.svg';
+import {screenFonts} from '../../theme';
 
 type Props = {
   theme: ReactNativePaper.Theme;
@@ -25,7 +26,6 @@ class Login extends React.Component<Props, State> {
   };
 
   render() {
-    console.log(this.props.theme.colors);
     const w = Dimensions.get('window');
     return (
       <View style={{flex: 1, backgroundColor: this.props.theme.colors.active}}>
@@ -43,7 +43,7 @@ class Login extends React.Component<Props, State> {
             style={{
               fontSize: 48,
               color: this.props.theme.colors.lightGrey,
-              fontFamily: 'AbhayaLibre-Regular',
+              fontFamily: screenFonts.login.title,
             }}>
             FFTCG Hub
           </Text>
