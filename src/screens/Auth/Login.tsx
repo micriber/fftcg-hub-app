@@ -1,17 +1,14 @@
 import React from 'react';
-import {SafeAreaView, Text, Alert, View, Dimensions, Image} from 'react-native';
+import {SafeAreaView, Text, View, Dimensions, Image} from 'react-native';
 import {
   GoogleSigninButton,
-  statusCodes,
 } from '@react-native-community/google-signin';
-import isEmpty from 'lodash.isempty';
 import {AuthContext} from '../../contexts/AuthContext';
-import {Theme} from 'react-native-paper/lib/typescript/types';
 import {withTheme} from 'react-native-paper';
 import Vector from '../../assets/svg/login.svg';
 
 type Props = {
-  theme: Theme;
+  theme: ReactNativePaper.Theme;
 };
 
 type ErrorWithCode = Error & {code?: string};
@@ -28,6 +25,7 @@ class Login extends React.Component<Props, State> {
   };
 
   render() {
+    console.log(this.props.theme.colors);
     const w = Dimensions.get('window');
     return (
       <View style={{flex: 1, backgroundColor: this.props.theme.colors.active}}>
@@ -44,7 +42,7 @@ class Login extends React.Component<Props, State> {
           <Text
             style={{
               fontSize: 48,
-              color: this.props.theme.colors.gris_clair,
+              color: this.props.theme.colors.lightGrey,
               fontFamily: 'AbhayaLibre-Regular',
             }}>
             FFTCG Hub

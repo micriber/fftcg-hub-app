@@ -40,7 +40,13 @@ const fontConfig: {ios: Fonts; android: Fonts} = {
   },
 };
 
-const primary = {
+const screenFonts = {
+  login: {
+    title: 'AbhayaLibre-Regular',
+  },
+};
+
+const primary: ReactNativePaper.Theme = {
   dark: false,
   roundness: 4,
   colors: {
@@ -48,8 +54,8 @@ const primary = {
     accent: '#1D2F45',
     background: '#F2F2F2',
     active: '#3D6391',
-    gris_clair: '#D1DEEE',
-    gris_fonce: '#94AECE',
+    lightGrey: '#D1DEEE',
+    darkGrey: '#94AECE',
     surface: '#FFFFFF',
     text: '#1D2F45',
     error: '#B71F0E',
@@ -64,7 +70,7 @@ const primary = {
   animation: {scale: 1.0},
 };
 
-const primaryDark = {
+const primaryDark: ReactNativePaper.Theme = {
   dark: true,
   roundness: 4,
   colors: {
@@ -72,8 +78,8 @@ const primaryDark = {
     accent: '#1D2F45',
     background: '#F2F2F2',
     active: '#3D6391',
-    gris_clair: '#D1DEEE',
-    gris_fonce: '#94AECE',
+    lightGrey: '#D1DEEE',
+    darkGrey: '#94AECE',
     surface: '#FFFFFF',
     text: '#1D2F45',
     error: '#B71F0E',
@@ -92,3 +98,5 @@ export default {
   primary,
   primaryDark,
 };
+
+export { screenFonts };
