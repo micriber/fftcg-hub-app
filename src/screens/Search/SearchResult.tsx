@@ -58,6 +58,7 @@ const Search = ({route, navigation}: Props) => {
         onCardPress={onCardPress}
         cardsFilter={{search}}
         cardsContext={SearchCardsContext}
+        isInitialize
       />
     </>
   );

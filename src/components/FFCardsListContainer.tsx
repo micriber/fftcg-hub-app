@@ -1,13 +1,19 @@
-import React, {Context, useEffect} from 'react';
+import React, {Context, useEffect, useRef} from 'react';
 import {Text} from 'react-native';
 import {Card, getCards, GetCardsParams} from '../services/api/card';
-import useAsync from '../utils/hooks/useAsync';
+// import useAsync from '../utils/hooks/useAsync';
+
+// import {useAsync} from './useAsync';
+
 import Loading from '../screens/Loading';
 import FFCardsList from './FFCardsList';
 import {defaultValue, SearchCardsContext} from '../contexts/SearchCardsContext';
 import FFCardsGridList from './FFCardsGridList';
+import useAsyncFn from '../utils/hooks/useAsyncFn';
+import {RevealFromBottomAndroid} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 
 type Props = {
+  executeFetch: boolean;
   cardsFilter?: GetCardsParams;
   displayOwnPin?: boolean;
   isListView: boolean;
@@ -16,12 +22,14 @@ type Props = {
 };
 
 const FFCardsListContainer = ({
+  executeFetch = false,
   isListView,
   displayOwnPin = true,
   cardsFilter = {},
   onCardPress = () => {},
   cardsContext = SearchCardsContext,
 }: Props) => {
+  let isRendered: React.MutableRefObject<boolean> = useRef(false);
   const cardContext = React.useContext(cardsContext);
   const perPage = 6;
   const [page, setPage] = React.useState(1);
@@ -30,9 +38,12 @@ const FFCardsListContainer = ({
   const [search, setSearch] = React.useState({});
 
   const loadCards = async () => {
+    console.log('fired');
     const data = await getCards({
       params: {...cardsFilter, page, perPage},
     });
+
+    // console.log({data});
 
     if (data && 'cards' in data) {
       cardContext.setCardsList([
@@ -40,21 +51,36 @@ const FFCardsListContainer = ({
         ...data.cards,
       ]);
     }
-
-    setSearch(cardsFilter);
-    setStopFetch(false);
-    setRefreshing(false);
+    if (isRendered) {
+      setSearch(cardsFilter);
+      setStopFetch(false);
+      setRefreshing(false);
+    }
 
     return data;
   };
 
+  const loadCardsIfFired = async () => executeFetch && (await loadCards());
+
+  const [state, callback] = useAsyncFn(loadCardsIfFired, [], {
+    loading: false,
+  });
+
   useEffect(() => {
-    if (cardContext.cardsList.length === 0 && refreshing) {
+    isRendered.current = true;
+    callback();
+    return () => {
+      isRendered.current = false;
+    };
+  }, [callback]);
+
+  useEffect(() => {
+    if (cardContext.cardsList.length === 0 && executeFetch) {
       loadCards();
     }
-  }, [cardContext.cardsList]);
+  }, [cardContext.cardsList, executeFetch]);
 
-  const state = useAsync(loadCards, [page]);
+  // const state = useAsync(loadCards, []);
 
   const refresh = () => {
     if (!stopFetch) {

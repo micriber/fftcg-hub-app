@@ -45,8 +45,13 @@ const FFCardsList = ({
         data={cards}
         keyExtractor={(item) => item.code}
         renderItem={renderItem}
-        onEndReached={onEndReached}
-        onEndReachedThreshold={1}
+        onEndReached={({distanceFromEnd}) => {
+          if (distanceFromEnd < 0) {
+            return;
+          }
+          onEndReached();
+        }}
+        onEndReachedThreshold={1.5}
         refreshing={refreshing}
         onRefresh={onRefresh}
         ListEmptyComponent={!refreshing ? <FFCardsListEmpty /> : null}
