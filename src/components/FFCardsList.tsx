@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, FlexStyle, StyleSheet, View} from 'react-native';
 import {Divider, FAB, useTheme} from 'react-native-paper';
 import FFCardSimple from './FFCardSimple';
 import FFCardsListEmpty from './FFCardsListEmpty';
@@ -13,6 +13,7 @@ type Props = {
   onRefresh?: () => void;
   displayOwnPin?: boolean;
   refreshing?: boolean;
+  style?: FlexStyle;
 };
 
 const FFCardsList = ({
@@ -22,6 +23,7 @@ const FFCardsList = ({
   onCardPress = () => {},
   onRefresh = () => {},
   onEndReached = () => {},
+  style,
 }: Props) => {
   const {colors} = useTheme();
   const renderItem = ({item}: {item: Card}) => (
@@ -37,7 +39,12 @@ const FFCardsList = ({
   );
   let refList;
   return (
-    <View style={[styles.listContainer, {backgroundColor: colors.background}]}>
+    <View
+      style={[
+        styles.listContainer,
+        {backgroundColor: colors.background},
+        style,
+      ]}>
       <FlatList
         initialNumToRender={1}
         numColumns={1}
