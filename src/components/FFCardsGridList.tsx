@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, StyleSheet, View} from 'react-native';
+import {FlexStyle, StyleSheet, View} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
 import {FAB, useTheme} from 'react-native-paper';
 import FFCardSimple from './FFCardSimple';
@@ -14,6 +14,7 @@ type Props = {
   onRefresh?: () => void;
   displayOwnPin?: boolean;
   refreshing?: boolean;
+  style?: FlexStyle;
 };
 
 const FFCardsGridList = ({
@@ -23,6 +24,7 @@ const FFCardsGridList = ({
   onCardPress = () => {},
   onRefresh = () => {},
   onEndReached = () => {},
+  style,
 }: Props) => {
   const {colors} = useTheme();
   const renderItem = ({item}: {item: Card}) => (
@@ -35,7 +37,12 @@ const FFCardsGridList = ({
   );
   let refList;
   return (
-    <View style={[styles.gridContainer, {backgroundColor: colors.background}]}>
+    <View
+      style={[
+        styles.gridContainer,
+        {backgroundColor: colors.background},
+        style,
+      ]}>
       <FlatGrid
         key={1}
         spacing={10}

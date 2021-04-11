@@ -13,7 +13,6 @@ import FFCardsList from '../../components/FFCardsList';
 import useFetchCards from '../../utils/hooks/useFetchCards';
 import Loading from '../Loading';
 import useDidMountEffect from '../../utils/hooks/useDidMountEffect';
-// import FFCardsListContainer from '../../components/FFCardsListContainer';
 
 type SearchScreenNavigationProp = StackNavigationProp<
   SearchStackParamList,
@@ -31,27 +30,19 @@ const Search = ({navigation}: Props) => {
   const [filters, setFilters] = React.useState({});
   const {
     page,
-    setPage,
-    stopFetch,
-    setStopFetch,
     refreshing,
-    setRefreshing,
-    search,
-    setSearch,
     cardContext,
     state,
     loadCards,
     refresh,
     handleLoadMore,
   } = useFetchCards({
-    // cardsFilter: filters,
     cardsContext: SearchCardsContext,
   });
 
   const submit = async (fields: SubmitParams) => {
     console.log('Receive: ', fields);
     setFilters(fields);
-    // await loadCards(filters);
   };
 
   useDidMountEffect(() => {
@@ -83,7 +74,10 @@ const Search = ({navigation}: Props) => {
     });
   }, [isListView, navigation]);
 
-  const Layout = isListView ? (
+  // {...(isListView ? {style: styles.displayNone} : {})}
+  // {...(!isListView ? {style: styles.displayNone} : {})}
+
+  const Layout = !isListView ? (
     <FFCardsGridList
       cards={cardContext.cardsList}
       displayOwnPin={true}
@@ -110,13 +104,6 @@ const Search = ({navigation}: Props) => {
   return (
     <View>
       <SearchForm onSubmit={submit} />
-      {/*<FFCardsListContainer*/}
-      {/*  executeFetch={isInitialize}*/}
-      {/*  isListView={isListView}*/}
-      {/*  onCardPress={onCardPress}*/}
-      {/*  cardsFilter={filters}*/}
-      {/*  cardsContext={SearchCardsContext}*/}
-      {/*/>*/}
       {state.loading && page === 1 && <Loading />}
       {state.error && page === 1 && <Text>{state.error}</Text>}
       {(!state.value || (state.value && 'message' in state.value)) &&
@@ -129,6 +116,9 @@ const Search = ({navigation}: Props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const styles = StyleSheet.create({
+  displayNone: {display: 'none'},
+});
 
 export default Search;
