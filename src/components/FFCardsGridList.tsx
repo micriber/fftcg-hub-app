@@ -43,7 +43,13 @@ const FFCardsGridList = ({
         itemDimension={175}
         data={cards || []}
         renderItem={renderItem}
-        onEndReached={onEndReached}
+        onEndReached={({distanceFromEnd}) => {
+          if (distanceFromEnd < 0) {
+            return;
+          }
+          onEndReached();
+        }}
+        onEndReachedThreshold={1.5}
         refreshing={refreshing}
         onRefresh={onRefresh}
         ListEmptyComponent={!refreshing ? <FFCardsListEmpty /> : null}
@@ -65,7 +71,7 @@ const FFCardsGridList = ({
 };
 const styles = StyleSheet.create({
   gridContainer: {
-    flex: 1,
+    // flex: 1,
   },
   fab: {
     position: 'absolute',
