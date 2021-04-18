@@ -10,7 +10,6 @@ import FFCardsList from './FFCardsList';
 import {defaultValue, SearchCardsContext} from '../contexts/SearchCardsContext';
 import FFCardsGridList from './FFCardsGridList';
 import useAsyncFn from '../utils/hooks/useAsyncFn';
-import {RevealFromBottomAndroid} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 
 type Props = {
   executeFetch: boolean;

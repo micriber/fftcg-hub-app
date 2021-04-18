@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Keyboard} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
 import {SearchStackParamList} from './type';
@@ -41,12 +41,11 @@ const Search = ({navigation}: Props) => {
   });
 
   const submit = async (fields: SubmitParams) => {
-    console.log('Receive: ', fields);
     setFilters(fields);
+    Keyboard.dismiss();
   };
 
   useDidMountEffect(() => {
-    console.log({page});
     loadCards(filters);
   }, [filters]);
 
@@ -79,6 +78,7 @@ const Search = ({navigation}: Props) => {
 
   const Layout = !isListView ? (
     <FFCardsGridList
+      style={styles.listContainer}
       cards={cardContext.cardsList}
       displayOwnPin={true}
       onCardPress={onCardPress}
@@ -90,6 +90,7 @@ const Search = ({navigation}: Props) => {
     />
   ) : (
     <FFCardsList
+      style={styles.listContainer}
       cards={cardContext.cardsList}
       displayOwnPin={true}
       onCardPress={onCardPress}
@@ -102,8 +103,8 @@ const Search = ({navigation}: Props) => {
   );
 
   return (
-    <View>
-      <SearchForm onSubmit={submit} />
+    <View style={styles.container}>
+      <SearchForm onSubmit={submit} style={styles.formContainer} />
       {state.loading && page === 1 && <Loading />}
       {state.error && page === 1 && <Text>{state.error}</Text>}
       {(!state.value || (state.value && 'message' in state.value)) &&
@@ -116,9 +117,17 @@ const Search = ({navigation}: Props) => {
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const styles = StyleSheet.create({
   displayNone: {display: 'none'},
+  container: {
+    flex: 1,
+  },
+  formContainer: {
+    elevation: 10,
+  },
+  listContainer: {
+    height: '90%',
+  },
 });
 
 export default Search;

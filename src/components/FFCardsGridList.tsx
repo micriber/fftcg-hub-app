@@ -33,6 +33,7 @@ const FFCardsGridList = ({
       viewType={'grid'}
       displayOwnPin={displayOwnPin}
       onPress={onCardPress}
+      containerStyle={styles.flex1}
     />
   );
   let refList;
@@ -44,6 +45,7 @@ const FFCardsGridList = ({
         style,
       ]}>
       <FlatGrid
+        contentContainerStyle={styles.contentContainerStyle}
         key={1}
         spacing={10}
         keyExtractor={(item) => item.code}
@@ -85,6 +87,13 @@ const styles = StyleSheet.create({
     margin: 16,
     right: 0,
     bottom: 0,
+  },
+  contentContainerStyle: {
+    minHeight: '100%',
+    paddingBottom: 50,
+  },
+  flex1: {
+    flex: 1,
   },
 });
 

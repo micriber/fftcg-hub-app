@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchInput from '../common/form-fields/SearchInput';
 import {Button} from 'react-native-paper';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, ViewStyle} from 'react-native';
 
 export type SubmitParams = {
   search: string;
@@ -9,12 +9,13 @@ export type SubmitParams = {
 
 type Props = {
   onSubmit: (fields: SubmitParams) => void;
+  style?: ViewStyle;
 };
 
 const SearchForm = (props: Props) => {
   const [search, setSearch] = React.useState('');
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, props.style]}>
       <SearchInput
         placeholder={'Rechercher "1-001R", "Séphiroth"'}
         value={search}
@@ -30,7 +31,7 @@ const SearchForm = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    // marginTop: 10,
     marginLeft: 10,
     marginRight: 10,
   },
