@@ -31,21 +31,33 @@ const Header = (props: Props) => {
       : scene.route.name;
 
   return (
-    <Appbar.Header theme={{colors: {primary: theme.colors.surface}}}>
+    <Appbar.Header
+      theme={{colors: {primary: theme.colors.accent}}}
+      style={{height: 47}}>
       {previous ? (
         <Appbar.BackAction
           onPress={() => navigation.pop()}
-          color={theme.colors.primary}
+          color={theme.colors.lightGrey}
         />
       ) : (
         <TouchableOpacity
           onPress={() => {
             (navigation as any).toggleDrawer();
           }}>
-          <Icon name="menu" size={30} color="white" />
+          <Icon
+            name="menu"
+            size={24}
+            color={theme.colors.lightGrey}
+            style={{marginHorizontal: 16}}
+          />
         </TouchableOpacity>
       )}
-      <Appbar.Content color={'white'} title={title} />
+      <Appbar.Content
+        color={theme.colors.lightGrey}
+        title={title}
+        titleStyle={{fontSize: 20}}
+        style={{marginBottom: 3}}
+      />
       {headerRight}
     </Appbar.Header>
   );

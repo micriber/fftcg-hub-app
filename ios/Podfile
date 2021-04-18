@@ -10,6 +10,8 @@ target 'fftcgCollection' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'react-native-orientation-locker', :path => '../node_modules/react-native-orientation-locker'
+
   target 'fftcgCollectionTests' do
     inherit! :complete
     # Pods for testing

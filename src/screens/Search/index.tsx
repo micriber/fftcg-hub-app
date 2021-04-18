@@ -14,7 +14,7 @@ const SearchStackScreen = () => (
     }}>
     <SearchStack.Screen
       options={{headerShown: true}}
-      name="GlobalSearch"
+      name="Recherche"
       component={GlobalSearch}
     />
     <SearchStack.Screen name="SearchResult" component={SearchResult} />

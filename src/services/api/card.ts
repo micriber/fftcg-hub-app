@@ -23,6 +23,7 @@ export type Card = {
   type: string;
   job: string;
   text: string;
+  set: string;
   userCard: UserCard[];
 };
 

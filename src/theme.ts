@@ -22,19 +22,19 @@ const fontConfig: {ios: Fonts; android: Fonts} = {
   },
   android: {
     regular: {
-      fontFamily: 'sans-serif',
+      fontFamily: 'roboto',
       fontWeight: 'normal',
     },
     medium: {
-      fontFamily: 'sans-serif-medium',
+      fontFamily: 'roboto',
       fontWeight: 'normal',
     },
     light: {
-      fontFamily: 'sans-serif-light',
+      fontFamily: 'roboto',
       fontWeight: 'normal',
     },
     thin: {
-      fontFamily: 'sans-serif-thin',
+      fontFamily: 'roboto',
       fontWeight: 'normal',
     },
   },
@@ -75,7 +75,7 @@ const primaryDark: ReactNativePaper.Theme = {
   roundness: 4,
   colors: {
     primary: '#5286C5',
-    accent: '#1D2F45',
+    accent: '#1d2f45',
     background: '#F2F2F2',
     active: '#3D6391',
     lightGrey: '#D1DEEE',

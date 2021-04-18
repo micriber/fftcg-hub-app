@@ -4,6 +4,7 @@ import {Divider, useTheme} from 'react-native-paper';
 import FFCardSimple from './FFCardSimple';
 import FFCardsListEmpty from './FFCardsListEmpty';
 import {Card} from '../services/api/card';
+import {FlatGrid} from 'react-native-super-grid';
 
 type Props = {
   cards?: Card[] | null;
@@ -55,7 +56,7 @@ const FFCardsList = ({
 
 const styles = StyleSheet.create({
   listContainer: {
-    flexGrow: 1,
+    margin: 10,
   },
   emptyMessage: {
     textAlign: 'center',
