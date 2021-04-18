@@ -67,6 +67,7 @@ buck-out/
 /ios/GoogleService-Info.plist
 firebase.json
 android/app/google-services.json
+android/app/src/main/assets/appcenter-config.json
 
 # environment file
 .env
