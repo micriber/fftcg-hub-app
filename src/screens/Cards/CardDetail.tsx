@@ -62,10 +62,7 @@ const CardDetail = ({route}: Props) => {
       }}>
       <View
         style={{
-          // flex: 1,
-          // backgroundColor: new ColorTranslator(theme.colors.primary).setA(0.15)
           backgroundColor: new ColorTranslator(averageColor).setA(0.6).RGBA,
-          // marginBottom: 10,
           height: portrait ? 460 : screenHeight - 60,
           width: portrait ? '100%' : (screenHeight - 60) / 1.4,
         }}>
@@ -73,8 +70,6 @@ const CardDetail = ({route}: Props) => {
           card={card}
           viewType={'single'}
           imageStyle={{
-            // height: SCREEN_HEIGHT / 2.5,
-            // width: SCREEN_HEIGHT / 2.5 / 1.4,
             height: portrait ? 400 : screenHeight - 120,
             width: (portrait ? 400 : screenHeight - 120) / 1.4,
             marginTop: portrait ? 30 : 10,

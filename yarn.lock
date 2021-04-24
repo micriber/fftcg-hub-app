@@ -6432,11 +6432,6 @@ react-native-numeric-input@^1.8.3:
     prop-types "^15.6.1"
     react-native-pixel-perfect "^1.0.1"
 
-react-native-orientation-locker@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-orientation-locker/-/react-native-orientation-locker-1.2.0.tgz#9fa51b3aade9b847e63066b6fd60509371940a7e"
-  integrity sha512-lnwp9Jbt1m/0Gfw9a5Mrwj/APNSuYkVdJEgBKRyQgOshDrKRv5dxpD0P786AgIEjnEbjyrNOS6GQvBdqPYSxsg==
-
 react-native-paper@^4.7.1:
   version "4.7.1"
   resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.7.1.tgz#9f22116d39e4a129be9fd4c8d7342d0f6a20245c"

@@ -32,10 +32,7 @@ export const DrawerContent = (props: Props) => {
     },
     userInfoSection: {
       padding: 16,
-      // paddingLeft: 20,
       flexDirection: 'row',
-      // paddingTop: 20,
-      // paddingBottom: 20,
     },
     userInfoHeader: {
       marginLeft: 10,
@@ -44,9 +41,6 @@ export const DrawerContent = (props: Props) => {
     drawerContent: {
       flex: 1,
       paddingTop: 0,
-    },
-    drawerSection: {
-      // marginTop: 15,
     },
   });
 
@@ -69,7 +63,7 @@ export const DrawerContent = (props: Props) => {
             <Caption style={styles.caption}>Christophe Coquelet</Caption>
           </View>
         </View>
-        <Drawer.Section style={styles.drawerSection}>
+        <Drawer.Section>
           <DrawerItemList {...props} />
           <DrawerItem
             label="Déconnexion"
