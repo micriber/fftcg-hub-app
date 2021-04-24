@@ -67,7 +67,6 @@ export const replaceFireType = _replaceTextByIcon(
   /(《火》|火)/gm,
   ElementIconFile.FIRE,
 );
-// export const replaceFireType = _replaceTextByIcon('火', ElementIconFile.FIRE);
 export const replaceIceType = _replaceTextByIcon(
   /(《氷》|氷)/gm,
   ElementIconFile.ICE,

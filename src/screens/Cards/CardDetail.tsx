@@ -12,8 +12,8 @@ import {getCardImageUrl} from '../../utils/image';
 type Props = {
   route: {params: {card: Card}};
 };
-
-const rarityLabel: {[rarity: string]: string} = {
+type Rarity = 'C' | 'R' | 'H' | 'L' | 'S' | 'B' | 'PR';
+const rarityLabel: {[rarity in Rarity]: string} = {
   C: 'Common',
   R: 'Rare',
   H: 'Hero',

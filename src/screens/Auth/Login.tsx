@@ -10,8 +10,8 @@ import {
 import {GoogleSigninButton} from '@react-native-community/google-signin';
 import {AuthContext} from '../../contexts/AuthContext';
 import {withTheme} from 'react-native-paper';
-import Vector from '../../assets/svg/login.svg';
-import Vector2 from '../../assets/svg/login2.svg';
+import VectorLoginPortrait from '../../assets/svg/login-portrait.svg';
+import VectorLoginLandscape from '../../assets/svg/login-landscape.svg';
 import {screenFonts} from '../../theme';
 
 type Props = {
@@ -66,13 +66,13 @@ class Login extends React.Component<Props, State> {
       <View style={{flex: 1, backgroundColor: this.props.theme.colors.active}}>
         <View style={{flex: 1, marginTop: -(StatusBar.currentHeight ?? 0)}}>
           {this.state.portrait ? (
-            <Vector
+            <VectorLoginPortrait
               height={(this.state.screenWidth + 10) / 2.25}
               width={this.state.screenWidth + 10}
               fill={this.props.theme.colors.accent}
             />
           ) : (
-            <Vector2
+            <VectorLoginLandscape
               height={this.state.screenWidth / 5}
               width={this.state.screenWidth}
               fill={this.props.theme.colors.accent}
@@ -118,13 +118,13 @@ class Login extends React.Component<Props, State> {
         </View>
         <View style={{rotation: 180, marginTop: StatusBar.currentHeight ?? 0}}>
           {this.state.portrait ? (
-            <Vector
+            <VectorLoginPortrait
               height={this.state.screenWidth / 2.25}
               width={this.state.screenWidth}
               fill={this.props.theme.colors.accent}
             />
           ) : (
-            <Vector2
+            <VectorLoginLandscape
               height={this.state.screenWidth / 5}
               width={this.state.screenWidth}
               fill={this.props.theme.colors.accent}
