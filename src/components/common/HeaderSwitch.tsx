@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Switch} from 'react-native-paper';
+import {Switch, useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type Props = {
@@ -16,6 +16,7 @@ const HeaderSwitch = ({
   value,
   onValueChange,
 }: Props) => {
+  const theme = useTheme();
   return (
     <View style={styles.header}>
       {leftIconName && <Icon name={leftIconName} color="white" size={20} />}
@@ -24,6 +25,7 @@ const HeaderSwitch = ({
         onValueChange={onValueChange}
         style={styles.switch}
         testID={`SwitcherState-${+value}`}
+        color={theme.colors.active}
       />
       {rightIconName && <Icon name={rightIconName} color="white" size={22} />}
     </View>

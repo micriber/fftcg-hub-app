@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Dimensions,
   ImageStyle,
   StyleSheet,
   TouchableOpacity,
@@ -26,11 +25,6 @@ type Props = {
 
 type ViewType = 'single' | 'list' | 'grid';
 
-const w = Dimensions.get('window');
-// orientation must fixed
-const SCREEN_WIDTH = w.width < w.height ? w.width : w.height;
-const SCREEN_HEIGHT = w.width < w.height ? w.height : w.width;
-
 const FFCardSimple = ({
   card,
   viewType,
@@ -46,8 +40,11 @@ const FFCardSimple = ({
   );
   const enSrc = getCardImageUrl(card.code, 'full', 'eg');
   const imageSize = {
-    width: SCREEN_WIDTH / 2.2,
-    height: SCREEN_HEIGHT / 3.3,
+    height: 255,
+    width: 255 / 1.4,
+    borderWidth: 1,
+    borderRadius: 10,
+    elevation: 5,
   };
   return (
     <View
@@ -58,6 +55,10 @@ const FFCardSimple = ({
           ? styles.cardListContainer
           : styles.cardGridContainer,
         containerStyle,
+        {
+          flex: 1,
+          alignItems: 'center',
+        },
       ]}>
       <TouchableOpacity
         activeOpacity={0.3}
@@ -68,9 +69,10 @@ const FFCardSimple = ({
             imageSize,
             // TODO: Find the correct type for this style
             imageStyle as any,
+            {flex: 1}
           ]}
           source={{uri: src}}
-          resizeMode={viewType === 'list' ? 'stretch' : 'contain'}
+          resizeMode={'cover'}
           onError={() => {
             if (!isFallbackImage) {
               setSrc(enSrc);
@@ -101,16 +103,14 @@ const FFCardSimple = ({
 
 const styles = StyleSheet.create({
   cardGridContainer: {
-    justifyContent: 'flex-end',
-    borderRadius: 5,
   },
   cardListContainer: {
     flexDirection: 'row',
-    height: SCREEN_HEIGHT / 3.3,
+    marginBottom: 10
   },
   cardDescription: {
     flex: 1,
-    height: SCREEN_HEIGHT / 3.3,
+    marginLeft: 10
   },
   cardTextDescription: {flex: 1},
   ownPin: {

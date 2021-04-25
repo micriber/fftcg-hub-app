@@ -2,8 +2,8 @@ import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {DrawerContent} from './DrawerContent';
 import {SearchStackScreen} from '../../../screens/Search';
-import {HomeStackScreen} from '../../../screens/Home';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useTheme} from 'react-native-paper';
 
 const Drawer = createDrawerNavigator();
 
@@ -12,25 +12,30 @@ type Props = {
 };
 
 const DrawerNavigator = ({signOut}: Props) => {
+  const theme = useTheme();
   return (
     <Drawer.Navigator
       drawerContent={(props) => <DrawerContent {...props} signOut={signOut} />}
-      initialRouteName="Home"
-      drawerContentOptions={{activeTintColor: '#000000'}}>
-      <Drawer.Screen
-        name="Home"
-        component={HomeStackScreen}
-        options={{
-          drawerLabel: 'Home',
-          drawerIcon: () => <Icon name="home" size={26} />,
-        }}
-      />
+      initialRouteName="Search"
+      drawerContentOptions={{
+        activeTintColor: theme.colors.primary,
+        inactiveTintColor: theme.colors.accent,
+        labelStyle: {fontSize: 14, fontWeight: '900'},
+        itemStyle: {marginBottom: 8},
+      }}>
       <Drawer.Screen
         name="Search"
         component={SearchStackScreen}
         options={{
-          drawerLabel: 'Search',
-          drawerIcon: () => <Icon name="magnify" size={26} />,
+          drawerLabel: 'Recherche',
+          drawerIcon: ({color, focused}) => (
+            <Icon
+              name="magnify"
+              size={24}
+              style={{opacity: focused ? 1 : 0.6}}
+              color={color}
+            />
+          ),
         }}
       />
     </Drawer.Navigator>

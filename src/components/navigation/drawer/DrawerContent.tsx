@@ -15,6 +15,35 @@ type Props = {
 
 export const DrawerContent = (props: Props) => {
   const theme = useTheme();
+  const styles = StyleSheet.create({
+    contentContainerStyle: {
+      paddingTop: 0,
+    },
+    title: {
+      fontSize: 20,
+      lineHeight: 28,
+      color: theme.colors.lightGrey,
+    },
+    caption: {
+      fontSize: 12,
+      lineHeight: 16,
+      color: theme.colors.lightGrey,
+      opacity: 0.6,
+    },
+    userInfoSection: {
+      padding: 16,
+      flexDirection: 'row',
+    },
+    userInfoHeader: {
+      marginLeft: 10,
+      flexDirection: 'column',
+    },
+    drawerContent: {
+      flex: 1,
+      paddingTop: 0,
+    },
+  });
+
   return (
     <DrawerContentScrollView
       {...props}
@@ -23,56 +52,27 @@ export const DrawerContent = (props: Props) => {
         <View
           style={[
             styles.userInfoSection,
-            {backgroundColor: theme.colors.active},
+            {backgroundColor: theme.colors.active, padding: 16},
           ]}>
           <Avatar.Image
             source={require('../../../assets/logo/ic_launcher_round.png')}
-            size={75}
+            size={60}
           />
           <View style={styles.userInfoHeader}>
             <Title style={styles.title}>FFTCG Hub</Title>
             <Caption style={styles.caption}>Christophe Coquelet</Caption>
           </View>
         </View>
-        <Drawer.Section style={styles.drawerSection}>
+        <Drawer.Section>
           <DrawerItemList {...props} />
           <DrawerItem
-            label="Logout"
+            label="Déconnexion"
+            {...props}
             onPress={props.signOut}
-            icon={() => <Icon name="logout" size={26} />}
+            icon={() => <Icon name="logout" size={24} style={{opacity: 0.6}} color={props.inactiveTintColor} />}
           />
         </Drawer.Section>
       </View>
     </DrawerContentScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  contentContainerStyle: {
-    paddingTop: 0,
-  },
-  title: {
-    fontWeight: 'bold',
-  },
-  caption: {
-    fontSize: 14,
-    lineHeight: 14,
-  },
-  userInfoSection: {
-    paddingLeft: 20,
-    flexDirection: 'row',
-    paddingTop: 20,
-    paddingBottom: 20,
-  },
-  userInfoHeader: {
-    marginLeft: 15,
-    flexDirection: 'column',
-  },
-  drawerContent: {
-    flex: 1,
-    paddingTop: 0,
-  },
-  drawerSection: {
-    marginTop: 15,
-  },
-});

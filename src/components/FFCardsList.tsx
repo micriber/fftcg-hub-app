@@ -55,7 +55,7 @@ const FFCardsList = ({
 
 const styles = StyleSheet.create({
   listContainer: {
-    flexGrow: 1,
+    margin: 10,
   },
   emptyMessage: {
     textAlign: 'center',

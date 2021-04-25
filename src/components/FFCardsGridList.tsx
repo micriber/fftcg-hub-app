@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
 import {useTheme} from 'react-native-paper';
 import FFCardSimple from './FFCardSimple';
@@ -38,7 +38,7 @@ const FFCardsGridList = ({
         key={1}
         spacing={10}
         keyExtractor={(item) => item.code}
-        itemDimension={160}
+        itemDimension={175}
         data={cards || []}
         renderItem={renderItem}
         onEndReached={onEndReached}

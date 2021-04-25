@@ -2594,6 +2594,11 @@ colorette@^1.2.1:
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
   integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
 
+colortranslator@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/colortranslator/-/colortranslator-1.7.0.tgz#7328df56e7668a6da548857d38e15f839497125b"
+  integrity sha512-hQ9CrHAH6xIzedHtH6ZZ4d/fifMBIIGWj2gEYBzc2J3k6g9SmR+D1Vq5dbNJqdHRecwTuFU4GJS5AcYd9QnU8g==
+
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.8.tgz#c3d45a8b34fd730631a110a8a2520682b31d5a7f"
@@ -6396,6 +6401,11 @@ react-native-gesture-handler@^1.7.0:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-image-colors@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/react-native-image-colors/-/react-native-image-colors-1.2.7.tgz#cdffa4bb0296e03bc2d878286f6f229bd64e7ee2"
+  integrity sha512-7CpzkiReS/D5LNcJr8KjGSQwIlo5OZPCLlJTMX27pBdraRSsisgLvvpUCLQ0Yr+Pq5+3EH392nWMOthu2I0uQQ==
 
 react-native-iphone-x-helper@^1.2.1:
   version "1.2.1"

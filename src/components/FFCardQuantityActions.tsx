@@ -6,11 +6,11 @@ import {
   subtractCard,
   UserCard,
 } from '../services/api/card';
-import {Alert, StyleSheet, Text} from 'react-native';
-import NumericInput from 'react-native-numeric-input';
+import {Alert, StyleSheet, Text, View} from 'react-native';
 import {CollectionCardsContext} from '../contexts/CollectionCardsContext';
 import {SearchCardsContext} from '../contexts/SearchCardsContext';
 import cloneDeep from 'lodash.clonedeep';
+import {Button} from 'react-native-paper';
 
 type Props = {
   card: Card;
@@ -145,51 +145,38 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
 
   return (
     <>
-      {label && (
-        <Text style={[styles.headingButtonGroup, styles.textStyle]}>
-          {label}:{' '}
-        </Text>
-      )}
-      {/* TODO: Replace the library react-native-numeric-input when we'll have a style framework */}
-      <NumericInput
-        value={quantity}
-        onChange={onChange}
-        minValue={0}
-        editable={false}
-      />
-      {/*<View style={styles.container}>*/}
-      {/*  <MinusButton onPress={subtractUnity} />*/}
-      {/*  <View style={[styles.counterDisplayStyle]}>*/}
-      {/*    <Text style={[styles.textStyle]}>{quantity}</Text>*/}
-      {/*  </View>*/}
-      {/*  <PlusButton onPress={addUnity} />*/}
-      {/*</View>*/}
+      <View style={styles.container}>
+        {label && (
+          <Text
+            style={{
+              minWidth: 60,
+              margin: 10,
+              textAlign: 'right',
+              fontSize: 14,
+              color: '#3D6391',
+            }}>
+            {label}
+          </Text>
+        )}
+        <Button onPress={subtractUnity} mode={'contained'}>
+          -
+        </Button>
+        <Text style={{margin: 10}}>{quantity}</Text>
+        <Button onPress={addUnity} mode={'contained'}>
+          +
+        </Button>
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
+    marginTop: 20,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  counterDisplayStyle: {
-    backgroundColor: 'rgb(240,240,240)',
-    borderRadius: 30,
-    borderColor: 'rgb(240,240,240)',
-    borderWidth: 1,
-    width: 60,
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  headingButtonGroup: {color: 'black', textAlign: 'center'},
-  textStyle: {
-    fontSize: 28,
+    width: 250,
+    alignItems: 'flex-end',
   },
 });
 
