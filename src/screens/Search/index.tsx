@@ -13,8 +13,8 @@ const SearchStackScreen = () => (
       header: (headerProps: StackHeaderProps) => <Header {...headerProps} />,
     }}>
     <SearchStack.Screen
-      options={{headerShown: true}}
-      name="Recherche"
+      options={{headerShown: true, headerTitle: 'Rechercher'}}
+      name="GlobalSearch"
       component={GlobalSearch}
     />
     <SearchStack.Screen name="SearchResult" component={SearchResult} />
