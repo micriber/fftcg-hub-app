@@ -69,7 +69,6 @@ const FFCardSimple = ({
             imageSize,
             // TODO: Find the correct type for this style
             imageStyle as any,
-            {flex: 1}
           ]}
           source={{uri: src}}
           resizeMode={'cover'}
