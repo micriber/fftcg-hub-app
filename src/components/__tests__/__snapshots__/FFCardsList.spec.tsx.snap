@@ -137,9 +137,6 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
                       "width": 182.14285714285717,
                     },
                     undefined,
-                    Object {
-                      "flex": 1,
-                    },
                   ],
                 ]
               }
@@ -470,9 +467,6 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
                       "width": 182.14285714285717,
                     },
                     undefined,
-                    Object {
-                      "flex": 1,
-                    },
                   ],
                 ]
               }
