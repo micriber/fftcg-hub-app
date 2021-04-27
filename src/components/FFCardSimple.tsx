@@ -105,16 +105,25 @@ const styles = StyleSheet.create({
   },
   cardListContainer: {
     flexDirection: 'row',
-    marginBottom: 10
+    marginBottom: 10,
   },
   cardDescription: {
     flex: 1,
-    marginLeft: 10
+    marginLeft: 10,
   },
   cardTextDescription: {flex: 1},
   ownPin: {
-    color: '#238F23',
-    elevation: 1,
+    backgroundColor: '#3D6391',
+    color: 'white',
+    borderRadius: 10,
+    width: 20,
+    height: 20,
+    zIndex: 0,
+    marginTop: -15,
+    marginBottom: -5,
+    marginRight: -5,
+    elevation: 10,
+    alignSelf: 'flex-end',
   },
 });
 

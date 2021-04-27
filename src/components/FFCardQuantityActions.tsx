@@ -7,7 +7,6 @@ import {
   UserCard,
 } from '../services/api/card';
 import {Alert, StyleSheet, Text, View} from 'react-native';
-import {CollectionCardsContext} from '../contexts/CollectionCardsContext';
 import {SearchCardsContext} from '../contexts/SearchCardsContext';
 import cloneDeep from 'lodash.clonedeep';
 import {Button} from 'react-native-paper';
@@ -23,7 +22,6 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
     card.userCard.find((c) => c.version === version)?.quantity || 0;
   const [quantity, setQuantity] = React.useState(initialQuantity);
   const [isLoading, setLoading] = React.useState(false);
-  const collectionCardsContext = React.useContext(CollectionCardsContext);
   const searchCardsContext = React.useContext(SearchCardsContext);
   const addUnity = async () => {
     if (!isLoading) {
@@ -31,9 +29,6 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
       try {
         await addCard({code: card.code, version});
         setQuantity(quantity + 1);
-        collectionCardsContext.setCardsList(
-          updateContext(collectionCardsContext.cardsList, true, true),
-        );
         searchCardsContext.setCardsList(
           updateContext(searchCardsContext.cardsList, true, false),
         );
@@ -57,11 +52,8 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
           version,
         });
         setQuantity(quantity - 1);
-        collectionCardsContext.setCardsList(
-          updateContext(collectionCardsContext.cardsList, false, true),
-        );
         searchCardsContext.setCardsList(
-          updateContext(searchCardsContext.cardsList, false, false),
+          updateContext(searchCardsContext.cardsList, false),
         );
       } catch (e) {
         Alert.alert(
@@ -74,17 +66,13 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
     }
   };
 
-  const updateContext = (
-    cardsList: Card[],
-    add: boolean = true,
-    collection: boolean = true,
-  ) => {
+  const updateContext = (cardsList: Card[], add: boolean = true) => {
     // if user add a new card add card to list
     if (add && !cardsList.find((c: Card) => c.code === card.code)) {
       cardsList.push(cloneDeep(card));
     }
 
-    const newCardList = cardsList.map((mapCard: Card) => {
+    return cardsList.map((mapCard: Card) => {
       if (mapCard.code === card.code) {
         // if user add a new version add this version to user card
         if (!mapCard.userCard.find((uc) => uc.version === version)) {
@@ -101,15 +89,10 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
       }
       return mapCard;
     });
-
-    // if collection list and add action, remove cards without quantity
-    return !collection || add
-      ? newCardList
-      : removeCardsWithoutQuantity(newCardList);
   };
 
   const updateQuantity = (card: Card, add: boolean) => {
-    return card.userCard.map((mapUserCard: UserCard) => {
+    card.userCard = card.userCard.map((mapUserCard: UserCard) => {
       if (mapUserCard.version === version) {
         if (add) {
           mapUserCard.quantity++;
@@ -119,28 +102,11 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
       }
       return mapUserCard;
     });
-  };
-
-  const removeCardsWithoutQuantity = (cardList: Card[]) => {
-    return cardList.filter((cardFilter: Card) => {
-      const userCard = cardFilter.userCard.find((uc: UserCard) => {
-        if (uc.quantity > 0) {
-          return uc;
-        }
-      });
-
-      if (userCard) {
-        return cardFilter;
+    return card.userCard.filter((uc: UserCard) => {
+      if (uc.quantity > 0) {
+        return uc;
       }
     });
-  };
-
-  const onChange = (value: number) => {
-    if (value < quantity) {
-      subtractUnity();
-    } else if (value > quantity) {
-      addUnity();
-    }
   };
 
   return (
