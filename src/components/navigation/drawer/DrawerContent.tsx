@@ -8,12 +8,14 @@ import {
 } from '@react-navigation/drawer';
 import {Avatar, Title, Drawer, Caption, useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {AuthContext} from '../../../contexts/AuthContext';
 
 type Props = {
   signOut: () => {};
 } & DrawerContentComponentProps;
 
 export const DrawerContent = (props: Props) => {
+  const {user} = React.useContext(AuthContext);
   const theme = useTheme();
   const styles = StyleSheet.create({
     contentContainerStyle: {
@@ -60,7 +62,9 @@ export const DrawerContent = (props: Props) => {
           />
           <View style={styles.userInfoHeader}>
             <Title style={styles.title}>FFTCG Hub</Title>
-            <Caption style={styles.caption}>Christophe Coquelet</Caption>
+            <Caption style={styles.caption}>
+              {user.info?.userName ?? user.info?.firstName ?? user.info?.email}
+            </Caption>
           </View>
         </View>
         <Drawer.Section>
@@ -69,7 +73,14 @@ export const DrawerContent = (props: Props) => {
             label="Déconnexion"
             {...props}
             onPress={props.signOut}
-            icon={() => <Icon name="logout" size={24} style={{opacity: 0.6}} color={props.inactiveTintColor} />}
+            icon={() => (
+              <Icon
+                name="logout"
+                size={24}
+                style={{opacity: 0.6}}
+                color={props.inactiveTintColor}
+              />
+            )}
           />
         </Drawer.Section>
       </View>
