@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList, FlexStyle, StyleSheet, View} from 'react-native';
-import {Divider, FAB, useTheme} from 'react-native-paper';
+import {ActivityIndicator, Divider, FAB, useTheme} from 'react-native-paper';
 import FFCardSimple from './FFCardSimple';
 import FFCardsListEmpty from './FFCardsListEmpty';
 import {Card} from '../services/api/card';
@@ -14,6 +14,7 @@ type Props = {
   displayOwnPin?: boolean;
   refreshing?: boolean;
   style?: FlexStyle;
+  isEmpty: boolean;
 };
 
 const FFCardsList = ({
@@ -23,6 +24,7 @@ const FFCardsList = ({
   onCardPress = () => {},
   onRefresh = () => {},
   onEndReached = () => {},
+  isEmpty,
   style,
 }: Props) => {
   const {colors} = useTheme();
@@ -61,7 +63,7 @@ const FFCardsList = ({
         onEndReachedThreshold={1.5}
         refreshing={refreshing}
         onRefresh={onRefresh}
-        ListEmptyComponent={!refreshing ? <FFCardsListEmpty /> : null}
+        ListEmptyComponent={!isEmpty ? <FFCardsListEmpty /> : <ActivityIndicator animating={true} />}
         ref={(ref) => (refList = ref)}
       />
       <FAB

@@ -1,7 +1,7 @@
 import React from 'react';
 import {FlexStyle, StyleSheet, View} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
-import {FAB, useTheme} from 'react-native-paper';
+import {ActivityIndicator, FAB, useTheme} from 'react-native-paper';
 import FFCardSimple from './FFCardSimple';
 import FFCardsListEmpty from './FFCardsListEmpty';
 import {Card} from '../services/api/card';
@@ -15,6 +15,7 @@ type Props = {
   displayOwnPin?: boolean;
   refreshing?: boolean;
   style?: FlexStyle;
+  isEmpty: boolean;
 };
 
 const FFCardsGridList = ({
@@ -24,6 +25,7 @@ const FFCardsGridList = ({
   onCardPress = () => {},
   onRefresh = () => {},
   onEndReached = () => {},
+  isEmpty,
   style,
 }: Props) => {
   const {colors} = useTheme();
@@ -61,7 +63,7 @@ const FFCardsGridList = ({
         onEndReachedThreshold={1.5}
         refreshing={refreshing}
         onRefresh={onRefresh}
-        ListEmptyComponent={!refreshing ? <FFCardsListEmpty /> : null}
+        ListEmptyComponent={!isEmpty ? <FFCardsListEmpty /> : <ActivityIndicator animating={true} />}
         ref={(ref) => (refList = ref)}
       />
 
