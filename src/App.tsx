@@ -4,7 +4,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AuthStackScreen} from './screens/Auth';
 import AuthContextProvider from './contexts/AuthContextProvider';
-import CollectionCardsContextProvider from './contexts/CollectionCardsContextProvider';
 import SearchCardsContextProvider from './contexts/SearchCardsContextProvider';
 import {Provider as PaperProvider} from 'react-native-paper';
 import themes from './theme';
@@ -15,16 +14,14 @@ const App = () => {
 
   return (
     <PaperProvider theme={theme}>
-      <StatusBar backgroundColor={theme.colors.accent} />
+      <StatusBar backgroundColor={theme.colors.accent}/>
       <SafeAreaProvider>
         <AuthContextProvider>
-          <CollectionCardsContextProvider>
-            <SearchCardsContextProvider>
-              <NavigationContainer>
-                <AuthStackScreen theme={theme} />
-              </NavigationContainer>
-            </SearchCardsContextProvider>
-          </CollectionCardsContextProvider>
+          <SearchCardsContextProvider>
+            <NavigationContainer>
+              <AuthStackScreen theme={theme}/>
+            </NavigationContainer>
+          </SearchCardsContextProvider>
         </AuthContextProvider>
       </SafeAreaProvider>
     </PaperProvider>

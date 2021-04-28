@@ -17,7 +17,7 @@ type Props = {
 
 const FFCardsListContainer = ({
   isListView,
-  displayOwnPin = false,
+  displayOwnPin = true,
   cardsFilter = {},
   onCardPress = () => {},
   cardsContext = SearchCardsContext,
