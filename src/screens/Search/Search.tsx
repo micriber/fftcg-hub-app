@@ -36,6 +36,7 @@ const Search = ({navigation}: Props) => {
     loadCards,
     refresh,
     handleLoadMore,
+    isEmpty,
   } = useFetchCards({
     cardsContext: SearchCardsContext,
   });
@@ -87,6 +88,7 @@ const Search = ({navigation}: Props) => {
         cardContext.cardsList.length === 0 ? undefined : handleLoadMore
       }
       refreshing={refreshing}
+      isEmpty={isEmpty}
     />
   ) : (
     <FFCardsList
@@ -99,6 +101,7 @@ const Search = ({navigation}: Props) => {
         cardContext.cardsList.length === 0 ? undefined : handleLoadMore
       }
       refreshing={refreshing}
+      isEmpty={isEmpty}
     />
   );
 

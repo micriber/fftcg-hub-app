@@ -19,6 +19,7 @@ function useFetchCards({cardsContext}: Props) {
   const [refreshing, setRefreshing] = React.useState(false);
   const [search, setSearch] = React.useState({});
   const deps = [page, shouldReRender];
+  const isEmpty = !refreshing || (cardContext.cardsList.length === 0 && !stopFetch)
 
   // garder cardFilter ici
   const loadCards = async (cardsFilter?: GetCardsParams) => {
@@ -84,6 +85,7 @@ function useFetchCards({cardsContext}: Props) {
     handleLoadMore,
     refresh,
     loadCards: callback,
+    isEmpty
   };
 }
 
