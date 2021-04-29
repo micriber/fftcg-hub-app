@@ -43,9 +43,7 @@ function useFetchCards({cardsContext}: Props) {
   };
 
   const [state, callback] = useAsyncFn(loadCards, deps, {loading: false});
-  // const isEmpty = !refreshing || (cardContext.cardsList.length === 0 && !stopFetch);
   const isEmpty = cardContext.cardsList.length === 0 && !state.loading;
-  console.log({isEmpty, len: cardContext.cardsList.length, stopFetch, refreshing});
 
   const refresh = () => {
     if (!stopFetch) {
