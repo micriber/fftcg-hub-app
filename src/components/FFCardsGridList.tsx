@@ -5,7 +5,6 @@ import {ActivityIndicator, FAB, useTheme} from 'react-native-paper';
 import FFCardSimple from './FFCardSimple';
 import FFCardsListEmpty from './FFCardsListEmpty';
 import {Card} from '../services/api/card';
-import FFCardsListContainer from './FFCardsListContainer';
 
 type Props = {
   cards?: Card[] | null;
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     margin: 16,
     right: 0,
-    bottom: 0,
+    bottom: 45,
   },
   contentContainerStyle: {
     minHeight: '100%',
