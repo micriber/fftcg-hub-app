@@ -19,7 +19,7 @@ exports[`[Component] HeaderSwitch Switch value change 1`] = `
     style={
       Array [
         Object {
-          "color": "white",
+          "color": undefined,
           "fontSize": 20,
         },
         undefined,
@@ -60,7 +60,7 @@ exports[`[Component] HeaderSwitch Switch value change 1`] = `
     style={
       Array [
         Object {
-          "color": "white",
+          "color": undefined,
           "fontSize": 22,
         },
         undefined,
@@ -97,7 +97,7 @@ exports[`[Component] HeaderSwitch Switch value change 2`] = `
     style={
       Array [
         Object {
-          "color": "white",
+          "color": undefined,
           "fontSize": 20,
         },
         undefined,
@@ -138,7 +138,7 @@ exports[`[Component] HeaderSwitch Switch value change 2`] = `
     style={
       Array [
         Object {
-          "color": "white",
+          "color": undefined,
           "fontSize": 22,
         },
         undefined,
@@ -175,7 +175,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
     style={
       Array [
         Object {
-          "color": "white",
+          "color": undefined,
           "fontSize": 20,
         },
         undefined,
@@ -216,7 +216,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
     style={
       Array [
         Object {
-          "color": "white",
+          "color": undefined,
           "fontSize": 22,
         },
         undefined,
@@ -253,7 +253,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch right 1`] = `
     style={
       Array [
         Object {
-          "color": "white",
+          "color": undefined,
           "fontSize": 20,
         },
         undefined,
@@ -294,7 +294,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch right 1`] = `
     style={
       Array [
         Object {
-          "color": "white",
+          "color": undefined,
           "fontSize": 22,
         },
         undefined,

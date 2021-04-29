@@ -10,11 +10,16 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
       Object {
         "backgroundColor": "#f6f6f6",
       },
+      undefined,
     ]
   }
 >
   <RCTScrollView
-    ListEmptyComponent={<FFCardsListEmpty />}
+    ListEmptyComponent={
+      <withTheme(ActivityIndicator)
+        animating={true}
+      />
+    }
     data={
       Array [
         Object {
@@ -62,7 +67,7 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
     maxToRenderPerBatch={10}
     onContentSizeChange={[Function]}
     onEndReached={[Function]}
-    onEndReachedThreshold={1}
+    onEndReachedThreshold={1.5}
     onLayout={[Function]}
     onMomentumScrollEnd={[Function]}
     onRefresh={[Function]}
@@ -333,7 +338,7 @@ exports[`[Component] FFCardsList renders correctly in grid view 1`] = `
       Object {
         "backgroundColor": "#03dac4",
         "borderRadius": 28,
-        "bottom": 0,
+        "bottom": 45,
         "elevation": 6,
         "margin": 16,
         "opacity": 1,
@@ -482,11 +487,16 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
       Object {
         "backgroundColor": "#f6f6f6",
       },
+      undefined,
     ]
   }
 >
   <RCTScrollView
-    ListEmptyComponent={<FFCardsListEmpty />}
+    ListEmptyComponent={
+      <withTheme(ActivityIndicator)
+        animating={true}
+      />
+    }
     data={
       Array [
         Object {
@@ -534,7 +544,7 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
     maxToRenderPerBatch={10}
     onContentSizeChange={[Function]}
     onEndReached={[Function]}
-    onEndReachedThreshold={1}
+    onEndReachedThreshold={1.5}
     onLayout={[Function]}
     onMomentumScrollEnd={[Function]}
     onRefresh={[Function]}
@@ -805,7 +815,7 @@ exports[`[Component] FFCardsList renders correctly in list view 1`] = `
       Object {
         "backgroundColor": "#03dac4",
         "borderRadius": 28,
-        "bottom": 0,
+        "bottom": 45,
         "elevation": 6,
         "margin": 16,
         "opacity": 1,
