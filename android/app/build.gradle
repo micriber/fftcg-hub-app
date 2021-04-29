@@ -138,7 +138,7 @@ android {
 
     defaultConfig {
         applicationId "com.fftcgcollection"
-        minSdkVersion rootProject.ext.minSdkVersion
+        minSdkVersion 21 // target android 5 minimum, kitkat isn't really these days. Plus, appcenter require at least version 21
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
