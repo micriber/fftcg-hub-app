@@ -62,7 +62,7 @@ const FFCardsGridList = ({
         onEndReachedThreshold={1.5}
         refreshing={refreshing}
         onRefresh={onRefresh}
-        ListEmptyComponent={!isEmpty ? <FFCardsListEmpty /> : <ActivityIndicator animating={true} />}
+        ListEmptyComponent={isEmpty ? <FFCardsListEmpty /> : <ActivityIndicator animating={true} />}
         ref={(ref) => (refList = ref)}
       />
 
