@@ -1,6 +1,5 @@
 import {createStackNavigator, StackHeaderProps} from '@react-navigation/stack';
 import Search from './Search';
-import SearchResult from './SearchResult';
 import CardDetails from '../Cards/CardDetail';
 import * as React from 'react';
 import Header from '../../components/navigation/header';
@@ -17,7 +16,6 @@ const SearchStackScreen = () => (
       name="GlobalSearch"
       component={Search}
     />
-    <SearchStack.Screen name="SearchResult" component={SearchResult} />
     <SearchStack.Screen
       name="CardDetails"
       component={CardDetails}
