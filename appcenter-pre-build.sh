@@ -6,7 +6,7 @@ echo $APPCENTER_CONFIG_JSON | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/and
 echo "Updating Google JSON"
 echo $GOOGLE_SERVICES_JSON | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/android/app/google-services.json"
 
-envsubst < "$APPCENTER_SOURCE_DIRECTORY.env.dist" > "$APPCENTER_SOURCE_DIRECTORY.env"
+envsubst < "$APPCENTER_SOURCE_DIRECTORY/.env.dist" > "$APPCENTER_SOURCE_DIRECTORY/.env"
 
 #echo "Updating Google plist"
 #echo $GOOGLE_SERVICES_PLIST | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/ios/GoogleService-Info.plist"
