@@ -46,7 +46,6 @@ const AuthContextProvider = ({children}) => {
             ? await GoogleSignin.signInSilently()
             : await GoogleSignin.signIn();
         } catch (e) {
-          console.log({debug: 1, code: e.code});
 
           if (e.code === statusCodes.SIGN_IN_REQUIRED) {
             setIsLoading(false);
@@ -57,8 +56,6 @@ const AuthContextProvider = ({children}) => {
         }
 
         const idToken = userInfo?.idToken;
-
-        console.log({debug: 2, idToken, userInfo});
 
         if (!idToken || userInfo?.serverAuthCode === statusCodes.SIGN_IN_CANCELLED) {
           setIsLoading(false);
