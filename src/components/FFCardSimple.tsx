@@ -13,7 +13,6 @@ import {getCardImageUrl} from '../utils/image';
 import {Card as FFTCGCard} from '../services/api/card';
 import replaceTextByIconOrStyle from '../utils/icon';
 import {Card, Text} from 'react-native-paper';
-import {rarityLabel} from 'screens/Cards/CardDetail';
 
 type Props = {
   displayOwnPin?: boolean;

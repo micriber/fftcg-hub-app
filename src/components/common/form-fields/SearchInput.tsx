@@ -3,7 +3,6 @@ import {TextInput, withTheme} from 'react-native-paper';
 import {TextInputProps} from 'react-native-paper/lib/typescript/components/TextInput/TextInput';
 import {StyleSheet} from 'react-native';
 import {ColorTranslator} from 'colortranslator';
-import cloneDeep from 'lodash.clonedeep';
 
 type Props = {} & TextInputProps;
 
@@ -16,8 +15,13 @@ const SearchInput = (props: Props) => {
       fontSize: 17,
     },
   });
-  const customTheme = cloneDeep(props.theme);
-  customTheme.colors.text = props.theme.colors.active;
+  const customTheme = {
+    ...props.theme,
+    colors: {
+      ...props.theme.colors,
+      text: props.theme.colors.active,
+    },
+  };
   return (
     <TextInput
       blurOnSubmit
