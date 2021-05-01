@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlexStyle, StyleSheet, View} from 'react-native';
+import {Dimensions, FlexStyle, StyleSheet, View} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
 import {ActivityIndicator, FAB, useTheme} from 'react-native-paper';
 import FFCardSimple from './FFCardSimple';
@@ -7,6 +7,7 @@ import FFCardsListEmpty from './FFCardsListEmpty';
 import {Card} from '../services/api/card';
 
 type Props = {
+  viewType?: 'simple' | 'detail';
   cards?: Card[] | null;
   onCardPress?: (card: Card) => void;
   onEndReached?: () => void;
@@ -18,6 +19,7 @@ type Props = {
 };
 
 const FFCardsGridList = ({
+  viewType = 'simple',
   cards = [],
   displayOwnPin = false,
   refreshing = false,
@@ -31,7 +33,7 @@ const FFCardsGridList = ({
   const renderItem = ({item}: {item: Card}) => (
     <FFCardSimple
       card={item}
-      viewType={'grid'}
+      viewType={viewType}
       displayOwnPin={displayOwnPin}
       onPress={onCardPress}
       containerStyle={styles.flex1}
@@ -50,7 +52,7 @@ const FFCardsGridList = ({
         key={1}
         spacing={10}
         keyExtractor={(item) => item.code}
-        itemDimension={175}
+        itemDimension={viewType === 'simple' ? 175 : 350}
         data={cards || []}
         renderItem={renderItem}
         onEndReached={({distanceFromEnd}) => {
@@ -64,6 +66,9 @@ const FFCardsGridList = ({
         onRefresh={onRefresh}
         ListEmptyComponent={isEmpty ? <FFCardsListEmpty /> : <ActivityIndicator animating={true} />}
         ref={(ref) => (refList = ref)}
+        itemContainerStyle={{
+          alignItems: 'center',
+        }}
       />
 
       <FAB
@@ -91,6 +96,7 @@ const styles = StyleSheet.create({
   contentContainerStyle: {
     minHeight: '100%',
     paddingBottom: 110,
+    marginTop: -10
   },
   flex1: {
     flex: 1,
