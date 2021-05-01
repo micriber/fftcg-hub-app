@@ -81,17 +81,16 @@ const FFCardsGridList = ({
 };
 const styles = StyleSheet.create({
   gridContainer: {
-    // flex: 1,
   },
   fab: {
     position: 'absolute',
     margin: 16,
     right: 0,
-    bottom: 45,
+    bottom: 38,
   },
   contentContainerStyle: {
     minHeight: '100%',
-    paddingBottom: 50,
+    paddingBottom: 110,
   },
   flex1: {
     flex: 1,
