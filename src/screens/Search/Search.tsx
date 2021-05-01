@@ -9,7 +9,6 @@ import SearchForm, {SubmitParams} from '../../components/form/SearchForm';
 import {Card} from '../../services/api/card';
 import {SearchCardsContext} from '../../contexts/SearchCardsContext';
 import FFCardsGridList from '../../components/FFCardsGridList';
-import FFCardsList from '../../components/FFCardsList';
 import useFetchCards from '../../utils/hooks/useFetchCards';
 import Loading from '../Loading';
 import useDidMountEffect from '../../utils/hooks/useDidMountEffect';
@@ -74,24 +73,9 @@ const Search = ({navigation}: Props) => {
     });
   }, [isListView, navigation]);
 
-  // {...(isListView ? {style: styles.displayNone} : {})}
-  // {...(!isListView ? {style: styles.displayNone} : {})}
-
-  const Layout = !isListView ? (
+  const Layout = (
     <FFCardsGridList
-      style={styles.listContainer}
-      cards={cardContext.cardsList}
-      displayOwnPin={true}
-      onCardPress={onCardPress}
-      onRefresh={refresh}
-      onEndReached={
-        cardContext.cardsList.length === 0 ? undefined : handleLoadMore
-      }
-      refreshing={refreshing}
-      isEmpty={isEmpty}
-    />
-  ) : (
-    <FFCardsList
+      viewType={!isListView ? 'simple' : 'detail'}
       style={styles.listContainer}
       cards={cardContext.cardsList}
       displayOwnPin={true}

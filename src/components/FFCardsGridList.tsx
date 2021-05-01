@@ -7,6 +7,7 @@ import FFCardsListEmpty from './FFCardsListEmpty';
 import {Card} from '../services/api/card';
 
 type Props = {
+  viewType?: 'simple' | 'detail';
   cards?: Card[] | null;
   onCardPress?: (card: Card) => void;
   onEndReached?: () => void;
@@ -18,6 +19,7 @@ type Props = {
 };
 
 const FFCardsGridList = ({
+  viewType = 'simple',
   cards = [],
   displayOwnPin = false,
   refreshing = false,
@@ -31,7 +33,7 @@ const FFCardsGridList = ({
   const renderItem = ({item}: {item: Card}) => (
     <FFCardSimple
       card={item}
-      viewType={'grid'}
+      viewType={viewType}
       displayOwnPin={displayOwnPin}
       onPress={onCardPress}
       containerStyle={styles.flex1}
@@ -50,7 +52,7 @@ const FFCardsGridList = ({
         key={1}
         spacing={10}
         keyExtractor={(item) => item.code}
-        itemDimension={175}
+        itemDimension={viewType === 'simple' ? 175 : 350}
         data={cards || []}
         renderItem={renderItem}
         onEndReached={({distanceFromEnd}) => {
@@ -64,6 +66,9 @@ const FFCardsGridList = ({
         onRefresh={onRefresh}
         ListEmptyComponent={isEmpty ? <FFCardsListEmpty /> : <ActivityIndicator animating={true} />}
         ref={(ref) => (refList = ref)}
+        itemContainerStyle={{
+          alignItems: 'center',
+        }}
       />
 
       <FAB
@@ -81,17 +86,17 @@ const FFCardsGridList = ({
 };
 const styles = StyleSheet.create({
   gridContainer: {
-    // flex: 1,
   },
   fab: {
     position: 'absolute',
     margin: 16,
     right: 0,
-    bottom: 45,
+    bottom: 38,
   },
   contentContainerStyle: {
     minHeight: '100%',
-    paddingBottom: 50,
+    paddingBottom: 110,
+    marginTop: -10
   },
   flex1: {
     flex: 1,

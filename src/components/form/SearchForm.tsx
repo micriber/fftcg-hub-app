@@ -18,6 +18,7 @@ const SearchForm = (props: Props) => {
   const styles = StyleSheet.create({
     container: {
       marginHorizontal: 10,
+      marginBottom: 10,
     },
     buttonLabel: {
       color: colors.lightGrey,

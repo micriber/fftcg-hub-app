@@ -15,6 +15,13 @@ const SearchInput = (props: Props) => {
       fontSize: 17,
     },
   });
+  const customTheme = {
+    ...props.theme,
+    colors: {
+      ...props.theme.colors,
+      text: props.theme.colors.active,
+    },
+  };
   return (
     <TextInput
       blurOnSubmit
@@ -26,7 +33,7 @@ const SearchInput = (props: Props) => {
       onChangeText={props.onChangeText}
       mode={props.mode || 'flat'}
       label={props.label}
-      theme={props.theme}
+      theme={customTheme}
       dense={true}
     />
   );

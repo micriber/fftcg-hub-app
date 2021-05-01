@@ -13,7 +13,7 @@ type Props = {
   route: {params: {card: Card}};
 };
 type Rarity = 'C' | 'R' | 'H' | 'L' | 'S' | 'B' | 'PR';
-const rarityLabel: {[rarity in Rarity]: string} = {
+export const rarityLabel: {[rarity in Rarity]: string} = {
   C: 'Common',
   R: 'Rare',
   H: 'Hero',

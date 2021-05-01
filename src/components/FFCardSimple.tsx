@@ -5,25 +5,26 @@ import {
   TouchableOpacity,
   View,
   ViewStyle,
+  Dimensions,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {getCardImageUrl} from '../utils/image';
-import {Card} from '../services/api/card';
+import {Card as FFTCGCard} from '../services/api/card';
 import replaceTextByIconOrStyle from '../utils/icon';
-import {Text} from 'react-native-paper';
+import {Card, Text} from 'react-native-paper';
 
 type Props = {
   displayOwnPin?: boolean;
-  card: Card;
-  onPress?: (card: Card) => void;
+  card: FFTCGCard;
+  onPress?: (card: FFTCGCard) => void;
   onLongPress?: () => void;
   imageStyle?: ImageStyle;
   viewType: ViewType;
   containerStyle?: ViewStyle;
 };
 
-type ViewType = 'single' | 'list' | 'grid';
+type ViewType = 'single' | 'simple' | 'detail';
 
 const FFCardSimple = ({
   card,
@@ -51,7 +52,7 @@ const FFCardSimple = ({
       testID="SimpleFFCard"
       key={card.code}
       style={[
-        viewType === 'list'
+        viewType === 'detail'
           ? styles.cardListContainer
           : styles.cardGridContainer,
         containerStyle,
@@ -60,49 +61,88 @@ const FFCardSimple = ({
           alignItems: 'center',
         },
       ]}>
-      <TouchableOpacity
-        activeOpacity={0.3}
-        onPress={onPress ? () => onPress(card) : undefined}
-        onLongPress={onLongPress}>
-        <FastImage
-          style={[
-            imageSize,
-            // TODO: Find the correct type for this style
-            imageStyle as any,
-          ]}
-          source={{uri: src}}
-          resizeMode={'cover'}
-          onError={() => {
-            if (!isFallbackImage) {
-              setSrc(enSrc);
-              setIsFallbackImage(true);
-            }
-          }}
-          testID={`${viewType}-Image-${card.code}`}
-        />
-        {displayOwnPin && card.userCard.length > 0 && (
-          <Icon name="check" style={styles.ownPin} size={20} />
-        )}
-      </TouchableOpacity>
-      {viewType === 'list' && (
-        <View style={[styles.cardDescription]}>
-          <Text>Code: {card.code}</Text>
-          <Text>Nom: {card.name}</Text>
-          <Text>Type: {card.type}</Text>
-          <Text>Element: {replaceTextByIconOrStyle(card.element)}</Text>
-          <Text />
-          <Text numberOfLines={6} style={styles.cardTextDescription}>
-            {replaceTextByIconOrStyle(card.text)}
-          </Text>
-        </View>
+      {viewType === 'detail' && (
+        <Card
+          onPress={onPress ? () => onPress(card) : undefined}
+          onLongPress={onLongPress}>
+          <Card.Content>
+            <View
+              style={{
+                flexDirection: 'row',
+                width: Dimensions.get('screen').width - 50,
+                maxWidth: 350,
+              }}>
+              <FastImage
+                style={[
+                  imageSize,
+                  // TODO: Find the correct type for this style
+                  imageStyle as any,
+                  {
+                    height: 210,
+                    width: 210 / 1.4,
+                    elevation: 0,
+                  },
+                ]}
+                source={{uri: src}}
+                resizeMode={'cover'}
+                onError={() => {
+                  if (!isFallbackImage) {
+                    setSrc(enSrc);
+                    setIsFallbackImage(true);
+                  }
+                }}
+                testID={`${viewType}-Image-${card.code}`}
+              />
+              <View style={[styles.cardDescription]}>
+                <Text>
+                  {card.name} ({card.code})
+                </Text>
+                <Text>
+                  {card.type} {replaceTextByIconOrStyle(card.category1)}
+                </Text>
+                <Text>{card.job}</Text>
+                <Text style={{marginTop: -5, marginLeft: -1, height: 24}}>{card.cost} {replaceTextByIconOrStyle(card.element)}</Text>
+                <Text />
+                <Text numberOfLines={6} style={styles.cardTextDescription}>
+                  {replaceTextByIconOrStyle(card.text)}
+                </Text>
+              </View>
+            </View>
+          </Card.Content>
+        </Card>
+      )}
+      {viewType !== 'detail' && (
+        <TouchableOpacity
+          activeOpacity={0.3}
+          onPress={onPress ? () => onPress(card) : undefined}
+          onLongPress={onLongPress}>
+          <FastImage
+            style={[
+              imageSize,
+              // TODO: Find the correct type for this style
+              imageStyle as any,
+            ]}
+            source={{uri: src}}
+            resizeMode={'cover'}
+            onError={() => {
+              if (!isFallbackImage) {
+                setSrc(enSrc);
+                setIsFallbackImage(true);
+              }
+            }}
+            testID={`${viewType}-Image-${card.code}`}
+          />
+          {displayOwnPin && card.userCard.length > 0 && (
+            <Icon name="check" style={styles.ownPin} size={20} />
+          )}
+        </TouchableOpacity>
       )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  cardGridContainer: {
-  },
+  cardGridContainer: {},
   cardListContainer: {
     flexDirection: 'row',
     marginBottom: 10,
