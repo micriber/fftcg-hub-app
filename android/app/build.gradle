@@ -129,19 +129,23 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
-def getNpmVersion() {
+def getVersionName() {
     def inputFile = new File("$rootDir/../package.json")
     def packageJson = new JsonSlurper().parseText(inputFile.text)
     return packageJson["version"]
 }
 
-def getGitVersion() {
-    def process = "git rev-list master --first-parent --count".execute()
-    return process.text.toInteger()
+def getVersionCode() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMdd')
+    def formattedSeconds = date.format('HHmmssSSS')
+    def formatInt = formattedDate as int;
+    def SecondsInt = formattedSeconds as int;
+    return (formatInt + SecondsInt) as int
 }
 
-def userVer = getNpmVersion()
-def googleVer = getGitVersion()
+def generatedVersionName = getVersionName()
+def generatedVersionCode = getVersionCode()
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -154,8 +158,8 @@ android {
         applicationId "com.fftcgcollection"
         minSdkVersion 21 // target android 5 minimum, kitkat isn't really these days. Plus, appcenter require at least version 21
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode googleVer
-        versionName userVer
+        versionCode generatedVersionCode
+        versionName generatedVersionName
         multiDexEnabled true
     }
     splits {
