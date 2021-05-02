@@ -8,6 +8,7 @@ apply plugin: 'com.google.gms.google-services'
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
+import groovy.json.JsonSlurper
 import com.android.build.OutputFile
 
 /**
@@ -128,6 +129,19 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+def getNpmVersion() {
+    def inputFile = new File("../package.json")
+    def packageJson = new JsonSlurper().parseText(inputFile.text)
+    return packageJson["version"]
+}
+
+def getGitVersion() {
+    def process = "git rev-list master --first-parent --count".execute()
+    return process.text.toInteger()
+}
+
+def userVer = getNpmVersion()
+def googleVer = getGitVersion()
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -140,8 +154,8 @@ android {
         applicationId "com.fftcgcollection"
         minSdkVersion 21 // target android 5 minimum, kitkat isn't really these days. Plus, appcenter require at least version 21
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode googleVer
+        versionName userVer
         multiDexEnabled true
     }
     splits {

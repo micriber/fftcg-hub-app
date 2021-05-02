@@ -6,9 +6,17 @@ import {
   DrawerContentComponentProps,
   DrawerItem,
 } from '@react-navigation/drawer';
-import {Avatar, Title, Drawer, Caption, useTheme} from 'react-native-paper';
+import {
+  Avatar,
+  Title,
+  Drawer,
+  Caption,
+  useTheme,
+  Text,
+} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../../../contexts/AuthContext';
+import packageConfig from '../../../../package.json';
 
 type Props = {
   signOut: () => {};
@@ -20,6 +28,7 @@ export const DrawerContent = (props: Props) => {
   const styles = StyleSheet.create({
     contentContainerStyle: {
       paddingTop: 0,
+      height: '100%',
     },
     title: {
       fontSize: 20,
@@ -43,6 +52,13 @@ export const DrawerContent = (props: Props) => {
     drawerContent: {
       flex: 1,
       paddingTop: 0,
+    },
+    appVersion: {
+      position: 'absolute',
+      bottom: 5,
+      right: 5,
+      color: theme.colors.lightGrey,
+      fontSize: 12,
     },
   });
 
@@ -83,6 +99,7 @@ export const DrawerContent = (props: Props) => {
             )}
           />
         </Drawer.Section>
+        <Text style={styles.appVersion}>v{packageConfig.version}</Text>
       </View>
     </DrawerContentScrollView>
   );
