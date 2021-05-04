@@ -44,6 +44,7 @@ export const DrawerContent = (props: Props) => {
     userInfoSection: {
       padding: 16,
       flexDirection: 'row',
+      backgroundColor: theme.colors.active,
     },
     userInfoHeader: {
       marginLeft: 10,
@@ -60,6 +61,9 @@ export const DrawerContent = (props: Props) => {
       color: theme.colors.lightGrey,
       fontSize: 12,
     },
+    icon: {
+      opacity: 0.6,
+    },
   });
 
   return (
@@ -67,11 +71,7 @@ export const DrawerContent = (props: Props) => {
       {...props}
       contentContainerStyle={styles.contentContainerStyle}>
       <View style={styles.drawerContent}>
-        <View
-          style={[
-            styles.userInfoSection,
-            {backgroundColor: theme.colors.active, padding: 16},
-          ]}>
+        <View style={[styles.userInfoSection]}>
           <Avatar.Image
             source={require('../../../assets/logo/ic_launcher_round.png')}
             size={60}
@@ -93,7 +93,7 @@ export const DrawerContent = (props: Props) => {
               <Icon
                 name="logout"
                 size={24}
-                style={{opacity: 0.6}}
+                style={styles.icon}
                 color={props.inactiveTintColor}
               />
             )}

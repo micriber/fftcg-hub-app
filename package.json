@@ -15,8 +15,8 @@
     "test:coverage": "jest --coverage",
     "test:coverage:all": "jest --coverage --collectCoverageFrom=src/**/*.{js,jsx,ts,tsx}",
     "test:update": "jest -u",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "eslint --max-warnings 0 --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix ./src",
     "clean": "rimraf android/app/build",
     "gradlew:clean": "cd android && gradlew clean",
     "ts:check": "tsc --noemit"

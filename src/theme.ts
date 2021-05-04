@@ -99,4 +99,4 @@ export default {
   primaryDark,
 };
 
-export { screenFonts };
+export {screenFonts};

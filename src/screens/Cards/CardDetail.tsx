@@ -1,5 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Dimensions, ScrollView, TouchableHighlight, View} from 'react-native';
+import {
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  TouchableHighlight,
+  View,
+} from 'react-native';
 import {Card} from '../../services/api/card';
 import FFCardSimple from '../../components/FFCardSimple';
 import FFCardQuantityActions from '../../components/FFCardQuantityActions';
@@ -36,6 +42,75 @@ const CardDetail = ({route}: Props) => {
 
   const card = route.params.card;
 
+  const styles = StyleSheet.create({
+    backgroundImage: {
+      backgroundColor: new ColorTranslator(averageColor).setA(0.6).RGBA,
+      height: portrait ? 460 : screenHeight - 60,
+      width: portrait ? '100%' : (screenHeight - 60) / 1.4,
+    },
+    container: {
+      flex: 1,
+      flexDirection: portrait ? 'column' : 'row',
+      opacity: zoomCard && portrait ? 0.2 : 1,
+    },
+    image: {
+      height: portrait ? 400 : screenHeight - 120,
+      width: (portrait ? 400 : screenHeight - 120) / 1.4,
+      marginTop: portrait ? 30 : 10,
+      marginBottom: portrait ? 30 : 50,
+      marginHorizontal: portrait ? 0 : 30,
+    },
+    scrollContainer: {
+      flex: 1,
+    },
+    detailBlock: {
+      width: '33%',
+      marginTop: 6,
+      paddingRight: 5,
+    },
+    detailLabel: {
+      color: theme.colors.active,
+    },
+    detailText: {
+      fontSize: 16,
+    },
+    detailElementText: {
+      marginTop: -5,
+      marginLeft: -1,
+      height: 24,
+    },
+    detailDescriptionBlock: {
+      width: '100%',
+      marginTop: 6,
+    },
+    detailDescriptionLabel: {
+      color: theme.colors.active,
+      paddingRight: 5,
+    },
+    containerQuantity: {
+      flex: 1,
+      alignItems: 'center',
+      marginTop: 10,
+      marginBottom: 32,
+      marginLeft: -(screenWidth / 10),
+    },
+    zoomContainer: {
+      height: screenHeight - 40,
+      width: screenWidth,
+      backgroundColor: new ColorTranslator(averageColor).setA(0.6).RGBA,
+    },
+    zoomImage: {
+      maxWidth: 500,
+      maxHeight: 500 * 1.4,
+      width: screenWidth - 20,
+      height: (screenWidth - 20) * 1.4,
+      borderRadius: 15,
+    },
+    zoomImageContainer: {
+      marginTop: 20,
+    },
+  });
+
   useEffect(() => {
     Dimensions.addEventListener('change', ({window}) => {
       setPortrait(window.width < window.height);
@@ -53,39 +128,20 @@ const CardDetail = ({route}: Props) => {
 
     fetchColor();
     return () => Dimensions.removeEventListener('change', () => {});
-  }, []);
+  }, [card.code]);
 
   return (
     <>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: portrait ? 'column' : 'row',
-          opacity: zoomCard && portrait ? 0.2 : 1,
-        }}>
-        <View
-          style={{
-            backgroundColor: new ColorTranslator(averageColor).setA(0.6).RGBA,
-            height: portrait ? 460 : screenHeight - 60,
-            width: portrait ? '100%' : (screenHeight - 60) / 1.4,
-          }}>
+      <View style={styles.container}>
+        <View style={styles.backgroundImage}>
           <FFCardSimple
             card={card}
             viewType={'single'}
-            imageStyle={{
-              height: portrait ? 400 : screenHeight - 120,
-              width: (portrait ? 400 : screenHeight - 120) / 1.4,
-              marginTop: portrait ? 30 : 10,
-              marginBottom: portrait ? 30 : 50,
-              marginHorizontal: portrait ? 0 : 30,
-            }}
+            imageStyle={styles.image}
             onPress={() => setZoomCard(true)}
           />
         </View>
-        <ScrollView
-          style={{
-            flex: 1,
-          }}>
+        <ScrollView style={styles.scrollContainer}>
           <View
             style={{
               flex: 1,
@@ -99,43 +155,43 @@ const CardDetail = ({route}: Props) => {
                 flexWrap: 'wrap',
                 marginTop: 10,
               }}>
-              <View style={{width: '33%', marginTop: 6, paddingRight: 5}}>
-                <Text style={{color: theme.colors.active}}>Element:</Text>
+              <View style={styles.detailBlock}>
+                <Text style={styles.detailLabel}>Element:</Text>
                 <Text
                   textBreakStrategy={'simple'}
-                  style={{marginTop: -5, marginLeft: -1, height: 24}}>
+                  style={styles.detailElementText}>
                   {replaceTextByIconOrStyle(card.element)}
                 </Text>
               </View>
-              <View style={{width: '33%', marginTop: 6, paddingRight: 5}}>
-                <Text style={{color: theme.colors.active}}>Type:</Text>
-                <Text textBreakStrategy={'simple'} style={{fontSize: 16}}>
+              <View style={styles.detailBlock}>
+                <Text style={styles.detailLabel}>Type:</Text>
+                <Text textBreakStrategy={'simple'} style={styles.detailText}>
                   {card.type}
                 </Text>
               </View>
-              <View style={{width: '33%', marginTop: 6, paddingRight: 5}}>
-                <Text style={{color: theme.colors.active}}>Cout:</Text>
-                <Text textBreakStrategy={'simple'} style={{fontSize: 16}}>
+              <View style={styles.detailBlock}>
+                <Text style={styles.detailLabel}>Cout:</Text>
+                <Text textBreakStrategy={'simple'} style={styles.detailText}>
                   {card.cost}
                 </Text>
               </View>
               {card.power !== '' && (
-                <View style={{width: '33%', marginTop: 6, paddingRight: 5}}>
-                  <Text style={{color: theme.colors.active}}>Force:</Text>
-                  <Text textBreakStrategy={'simple'} style={{fontSize: 16}}>
+                <View style={styles.detailBlock}>
+                  <Text style={styles.detailLabel}>Force:</Text>
+                  <Text textBreakStrategy={'simple'} style={styles.detailText}>
                     {card.power}
                   </Text>
                 </View>
               )}
-              <View style={{width: '33%', marginTop: 6, paddingRight: 5}}>
-                <Text style={{color: theme.colors.active}}>Rareté:</Text>
-                <Text textBreakStrategy={'simple'} style={{fontSize: 16}}>
+              <View style={styles.detailBlock}>
+                <Text style={styles.detailLabel}>Rareté:</Text>
+                <Text textBreakStrategy={'simple'} style={styles.detailText}>
                   {rarityLabel[card.rarity]}
                 </Text>
               </View>
-              <View style={{width: '33%', marginTop: 6, paddingRight: 5}}>
-                <Text style={{color: theme.colors.active}}>Opus:</Text>
-                <Text textBreakStrategy={'simple'} style={{fontSize: 16}}>
+              <View style={styles.detailBlock}>
+                <Text style={styles.detailLabel}>Opus:</Text>
+                <Text textBreakStrategy={'simple'} style={styles.detailText}>
                   {card.set}
                 </Text>
               </View>
@@ -145,8 +201,8 @@ const CardDetail = ({route}: Props) => {
                   marginTop: 6,
                   paddingRight: 5,
                 }}>
-                <Text style={{color: theme.colors.active}}>Catégorie:</Text>
-                <Text textBreakStrategy={'simple'} style={{fontSize: 16}}>
+                <Text style={styles.detailLabel}>Catégorie:</Text>
+                <Text textBreakStrategy={'simple'} style={styles.detailText}>
                   {replaceTextByIconOrStyle(card.category1)}
                 </Text>
               </View>
@@ -157,30 +213,21 @@ const CardDetail = ({route}: Props) => {
                     marginTop: 6,
                     paddingRight: 5,
                   }}>
-                  <Text style={{color: theme.colors.active}}>Job:</Text>
-                  <Text textBreakStrategy={'simple'} style={{fontSize: 16}}>
+                  <Text style={styles.detailLabel}>Job:</Text>
+                  <Text textBreakStrategy={'simple'} style={styles.detailText}>
                     {card.job}
                   </Text>
                 </View>
               )}
-              <View style={{width: '100%', marginTop: 6}}>
-                <Text style={{color: theme.colors.active, paddingRight: 5}}>
-                  Description:
-                </Text>
+              <View style={styles.detailDescriptionBlock}>
+                <Text style={styles.detailDescriptionLabel}>Description:</Text>
               </View>
-              <Text style={{fontSize: 16}} textBreakStrategy={'simple'}>
+              <Text style={styles.detailText} textBreakStrategy={'simple'}>
                 {replaceTextByIconOrStyle(card.text)}
               </Text>
             </View>
           </View>
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              marginTop: 10,
-              marginBottom: 32,
-              marginLeft: -(screenWidth / 10),
-            }}>
+          <View style={styles.containerQuantity}>
             <FFCardQuantityActions
               card={card}
               version="classic"
@@ -197,26 +244,14 @@ const CardDetail = ({route}: Props) => {
       </View>
       {zoomCard && portrait && (
         <TouchableHighlight
-          style={{
-            height: screenHeight - 40,
-            width: screenWidth,
-            backgroundColor: new ColorTranslator(averageColor).setA(0.6).RGBA,
-          }}
+          style={styles.zoomContainer}
           onPress={() => setZoomCard(false)}>
           <FFCardSimple
             card={card}
             viewType={'single'}
-            imageStyle={{
-              maxWidth: 500,
-              maxHeight: 500 * 1.4,
-              width: screenWidth - 20,
-              height: (screenWidth - 20) * 1.4,
-              borderRadius: 15,
-            }}
+            imageStyle={styles.zoomImage}
             onPress={() => setZoomCard(false)}
-            containerStyle={{
-              marginTop: 20,
-            }}
+            containerStyle={styles.zoomImageContainer}
           />
         </TouchableHighlight>
       )}

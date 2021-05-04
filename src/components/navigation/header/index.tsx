@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 
-import {TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import {Appbar, useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {StackHeaderProps} from '@react-navigation/stack';
@@ -18,6 +18,21 @@ type DrawerActions = {
 
 type CustomNavigation = Pick<Props, 'navigation'> & DrawerActions;
 
+const styles = StyleSheet.create({
+  header: {
+    height: 47,
+  },
+  icon: {
+    marginHorizontal: 16,
+  },
+  content: {
+    marginBottom: 3,
+  },
+  title: {
+    fontSize: 20,
+  },
+});
+
 const Header = (props: Props) => {
   const {scene, previous, headerRight} = props;
   const navigation = (props.navigation as unknown) as CustomNavigation;
@@ -33,7 +48,7 @@ const Header = (props: Props) => {
   return (
     <Appbar.Header
       theme={{colors: {primary: theme.colors.accent}}}
-      style={{height: 47}}>
+      style={styles.header}>
       {previous ? (
         <Appbar.BackAction
           onPress={() => navigation.pop()}
@@ -48,15 +63,15 @@ const Header = (props: Props) => {
             name="menu"
             size={24}
             color={theme.colors.lightGrey}
-            style={{marginHorizontal: 16}}
+            style={styles.icon}
           />
         </TouchableOpacity>
       )}
       <Appbar.Content
         color={theme.colors.lightGrey}
         title={title}
-        titleStyle={{fontSize: 20}}
-        style={{marginBottom: 3}}
+        titleStyle={styles.title}
+        style={styles.content}
       />
       {headerRight}
     </Appbar.Header>

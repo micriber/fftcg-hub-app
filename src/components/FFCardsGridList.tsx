@@ -41,12 +41,7 @@ const FFCardsGridList = ({
   );
   let refList;
   return (
-    <View
-      style={[
-        styles.gridContainer,
-        {backgroundColor: colors.background},
-        style,
-      ]}>
+    <View style={[{backgroundColor: colors.background}, style]}>
       <FlatGrid
         contentContainerStyle={styles.contentContainerStyle}
         key={1}
@@ -64,11 +59,15 @@ const FFCardsGridList = ({
         onEndReachedThreshold={1.5}
         refreshing={refreshing}
         onRefresh={onRefresh}
-        ListEmptyComponent={isEmpty ? <FFCardsListEmpty /> : <ActivityIndicator animating={true} />}
+        ListEmptyComponent={
+          isEmpty ? (
+            <FFCardsListEmpty />
+          ) : (
+            <ActivityIndicator animating={true} />
+          )
+        }
         ref={(ref) => (refList = ref)}
-        itemContainerStyle={{
-          alignItems: 'center',
-        }}
+        itemContainerStyle={styles.container}
       />
 
       <FAB
@@ -85,7 +84,8 @@ const FFCardsGridList = ({
   );
 };
 const styles = StyleSheet.create({
-  gridContainer: {
+  container: {
+    alignItems: 'center',
   },
   fab: {
     position: 'absolute',
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   contentContainerStyle: {
     minHeight: '100%',
     paddingBottom: 110,
-    marginTop: -10
+    marginTop: -10,
   },
   flex1: {
     flex: 1,

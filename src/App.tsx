@@ -14,12 +14,12 @@ const App = () => {
 
   return (
     <PaperProvider theme={theme}>
-      <StatusBar backgroundColor={theme.colors.accent}/>
+      <StatusBar backgroundColor={theme.colors.accent} />
       <SafeAreaProvider>
         <AuthContextProvider>
           <SearchCardsContextProvider>
             <NavigationContainer>
-              <AuthStackScreen theme={theme}/>
+              <AuthStackScreen theme={theme} />
             </NavigationContainer>
           </SearchCardsContextProvider>
         </AuthContextProvider>

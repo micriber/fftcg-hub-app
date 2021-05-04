@@ -19,7 +19,9 @@ const HeaderSwitch = ({
   const theme = useTheme();
   return (
     <View style={styles.header}>
-      {leftIconName && <Icon name={leftIconName} color={theme.colors.lightGrey} size={20} />}
+      {leftIconName && (
+        <Icon name={leftIconName} color={theme.colors.lightGrey} size={20} />
+      )}
       <Switch
         value={value}
         onValueChange={onValueChange}
@@ -27,7 +29,9 @@ const HeaderSwitch = ({
         testID={`SwitcherState-${+value}`}
         color={theme.colors.active}
       />
-      {rightIconName && <Icon name={rightIconName} color={theme.colors.lightGrey} size={22} />}
+      {rightIconName && (
+        <Icon name={rightIconName} color={theme.colors.lightGrey} size={22} />
+      )}
     </View>
   );
 };

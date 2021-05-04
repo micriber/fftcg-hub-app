@@ -86,7 +86,7 @@ function useFetchCards({cardsContext}: Props) {
     handleLoadMore,
     refresh,
     loadCards: callback,
-    isEmpty
+    isEmpty,
   };
 }
 
