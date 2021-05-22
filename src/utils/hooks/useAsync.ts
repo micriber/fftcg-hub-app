@@ -1,14 +1,13 @@
-import {DependencyList, useEffect} from 'react';
+import {useEffect} from 'react';
 import useAsyncFn from './useAsyncFn';
 import {FnReturningPromise} from './util';
 
 export type {AsyncState, AsyncFnReturn} from './useAsyncFn';
 
 export default function useAsync<T extends FnReturningPromise>(
-  fn: T,
-  deps: DependencyList = [],
+  fn: T
 ) {
-  const [state, callback] = useAsyncFn(fn, deps, {
+  const [state, callback] = useAsyncFn(fn, {
     loading: true,
   });
 

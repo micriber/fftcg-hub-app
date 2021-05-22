@@ -118,7 +118,7 @@ describe('useAsyncFn', () => {
     const hook = renderHook<
       {fn: () => Promise<number>},
       [AsyncState<number>, () => Promise<number>]
-    >(({fn}) => useAsyncFn(fn, [fn]), {
+    >(({fn}) => useAsyncFn(fn), {
       initialProps: {fn: delayedFunction1},
     });
     act(() => {
@@ -146,7 +146,7 @@ describe('useAsyncFn', () => {
     const hook = renderHook<
       {fn: () => Promise<string>},
       [AsyncState<string>, () => Promise<string>]
-    >(({fn}) => useAsyncFn(fn, [fn], initialState), {
+    >(({fn}) => useAsyncFn(fn, initialState), {
       initialProps: {fn: fetch},
     });
 

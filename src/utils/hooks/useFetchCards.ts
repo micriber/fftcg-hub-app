@@ -42,7 +42,7 @@ function useFetchCards({cardsContext}: Props) {
     return data;
   };
 
-  const [state, callback] = useAsyncFn(loadCards, deps, {loading: false});
+  const [state, callback] = useAsyncFn(loadCards, {loading: false});
   const isEmpty = cardContext.cardsList.length === 0 && !state.loading;
 
   const refresh = () => {
