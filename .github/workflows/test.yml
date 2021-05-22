@@ -36,7 +36,7 @@ jobs:
       - name: Jest test
         run: yarn test
       - name: Lint test
-        run: yarn eslint
+        run: yarn lint
 #       TODO: Think when we need to build the apk
 #         Disable cause it takes to long time for each pull request,
 #         And we don't want to waste free minutes build time
