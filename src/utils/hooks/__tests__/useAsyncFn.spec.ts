@@ -114,6 +114,7 @@ describe('useAsyncFn', () => {
       );
     };
 
+    // eslint-disable-next-line no-spaced-func
     const hook = renderHook<
       {fn: () => Promise<number>},
       [AsyncState<number>, () => Promise<number>]
@@ -141,6 +142,7 @@ describe('useAsyncFn', () => {
     const fetch = async () => 'new state';
     const initialState = {loading: false, value: 'init state'};
 
+    // eslint-disable-next-line no-spaced-func
     const hook = renderHook<
       {fn: () => Promise<string>},
       [AsyncState<string>, () => Promise<string>]

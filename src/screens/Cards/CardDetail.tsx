@@ -75,6 +75,16 @@ const CardDetail = ({route}: Props) => {
       marginTop: 6,
       paddingRight: 5,
     },
+    detailBlockCategory: {
+      width: card.category1.length > 20 ? '66%' : '33%',
+      marginTop: 6,
+      paddingRight: 5,
+    },
+    detailBlockJob: {
+      width: card.category1.length > 20 ? '33%' : '66%',
+      marginTop: 6,
+      paddingRight: 5,
+    },
     detailLabel: {
       color: theme.colors.active,
     },
@@ -190,24 +200,14 @@ const CardDetail = ({route}: Props) => {
                 {card.set}
               </Text>
             </View>
-            <View
-              style={{
-                width: card.category1.length > 20 ? '66%' : '33%',
-                marginTop: 6,
-                paddingRight: 5,
-              }}>
+            <View style={styles.detailBlockCategory}>
               <Text style={styles.detailLabel}>Catégorie:</Text>
               <Text textBreakStrategy={'simple'} style={styles.detailText}>
                 {replaceTextByIconOrStyle(card.category1)}
               </Text>
             </View>
             {card.job !== '' && (
-              <View
-                style={{
-                  width: card.category1.length > 20 ? '33%' : '66%',
-                  marginTop: 6,
-                  paddingRight: 5,
-                }}>
+              <View style={styles.detailBlockJob}>
                 <Text style={styles.detailLabel}>Job:</Text>
                 <Text textBreakStrategy={'simple'} style={styles.detailText}>
                   {card.job}
