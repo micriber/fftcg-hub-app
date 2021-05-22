@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, ActivityIndicator} from 'react-native';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 
 const Loading = () => (
   <View style={styles.loading} testID="Loader">

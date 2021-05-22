@@ -8,6 +8,8 @@ const useIsomorphicLayoutEffect =
     ? useLayoutEffect
     : useEffect;
 
+const AbortController = window.AbortController;
+
 // assign current value to a ref and providing a getter.
 // This way we are sure to always get latest value provided to hook and
 // avoid weird issues due to closures capturing stale values...
@@ -145,17 +147,17 @@ const useAsyncState = <R extends {}>(
   ]);
 
   const setLoading = useCallback(() => setValue(options.setLoading(value)), [
+    options,
     value,
-    setValue,
   ]);
   const setResult = useCallback(
     (result: R) => setValue(options.setResult(result, value)),
-    [value, setValue],
+    [options, value],
   );
 
   const setError = useCallback(
     (error: Error) => setValue(options.setError(error, value)),
-    [value, setValue],
+    [options, value],
   );
 
   const set = setValue;
@@ -232,43 +234,47 @@ const useAsyncInternal = <R = UnknownResult, Args extends any[] = UnknownArgs>(
   const isMounted = useIsMounted();
   const CurrentPromise = useCurrentPromise<R>();
 
-  // We only want to handle the promise result/error
-  // if it is the last operation and the comp is still mounted
-  const shouldHandlePromise = (p: Promise<R>) =>
-    isMounted() && CurrentPromise.is(p);
+  const executeAsyncOperation = useCallback(
+    (...args: Args): Promise<R> => {
+      // We only want to handle the promise result/error
+      // if it is the last operation and the comp is still mounted
+      const shouldHandlePromise = (p: Promise<R>) =>
+        isMounted() && CurrentPromise.is(p);
 
-  const executeAsyncOperation = (...args: Args): Promise<R> => {
-    const promise: MaybePromise<R> = asyncFunction(...args);
-    setCurrentParams(args);
-    if (promise instanceof Promise) {
-      CurrentPromise.set(promise);
-      AsyncState.setLoading();
-      promise.then(
-        (result) => {
-          if (shouldHandlePromise(promise)) {
-            AsyncState.setResult(result);
-          }
-          normalizedOptions.onSuccess(result, {
-            isCurrent: () => CurrentPromise.is(promise),
-          });
-        },
-        (error) => {
-          if (shouldHandlePromise(promise)) {
-            AsyncState.setError(error);
-          }
-          normalizedOptions.onError(error, {
-            isCurrent: () => CurrentPromise.is(promise),
-          });
-        },
-      );
-      return promise;
-    } else {
-      // We allow passing a non-async function (mostly for useAsyncCallback conveniency)
-      const syncResult: R = promise;
-      AsyncState.setResult(syncResult);
-      return Promise.resolve<R>(syncResult);
-    }
-  };
+      const promise: MaybePromise<R> = asyncFunction(...args);
+      setCurrentParams(args);
+
+      if (promise instanceof Promise) {
+        CurrentPromise.set(promise);
+        AsyncState.setLoading();
+        promise.then(
+          (result) => {
+            if (shouldHandlePromise(promise)) {
+              AsyncState.setResult(result);
+            }
+            normalizedOptions.onSuccess(result, {
+              isCurrent: () => CurrentPromise.is(promise),
+            });
+          },
+          (error) => {
+            if (shouldHandlePromise(promise)) {
+              AsyncState.setError(error);
+            }
+            normalizedOptions.onError(error, {
+              isCurrent: () => CurrentPromise.is(promise),
+            });
+          },
+        );
+        return promise;
+      } else {
+        // We allow passing a non-async function (mostly for useAsyncCallback conveniency)
+        const syncResult: R = promise;
+        AsyncState.setResult(syncResult);
+        return Promise.resolve<R>(syncResult);
+      }
+    },
+    [AsyncState, CurrentPromise, asyncFunction, isMounted, normalizedOptions],
+  );
 
   // Keep this outside useEffect, because inside isMounted()
   // will be true as the component is already mounted when it's run
@@ -279,7 +285,13 @@ const useAsyncInternal = <R = UnknownResult, Args extends any[] = UnknownArgs>(
     } else {
       normalizedOptions.executeOnUpdate && executeAsyncOperation(...params);
     }
-  }, params);
+  }, [
+    executeAsyncOperation,
+    isMounting,
+    normalizedOptions.executeOnMount,
+    normalizedOptions.executeOnUpdate,
+    params,
+  ]);
 
   return {
     ...AsyncState.value,
@@ -444,20 +456,20 @@ export const useAsyncFetchMore = <R, Args extends any[]>({
     return moreResult;
   });
 
-  const reset = () => {
-    fetchMoreAsync.reset();
-    setIsEnd(false);
-  };
-
   // We only allow to fetch more on a stable async value
   // If that value change for whatever reason, we reset the fetchmore too (which will make current pending requests to be ignored)
   // TODO value is not stable, we could just reset on value change otherwise
   const shouldReset = value.status !== 'success';
   useEffect(() => {
+    const reset = () => {
+      fetchMoreAsync.reset();
+      setIsEnd(false);
+    };
+
     if (shouldReset) {
       reset();
     }
-  }, [shouldReset]);
+  }, [fetchMoreAsync, shouldReset]);
 
   return {
     canFetchMore:

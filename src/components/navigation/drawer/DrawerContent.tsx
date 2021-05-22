@@ -1,18 +1,18 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {
-  DrawerContentScrollView,
-  DrawerItemList,
   DrawerContentComponentProps,
+  DrawerContentScrollView,
   DrawerItem,
+  DrawerItemList,
 } from '@react-navigation/drawer';
 import {
   Avatar,
-  Title,
-  Drawer,
   Caption,
-  useTheme,
+  Drawer,
   Text,
+  Title,
+  useTheme,
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../../../contexts/AuthContext';

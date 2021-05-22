@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  SafeAreaView,
-  Text,
-  View,
   Dimensions,
   Image,
+  SafeAreaView,
   StatusBar,
+  Text,
+  View,
 } from 'react-native';
 import {GoogleSigninButton} from '@react-native-community/google-signin';
 import {AuthContext} from '../../contexts/AuthContext';

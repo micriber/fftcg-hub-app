@@ -14,14 +14,12 @@ type Props = {
   theme: Theme;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const AuthStackScreen = (props: Props) => {
   const {user, signIn, isLoading, signOut} = React.useContext(AuthContext);
 
   React.useEffect(() => {
     Api.configure({refreshCallback: () => signIn(true)});
     signIn(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function loginScreen() {

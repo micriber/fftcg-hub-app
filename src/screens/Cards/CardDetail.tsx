@@ -63,6 +63,13 @@ const CardDetail = ({route}: Props) => {
     scrollContainer: {
       flex: 1,
     },
+    detailContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      marginTop: 10,
+      marginHorizontal: 20,
+    },
     detailBlock: {
       width: '33%',
       marginTop: 6,
@@ -142,90 +149,77 @@ const CardDetail = ({route}: Props) => {
           />
         </View>
         <ScrollView style={styles.scrollContainer}>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'column',
-              marginHorizontal: 20,
-            }}>
+          <View style={styles.detailContainer}>
+            <View style={styles.detailBlock}>
+              <Text style={styles.detailLabel}>Element:</Text>
+              <Text
+                textBreakStrategy={'simple'}
+                style={styles.detailElementText}>
+                {replaceTextByIconOrStyle(card.element)}
+              </Text>
+            </View>
+            <View style={styles.detailBlock}>
+              <Text style={styles.detailLabel}>Type:</Text>
+              <Text textBreakStrategy={'simple'} style={styles.detailText}>
+                {card.type}
+              </Text>
+            </View>
+            <View style={styles.detailBlock}>
+              <Text style={styles.detailLabel}>Cout:</Text>
+              <Text textBreakStrategy={'simple'} style={styles.detailText}>
+                {card.cost}
+              </Text>
+            </View>
+            {card.power !== '' && (
+              <View style={styles.detailBlock}>
+                <Text style={styles.detailLabel}>Force:</Text>
+                <Text textBreakStrategy={'simple'} style={styles.detailText}>
+                  {card.power}
+                </Text>
+              </View>
+            )}
+            <View style={styles.detailBlock}>
+              <Text style={styles.detailLabel}>Rareté:</Text>
+              <Text textBreakStrategy={'simple'} style={styles.detailText}>
+                {rarityLabel[card.rarity]}
+              </Text>
+            </View>
+            <View style={styles.detailBlock}>
+              <Text style={styles.detailLabel}>Opus:</Text>
+              <Text textBreakStrategy={'simple'} style={styles.detailText}>
+                {card.set}
+              </Text>
+            </View>
             <View
               style={{
-                flex: 1,
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                marginTop: 10,
+                width: card.category1.length > 20 ? '66%' : '33%',
+                marginTop: 6,
+                paddingRight: 5,
               }}>
-              <View style={styles.detailBlock}>
-                <Text style={styles.detailLabel}>Element:</Text>
-                <Text
-                  textBreakStrategy={'simple'}
-                  style={styles.detailElementText}>
-                  {replaceTextByIconOrStyle(card.element)}
-                </Text>
-              </View>
-              <View style={styles.detailBlock}>
-                <Text style={styles.detailLabel}>Type:</Text>
-                <Text textBreakStrategy={'simple'} style={styles.detailText}>
-                  {card.type}
-                </Text>
-              </View>
-              <View style={styles.detailBlock}>
-                <Text style={styles.detailLabel}>Cout:</Text>
-                <Text textBreakStrategy={'simple'} style={styles.detailText}>
-                  {card.cost}
-                </Text>
-              </View>
-              {card.power !== '' && (
-                <View style={styles.detailBlock}>
-                  <Text style={styles.detailLabel}>Force:</Text>
-                  <Text textBreakStrategy={'simple'} style={styles.detailText}>
-                    {card.power}
-                  </Text>
-                </View>
-              )}
-              <View style={styles.detailBlock}>
-                <Text style={styles.detailLabel}>Rareté:</Text>
-                <Text textBreakStrategy={'simple'} style={styles.detailText}>
-                  {rarityLabel[card.rarity]}
-                </Text>
-              </View>
-              <View style={styles.detailBlock}>
-                <Text style={styles.detailLabel}>Opus:</Text>
-                <Text textBreakStrategy={'simple'} style={styles.detailText}>
-                  {card.set}
-                </Text>
-              </View>
+              <Text style={styles.detailLabel}>Catégorie:</Text>
+              <Text textBreakStrategy={'simple'} style={styles.detailText}>
+                {replaceTextByIconOrStyle(card.category1)}
+              </Text>
+            </View>
+            {card.job !== '' && (
               <View
                 style={{
-                  width: card.category1.length > 20 ? '66%' : '33%',
+                  width: card.category1.length > 20 ? '33%' : '66%',
                   marginTop: 6,
                   paddingRight: 5,
                 }}>
-                <Text style={styles.detailLabel}>Catégorie:</Text>
+                <Text style={styles.detailLabel}>Job:</Text>
                 <Text textBreakStrategy={'simple'} style={styles.detailText}>
-                  {replaceTextByIconOrStyle(card.category1)}
+                  {card.job}
                 </Text>
               </View>
-              {card.job !== '' && (
-                <View
-                  style={{
-                    width: card.category1.length > 20 ? '33%' : '66%',
-                    marginTop: 6,
-                    paddingRight: 5,
-                  }}>
-                  <Text style={styles.detailLabel}>Job:</Text>
-                  <Text textBreakStrategy={'simple'} style={styles.detailText}>
-                    {card.job}
-                  </Text>
-                </View>
-              )}
-              <View style={styles.detailDescriptionBlock}>
-                <Text style={styles.detailDescriptionLabel}>Description:</Text>
-              </View>
-              <Text style={styles.detailText} textBreakStrategy={'simple'}>
-                {replaceTextByIconOrStyle(card.text)}
-              </Text>
+            )}
+            <View style={styles.detailDescriptionBlock}>
+              <Text style={styles.detailDescriptionLabel}>Description:</Text>
             </View>
+            <Text style={styles.detailText} textBreakStrategy={'simple'}>
+              {replaceTextByIconOrStyle(card.text)}
+            </Text>
           </View>
           <View style={styles.containerQuantity}>
             <FFCardQuantityActions

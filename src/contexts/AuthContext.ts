@@ -13,6 +13,6 @@ export const AuthContext = React.createContext({
   isLoading: false,
   getCurrentUser: (): UserInfo | null => null,
   getIdToken: (): string | null => null,
-  signIn: (silently = false) => Promise.resolve(),
+  signIn: () => Promise.resolve(),
   signOut: () => Promise.resolve(),
 });

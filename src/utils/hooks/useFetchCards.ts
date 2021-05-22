@@ -1,4 +1,4 @@
-import React, {Context, useRef, useState} from 'react';
+import React, {Context} from 'react';
 import {getCards, GetCardsParams} from '../../services/api/card';
 import {defaultValue} from '../../contexts/SearchCardsContext';
 import useAsyncFn from './useAsyncFn';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, Keyboard} from 'react-native';
+import {Keyboard, StyleSheet, Text, View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
 import {SearchStackParamList} from './type';

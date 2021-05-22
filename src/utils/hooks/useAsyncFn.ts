@@ -1,4 +1,4 @@
-import {DependencyList, useCallback, useState, useRef} from 'react';
+import {DependencyList, useCallback, useRef, useState} from 'react';
 import useMountedState from './useMountedState';
 import {FnReturningPromise, PromiseType} from './util';
 
@@ -62,8 +62,6 @@ export default function useAsyncFn<T extends FnReturningPromise>(
         return error;
       },
     ) as ReturnType<T>;
-    // TODO: Fix me
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   return [state, (callback as unknown) as T];
