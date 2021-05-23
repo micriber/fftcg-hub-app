@@ -4,29 +4,29 @@ import {FnReturningPromise, PromiseType} from './util';
 
 export type AsyncState<T> =
   | {
-  loading: boolean;
-  error?: undefined;
-  value?: undefined;
-}
+      loading: boolean;
+      error?: undefined;
+      value?: undefined;
+    }
   | {
-  loading: true;
-  error?: Error | undefined;
-  value?: T;
-}
+      loading: true;
+      error?: Error | undefined;
+      value?: T;
+    }
   | {
-  loading: false;
-  error: Error;
-  value?: undefined;
-}
+      loading: false;
+      error: Error;
+      value?: undefined;
+    }
   | {
-  loading: false;
-  error?: undefined;
-  value: T;
-};
+      loading: false;
+      error?: undefined;
+      value: T;
+    };
 
 type StateFromFnReturningPromise<T extends FnReturningPromise> = AsyncState<
   PromiseType<ReturnType<T>>
-  >;
+>;
 
 export type AsyncFnReturn<T extends FnReturningPromise = FnReturningPromise> = [
   StateFromFnReturningPromise<T>,
@@ -49,15 +49,15 @@ export default function useAsyncFn<T extends FnReturningPromise>(
     return fn(...args).then(
       (value) => {
         isMounted() &&
-        callId === lastCallId.current &&
-        set({value, loading: false});
+          callId === lastCallId.current &&
+          set({value, loading: false});
 
         return value;
       },
       (error) => {
         isMounted() &&
-        callId === lastCallId.current &&
-        set({error, loading: false});
+          callId === lastCallId.current &&
+          set({error, loading: false});
 
         return error;
       },
