@@ -1,6 +1,9 @@
-import {useEffect, useRef} from 'react';
+import {DependencyList, useEffect, useRef} from 'react';
 
-function useDidMountEffect<T>(fn: (...args: any[]) => any) {
+function useDidMountEffect<T>(
+  fn: (...args: any[]) => any,
+  deps: DependencyList = [],
+) {
   const didMount = useRef(false);
 
   useEffect(() => {
@@ -9,7 +12,7 @@ function useDidMountEffect<T>(fn: (...args: any[]) => any) {
     } else {
       didMount.current = true;
     }
-  }, [fn]);
+  }, deps);
 }
 
 export default useDidMountEffect;

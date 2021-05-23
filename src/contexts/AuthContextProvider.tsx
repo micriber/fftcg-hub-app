@@ -50,8 +50,6 @@ const AuthContextProvider = ({children}) => {
             setIsLoading(false);
             return;
           }
-
-          console.log(e);
         }
 
         const idToken = userInfo?.idToken;
@@ -67,7 +65,6 @@ const AuthContextProvider = ({children}) => {
         try {
           const signedInUser = await googleLogin(idToken);
           if ((signedInUser as UnauthorizedError).message) {
-            console.log('ERROR Google Login => ' + signedInUser.message);
             Alert.alert(
               'Erreur',
               'Un problème de connexion est survenue. Merci de réessayer ultérieurement.',
@@ -83,7 +80,6 @@ const AuthContextProvider = ({children}) => {
           }
           setIsLoading(false);
         } catch (e) {
-          console.log(e);
           Alert.alert(
             'Erreur',
             'Un problème avec votre connexion est survenue. Merci de réessayer ultérieurement.',
