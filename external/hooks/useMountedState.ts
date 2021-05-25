@@ -1,18 +1,16 @@
-import {DependencyList, useEffect, useRef} from 'react';
+import {useCallback, useEffect, useRef} from 'react';
 
-function useDidMountEffect<T>(
-  fn: (...args: any[]) => any,
-  deps: DependencyList = [],
-) {
-  const didMount = useRef(false);
+export default function useMountedState(): () => boolean {
+  const mountedRef = useRef<boolean>(false);
+  const get = useCallback(() => mountedRef.current, []);
 
   useEffect(() => {
-    if (didMount.current) {
-      fn();
-    } else {
-      didMount.current = true;
-    }
-  }, deps);
-}
+    mountedRef.current = true;
 
-export default useDidMountEffect;
+    return () => {
+      mountedRef.current = false;
+    };
+  });
+
+  return get;
+}
