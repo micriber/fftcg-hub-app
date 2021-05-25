@@ -11,7 +11,7 @@ import {SearchCardsContext} from '../../contexts/SearchCardsContext';
 import FFCardsGridList from '../../components/FFCardsGridList';
 import useFetchCards from '../../utils/hooks/useFetchCards';
 import Loading from '../Loading';
-import useDidMountEffect from '../../utils/hooks/useDidMountEffect';
+import useDidMountEffect from '../../../external/hooks/useDidMountEffect';
 
 type SearchScreenNavigationProp = StackNavigationProp<
   SearchStackParamList,

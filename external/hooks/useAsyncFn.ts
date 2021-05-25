@@ -62,6 +62,8 @@ export default function useAsyncFn<T extends FnReturningPromise>(
         return error;
       },
     ) as ReturnType<T>;
+    // TODO: Fix me
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   return [state, (callback as unknown) as T];

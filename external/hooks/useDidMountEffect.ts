@@ -1,4 +1,5 @@
-import {DependencyList, useEffect, useRef} from 'react';
+import React, {DependencyList, useEffect, useRef} from 'react';
+import {FnReturningPromise} from './util';
 
 function useDidMountEffect<T>(
   fn: (...args: any[]) => any,
