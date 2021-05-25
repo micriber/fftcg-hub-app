@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  SafeAreaView,
-  Text,
-  View,
   Dimensions,
   Image,
+  SafeAreaView,
   StatusBar,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import {GoogleSigninButton} from '@react-native-community/google-signin';
 import {AuthContext} from '../../contexts/AuthContext';
@@ -49,6 +50,40 @@ class Login extends React.Component<Props, State> {
       screenHeight: w.height,
     };
   }
+  styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: this.props.theme.colors.active,
+    },
+    svgTop: {
+      flex: 1,
+      marginTop: -(StatusBar.currentHeight ?? 0),
+    },
+    svgBottom: {
+      rotation: 180,
+      marginTop: StatusBar.currentHeight ?? 0,
+    },
+    containerCenter: {
+      flexDirection: this.state.portrait ? 'column' : 'row',
+      alignItems: 'center',
+      flex: 1,
+      justifyContent: 'flex-start',
+      marginBottom: -(StatusBar.currentHeight ?? 0) * 2.5,
+    },
+    containerLogo: {
+      alignItems: 'center',
+      width: this.state.portrait ? '100%' : '50%',
+    },
+    titre: {
+      fontSize: 48,
+      color: this.props.theme.colors.lightGrey,
+      fontFamily: screenFonts.login.title,
+    },
+    googleButton: {
+      alignItems: 'center',
+      flex: 1,
+    },
+  });
 
   componentDidMount() {
     Dimensions.addEventListener('change', ({window}) => {
@@ -63,8 +98,8 @@ class Login extends React.Component<Props, State> {
 
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: this.props.theme.colors.active}}>
-        <View style={{flex: 1, marginTop: -(StatusBar.currentHeight ?? 0)}}>
+      <View style={this.styles.container}>
+        <View style={this.styles.svgTop}>
           {this.state.portrait ? (
             <VectorLoginPortrait
               height={(this.state.screenWidth + 10) / 2.25}
@@ -79,34 +114,12 @@ class Login extends React.Component<Props, State> {
             />
           )}
         </View>
-        <View
-          style={{
-            flexDirection: this.state.portrait ? 'column' : 'row',
-            alignItems: 'center',
-            flex: 1,
-            justifyContent: 'flex-start',
-            marginBottom: -(StatusBar.currentHeight ?? 0) * 2.5,
-          }}>
-          <View
-            style={{
-              alignItems: 'center',
-              width: this.state.portrait ? '100%' : '50%',
-            }}>
+        <View style={this.styles.containerCenter}>
+          <View style={this.styles.containerLogo}>
             <Image source={require('../../assets/logo/round.png')} />
-            <Text
-              style={{
-                fontSize: 48,
-                color: this.props.theme.colors.lightGrey,
-                fontFamily: screenFonts.login.title,
-              }}>
-              FFTCG Hub
-            </Text>
+            <Text style={this.styles.titre}>FFTCG Hub</Text>
           </View>
-          <SafeAreaView
-            style={{
-              alignItems: 'center',
-              flex: 1,
-            }}>
+          <SafeAreaView style={this.styles.googleButton}>
             <GoogleSigninButton
               size={GoogleSigninButton.Size.Standard}
               color={GoogleSigninButton.Color.Light}
@@ -116,7 +129,7 @@ class Login extends React.Component<Props, State> {
             />
           </SafeAreaView>
         </View>
-        <View style={{rotation: 180, marginTop: StatusBar.currentHeight ?? 0}}>
+        <View style={this.styles.svgBottom}>
           {this.state.portrait ? (
             <VectorLoginPortrait
               height={this.state.screenWidth / 2.25}

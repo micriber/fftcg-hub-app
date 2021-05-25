@@ -6,16 +6,10 @@ import Login from './Login';
 import {AuthContext} from '../../contexts/AuthContext';
 import Loading from '../Loading';
 import DrawerNavigator from '../../components/navigation/drawer';
-import {Theme} from 'react-native-paper/lib/typescript/types';
 
 const AuthStack = createStackNavigator();
 
-type Props = {
-  theme: Theme;
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const AuthStackScreen = (props: Props) => {
+const AuthStackScreen = () => {
   const {user, signIn, isLoading, signOut} = React.useContext(AuthContext);
 
   React.useEffect(() => {

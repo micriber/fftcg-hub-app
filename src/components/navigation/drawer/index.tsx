@@ -4,12 +4,22 @@ import {DrawerContent} from './DrawerContent';
 import {SearchStackScreen} from '../../../screens/Search';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTheme} from 'react-native-paper';
+import {StyleSheet} from 'react-native';
 
 const Drawer = createDrawerNavigator();
 
 type Props = {
   signOut: () => {};
 };
+
+const styles = StyleSheet.create({
+  iconFocus: {
+    opacity: 1,
+  },
+  icon: {
+    opacity: 0.6,
+  },
+});
 
 const DrawerNavigator = ({signOut}: Props) => {
   const theme = useTheme();
@@ -32,7 +42,7 @@ const DrawerNavigator = ({signOut}: Props) => {
             <Icon
               name="magnify"
               size={24}
-              style={{opacity: focused ? 1 : 0.6}}
+              style={focused ? styles.iconFocus : styles.icon}
               color={color}
             />
           ),

@@ -1,8 +1,8 @@
-import React, {Context, useRef, useState} from 'react';
+import React, {Context} from 'react';
 import {getCards, GetCardsParams} from '../../services/api/card';
 import {defaultValue} from '../../contexts/SearchCardsContext';
-import useAsyncFn from './useAsyncFn';
-import useDidMountEffect from './useDidMountEffect';
+import useAsyncFn from './../../../external/hooks/useAsyncFn';
+import useDidMountEffect from './../../../external/hooks/useDidMountEffect';
 import {deepEqual} from '../object';
 
 type Props = {
@@ -86,7 +86,7 @@ function useFetchCards({cardsContext}: Props) {
     handleLoadMore,
     refresh,
     loadCards: callback,
-    isEmpty
+    isEmpty,
   };
 }
 

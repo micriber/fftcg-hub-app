@@ -13,6 +13,7 @@ export const AuthContext = React.createContext({
   isLoading: false,
   getCurrentUser: (): UserInfo | null => null,
   getIdToken: (): string | null => null,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   signIn: (silently = false) => Promise.resolve(),
   signOut: () => Promise.resolve(),
 });

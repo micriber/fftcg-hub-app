@@ -91,8 +91,8 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
     });
   };
 
-  const updateQuantity = (card: Card, add: boolean) => {
-    card.userCard = card.userCard.map((mapUserCard: UserCard) => {
+  const updateQuantity = (updateCard: Card, add: boolean) => {
+    updateCard.userCard = updateCard.userCard.map((mapUserCard: UserCard) => {
       if (mapUserCard.version === version) {
         if (add) {
           mapUserCard.quantity++;
@@ -102,7 +102,7 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
       }
       return mapUserCard;
     });
-    return card.userCard.filter((uc: UserCard) => {
+    return updateCard.userCard.filter((uc: UserCard) => {
       if (uc.quantity > 0) {
         return uc;
       }
@@ -112,22 +112,11 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
   return (
     <>
       <View style={styles.container}>
-        {label && (
-          <Text
-            style={{
-              minWidth: 60,
-              margin: 10,
-              textAlign: 'right',
-              fontSize: 14,
-              color: '#3D6391',
-            }}>
-            {label}
-          </Text>
-        )}
+        {label && <Text style={styles.label}>{label}</Text>}
         <Button onPress={subtractUnity} mode={'contained'}>
           -
         </Button>
-        <Text style={{margin: 10}}>{quantity}</Text>
+        <Text style={styles.quantity}>{quantity}</Text>
         <Button onPress={addUnity} mode={'contained'}>
           +
         </Button>
@@ -143,6 +132,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: 250,
     alignItems: 'flex-end',
+  },
+  label: {
+    minWidth: 60,
+    margin: 10,
+    textAlign: 'right',
+    fontSize: 14,
+    color: '#3D6391',
+  },
+  quantity: {
+    margin: 10,
   },
 });
 

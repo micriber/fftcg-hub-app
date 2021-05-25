@@ -1,11 +1,11 @@
 import React from 'react';
 import {
+  Dimensions,
   ImageStyle,
   StyleSheet,
   TouchableOpacity,
   View,
   ViewStyle,
-  Dimensions,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -56,32 +56,20 @@ const FFCardSimple = ({
           ? styles.cardListContainer
           : styles.cardGridContainer,
         containerStyle,
-        {
-          flex: 1,
-          alignItems: 'center',
-        },
+        styles.container,
       ]}>
       {viewType === 'detail' && (
         <Card
           onPress={onPress ? () => onPress(card) : undefined}
           onLongPress={onLongPress}>
           <Card.Content>
-            <View
-              style={{
-                flexDirection: 'row',
-                width: Dimensions.get('screen').width - 50,
-                maxWidth: 350,
-              }}>
+            <View style={styles.view}>
               <FastImage
                 style={[
                   imageSize,
                   // TODO: Find the correct type for this style
                   imageStyle as any,
-                  {
-                    height: 210,
-                    width: 210 / 1.4,
-                    elevation: 0,
-                  },
+                  styles.image,
                 ]}
                 source={{uri: src}}
                 resizeMode={'cover'}
@@ -101,7 +89,9 @@ const FFCardSimple = ({
                   {card.type} {replaceTextByIconOrStyle(card.category1)}
                 </Text>
                 <Text>{card.job}</Text>
-                <Text style={{marginTop: -5, marginLeft: -1, height: 24}}>{card.cost} {replaceTextByIconOrStyle(card.element)}</Text>
+                <Text style={styles.element}>
+                  {card.cost} {replaceTextByIconOrStyle(card.element)}
+                </Text>
                 <Text />
                 <Text numberOfLines={6} style={styles.cardTextDescription}>
                   {replaceTextByIconOrStyle(card.text)}
@@ -146,6 +136,25 @@ const styles = StyleSheet.create({
   cardListContainer: {
     flexDirection: 'row',
     marginBottom: 10,
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  view: {
+    flexDirection: 'row',
+    width: Dimensions.get('screen').width - 50,
+    maxWidth: 350,
+  },
+  image: {
+    height: 210,
+    width: 210 / 1.4,
+    elevation: 0,
+  },
+  element: {
+    marginTop: -5,
+    marginLeft: -1,
+    height: 24,
   },
   cardDescription: {
     flex: 1,

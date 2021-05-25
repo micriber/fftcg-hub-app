@@ -1,7 +1,7 @@
 import React from 'react';
 import {Alert} from 'react-native';
 import {Api} from '../services/api';
-import {googleLogin, UserInfo} from '../services/api/user';
+import {googleLogin, UnauthorizedError, UserInfo} from '../services/api/user';
 import {signOut} from '../services/google';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {AuthContext} from './AuthContext';
@@ -46,25 +46,30 @@ const AuthContextProvider = ({children}) => {
             ? await GoogleSignin.signInSilently()
             : await GoogleSignin.signIn();
         } catch (e) {
-
           if (e.code === statusCodes.SIGN_IN_REQUIRED) {
             setIsLoading(false);
             return;
           }
-
-          console.log(e);
         }
 
         const idToken = userInfo?.idToken;
 
-        if (!idToken || userInfo?.serverAuthCode === statusCodes.SIGN_IN_CANCELLED) {
+        if (
+          !idToken ||
+          userInfo?.serverAuthCode === statusCodes.SIGN_IN_CANCELLED
+        ) {
           setIsLoading(false);
           return;
         }
 
         try {
           const signedInUser = await googleLogin(idToken);
-          setIsLoading(false);
+          if ((signedInUser as UnauthorizedError).message) {
+            Alert.alert(
+              'Erreur',
+              'Un problème de connexion est survenue. Merci de réessayer ultérieurement.',
+            );
+          }
           if ((signedInUser as UserInfo).id) {
             setUser({
               isSignedIn: true,
@@ -73,6 +78,7 @@ const AuthContextProvider = ({children}) => {
             });
             Api.configure({token: idToken});
           }
+          setIsLoading(false);
         } catch (e) {
           Alert.alert(
             'Erreur',
@@ -89,7 +95,7 @@ const AuthContextProvider = ({children}) => {
         await signOut();
       },
     };
-  }, [user.idToken, user.info, user.isSignedIn, isLoading]);
+  }, [user, isLoading]);
 
   return (
     <AuthContext.Provider value={authContext}>{children}</AuthContext.Provider>

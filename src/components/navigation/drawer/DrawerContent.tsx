@@ -1,18 +1,18 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {
-  DrawerContentScrollView,
-  DrawerItemList,
   DrawerContentComponentProps,
+  DrawerContentScrollView,
   DrawerItem,
+  DrawerItemList,
 } from '@react-navigation/drawer';
 import {
   Avatar,
-  Title,
-  Drawer,
   Caption,
-  useTheme,
+  Drawer,
   Text,
+  Title,
+  useTheme,
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../../../contexts/AuthContext';
@@ -44,6 +44,7 @@ export const DrawerContent = (props: Props) => {
     userInfoSection: {
       padding: 16,
       flexDirection: 'row',
+      backgroundColor: theme.colors.active,
     },
     userInfoHeader: {
       marginLeft: 10,
@@ -60,6 +61,9 @@ export const DrawerContent = (props: Props) => {
       color: theme.colors.lightGrey,
       fontSize: 12,
     },
+    icon: {
+      opacity: 0.6,
+    },
   });
 
   return (
@@ -67,11 +71,7 @@ export const DrawerContent = (props: Props) => {
       {...props}
       contentContainerStyle={styles.contentContainerStyle}>
       <View style={styles.drawerContent}>
-        <View
-          style={[
-            styles.userInfoSection,
-            {backgroundColor: theme.colors.active, padding: 16},
-          ]}>
+        <View style={[styles.userInfoSection]}>
           <Avatar.Image
             source={require('../../../assets/logo/ic_launcher_round.png')}
             size={60}
@@ -93,7 +93,7 @@ export const DrawerContent = (props: Props) => {
               <Icon
                 name="logout"
                 size={24}
-                style={{opacity: 0.6}}
+                style={styles.icon}
                 color={props.inactiveTintColor}
               />
             )}

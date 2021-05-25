@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, Keyboard} from 'react-native';
+import {Keyboard, StyleSheet, Text, View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
 import {SearchStackParamList} from './type';
@@ -11,7 +11,7 @@ import {SearchCardsContext} from '../../contexts/SearchCardsContext';
 import FFCardsGridList from '../../components/FFCardsGridList';
 import useFetchCards from '../../utils/hooks/useFetchCards';
 import Loading from '../Loading';
-import useDidMountEffect from '../../utils/hooks/useDidMountEffect';
+import useDidMountEffect from '../../../external/hooks/useDidMountEffect';
 
 type SearchScreenNavigationProp = StackNavigationProp<
   SearchStackParamList,
