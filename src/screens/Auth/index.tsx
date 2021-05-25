@@ -15,7 +15,8 @@ const AuthStackScreen = () => {
   React.useEffect(() => {
     Api.configure({refreshCallback: () => signIn(true)});
     signIn(true);
-  }, [signIn]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function loginScreen() {
     return (
