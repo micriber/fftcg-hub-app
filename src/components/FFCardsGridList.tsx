@@ -1,4 +1,4 @@
-import React, {LegacyRef} from 'react';
+import React from 'react';
 import {FlexStyle, StyleSheet, View} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
 import {ActivityIndicator, FAB, useTheme} from 'react-native-paper';
