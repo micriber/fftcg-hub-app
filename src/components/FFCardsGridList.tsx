@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {LegacyRef} from 'react';
 import {FlexStyle, StyleSheet, View} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
 import {ActivityIndicator, FAB, useTheme} from 'react-native-paper';
@@ -39,7 +39,7 @@ const FFCardsGridList = ({
       containerStyle={styles.flex1}
     />
   );
-  let refList;
+  let refList: FlatGrid<Card> | null;
   return (
     <View style={[{backgroundColor: colors.background}, style]}>
       <FlatGrid
@@ -74,7 +74,8 @@ const FFCardsGridList = ({
         style={styles.fab}
         icon="arrow-up"
         onPress={() => {
-          refList.scrollToIndex({
+          // @ts-ignore
+          refList?.scrollToIndex({
             index: 0,
             animated: true,
           });

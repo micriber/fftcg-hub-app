@@ -24,6 +24,7 @@ const card = {
   multicard: '',
   exBurst: '',
   userCard: [],
+  set: '',
 };
 
 // More about testing in this repository:
@@ -36,13 +37,13 @@ describe('[Component] FFCardSimple', () => {
   });
 
   it('renders correctly in list view', async () => {
-    const root = render(<FFCardSimple card={card} viewType={'list'} />);
+    const root = render(<FFCardSimple card={card} viewType={'simple'} />);
 
     expect(root.toJSON()).toMatchSnapshot();
   });
 
   it('renders correctly but with fallback image', async () => {
-    const Sample = () => <FFCardSimple card={card} viewType={'grid'} />;
+    const Sample = () => <FFCardSimple card={card} viewType={'detail'} />;
     const root = render(<Sample />);
     fireEvent(root.getByTestId(`grid-Image-${card.code}`), 'onError');
     root.update(<Sample />);
@@ -56,7 +57,7 @@ describe('[Component] FFCardSimple', () => {
   });
 
   it('renders correctly with twice callback', async () => {
-    const Sample = () => <FFCardSimple card={card} viewType={'grid'} />;
+    const Sample = () => <FFCardSimple card={card} viewType={'detail'} />;
     const root = render(<Sample />);
     fireEvent(root.getByTestId(`grid-Image-${card.code}`), 'onError');
     root.update(<Sample />);

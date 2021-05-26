@@ -30,7 +30,7 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
         await addCard({code: card.code, version});
         setQuantity(quantity + 1);
         searchCardsContext.setCardsList(
-          updateContext(searchCardsContext.cardsList, true, false),
+          updateContext(searchCardsContext.cardsList, true),
         );
       } catch (e) {
         Alert.alert(

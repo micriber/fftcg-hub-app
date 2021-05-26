@@ -191,7 +191,7 @@ const CardDetail = ({route}: Props) => {
             <View style={styles.detailBlock}>
               <Text style={styles.detailLabel}>Rareté:</Text>
               <Text textBreakStrategy={'simple'} style={styles.detailText}>
-                {rarityLabel[card.rarity]}
+                {rarityLabel[card.rarity as Rarity]}
               </Text>
             </View>
             <View style={styles.detailBlock}>
