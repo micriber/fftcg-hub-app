@@ -74,6 +74,7 @@ const FFCardsGridList = ({
         style={styles.fab}
         icon="arrow-up"
         onPress={() => {
+          // because FlatGrid use flatlist and have bad TS definition
           // @ts-ignore
           refList?.scrollToIndex({
             index: 0,
