@@ -45,10 +45,10 @@ describe('[Component] FFCardSimple', () => {
   it('renders correctly but with fallback image', async () => {
     const Sample = () => <FFCardSimple card={card} viewType={'detail'} />;
     const root = render(<Sample />);
-    fireEvent(root.getByTestId(`grid-Image-${card.code}`), 'onError');
+    fireEvent(root.getByTestId(`detail-Image-${card.code}`), 'onError');
     root.update(<Sample />);
-    await waitFor(() => root.getByTestId(`grid-Image-${card.code}`));
-    const element = root.getByTestId(`grid-Image-${card.code}`);
+    await waitFor(() => root.getByTestId(`detail-Image-${card.code}`));
+    const element = root.getByTestId(`detail-Image-${card.code}`);
     expect(element.props.source.uri).toBe(
       getCardImageUrl(card.code, 'full', 'eg'),
     );
@@ -59,13 +59,13 @@ describe('[Component] FFCardSimple', () => {
   it('renders correctly with twice callback', async () => {
     const Sample = () => <FFCardSimple card={card} viewType={'detail'} />;
     const root = render(<Sample />);
-    fireEvent(root.getByTestId(`grid-Image-${card.code}`), 'onError');
+    fireEvent(root.getByTestId(`detail-Image-${card.code}`), 'onError');
     root.update(<Sample />);
-    await waitFor(() => root.getByTestId(`grid-Image-${card.code}`));
-    fireEvent(root.getByTestId(`grid-Image-${card.code}`), 'onError');
+    await waitFor(() => root.getByTestId(`detail-Image-${card.code}`));
+    fireEvent(root.getByTestId(`detail-Image-${card.code}`), 'onError');
     root.update(<Sample />);
-    await waitFor(() => root.getByTestId(`grid-Image-${card.code}`));
-    const element = root.getByTestId(`grid-Image-${card.code}`);
+    await waitFor(() => root.getByTestId(`detail-Image-${card.code}`));
+    const element = root.getByTestId(`detail-Image-${card.code}`);
     expect(element.props.source.uri).toBe(
       getCardImageUrl(card.code, 'full', 'eg'),
     );
