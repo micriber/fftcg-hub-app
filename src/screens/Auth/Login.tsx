@@ -11,7 +11,9 @@ import {
 import {GoogleSigninButton} from '@react-native-community/google-signin';
 import {AuthContext} from '../../contexts/AuthContext';
 import {withTheme} from 'react-native-paper';
+// @ts-ignore
 import VectorLoginPortrait from '../../assets/svg/login-portrait.svg';
+// @ts-ignore
 import VectorLoginLandscape from '../../assets/svg/login-landscape.svg';
 import {screenFonts} from '../../theme';
 
@@ -38,7 +40,7 @@ class Login extends React.Component<Props, State> {
     screenHeight: 0,
   };
 
-  constructor(props, state) {
+  constructor(props: Props, state: State) {
     super(props, state);
 
     const w = Dimensions.get('window');

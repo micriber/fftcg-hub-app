@@ -2,7 +2,11 @@ import React from 'react';
 import {Card} from '../services/api/card';
 import {SearchCardsContext} from './SearchCardsContext';
 
-const SearchCardsContextProvider = ({children}) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const SearchCardsContextProvider = ({children}: Props) => {
   const [cardsList, setCardsList] = React.useState<Card[]>([]);
   return (
     <SearchCardsContext.Provider

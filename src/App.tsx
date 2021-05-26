@@ -19,7 +19,7 @@ const App = () => {
         <AuthContextProvider>
           <SearchCardsContextProvider>
             <NavigationContainer>
-              <AuthStackScreen theme={theme} />
+              <AuthStackScreen />
             </NavigationContainer>
           </SearchCardsContextProvider>
         </AuthContextProvider>

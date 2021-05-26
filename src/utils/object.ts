@@ -26,6 +26,6 @@ export function deepEqual<T extends GenericObject, U extends GenericObject>(
   return true;
 }
 
-export function isObject(object) {
+export function isObject(object: any) {
   return object != null && typeof object === 'object';
 }

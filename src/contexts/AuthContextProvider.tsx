@@ -12,7 +12,11 @@ type UserState = {
   idToken?: string;
 };
 
-const AuthContextProvider = ({children}) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const AuthContextProvider = ({children}: Props) => {
   const [user, setUser] = React.useState<UserState>({isSignedIn: false});
   const [isLoading, setIsLoading] = React.useState(true);
 

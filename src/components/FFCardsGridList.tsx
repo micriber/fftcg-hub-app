@@ -39,7 +39,7 @@ const FFCardsGridList = ({
       containerStyle={styles.flex1}
     />
   );
-  let refList;
+  let refList: FlatGrid<Card> | null;
   return (
     <View style={[{backgroundColor: colors.background}, style]}>
       <FlatGrid
@@ -74,7 +74,9 @@ const FFCardsGridList = ({
         style={styles.fab}
         icon="arrow-up"
         onPress={() => {
-          refList.scrollToIndex({
+          // because FlatGrid use flatlist and have bad TS definition
+          // @ts-ignore
+          refList?.scrollToIndex({
             index: 0,
             animated: true,
           });
