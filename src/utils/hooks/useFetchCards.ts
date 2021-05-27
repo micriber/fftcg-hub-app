@@ -33,7 +33,11 @@ function useFetchCards({cardsContext}: Props) {
     });
 
     if (data && 'cards' in data) {
-      cardContext.setCardsList([...cardContext.cardsList, ...data.cards]);
+      cardContext.setCardsList(
+        deepEqual(search, {})
+          ? [...data.cards]
+          : [...cardContext.cardsList, ...data.cards],
+      );
     }
     cardsFilter && setSearch(cardsFilter);
     setStopFetch(false);
