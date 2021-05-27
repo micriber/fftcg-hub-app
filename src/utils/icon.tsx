@@ -31,7 +31,7 @@ const _replaceTextByIcon = (
 const _styllishBBCode = (regex: RegExp, styles: Object) => (text: string) => {
   return reactStringReplace(text, regex, (match) => {
     if (match === 'br') {
-      return '';
+      return ' ';
     } else if (match.includes('.[[br]]')) {
       return '.\n';
     } else if (match.includes('"[[br]]')) {
