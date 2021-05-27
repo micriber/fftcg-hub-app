@@ -3,9 +3,9 @@
 exports[`[Util] icon [BR] tag deeply replace BR mark 1`] = `
 Array [
   "[[ex]]EX BURST 1[[/]] ",
-  "",
+  " ",
   "- [[s]]EX BURST 2[[/]] ",
-  "",
+  " ",
   "",
 ]
 `;
@@ -13,7 +13,7 @@ Array [
 exports[`[Util] icon [BR] tag replace BR mark 1`] = `
 Array [
   "[[ex]]EX BURST[[/]] ",
-  "",
+  " ",
   "",
 ]
 `;
@@ -568,7 +568,7 @@ Array [
     EX BURST
   </Text>,
   " ",
-  "",
+  " ",
   "",
 ]
 `;
