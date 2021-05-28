@@ -127,6 +127,7 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
             }
           >
             <Text
+              numberOfLines={1}
               style={
                 Array [
                   Object {
@@ -135,16 +136,18 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
                     "fontWeight": "400",
                     "textAlign": "left",
                   },
-                  undefined,
+                  Object {
+                    "fontSize": 13,
+                  },
                 ]
               }
             >
-              Boulou
-               (
               1-001H
-              )
+               
+              Boulou
             </Text>
             <Text
+              numberOfLines={1}
               style={
                 Array [
                   Object {
@@ -153,7 +156,9 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
                     "fontWeight": "400",
                     "textAlign": "left",
                   },
-                  undefined,
+                  Object {
+                    "fontSize": 13,
+                  },
                 ]
               }
             >
@@ -162,6 +167,7 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
               
             </Text>
             <Text
+              numberOfLines={1}
               style={
                 Array [
                   Object {
@@ -170,7 +176,9 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
                     "fontWeight": "400",
                     "textAlign": "left",
                   },
-                  undefined,
+                  Object {
+                    "fontSize": 13,
+                  },
                 ]
               }
             >
@@ -186,40 +194,8 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
                     "textAlign": "left",
                   },
                   Object {
-                    "height": 24,
-                    "marginLeft": -1,
-                    "marginTop": -5,
+                    "fontSize": 13,
                   },
-                ]
-              }
-            >
-              1000
-               
-              
-              <Image
-                source="test-file-stub"
-                style={
-                  Array [
-                    Object {
-                      "height": 20,
-                      "width": 20,
-                    },
-                    Object {},
-                  ]
-                }
-              />
-              
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#000000",
-                    "fontFamily": "System",
-                    "fontWeight": "400",
-                    "textAlign": "left",
-                  },
-                  undefined,
                 ]
               }
             />
@@ -233,9 +209,14 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
                     "fontWeight": "400",
                     "textAlign": "left",
                   },
-                  Object {
-                    "flex": 1,
-                  },
+                  Array [
+                    Object {
+                      "flex": 1,
+                    },
+                    Object {
+                      "fontSize": 13,
+                    },
+                  ],
                 ]
               }
             >
@@ -245,8 +226,8 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
                 style={
                   Array [
                     Object {
-                      "height": 20,
-                      "width": 20,
+                      "height": 16,
+                      "width": 16,
                     },
                     Object {},
                   ]
@@ -268,8 +249,8 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
                 style={
                   Array [
                     Object {
-                      "height": 20,
-                      "width": 20,
+                      "height": 16,
+                      "width": 16,
                     },
                     Object {},
                   ]
@@ -558,6 +539,7 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
             }
           >
             <Text
+              numberOfLines={1}
               style={
                 Array [
                   Object {
@@ -566,16 +548,18 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
                     "fontWeight": "400",
                     "textAlign": "left",
                   },
-                  undefined,
+                  Object {
+                    "fontSize": 13,
+                  },
                 ]
               }
             >
-              Boulou
-               (
               1-001H
-              )
+               
+              Boulou
             </Text>
             <Text
+              numberOfLines={1}
               style={
                 Array [
                   Object {
@@ -584,7 +568,9 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
                     "fontWeight": "400",
                     "textAlign": "left",
                   },
-                  undefined,
+                  Object {
+                    "fontSize": 13,
+                  },
                 ]
               }
             >
@@ -593,6 +579,7 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
               
             </Text>
             <Text
+              numberOfLines={1}
               style={
                 Array [
                   Object {
@@ -601,7 +588,9 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
                     "fontWeight": "400",
                     "textAlign": "left",
                   },
-                  undefined,
+                  Object {
+                    "fontSize": 13,
+                  },
                 ]
               }
             >
@@ -617,40 +606,8 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
                     "textAlign": "left",
                   },
                   Object {
-                    "height": 24,
-                    "marginLeft": -1,
-                    "marginTop": -5,
+                    "fontSize": 13,
                   },
-                ]
-              }
-            >
-              1000
-               
-              
-              <Image
-                source="test-file-stub"
-                style={
-                  Array [
-                    Object {
-                      "height": 20,
-                      "width": 20,
-                    },
-                    Object {},
-                  ]
-                }
-              />
-              
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#000000",
-                    "fontFamily": "System",
-                    "fontWeight": "400",
-                    "textAlign": "left",
-                  },
-                  undefined,
                 ]
               }
             />
@@ -664,9 +621,14 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
                     "fontWeight": "400",
                     "textAlign": "left",
                   },
-                  Object {
-                    "flex": 1,
-                  },
+                  Array [
+                    Object {
+                      "flex": 1,
+                    },
+                    Object {
+                      "fontSize": 13,
+                    },
+                  ],
                 ]
               }
             >
@@ -676,8 +638,8 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
                 style={
                   Array [
                     Object {
-                      "height": 20,
-                      "width": 20,
+                      "height": 16,
+                      "width": 16,
                     },
                     Object {},
                   ]
@@ -699,8 +661,8 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
                 style={
                   Array [
                     Object {
-                      "height": 20,
-                      "width": 20,
+                      "height": 16,
+                      "width": 16,
                     },
                     Object {},
                   ]

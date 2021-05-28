@@ -8,8 +8,8 @@ type Props = {
 };
 
 const CustomIcon = ({circle, src, size}: Props) => {
-  const defaultWidth = 20;
-  const defaultHeight = 20;
+  const defaultWidth = 16;
+  const defaultHeight = 16;
   const styles = StyleSheet.create({
     image: {
       width: size ? size.width : defaultWidth,
