@@ -1,6 +1,11 @@
 import React, {ReactElement} from 'react';
 
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  Keyboard,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {Appbar, useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {StackHeaderProps} from '@react-navigation/stack';
@@ -46,35 +51,41 @@ const Header = (props: Props) => {
       : scene.route.name;
 
   return (
-    <Appbar.Header
-      theme={{colors: {primary: theme.colors.accent}}}
-      style={styles.header}>
-      {previous ? (
-        <Appbar.BackAction
-          onPress={() => navigation.pop()}
-          color={theme.colors.lightGrey}
-        />
-      ) : (
-        <TouchableOpacity
-          onPress={() => {
-            (navigation as any).toggleDrawer();
-          }}>
-          <Icon
-            name="menu"
-            size={24}
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <Appbar.Header
+        theme={{colors: {primary: theme.colors.accent}}}
+        style={styles.header}>
+        {previous ? (
+          <Appbar.BackAction
+            onPress={() => {
+              Keyboard.dismiss();
+              navigation.pop();
+            }}
             color={theme.colors.lightGrey}
-            style={styles.icon}
           />
-        </TouchableOpacity>
-      )}
-      <Appbar.Content
-        color={theme.colors.lightGrey}
-        title={title}
-        titleStyle={styles.title}
-        style={styles.content}
-      />
-      {headerRight}
-    </Appbar.Header>
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              Keyboard.dismiss();
+              (navigation as any).toggleDrawer();
+            }}>
+            <Icon
+              name="menu"
+              size={24}
+              color={theme.colors.lightGrey}
+              style={styles.icon}
+            />
+          </TouchableOpacity>
+        )}
+        <Appbar.Content
+          color={theme.colors.lightGrey}
+          title={title}
+          titleStyle={styles.title}
+          style={styles.content}
+        />
+        {headerRight}
+      </Appbar.Header>
+    </TouchableWithoutFeedback>
   );
 };
 

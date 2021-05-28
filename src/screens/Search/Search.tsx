@@ -1,5 +1,11 @@
 import React from 'react';
-import {Keyboard, StyleSheet, Text, View} from 'react-native';
+import {
+  Keyboard,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
 import {SearchStackParamList} from './type';
@@ -90,17 +96,19 @@ const Search = ({navigation}: Props) => {
   );
 
   return (
-    <View style={styles.container}>
-      <SearchForm onSubmit={submit} style={styles.formContainer} />
-      {state.loading && page === 1 && <Loading />}
-      {state.error && page === 1 && <Text>{state.error}</Text>}
-      {(!state.value || (state.value && 'message' in state.value)) &&
-      page === 1 ? (
-        <Text>{JSON.stringify(state.value?.message)}</Text>
-      ) : (
-        Layout
-      )}
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <SearchForm onSubmit={submit} style={styles.formContainer} />
+        {state.loading && page === 1 && <Loading />}
+        {state.error && page === 1 && <Text>{state.error}</Text>}
+        {(!state.value || (state.value && 'message' in state.value)) &&
+        page === 1 ? (
+          <Text>{JSON.stringify(state.value?.message)}</Text>
+        ) : (
+          Layout
+        )}
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
