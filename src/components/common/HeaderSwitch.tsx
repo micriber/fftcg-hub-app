@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Keyboard, StyleSheet, View} from 'react-native';
 import {Switch, useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -24,7 +24,10 @@ const HeaderSwitch = ({
       )}
       <Switch
         value={value}
-        onValueChange={onValueChange}
+        onValueChange={(withValue: boolean) => {
+          Keyboard.dismiss();
+          onValueChange(withValue);
+        }}
         style={styles.switch}
         testID={`SwitcherState-${+value}`}
         color={theme.colors.active}
