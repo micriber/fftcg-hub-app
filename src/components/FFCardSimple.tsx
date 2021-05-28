@@ -91,7 +91,9 @@ const FFCardSimple = ({
                 <Text style={styles.textDescription} numberOfLines={1}>
                   {card.job}
                 </Text>
-                <Text style={styles.textDescription} />
+                {card.job !== '' ? (
+                  <Text style={styles.textDescription} />
+                ) : undefined}
                 <Text
                   numberOfLines={6}
                   style={[styles.cardTextDescription, styles.textDescription]}>
