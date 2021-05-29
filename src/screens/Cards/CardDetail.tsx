@@ -92,7 +92,6 @@ const CardDetail = ({route}: Props) => {
       fontSize: 16,
     },
     detailElementText: {
-      marginTop: -5,
       marginLeft: -1,
       height: 24,
     },

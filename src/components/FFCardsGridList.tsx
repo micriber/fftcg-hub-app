@@ -59,13 +59,7 @@ const FFCardsGridList = ({
         onEndReachedThreshold={1.5}
         refreshing={refreshing}
         onRefresh={onRefresh}
-        ListEmptyComponent={
-          isEmpty ? (
-            <FFCardsListEmpty />
-          ) : (
-            <ActivityIndicator animating={true} />
-          )
-        }
+        ListEmptyComponent={emptyComponent()}
         ref={(ref) => (refList = ref)}
         itemContainerStyle={styles.container}
       />
@@ -84,7 +78,17 @@ const FFCardsGridList = ({
       />
     </View>
   );
+
+  function emptyComponent() {
+    if (isEmpty) {
+      return <FFCardsListEmpty />;
+    }
+    if (!refreshing) {
+      return <ActivityIndicator animating={true} />;
+    }
+  }
 };
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',

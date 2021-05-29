@@ -82,18 +82,21 @@ const FFCardSimple = ({
                 testID={`${viewType}-Image-${card.code}`}
               />
               <View style={[styles.cardDescription]}>
-                <Text>
-                  {card.name} ({card.code})
+                <Text style={styles.textDescription} numberOfLines={1}>
+                  {card.code} {card.name}
                 </Text>
-                <Text>
+                <Text style={styles.textDescription} numberOfLines={1}>
                   {card.type} {replaceTextByIconOrStyle(card.category1)}
                 </Text>
-                <Text>{card.job}</Text>
-                <Text style={styles.element}>
-                  {card.cost} {replaceTextByIconOrStyle(card.element)}
+                <Text style={styles.textDescription} numberOfLines={1}>
+                  {card.job}
                 </Text>
-                <Text />
-                <Text numberOfLines={6} style={styles.cardTextDescription}>
+                {card.job !== '' ? (
+                  <Text style={styles.textDescription} />
+                ) : undefined}
+                <Text
+                  numberOfLines={6}
+                  style={[styles.cardTextDescription, styles.textDescription]}>
                   {replaceTextByIconOrStyle(card.text)}
                 </Text>
               </View>
@@ -151,10 +154,8 @@ const styles = StyleSheet.create({
     width: 210 / 1.4,
     elevation: 0,
   },
-  element: {
-    marginTop: -5,
-    marginLeft: -1,
-    height: 24,
+  textDescription: {
+    fontSize: 13,
   },
   cardDescription: {
     flex: 1,
