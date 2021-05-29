@@ -69,6 +69,7 @@ const AuthContextProvider = ({children}: Props) => {
         try {
           const signedInUser = await googleLogin(idToken);
           if ((signedInUser as UnauthorizedError).message) {
+            await signOut();
             Alert.alert(
               'Erreur',
               'Un problème de connexion est survenue. Merci de réessayer ultérieurement.',
@@ -84,6 +85,7 @@ const AuthContextProvider = ({children}: Props) => {
           }
           setIsLoading(false);
         } catch (e) {
+          await signOut();
           Alert.alert(
             'Erreur',
             'Un problème avec votre connexion est survenue. Merci de réessayer ultérieurement.',
