@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Filter from './Filter';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 export type SubmitParams = {
   search: string;
@@ -20,6 +21,7 @@ export type SubmitParams = {
   opus: string[];
   rarities: string[];
   categories: string[];
+  cost: number[];
 };
 
 type Props = {
@@ -31,6 +33,8 @@ const SearchForm = (props: Props) => {
   const [search, setSearch] = React.useState('');
   const [owned, setOwned] = React.useState(false);
   const [filter, setFilter] = React.useState(false);
+
+  const [cost, setCost] = React.useState([0, 10]);
 
   const typesData = ['Avant', 'Soutien', 'Invocation', 'Monstre'];
   const [types, setTypes] = React.useState<string[]>([]);
@@ -146,6 +150,8 @@ const SearchForm = (props: Props) => {
       marginBottom: 35,
       alignItems: 'flex-start',
     },
+    costLabel: {fontSize: 16},
+    sliderContainer: {marginHorizontal: '10%'},
   });
 
   function showFilter() {
@@ -248,6 +254,21 @@ const SearchForm = (props: Props) => {
           values={categories}
           label={'Catégories'}
         />
+        <Text style={styles.costLabel}>
+          Coût : {cost[0]} - {cost[1]}
+        </Text>
+        <MultiSlider
+          values={[cost[0], cost[1]]}
+          onValuesChange={(value) => setCost(value)}
+          min={0}
+          max={10}
+          step={1}
+          allowOverlap={true}
+          snapped
+          containerStyle={styles.sliderContainer}
+          selectedStyle={{backgroundColor: colors.primary}}
+          markerStyle={{backgroundColor: colors.primary}}
+        />
       </Animated.View>
       <View style={styles.filterRowContainer}>
         <View style={styles.resetButtonContainer}>
@@ -284,6 +305,7 @@ const SearchForm = (props: Props) => {
             elements,
             rarities,
             types,
+            cost,
           });
         }}
         style={styles.button}
