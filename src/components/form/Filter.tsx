@@ -3,16 +3,9 @@ import {Chip, Text, useTheme} from 'react-native-paper';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import {ColorTranslator} from 'colortranslator';
 
-export type SubmitParams = {
-  search: string;
-  owned: boolean;
-  types: [];
-  elements: [];
-};
-
 type Props = {
   label: string;
-  data: string[];
+  data: {[name: string]: string};
   values: string[];
   onValuesChange: (value: string[]) => void;
 };
@@ -40,7 +33,8 @@ const Filter = ({label, data, onValuesChange, values}: Props) => {
         horizontal={true}
         style={styles.filterChoiceContainer}
         showsHorizontalScrollIndicator={false}>
-        {data.map((value) => {
+        {Object.values(data).map((chipLabel, index) => {
+          const value = Object.keys(data)[index];
           return (
             <Chip
               selected={values.includes(value)}
@@ -57,7 +51,7 @@ const Filter = ({label, data, onValuesChange, values}: Props) => {
                   ? onValuesChange([...values, value])
                   : onValuesChange(values.filter((type) => type !== value));
               }}>
-              {value}
+              {chipLabel}
             </Chip>
           );
         })}

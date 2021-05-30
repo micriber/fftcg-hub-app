@@ -22,6 +22,7 @@ export type SubmitParams = {
   rarities: string[];
   categories: string[];
   cost: number[];
+  power: number[];
 };
 
 type Props = {
@@ -35,72 +36,78 @@ const SearchForm = (props: Props) => {
   const [filter, setFilter] = React.useState(false);
 
   const [cost, setCost] = React.useState([0, 10]);
+  const [power, setPower] = React.useState([0, 15000]);
 
-  const typesData = ['Avant', 'Soutien', 'Invocation', 'Monstre'];
+  const typesData = {
+    Avant: 'Avant',
+    Soutien: 'Soutien',
+    Invocation: 'Invocation',
+    Monstre: 'Monstre',
+  };
   const [types, setTypes] = React.useState<string[]>([]);
 
-  const elementsData = [
-    'Feu',
-    'Glace',
-    'Vent',
-    'Terre',
-    'Foudre',
-    'Eau',
-    'Lumiere',
-    'Tenebres',
-  ];
+  const elementsData = {
+    fire: 'Feu',
+    ice: 'Glace',
+    wind: 'Vent',
+    earth: 'Terre',
+    lightning: 'Foudre',
+    water: 'Eau',
+    light: 'Lumière',
+    dark: 'Ténèbres',
+  };
   const [elements, setElements] = React.useState<string[]>([]);
 
-  const opusData = [
-    'Opus 1',
-    'Opus 2',
-    'Opus 3',
-    'Opus 4',
-    'Opus 5',
-    'Opus 6',
-    'Opus 7',
-    'Opus 8',
-    'Opus 9',
-    'Opus 10',
-    'Opus 11',
-    'Opus 12',
-    'Opus 13',
-    'Opus 14',
-  ];
+  const opusData = {
+    Opus_I: 'Opus 1',
+    Opus_II: 'Opus 2',
+    Opus_III: 'Opus 3',
+    Opus_IV: 'Opus 4',
+    Opus_V: 'Opus 5',
+    Opus_VI: 'Opus 6',
+    Opus_VII: 'Opus 7',
+    Opus_VIII: 'Opus 8',
+    Opus_IX: 'Opus 9',
+    Opus_X: 'Opus 10',
+    Opus_XI: 'Opus 11',
+    Opus_XII: 'Opus 12',
+    Opus_XIII: 'Opus 13',
+    Boss_Deck_Chaos: 'Deck de boss chaos',
+  };
   const [opus, setOpus] = React.useState<string[]>([]);
 
-  const raritiesData = [
-    'Common',
-    'Rare',
-    'Hero',
-    'Legend',
-    'Starter',
-    'Boss',
-    'Promo',
-  ];
+  const raritiesData = {
+    C: 'Common',
+    R: 'Rare',
+    H: 'Hero',
+    L: 'Legend',
+    S: 'Starter',
+    B: 'Boss',
+    P: 'Promo',
+  };
   const [rarities, setRarities] = React.useState<string[]>([]);
 
-  const categoriesData = [
-    'Final fantasy 1',
-    'Final fantasy 2',
-    'Final fantasy 3',
-    'Final fantasy 4',
-    'Final fantasy 5',
-    'Final fantasy 6',
-    'Final fantasy 7',
-    'Final fantasy 8',
-    'Final fantasy 9',
-    'Final fantasy 10',
-    'Final fantasy 11',
-    'Final fantasy 12',
-    'Final fantasy 13',
-    'Final fantasy 14',
-    'Final fantasy 15',
-    'Dissidia final fantasy',
-    'Final fantasy Legends',
-    'Final fantasy Tactics',
-    'Final fantasy explorer',
-  ];
+  const categoriesData = {
+    I: 'Final Fantasy 1',
+    II: 'Final Fantasy 2',
+    III: 'Final Fantasy 3',
+    IV: 'Final Fantasy 4',
+    V: 'Final Fantasy 5',
+    VI: 'Final Fantasy 6',
+    VII: 'Final Fantasy 7',
+    VIII: 'Final Fantasy 8',
+    IX: 'Final Fantasy 9',
+    X: 'Final Fantasy 10',
+    XI: 'Final Fantasy 11',
+    XII: 'Final Fantasy 12',
+    XIII: 'Final Fantasy 13',
+    XIV: 'Final Fantasy 14',
+    XV: 'Final Fantasy 15',
+    XVI: 'Dissidia Final Fantasy',
+    FFL: 'Final Fantasy Legends',
+    FFT: 'Final Fantasy Tactics',
+    FFE: 'Final Fantasy Explorer',
+  };
   const [categories, setCategories] = React.useState<string[]>([]);
 
   const filterHeight = useRef(new Animated.Value(0)).current;
@@ -189,6 +196,8 @@ const SearchForm = (props: Props) => {
     setOpus([]);
     setRarities([]);
     setCategories([]);
+    setCost([0, 10]);
+    setPower([0, 15000]);
   }
 
   function getTotalFilter() {
@@ -197,7 +206,9 @@ const SearchForm = (props: Props) => {
       elements.length +
       opus.length +
       rarities.length +
-      categories.length
+      categories.length +
+      (cost[0] === 0 && cost[1] === 10 ? 0 : 1) +
+      (power[0] === 0 && power[1] === 15000 ? 0 : 1)
     );
   }
 
@@ -268,6 +279,23 @@ const SearchForm = (props: Props) => {
           containerStyle={styles.sliderContainer}
           selectedStyle={{backgroundColor: colors.primary}}
           markerStyle={{backgroundColor: colors.primary}}
+          sliderLength={Dimensions.get('window').width * 0.75}
+        />
+        <Text style={styles.costLabel}>
+          Puissance : {power[0]} - {power[1]}
+        </Text>
+        <MultiSlider
+          values={[power[0], power[1]]}
+          onValuesChange={(value) => setPower(value)}
+          min={0}
+          max={15000}
+          step={1000}
+          allowOverlap={true}
+          snapped
+          containerStyle={styles.sliderContainer}
+          selectedStyle={{backgroundColor: colors.primary}}
+          markerStyle={{backgroundColor: colors.primary}}
+          sliderLength={Dimensions.get('window').width * 0.75}
         />
       </Animated.View>
       <View style={styles.filterRowContainer}>
@@ -306,6 +334,7 @@ const SearchForm = (props: Props) => {
             rarities,
             types,
             cost,
+            power,
           });
         }}
         style={styles.button}
