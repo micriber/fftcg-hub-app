@@ -8,10 +8,14 @@ export type UserCard = {
   version: CardVersion;
 };
 
+export type Elements = {
+  element: string;
+};
+
 export type Card = {
   id: string;
   code: string;
-  element: string;
+  elements: Elements[];
   rarity: string;
   cost: string;
   power: string;

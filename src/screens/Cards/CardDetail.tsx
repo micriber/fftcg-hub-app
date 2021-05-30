@@ -14,6 +14,9 @@ import {ColorTranslator} from 'colortranslator';
 import replaceTextByIconOrStyle from '../../utils/icon';
 import ImageColors from 'react-native-image-colors';
 import {getCardImageUrl} from '../../utils/image';
+import {makeID} from '../../utils/string';
+import GameIcon from '../../components/icons/GameIcon';
+import {getElementIconFileByElement} from '../../enums/element';
 
 type Props = {
   route: {params: {card: Card}};
@@ -164,7 +167,14 @@ const CardDetail = ({route}: Props) => {
               <Text
                 textBreakStrategy={'simple'}
                 style={styles.detailElementText}>
-                {replaceTextByIconOrStyle(card.element)}
+                {card.elements.map((value) => {
+                  return (
+                    <GameIcon
+                      name={getElementIconFileByElement(value.element)}
+                      key={makeID()}
+                    />
+                  );
+                })}
               </Text>
             </View>
             <View style={styles.detailBlock}>
