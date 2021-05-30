@@ -13,7 +13,7 @@ const card = {
   name: 'Boulou',
   text: 'billy 《火》《1》《ダル》',
   type: 'blue',
-  element: '火',
+  elements: [{element: 'fire'}, {element: 'ice'}],
   id: '1234-1234-1234-1234',
   rarity: 'H',
   cost: '1000',

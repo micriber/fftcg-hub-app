@@ -8,10 +8,14 @@ export type UserCard = {
   version: CardVersion;
 };
 
+export type Elements = {
+  element: string;
+};
+
 export type Card = {
   id: string;
   code: string;
-  element: string;
+  elements: Elements[];
   rarity: string;
   cost: string;
   power: string;
@@ -44,6 +48,13 @@ export type GetCardsParams = {
   search?: string;
   owned?: boolean;
   perPage?: number;
+  types?: string[];
+  elements?: string[];
+  opus?: string[];
+  rarities?: string[];
+  categories?: string[];
+  cost?: number[];
+  power?: number[];
 };
 
 const _getCards = async ({
@@ -57,8 +68,36 @@ const _getCards = async ({
   const perPage = params.perPage ? `&perPage=${params.perPage}` : '';
   const search = params.search ? `&search=${params.search}` : '';
   const owned = params.owned ? '&owned=true' : '';
+  const types =
+    params.types && params.types.length > 0
+      ? `&types=${params.types?.join(',')}`
+      : '';
+  const elements =
+    params.elements && params.elements.length > 0
+      ? `&elements=${params.elements?.join(',')}`
+      : '';
+  const opus =
+    params.opus && params.opus.length > 0
+      ? `&opus=${params.opus?.join(',')}`
+      : '';
+  const rarities =
+    params.rarities && params.rarities.length > 0
+      ? `&rarities=${params.rarities?.join(',')}`
+      : '';
+  const categories =
+    params.categories && params.categories.length > 0
+      ? `&categories=${params.categories?.join(',')}`
+      : '';
+  const cost =
+    params.cost && params.cost.length > 0
+      ? `&cost=${params.cost?.join(',')}`
+      : '';
+  const power =
+    params.power && params.power.length > 0
+      ? `&power=${params.power?.join(',')}`
+      : '';
   return fetch(
-    `${config.api.baseUri}/api/v1/cards?${page}${perPage}${search}${owned}`,
+    `${config.api.baseUri}/api/v1/cards?${page}${perPage}${search}${owned}${types}${elements}${opus}${rarities}${categories}${cost}${power}`,
     {
       method: 'GET',
       headers: {
