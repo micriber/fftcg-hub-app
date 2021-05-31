@@ -96,9 +96,6 @@ const _getCards = async ({
     params.power && params.power.length > 0
       ? `&power=${params.power?.join(',')}`
       : '';
-  console.log(
-    `${config.api.baseUri}/api/v1/cards?${page}${perPage}${search}${owned}${types}${elements}${opus}${rarities}${categories}${cost}${power}`,
-  );
   return fetch(
     `${config.api.baseUri}/api/v1/cards?${page}${perPage}${search}${owned}${types}${elements}${opus}${rarities}${categories}${cost}${power}`,
     {
