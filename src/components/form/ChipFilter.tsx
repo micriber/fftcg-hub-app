@@ -55,7 +55,7 @@ const ChipFilter = ({label, data, onValuesChange, values}: Props) => {
                       values.filter((type) => type !== filterData.value),
                     );
               }}>
-              {label}
+              {filterData.label}
             </Chip>
           );
         })}

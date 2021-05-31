@@ -214,55 +214,55 @@ export const elementsData: filterData[] = [
 ];
 export const opusData: filterData[] = [
   {
-    value: 'Opus_I',
+    value: 'Opus I',
     label: 'Opus 1',
   },
   {
-    value: 'Opus_II',
+    value: 'Opus II',
     label: 'Opus 2',
   },
   {
-    value: 'Opus_III',
+    value: 'Opus III',
     label: 'Opus 3',
   },
   {
-    value: 'Opus_IV',
+    value: 'Opus IV',
     label: 'Opus 4',
   },
   {
-    value: 'Opus_V',
+    value: 'Opus V',
     label: 'Opus 5',
   },
   {
-    value: 'Opus_VI',
+    value: 'Opus VI',
     label: 'Opus 6',
   },
   {
-    value: 'Opus_VII',
+    value: 'Opus VII',
     label: 'Opus 7',
   },
   {
-    value: 'Opus_VIII',
+    value: 'Opus VIII',
     label: 'Opus 8',
   },
   {
-    value: 'Opus_IX',
+    value: 'Opus IX',
     label: 'Opus 9',
   },
   {
-    value: 'Opus_X',
+    value: 'Opus X',
     label: 'Opus 10',
   },
   {
-    value: 'Opus_XI',
+    value: 'Opus XI',
     label: 'Opus 11',
   },
   {
-    value: 'Opus_XII',
+    value: 'Opus XII',
     label: 'Opus 12',
   },
   {
-    value: 'XIII',
+    value: 'Opus XIII',
     label: 'Opus 13',
   },
   {
