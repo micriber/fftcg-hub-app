@@ -9,9 +9,9 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import Filter from './Filter';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import ChipFilter, {filterData} from './ChipFilter';
+import SliderFilter from './SliderFilter';
 
 export type SubmitParams = {
   search: string;
@@ -30,6 +30,277 @@ type Props = {
   style?: ViewStyle;
 };
 
+export const categoriesData: filterData[] = [
+  {
+    value: 'I',
+    label: 'Final Fantasy 1',
+  },
+  {
+    value: 'II',
+    label: 'Final Fantasy 2',
+  },
+  {
+    value: 'III',
+    label: 'Final Fantasy 3',
+  },
+  {
+    value: 'IV',
+    label: 'Final Fantasy 4',
+  },
+  {
+    value: 'V',
+    label: 'Final Fantasy 5',
+  },
+  {
+    value: 'VI',
+    label: 'Final Fantasy 6',
+  },
+  {
+    value: 'VII',
+    label: 'Final Fantasy 7',
+  },
+  {
+    value: 'VIII',
+    label: 'Final Fantasy 8',
+  },
+  {
+    value: 'IX',
+    label: 'Final Fantasy 9',
+  },
+  {
+    value: 'X',
+    label: 'Final Fantasy 10',
+  },
+  {
+    value: 'XI',
+    label: 'Final Fantasy 11',
+  },
+  {
+    value: 'XII',
+    label: 'Final Fantasy 12',
+  },
+  {
+    value: 'XIII',
+    label: 'Final Fantasy 13',
+  },
+  {
+    value: 'XIV',
+    label: 'Final Fantasy 14',
+  },
+  {
+    value: 'XV',
+    label: 'Final Fantasy 15',
+  },
+  {
+    value: 'DFF',
+    label: 'Dissidia Final Fantasy',
+  },
+  {
+    value: 'FFL',
+    label: 'Final Fantasy Legends',
+  },
+  {
+    value: 'FFT',
+    label: 'Final Fantasy Tactics',
+  },
+  {
+    value: 'FFTA',
+    label: 'Final Fantasy Tactics Advance',
+  },
+  {
+    value: 'FFTA2',
+    label: 'Final Fantasy Tactics A2',
+  },
+  {
+    value: 'FFEX',
+    label: 'Final Fantasy Explorer',
+  },
+  {
+    value: 'FFRK',
+    label: 'Final Fantasy Recard Keeper',
+  },
+  {
+    value: 'TYPE-0',
+    label: 'Final Fantasy Type-0',
+  },
+  {
+    value: 'FFCC',
+    label: 'Final Fantasy Crystal Chronicles',
+  },
+  {
+    value: 'MOBIUS',
+    label: 'Mobius Final Fantasy',
+  },
+  {
+    value: 'THEATRHYTHM',
+    label: 'Theatrhythm Final Fantasy',
+  },
+  {
+    value: 'WOFF',
+    label: 'World of Final Fantasy',
+  },
+  {
+    value: 'FFBE',
+    label: 'Final Fantasy Brave Exvius',
+  },
+  {
+    value: 'Special',
+    label: 'Special',
+  },
+  {
+    value: 'LOV',
+    label: 'Lord of Vermillion',
+  },
+  {
+    value: 'PICTLOGICA',
+    label: 'Pictlogica Final Fantasy',
+  },
+  {
+    value: 'Crystal Hunt',
+    label: 'Final Fantasy Crystal Hunt',
+  },
+];
+export const typesData: filterData[] = [
+  {
+    value: 'Avant',
+    label: 'Avant',
+  },
+  {
+    value: 'Soutien',
+    label: 'Soutien',
+  },
+  {
+    value: 'Invocation',
+    label: 'Invocation',
+  },
+  {
+    value: 'Monstre',
+    label: 'Monstre',
+  },
+];
+export const elementsData: filterData[] = [
+  {
+    value: 'fire',
+    label: 'Feu',
+  },
+  {
+    value: 'ice',
+    label: 'Glace',
+  },
+  {
+    value: 'wind',
+    label: 'Vent',
+  },
+  {
+    value: 'earth',
+    label: 'Terre',
+  },
+  {
+    value: 'lightning',
+    label: 'Foudre',
+  },
+  {
+    value: 'water',
+    label: 'Eau',
+  },
+  {
+    value: 'light',
+    label: 'Lumière',
+  },
+  {
+    value: 'dark',
+    label: 'Ténèbres',
+  },
+];
+export const opusData: filterData[] = [
+  {
+    value: 'Opus I',
+    label: 'Opus 1',
+  },
+  {
+    value: 'Opus II',
+    label: 'Opus 2',
+  },
+  {
+    value: 'Opus III',
+    label: 'Opus 3',
+  },
+  {
+    value: 'Opus IV',
+    label: 'Opus 4',
+  },
+  {
+    value: 'Opus V',
+    label: 'Opus 5',
+  },
+  {
+    value: 'Opus VI',
+    label: 'Opus 6',
+  },
+  {
+    value: 'Opus VII',
+    label: 'Opus 7',
+  },
+  {
+    value: 'Opus VIII',
+    label: 'Opus 8',
+  },
+  {
+    value: 'Opus IX',
+    label: 'Opus 9',
+  },
+  {
+    value: 'Opus X',
+    label: 'Opus 10',
+  },
+  {
+    value: 'Opus XI',
+    label: 'Opus 11',
+  },
+  {
+    value: 'Opus XII',
+    label: 'Opus 12',
+  },
+  {
+    value: 'Opus XIII',
+    label: 'Opus 13',
+  },
+  {
+    value: 'Boss Deck Chaos',
+    label: 'Deck de boss chaos',
+  },
+];
+export const raritiesData: filterData[] = [
+  {
+    value: 'C',
+    label: 'Common',
+  },
+  {
+    value: 'R',
+    label: 'Rare',
+  },
+  {
+    value: 'H',
+    label: 'Hero',
+  },
+  {
+    value: 'L',
+    label: 'Legend',
+  },
+  {
+    value: 'S',
+    label: 'Starter',
+  },
+  {
+    value: 'B',
+    label: 'Boss',
+  },
+  {
+    value: 'PR',
+    label: 'Promo',
+  },
+];
+
 const SearchForm = (props: Props) => {
   const [search, setSearch] = React.useState('');
   const [owned, setOwned] = React.useState(false);
@@ -37,77 +308,10 @@ const SearchForm = (props: Props) => {
 
   const [cost, setCost] = React.useState([0, 10]);
   const [power, setPower] = React.useState([0, 15000]);
-
-  const typesData = {
-    Avant: 'Avant',
-    Soutien: 'Soutien',
-    Invocation: 'Invocation',
-    Monstre: 'Monstre',
-  };
   const [types, setTypes] = React.useState<string[]>([]);
-
-  const elementsData = {
-    fire: 'Feu',
-    ice: 'Glace',
-    wind: 'Vent',
-    earth: 'Terre',
-    lightning: 'Foudre',
-    water: 'Eau',
-    light: 'Lumière',
-    dark: 'Ténèbres',
-  };
   const [elements, setElements] = React.useState<string[]>([]);
-
-  const opusData = {
-    Opus_I: 'Opus 1',
-    Opus_II: 'Opus 2',
-    Opus_III: 'Opus 3',
-    Opus_IV: 'Opus 4',
-    Opus_V: 'Opus 5',
-    Opus_VI: 'Opus 6',
-    Opus_VII: 'Opus 7',
-    Opus_VIII: 'Opus 8',
-    Opus_IX: 'Opus 9',
-    Opus_X: 'Opus 10',
-    Opus_XI: 'Opus 11',
-    Opus_XII: 'Opus 12',
-    Opus_XIII: 'Opus 13',
-    Boss_Deck_Chaos: 'Deck de boss chaos',
-  };
   const [opus, setOpus] = React.useState<string[]>([]);
-
-  const raritiesData = {
-    C: 'Common',
-    R: 'Rare',
-    H: 'Hero',
-    L: 'Legend',
-    S: 'Starter',
-    B: 'Boss',
-    P: 'Promo',
-  };
   const [rarities, setRarities] = React.useState<string[]>([]);
-
-  const categoriesData = {
-    I: 'Final Fantasy 1',
-    II: 'Final Fantasy 2',
-    III: 'Final Fantasy 3',
-    IV: 'Final Fantasy 4',
-    V: 'Final Fantasy 5',
-    VI: 'Final Fantasy 6',
-    VII: 'Final Fantasy 7',
-    VIII: 'Final Fantasy 8',
-    IX: 'Final Fantasy 9',
-    X: 'Final Fantasy 10',
-    XI: 'Final Fantasy 11',
-    XII: 'Final Fantasy 12',
-    XIII: 'Final Fantasy 13',
-    XIV: 'Final Fantasy 14',
-    XV: 'Final Fantasy 15',
-    XVI: 'Dissidia Final Fantasy',
-    FFL: 'Final Fantasy Legends',
-    FFT: 'Final Fantasy Tactics',
-    FFE: 'Final Fantasy Explorer',
-  };
   const [categories, setCategories] = React.useState<string[]>([]);
 
   const filterHeight = useRef(new Animated.Value(0)).current;
@@ -157,8 +361,6 @@ const SearchForm = (props: Props) => {
       marginBottom: 35,
       alignItems: 'flex-start',
     },
-    costLabel: {fontSize: 16},
-    sliderContainer: {marginHorizontal: '10%'},
   });
 
   function showFilter() {
@@ -235,67 +437,41 @@ const SearchForm = (props: Props) => {
           height: filterHeight,
           opacity: filterOpacity,
         }}>
-        <Filter
+        <ChipFilter
           data={typesData}
           onValuesChange={setTypes}
           values={types}
           label={'Types'}
         />
-        <Filter
+        <ChipFilter
           data={elementsData}
           onValuesChange={setElements}
           values={elements}
           label={'Eléments'}
         />
-        <Filter
+        <ChipFilter
           data={opusData}
           onValuesChange={setOpus}
           values={opus}
           label={'Opus'}
         />
-        <Filter
+        <ChipFilter
           data={raritiesData}
           onValuesChange={setRarities}
           values={rarities}
           label={'Raretés'}
         />
-        <Filter
+        <ChipFilter
           data={categoriesData}
           onValuesChange={setCategories}
           values={categories}
           label={'Catégories'}
         />
-        <Text style={styles.costLabel}>
-          Coût : {cost[0]} - {cost[1]}
-        </Text>
-        <MultiSlider
-          values={[cost[0], cost[1]]}
-          onValuesChange={(value) => setCost(value)}
-          min={0}
-          max={10}
-          step={1}
-          allowOverlap={true}
-          snapped
-          containerStyle={styles.sliderContainer}
-          selectedStyle={{backgroundColor: colors.primary}}
-          markerStyle={{backgroundColor: colors.primary}}
-          sliderLength={Dimensions.get('window').width * 0.75}
-        />
-        <Text style={styles.costLabel}>
-          Puissance : {power[0]} - {power[1]}
-        </Text>
-        <MultiSlider
-          values={[power[0], power[1]]}
-          onValuesChange={(value) => setPower(value)}
-          min={0}
-          max={15000}
-          step={1000}
-          allowOverlap={true}
-          snapped
-          containerStyle={styles.sliderContainer}
-          selectedStyle={{backgroundColor: colors.primary}}
-          markerStyle={{backgroundColor: colors.primary}}
-          sliderLength={Dimensions.get('window').width * 0.75}
+        <SliderFilter onValuesChange={setCost} values={cost} label={'Coût'} />
+        <SliderFilter
+          onValuesChange={setPower}
+          values={power}
+          label={'Puissance'}
         />
       </Animated.View>
       <View style={styles.filterRowContainer}>
