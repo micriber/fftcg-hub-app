@@ -3,14 +3,15 @@ import {Chip, Text, useTheme} from 'react-native-paper';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import {ColorTranslator} from 'colortranslator';
 
+export type filterData = {value: string; label: string};
 type Props = {
   label: string;
-  data: {[name: string]: string};
+  data: filterData[];
   values: string[];
   onValuesChange: (value: string[]) => void;
 };
 
-const Filter = ({label, data, onValuesChange, values}: Props) => {
+const ChipFilter = ({label, data, onValuesChange, values}: Props) => {
   const {colors} = useTheme();
   const styles = StyleSheet.create({
     filterContainer: {
@@ -33,25 +34,28 @@ const Filter = ({label, data, onValuesChange, values}: Props) => {
         horizontal={true}
         style={styles.filterChoiceContainer}
         showsHorizontalScrollIndicator={false}>
-        {Object.values(data).map((chipLabel, index) => {
-          const value = Object.keys(data)[index];
+        {data.map((filterData) => {
           return (
             <Chip
-              selected={values.includes(value)}
+              selected={values.includes(filterData.value)}
               style={[
                 styles.filterChoiceButton,
                 {
                   backgroundColor: new ColorTranslator(
-                    values.includes(value) ? colors.active : colors.primary,
-                  ).setA(values.includes(value) ? 0.5 : 0.2).RGBA,
+                    values.includes(filterData.value)
+                      ? colors.active
+                      : colors.primary,
+                  ).setA(values.includes(filterData.value) ? 0.5 : 0.2).RGBA,
                 },
               ]}
               onPress={() => {
-                !values.includes(value)
-                  ? onValuesChange([...values, value])
-                  : onValuesChange(values.filter((type) => type !== value));
+                !values.includes(filterData.value)
+                  ? onValuesChange([...values, filterData.value])
+                  : onValuesChange(
+                      values.filter((type) => type !== filterData.value),
+                    );
               }}>
-              {chipLabel}
+              {label}
             </Chip>
           );
         })}
@@ -60,4 +64,4 @@ const Filter = ({label, data, onValuesChange, values}: Props) => {
   );
 };
 
-export default Filter;
+export default ChipFilter;

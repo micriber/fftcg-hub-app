@@ -17,19 +17,10 @@ import {getCardImageUrl} from '../../utils/image';
 import {makeID} from '../../utils/string';
 import GameIcon from '../../components/icons/GameIcon';
 import {getElementIconFileByElement} from '../../enums/element';
+import {categoriesData, raritiesData} from '../../components/form/SearchForm';
 
 type Props = {
   route: {params: {card: Card}};
-};
-type Rarity = 'C' | 'R' | 'H' | 'L' | 'S' | 'B' | 'PR';
-export const rarityLabel: {[rarity in Rarity]: string} = {
-  C: 'Common',
-  R: 'Rare',
-  H: 'Hero',
-  L: 'Legend',
-  S: 'Starter',
-  B: 'Boss',
-  PR: 'Promo',
 };
 
 const CardDetail = ({route}: Props) => {
@@ -72,20 +63,12 @@ const CardDetail = ({route}: Props) => {
       flexWrap: 'wrap',
       marginTop: 10,
       marginHorizontal: 20,
+      marginBottom: 32,
     },
     detailBlock: {
-      width: '33%',
       marginTop: 6,
-      paddingRight: 5,
-    },
-    detailBlockCategory: {
-      width: card.category1.length > 20 ? '66%' : '33%',
-      marginTop: 6,
-      paddingRight: 5,
-    },
-    detailBlockJob: {
-      width: card.category1.length > 20 ? '33%' : '66%',
-      marginTop: 6,
+      marginLeft: 10,
+      marginRight: 20,
       paddingRight: 5,
     },
     detailLabel: {
@@ -100,7 +83,7 @@ const CardDetail = ({route}: Props) => {
     },
     detailDescriptionBlock: {
       width: '100%',
-      marginTop: 6,
+      marginTop: 20,
     },
     detailDescriptionLabel: {
       color: theme.colors.active,
@@ -109,9 +92,8 @@ const CardDetail = ({route}: Props) => {
     containerQuantity: {
       flex: 1,
       alignItems: 'center',
-      marginTop: 10,
-      marginBottom: 32,
       marginLeft: -(screenWidth / 10),
+      marginBottom: 10,
     },
     zoomContainer: {
       height: screenHeight - 40,
@@ -160,7 +142,23 @@ const CardDetail = ({route}: Props) => {
             onPress={() => setZoomCard(true)}
           />
         </View>
-        <ScrollView style={styles.scrollContainer}>
+        <ScrollView
+          style={styles.scrollContainer}
+          indicatorStyle={'black'}
+          showsVerticalScrollIndicator={true}>
+          <View style={styles.containerQuantity}>
+            <FFCardQuantityActions
+              card={card}
+              version="classic"
+              label="Classic"
+            />
+            <FFCardQuantityActions card={card} version="foil" label="Foil" />
+            <FFCardQuantityActions
+              card={card}
+              version="full-art"
+              label="Full Art"
+            />
+          </View>
           <View style={styles.detailContainer}>
             <View style={styles.detailBlock}>
               <Text style={styles.detailLabel}>Element:</Text>
@@ -200,7 +198,7 @@ const CardDetail = ({route}: Props) => {
             <View style={styles.detailBlock}>
               <Text style={styles.detailLabel}>Rareté:</Text>
               <Text textBreakStrategy={'simple'} style={styles.detailText}>
-                {rarityLabel[card.rarity as Rarity]}
+                {raritiesData.find(({value}) => value === card.rarity)?.label}
               </Text>
             </View>
             <View style={styles.detailBlock}>
@@ -209,14 +207,17 @@ const CardDetail = ({route}: Props) => {
                 {card.set}
               </Text>
             </View>
-            <View style={styles.detailBlockCategory}>
+            <View style={styles.detailBlock}>
               <Text style={styles.detailLabel}>Catégorie:</Text>
               <Text textBreakStrategy={'simple'} style={styles.detailText}>
-                {replaceTextByIconOrStyle(card.category1)}
+                {
+                  categoriesData.find(({value}) => value === card.category1)
+                    ?.label
+                }
               </Text>
             </View>
             {card.job !== '' && (
-              <View style={styles.detailBlockJob}>
+              <View style={styles.detailBlock}>
                 <Text style={styles.detailLabel}>Job:</Text>
                 <Text textBreakStrategy={'simple'} style={styles.detailText}>
                   {card.job}
@@ -229,19 +230,6 @@ const CardDetail = ({route}: Props) => {
             <Text style={styles.detailText} textBreakStrategy={'simple'}>
               {replaceTextByIconOrStyle(card.text)}
             </Text>
-          </View>
-          <View style={styles.containerQuantity}>
-            <FFCardQuantityActions
-              card={card}
-              version="classic"
-              label="Classic"
-            />
-            <FFCardQuantityActions card={card} version="foil" label="Foil" />
-            <FFCardQuantityActions
-              card={card}
-              version="full-art"
-              label="Full Art"
-            />
           </View>
         </ScrollView>
       </View>

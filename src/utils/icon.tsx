@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import reactStringReplace from 'react-string-replace';
 import {compose} from './fp';
 import GameIcon from '../components/icons/GameIcon';
@@ -19,6 +19,10 @@ const circleEnum: {[number: string]: string} = {
   '9': '\u277e',
 };
 
+const styles = StyleSheet.create({
+  bravoure: {fontWeight: 'bold'},
+});
+
 const _replaceTextByIcon = (
   typeToMatch: string | RegExp,
   iconReplacement: ElementIconFile | GameActionIconFile,
@@ -28,7 +32,7 @@ const _replaceTextByIcon = (
   ));
 };
 
-const _styllishBBCode = (regex: RegExp, styles: Object) => (text: string) => {
+const _styllishBBCode = (regex: RegExp, style: Object) => (text: string) => {
   return reactStringReplace(text, regex, (match) => {
     if (match === 'br') {
       return ' ';
@@ -37,12 +41,16 @@ const _styllishBBCode = (regex: RegExp, styles: Object) => (text: string) => {
     } else if (match.includes('"[[br]]')) {
       return '"\n';
     } else if (match === 'Bravoure[[br]] ') {
-      return 'Bravoure\n';
+      return (
+        <Text key={makeID()} style={styles.bravoure}>
+          Bravoure{'\n'}
+        </Text>
+      );
     } else if (match === '&middot;') {
       return '.';
     } else {
       return (
-        <Text key={makeID()} style={[styles]}>
+        <Text key={makeID()} style={[style]}>
           {reactStringReplace(match, '[[br]]   ', () => ' ')}
         </Text>
       );
@@ -50,11 +58,11 @@ const _styllishBBCode = (regex: RegExp, styles: Object) => (text: string) => {
   });
 };
 
-const _styllishNumber = (regex: RegExp, styles: Object) => (text: string) => {
+const _styllishNumber = (regex: RegExp, style: Object) => (text: string) => {
   return reactStringReplace(text, regex, (match) => {
     const circleUnicode: string | null = circleEnum[match];
     return (
-      <Text key={makeID()} style={[styles]}>
+      <Text key={makeID()} style={[style]}>
         {circleUnicode}
       </Text>
     );
