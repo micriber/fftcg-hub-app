@@ -2,6 +2,7 @@ import React from 'react';
 import {Keyboard, StyleSheet, View} from 'react-native';
 import {Switch, useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {ColorTranslator} from 'colortranslator';
 
 type Props = {
   leftIconName?: string;
@@ -30,7 +31,11 @@ const HeaderSwitch = ({
         }}
         style={styles.switch}
         testID={`SwitcherState-${+value}`}
-        color={theme.colors.active}
+        thumbColor={value ? theme.colors.active : '#ffffff'}
+        trackColor={{
+          false: new ColorTranslator(theme.colors.darkGrey).setA(0.3).RGBA,
+          true: new ColorTranslator(theme.colors.active).setA(0.5).RGBA,
+        }}
       />
       {rightIconName && (
         <Icon name={rightIconName} color={theme.colors.lightGrey} size={22} />
