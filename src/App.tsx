@@ -10,7 +10,7 @@ import themes from './theme';
 
 const App = () => {
   const colorScheme = Appearance.getColorScheme();
-  const theme = colorScheme === 'dark' ? themes.primaryDark : themes.primary;
+  const theme = colorScheme === 'dark' ? themes.primary : themes.primary;
 
   return (
     <PaperProvider theme={theme}>
