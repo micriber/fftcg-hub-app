@@ -61,17 +61,19 @@ const Search = ({navigation}: Props) => {
         <Header
           {...headerProps}
           headerRight={
-            <HeaderSwitch
-              leftIconName="view-grid"
-              rightIconName="format-list-bulleted"
-              value={isListView}
-              onValueChange={setIsListView}
-            />
+            !isEmpty && !refreshing ? (
+              <HeaderSwitch
+                leftIconName="view-grid"
+                rightIconName="format-list-bulleted"
+                value={isListView}
+                onValueChange={setIsListView}
+              />
+            ) : undefined
           }
         />
       ),
     });
-  }, [isListView, navigation]);
+  }, [isEmpty, isListView, navigation, refreshing]);
 
   const Layout = (
     <FFCardsGridList
