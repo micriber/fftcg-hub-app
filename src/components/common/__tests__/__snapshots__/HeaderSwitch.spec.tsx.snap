@@ -19,7 +19,7 @@ exports[`[Component] HeaderSwitch Switch value change 1`] = `
     style={
       Array [
         Object {
-          "color": undefined,
+          "color": "#D1DEEE",
           "fontSize": 20,
         },
         undefined,
@@ -39,7 +39,7 @@ exports[`[Component] HeaderSwitch Switch value change 1`] = `
     onChange={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
-    onTintColor="#03dac4"
+    onTintColor="rgba(61,99,145,0.5)"
     style={
       Array [
         Object {
@@ -52,7 +52,8 @@ exports[`[Component] HeaderSwitch Switch value change 1`] = `
       ]
     }
     testID="SwitcherState-0"
-    tintColor=""
+    thumbTintColor="#ffffff"
+    tintColor="rgba(148,174,206,0.3)"
     value={false}
   />
   <Text
@@ -60,7 +61,7 @@ exports[`[Component] HeaderSwitch Switch value change 1`] = `
     style={
       Array [
         Object {
-          "color": undefined,
+          "color": "#D1DEEE",
           "fontSize": 22,
         },
         undefined,
@@ -97,7 +98,7 @@ exports[`[Component] HeaderSwitch Switch value change 2`] = `
     style={
       Array [
         Object {
-          "color": undefined,
+          "color": "#D1DEEE",
           "fontSize": 20,
         },
         undefined,
@@ -117,7 +118,7 @@ exports[`[Component] HeaderSwitch Switch value change 2`] = `
     onChange={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
-    onTintColor="#03dac4"
+    onTintColor="rgba(61,99,145,0.5)"
     style={
       Array [
         Object {
@@ -130,7 +131,8 @@ exports[`[Component] HeaderSwitch Switch value change 2`] = `
       ]
     }
     testID="SwitcherState-1"
-    tintColor=""
+    thumbTintColor="#3D6391"
+    tintColor="rgba(148,174,206,0.3)"
     value={true}
   />
   <Text
@@ -138,7 +140,7 @@ exports[`[Component] HeaderSwitch Switch value change 2`] = `
     style={
       Array [
         Object {
-          "color": undefined,
+          "color": "#D1DEEE",
           "fontSize": 22,
         },
         undefined,
@@ -175,7 +177,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
     style={
       Array [
         Object {
-          "color": undefined,
+          "color": "#D1DEEE",
           "fontSize": 20,
         },
         undefined,
@@ -195,7 +197,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
     onChange={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
-    onTintColor="#03dac4"
+    onTintColor="rgba(61,99,145,0.5)"
     style={
       Array [
         Object {
@@ -208,7 +210,8 @@ exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
       ]
     }
     testID="SwitcherState-0"
-    tintColor=""
+    thumbTintColor="#ffffff"
+    tintColor="rgba(148,174,206,0.3)"
     value={false}
   />
   <Text
@@ -216,7 +219,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
     style={
       Array [
         Object {
-          "color": undefined,
+          "color": "#D1DEEE",
           "fontSize": 22,
         },
         undefined,
@@ -253,7 +256,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch right 1`] = `
     style={
       Array [
         Object {
-          "color": undefined,
+          "color": "#D1DEEE",
           "fontSize": 20,
         },
         undefined,
@@ -273,7 +276,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch right 1`] = `
     onChange={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
-    onTintColor="#03dac4"
+    onTintColor="rgba(61,99,145,0.5)"
     style={
       Array [
         Object {
@@ -286,7 +289,8 @@ exports[`[Component] HeaderSwitch renders correctly with switch right 1`] = `
       ]
     }
     testID="SwitcherState-1"
-    tintColor=""
+    thumbTintColor="#3D6391"
+    tintColor="rgba(148,174,206,0.3)"
     value={true}
   />
   <Text
@@ -294,7 +298,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch right 1`] = `
     style={
       Array [
         Object {
-          "color": undefined,
+          "color": "#D1DEEE",
           "fontSize": 22,
         },
         undefined,

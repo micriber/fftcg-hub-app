@@ -3,6 +3,7 @@ import {Keyboard, StyleSheet, View} from 'react-native';
 import {Switch, useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ColorTranslator} from 'colortranslator';
+import themes from './../../theme';
 
 type Props = {
   leftIconName?: string;
@@ -17,7 +18,7 @@ const HeaderSwitch = ({
   value,
   onValueChange,
 }: Props) => {
-  const theme = useTheme();
+  const theme = useTheme(themes.primary);
   return (
     <View style={styles.header}>
       {leftIconName && (
