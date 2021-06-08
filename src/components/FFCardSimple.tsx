@@ -12,6 +12,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {getCardImageUrl} from '../utils/image';
 import {Card as FFTCGCard} from '../services/api/card';
 import replaceTextByIconOrStyle from '../utils/icon';
+// @ts-ignore
+import placeHolderImage from '../assets/back-card.jpg';
+
 import {Card, Text} from 'react-native-paper';
 
 type Props = {
@@ -35,6 +38,7 @@ const FFCardSimple = ({
   imageStyle,
   containerStyle,
 }: Props) => {
+  const [imageLoading, setImageLoading] = React.useState(true);
   const [isFallbackImage, setIsFallbackImage] = React.useState(false);
   const [src, setSrc] = React.useState(
     getCardImageUrl(card.code, 'full', 'fr'),
@@ -64,6 +68,19 @@ const FFCardSimple = ({
           onLongPress={onLongPress}>
           <Card.Content>
             <View style={styles.view}>
+              {imageLoading && (
+                <FastImage
+                  style={[
+                    imageSize,
+                    // TODO: Find the correct type for this style
+                    imageStyle as any,
+                    styles.image,
+                    styles.placeHolderImage,
+                  ]}
+                  source={placeHolderImage}
+                  resizeMode={'cover'}
+                />
+              )}
               <FastImage
                 style={[
                   imageSize,
@@ -72,6 +89,7 @@ const FFCardSimple = ({
                   styles.image,
                 ]}
                 source={{uri: src}}
+                onLoad={() => setImageLoading(false)}
                 resizeMode={'cover'}
                 onError={() => {
                   if (!isFallbackImage) {
@@ -109,6 +127,18 @@ const FFCardSimple = ({
           activeOpacity={0.3}
           onPress={onPress ? () => onPress(card) : undefined}
           onLongPress={onLongPress}>
+          {imageLoading && (
+            <FastImage
+              style={[
+                imageSize,
+                // TODO: Find the correct type for this style
+                imageStyle as any,
+                styles.placeHolderImage,
+              ]}
+              source={placeHolderImage}
+              resizeMode={'cover'}
+            />
+          )}
           <FastImage
             style={[
               imageSize,
@@ -116,6 +146,7 @@ const FFCardSimple = ({
               imageStyle as any,
             ]}
             source={{uri: src}}
+            onLoad={() => setImageLoading(false)}
             resizeMode={'cover'}
             onError={() => {
               if (!isFallbackImage) {
@@ -153,6 +184,9 @@ const styles = StyleSheet.create({
     height: 210,
     width: 210 / 1.4,
     elevation: 0,
+  },
+  placeHolderImage: {
+    position: 'absolute',
   },
   textDescription: {
     fontSize: 13,
