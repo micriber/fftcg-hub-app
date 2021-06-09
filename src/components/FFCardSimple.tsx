@@ -187,6 +187,7 @@ const styles = StyleSheet.create({
   },
   placeHolderImage: {
     position: 'absolute',
+    opacity: 0.8,
   },
   textDescription: {
     fontSize: 13,
