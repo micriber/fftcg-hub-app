@@ -18,7 +18,6 @@ import {makeID} from '../../utils/string';
 import GameIcon from '../../components/icons/GameIcon';
 import {getElementIconFileByElement} from '../../enums/element';
 import {categoriesData, raritiesData} from '../../components/form/SearchForm';
-import FastImage from 'react-native-fast-image';
 
 type Props = {
   route: {params: {card: Card}};
