@@ -93,6 +93,7 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
                     "width": 150,
                   },
                   Object {
+                    "opacity": 0.8,
                     "position": "absolute",
                   },
                 ],
@@ -354,6 +355,7 @@ exports[`[Component] FFCardSimple renders correctly in grid view 1`] = `
             },
             undefined,
             Object {
+              "opacity": 0.8,
               "position": "absolute",
             },
           ],
@@ -464,6 +466,7 @@ exports[`[Component] FFCardSimple renders correctly in list view 1`] = `
             },
             undefined,
             Object {
+              "opacity": 0.8,
               "position": "absolute",
             },
           ],
@@ -621,6 +624,7 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
                     "width": 150,
                   },
                   Object {
+                    "opacity": 0.8,
                     "position": "absolute",
                   },
                 ],
