@@ -414,26 +414,28 @@ const SearchForm = (props: Props) => {
     );
   }
 
+  const submit = () => {
+    hideFilter();
+    props.onSubmit({
+      search,
+      owned,
+      categories,
+      opus,
+      elements,
+      rarities,
+      types,
+      cost,
+      power,
+    });
+  };
+
   return (
     <View style={[styles.container, props.style]}>
       <SearchInput
         value={search}
         onChangeText={setSearch}
         label={'Nom de carte ou code'}
-        onSubmitEditing={() => {
-          hideFilter();
-          props.onSubmit({
-            search,
-            owned,
-            categories,
-            opus,
-            elements,
-            rarities,
-            types,
-            cost,
-            power,
-          });
-        }}
+        onSubmitEditing={submit}
       />
       <View style={styles.filterRowContainer}>
         <Text style={styles.collectionLabel}>Collection uniquement</Text>
@@ -513,20 +515,7 @@ const SearchForm = (props: Props) => {
       </View>
       <Button
         mode="contained"
-        onPress={() => {
-          hideFilter();
-          props.onSubmit({
-            search,
-            owned,
-            categories,
-            opus,
-            elements,
-            rarities,
-            types,
-            cost,
-            power,
-          });
-        }}
+        onPress={submit}
         style={styles.button}
         labelStyle={styles.buttonLabel}>
         Rechercher
