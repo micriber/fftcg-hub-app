@@ -35,6 +35,9 @@ const SearchInput = (props: Props) => {
       label={props.label}
       theme={customTheme}
       dense={true}
+      onSubmitEditing={props.onSubmitEditing}
+      keyboardType={'default'}
+      returnKeyType={'search'}
     />
   );
 };
