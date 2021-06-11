@@ -57,7 +57,7 @@ exports[`[Component] FFCardSimple renders correctly but with fallback image 1`] 
               "paddingHorizontal": 16,
             },
             Object {
-              "paddingTop": 16,
+              "paddingVertical": 16,
             },
             undefined,
           ]
@@ -588,7 +588,7 @@ exports[`[Component] FFCardSimple renders correctly with twice callback 1`] = `
               "paddingHorizontal": 16,
             },
             Object {
-              "paddingTop": 16,
+              "paddingVertical": 16,
             },
             undefined,
           ]

@@ -90,9 +90,10 @@ const FFCardSimple = ({
       width: 20,
       height: 20,
       zIndex: 0,
-      marginTop: viewType === 'detail' ? 0 : -15,
+      marginTop: -15,
       marginBottom: -5,
-      marginRight: -5,
+      marginRight: viewType === 'detail' ? -10 : -5,
+      marginLeft: -10,
       elevation: 10,
       alignSelf: 'flex-end',
     },
@@ -146,6 +147,9 @@ const FFCardSimple = ({
                 }}
                 testID={`${viewType}-Image-${card.code}`}
               />
+              {displayOwnPin && card.userCard.length > 0 && (
+                <Icon name="check" style={styles.ownPin} size={20} />
+              )}
               <View style={[styles.cardDescription]}>
                 <Text style={styles.textDescription} numberOfLines={1}>
                   {card.code} {card.name}
@@ -167,9 +171,6 @@ const FFCardSimple = ({
               </View>
             </View>
           </Card.Content>
-          {displayOwnPin && card.userCard.length > 0 && (
-            <Icon name="check" style={styles.ownPin} size={20} />
-          )}
         </Card>
       )}
       {viewType !== 'detail' && (
