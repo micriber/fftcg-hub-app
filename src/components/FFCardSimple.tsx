@@ -51,6 +51,53 @@ const FFCardSimple = ({
     borderRadius: 10,
     elevation: 5,
   };
+  const styles = StyleSheet.create({
+    cardGridContainer: {},
+    cardListContainer: {
+      flexDirection: 'row',
+      marginBottom: 10,
+    },
+    container: {
+      flex: 1,
+      alignItems: 'center',
+    },
+    view: {
+      flexDirection: 'row',
+      width: Dimensions.get('screen').width - 50,
+      maxWidth: 350,
+    },
+    image: {
+      height: 210,
+      width: 210 / 1.4,
+      elevation: 0,
+    },
+    placeHolderImage: {
+      position: 'absolute',
+      opacity: 0.8,
+    },
+    textDescription: {
+      fontSize: 13,
+    },
+    cardDescription: {
+      flex: 1,
+      marginLeft: 10,
+    },
+    cardTextDescription: {flex: 1},
+    ownPin: {
+      backgroundColor: '#3D6391',
+      color: 'white',
+      borderRadius: 10,
+      width: 20,
+      height: 20,
+      zIndex: 0,
+      marginTop: viewType === 'detail' ? 0 : -15,
+      marginBottom: -5,
+      marginRight: -5,
+      elevation: 10,
+      alignSelf: 'flex-end',
+    },
+  });
+
   return (
     <View
       testID="SimpleFFCard"
@@ -120,6 +167,9 @@ const FFCardSimple = ({
               </View>
             </View>
           </Card.Content>
+          {displayOwnPin && card.userCard.length > 0 && (
+            <Icon name="check" style={styles.ownPin} size={20} />
+          )}
         </Card>
       )}
       {viewType !== 'detail' && (
@@ -164,52 +214,5 @@ const FFCardSimple = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  cardGridContainer: {},
-  cardListContainer: {
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  view: {
-    flexDirection: 'row',
-    width: Dimensions.get('screen').width - 50,
-    maxWidth: 350,
-  },
-  image: {
-    height: 210,
-    width: 210 / 1.4,
-    elevation: 0,
-  },
-  placeHolderImage: {
-    position: 'absolute',
-    opacity: 0.8,
-  },
-  textDescription: {
-    fontSize: 13,
-  },
-  cardDescription: {
-    flex: 1,
-    marginLeft: 10,
-  },
-  cardTextDescription: {flex: 1},
-  ownPin: {
-    backgroundColor: '#3D6391',
-    color: 'white',
-    borderRadius: 10,
-    width: 20,
-    height: 20,
-    zIndex: 0,
-    marginTop: -15,
-    marginBottom: -5,
-    marginRight: -5,
-    elevation: 10,
-    alignSelf: 'flex-end',
-  },
-});
 
 export default FFCardSimple;
