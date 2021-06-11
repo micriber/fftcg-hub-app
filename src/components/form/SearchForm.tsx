@@ -420,6 +420,20 @@ const SearchForm = (props: Props) => {
         value={search}
         onChangeText={setSearch}
         label={'Nom de carte ou code'}
+        onSubmitEditing={() => {
+          hideFilter();
+          props.onSubmit({
+            search,
+            owned,
+            categories,
+            opus,
+            elements,
+            rarities,
+            types,
+            cost,
+            power,
+          });
+        }}
       />
       <View style={styles.filterRowContainer}>
         <Text style={styles.collectionLabel}>Collection uniquement</Text>
