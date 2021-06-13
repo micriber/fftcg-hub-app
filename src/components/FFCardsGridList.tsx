@@ -41,7 +41,7 @@ const FFCardsGridList = ({
   );
   let refList: FlatGrid<Card> | null;
   return (
-    <View style={[{backgroundColor: colors.background}, style]}>
+    <View style={[{backgroundColor: colors.background}, style, styles.flex1]}>
       <FlatGrid
         contentContainerStyle={styles.contentContainerStyle}
         key={1}
@@ -97,11 +97,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     margin: 16,
     right: 0,
-    bottom: 130,
+    bottom: 0,
   },
   contentContainerStyle: {
     minHeight: '100%',
-    paddingBottom: 185,
+    paddingBottom: 60,
     marginTop: -10,
   },
   flex1: {
