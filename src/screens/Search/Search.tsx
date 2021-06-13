@@ -78,7 +78,6 @@ const Search = ({navigation}: Props) => {
   const Layout = (
     <FFCardsGridList
       viewType={!isListView ? 'simple' : 'detail'}
-      style={styles.listContainer}
       cards={cardContext.cardsList}
       displayOwnPin={true}
       onCardPress={onCardPress}
@@ -114,8 +113,10 @@ const styles = StyleSheet.create({
   formContainer: {
     elevation: 10,
   },
-  listContainer: {
-    height: '90%',
+  adsContainer: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 0,
   },
 });
 

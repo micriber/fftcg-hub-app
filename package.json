@@ -20,7 +20,7 @@
     "clean": "rimraf android/app/build",
     "gradlew:clean": "cd android && gradlew clean",
     "ts:check": "tsc --noemit",
-    "ci:test": "yarn run test:update && yarn run lint:fix && yarn run ts:check"
+    "local:check-and-fix": "yarn run test:update && yarn run lint:fix && yarn run ts:check"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,8 @@
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-community/google-signin": "^4.0.3",
     "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-firebase/admob": "^11.5.0",
+    "@react-native-firebase/app": "^11.5.0",
     "@react-navigation/bottom-tabs": "^5.8.0",
     "@react-navigation/drawer": "5.12.x",
     "@react-navigation/material-bottom-tabs": "^5.3.13",

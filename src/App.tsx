@@ -7,10 +7,15 @@ import AuthContextProvider from './contexts/AuthContextProvider';
 import SearchCardsContextProvider from './contexts/SearchCardsContextProvider';
 import {Provider as PaperProvider} from 'react-native-paper';
 import themes from './theme';
+import {BannerAd, BannerAdSize, TestIds} from '@react-native-firebase/admob';
+import {useState} from 'react';
+import {config} from './config';
 
 const App = () => {
   const colorScheme = Appearance.getColorScheme();
   const theme = colorScheme === 'dark' ? themes.primary : themes.primary;
+  const adUnitId = __DEV__ ? TestIds.BANNER : config.google.adsBannerId;
+  const [showAds, setShowAds] = useState(false);
 
   return (
     <PaperProvider theme={theme}>
@@ -19,7 +24,17 @@ const App = () => {
         <AuthContextProvider>
           <SearchCardsContextProvider>
             <NavigationContainer>
-              <AuthStackScreen />
+              <AuthStackScreen
+                userLogin={(userLoginShowAds: boolean) =>
+                  setShowAds(userLoginShowAds)
+                }
+              />
+              {showAds && (
+                <BannerAd
+                  unitId={adUnitId}
+                  size={BannerAdSize.ADAPTIVE_BANNER}
+                />
+              )}
             </NavigationContainer>
           </SearchCardsContextProvider>
         </AuthContextProvider>

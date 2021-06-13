@@ -9,7 +9,11 @@ import DrawerNavigator from '../../components/navigation/drawer';
 
 const AuthStack = createStackNavigator();
 
-const AuthStackScreen = () => {
+type Props = {
+  userLogin: (userIsLogged: boolean) => void;
+};
+
+const AuthStackScreen = ({userLogin}: Props) => {
   const {user, signIn, isLoading, signOut} = React.useContext(AuthContext);
 
   React.useEffect(() => {
@@ -19,6 +23,7 @@ const AuthStackScreen = () => {
   }, []);
 
   function loginScreen() {
+    userLogin(false);
     return (
       <AuthStack.Navigator
         screenOptions={{
@@ -30,6 +35,7 @@ const AuthStackScreen = () => {
   }
 
   function loggedScreen() {
+    userLogin(true);
     return <DrawerNavigator signOut={signOut} />;
   }
 
