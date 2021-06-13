@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import SearchInput from '../common/form-fields/SearchInput';
 import {Button, Switch, Text, useTheme} from 'react-native-paper';
 import {
@@ -306,6 +306,10 @@ const SearchForm = (props: Props) => {
   const [owned, setOwned] = React.useState(false);
   const [filter, setFilter] = React.useState(false);
 
+  const [screenHeight, setScreenHeight] = React.useState(
+    Dimensions.get('window').height,
+  );
+
   const [cost, setCost] = React.useState([0, 10]);
   const [power, setPower] = React.useState([0, 15000]);
   const [types, setTypes] = React.useState<string[]>([]);
@@ -363,10 +367,17 @@ const SearchForm = (props: Props) => {
     },
   });
 
+  useEffect(() => {
+    Dimensions.addEventListener('change', ({window}) => {
+      setScreenHeight(window.height);
+    });
+    return () => Dimensions.removeEventListener('change', () => {});
+  });
+
   function showFilter() {
     Animated.timing(filterHeight, {
       useNativeDriver: false,
-      toValue: Dimensions.get('window').height * 0.7,
+      toValue: screenHeight * 0.7,
       duration: 500,
     }).start();
 
@@ -483,11 +494,17 @@ const SearchForm = (props: Props) => {
           values={categories}
           label={'Catégories'}
         />
-        <SliderFilter onValuesChange={setCost} values={cost} label={'Coût'} />
+        <SliderFilter
+          onValuesChange={setCost}
+          values={cost}
+          label={'Coût'}
+          step={1}
+        />
         <SliderFilter
           onValuesChange={setPower}
           values={power}
           label={'Puissance'}
+          step={1000}
         />
       </Animated.View>
       <View style={styles.filterRowContainer}>
