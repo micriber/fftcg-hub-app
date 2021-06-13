@@ -97,11 +97,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     margin: 16,
     right: 0,
-    bottom: 65,
+    bottom: 130,
   },
   contentContainerStyle: {
     minHeight: '100%',
-    paddingBottom: 125,
+    paddingBottom: 185,
     marginTop: -10,
   },
   flex1: {

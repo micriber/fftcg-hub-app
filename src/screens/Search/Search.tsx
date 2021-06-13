@@ -12,6 +12,7 @@ import FFCardsGridList from '../../components/FFCardsGridList';
 import useFetchCards from '../../utils/hooks/useFetchCards';
 import Loading from '../Loading';
 import useDidMountEffect from '../../../external/hooks/useDidMountEffect';
+import {BannerAd, BannerAdSize, TestIds} from '@react-native-firebase/admob';
 
 type SearchScreenNavigationProp = StackNavigationProp<
   SearchStackParamList,
@@ -23,6 +24,9 @@ type Props = {
   navigation: SearchScreenNavigationProp;
   route: SearchScreenRouteProp;
 };
+const adUnitId = __DEV__
+  ? TestIds.BANNER
+  : 'ca-app-pub-4474507640801989/4425049680';
 
 const Search = ({navigation}: Props) => {
   const [isListView, setIsListView] = React.useState(false);
@@ -102,6 +106,9 @@ const Search = ({navigation}: Props) => {
       ) : (
         Layout
       )}
+      <View style={styles.adsContainer}>
+        <BannerAd unitId={adUnitId} size={BannerAdSize.ADAPTIVE_BANNER} />
+      </View>
     </View>
   );
 };
@@ -116,6 +123,11 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     height: '90%',
+  },
+  adsContainer: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 0,
   },
 });
 
