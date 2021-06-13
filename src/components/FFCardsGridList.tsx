@@ -95,13 +95,13 @@ const styles = StyleSheet.create({
   },
   fab: {
     position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: 0,
+    // marginRight: 16,
+    right: 16,
+    bottom: 10,
   },
   contentContainerStyle: {
     minHeight: '100%',
-    paddingBottom: 60,
+    paddingBottom: 50,
     marginTop: -10,
   },
   flex1: {
