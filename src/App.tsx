@@ -9,13 +9,12 @@ import {Provider as PaperProvider} from 'react-native-paper';
 import themes from './theme';
 import {BannerAd, BannerAdSize, TestIds} from '@react-native-firebase/admob';
 import {useState} from 'react';
+import {config} from './config';
 
 const App = () => {
   const colorScheme = Appearance.getColorScheme();
   const theme = colorScheme === 'dark' ? themes.primary : themes.primary;
-  const adUnitId = __DEV__
-    ? TestIds.BANNER
-    : 'ca-app-pub-4474507640801989/4425049680';
+  const adUnitId = __DEV__ ? TestIds.BANNER : config.google.adsBannerId;
   const [showAds, setShowAds] = useState(false);
 
   return (

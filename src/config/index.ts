@@ -1,4 +1,5 @@
 import Config from 'react-native-config';
+import {TestIds} from '@react-native-firebase/admob';
 
 export const config = {
   api: {
@@ -6,6 +7,7 @@ export const config = {
   },
   google: {
     webClientId: env('GOOGLE_WEB_CLIENT_ID'),
+    adsBannerId: env('ADS_BANNER_ID', TestIds.BANNER),
   },
 };
 

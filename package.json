@@ -20,7 +20,7 @@
     "clean": "rimraf android/app/build",
     "gradlew:clean": "cd android && gradlew clean",
     "ts:check": "tsc --noemit",
-    "ci:check": "yarn run test:update && yarn run lint:fix && yarn run ts:check"
+    "local:check-and-fix": "yarn run test:update && yarn run lint:fix && yarn run ts:check"
   },
   "repository": {
     "type": "git",
