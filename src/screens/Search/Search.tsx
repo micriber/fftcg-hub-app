@@ -113,11 +113,6 @@ const styles = StyleSheet.create({
   formContainer: {
     elevation: 10,
   },
-  adsContainer: {
-    position: 'absolute',
-    alignSelf: 'center',
-    bottom: 0,
-  },
 });
 
 export default Search;

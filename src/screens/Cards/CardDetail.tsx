@@ -24,35 +24,30 @@ type Props = {
 };
 
 const CardDetail = ({route}: Props) => {
-  const w = Dimensions.get('window');
-
+  const window = Dimensions.get('window');
   const theme = useTheme();
+  const card = route.params.card;
 
   const [zoomCard, setZoomCard] = useState(false);
-  const [portrait, setPortrait] = useState(w.width < w.height);
-  const [screenWidth, setScreenWidth] = useState(w.width);
-  const [screenHeight, setScreenHeight] = useState(w.height);
   const [averageColor, setAverageColor] = useState(theme.colors.background);
-
-  const card = route.params.card;
 
   const styles = StyleSheet.create({
     backgroundImage: {
       backgroundColor: new ColorTranslator(averageColor).setA(0.6).RGBA,
-      height: portrait ? 460 : screenHeight - 60,
-      width: portrait ? '100%' : (screenHeight - 60) / 1.4,
+      height: 460,
+      width: '100%',
     },
     container: {
       flex: 1,
-      flexDirection: portrait ? 'column' : 'row',
-      opacity: zoomCard && portrait ? 0.2 : 1,
+      flexDirection: 'column',
+      opacity: zoomCard ? 0.2 : 1,
     },
     image: {
-      height: portrait ? 400 : screenHeight - 120,
-      width: (portrait ? 400 : screenHeight - 120) / 1.4,
-      marginTop: portrait ? 30 : 10,
-      marginBottom: portrait ? 30 : 50,
-      marginHorizontal: portrait ? 0 : 30,
+      height: 400,
+      width: 400 / 1.4,
+      marginTop: 30,
+      marginBottom: 30,
+      marginHorizontal: 0,
     },
     scrollContainer: {
       flex: 1,
@@ -92,19 +87,19 @@ const CardDetail = ({route}: Props) => {
     containerQuantity: {
       flex: 1,
       alignItems: 'center',
-      marginLeft: -(screenWidth / 10),
+      marginLeft: -(window.width / 10),
       marginBottom: 10,
     },
     zoomContainer: {
-      height: screenHeight - 40,
-      width: screenWidth,
+      height: window.height - 40,
+      width: window.width,
       backgroundColor: new ColorTranslator(averageColor).setA(0.6).RGBA,
     },
     zoomImage: {
       maxWidth: 500,
       maxHeight: 500 * 1.4,
-      width: screenWidth - 20,
-      height: (screenWidth - 20) * 1.4,
+      width: window.width - 20,
+      height: (window.width - 20) * 1.4,
       borderRadius: 15,
     },
     zoomImageContainer: {
@@ -113,12 +108,6 @@ const CardDetail = ({route}: Props) => {
   });
 
   useEffect(() => {
-    Dimensions.addEventListener('change', ({window}) => {
-      setPortrait(window.width < window.height);
-      setScreenWidth(window.width);
-      setScreenHeight(window.height);
-    });
-
     async function fetchColor() {
       const imgSrc = getCardImageUrl(card.code, 'full', 'fr');
       const colors = await ImageColors.getColors(imgSrc, {});
@@ -128,7 +117,6 @@ const CardDetail = ({route}: Props) => {
     }
 
     fetchColor();
-    return () => Dimensions.removeEventListener('change', () => {});
   }, [card.code]);
 
   return (
@@ -233,7 +221,7 @@ const CardDetail = ({route}: Props) => {
           </View>
         </ScrollView>
       </View>
-      {zoomCard && portrait && (
+      {zoomCard && (
         <TouchableHighlight
           style={styles.zoomContainer}
           onPress={() => setZoomCard(false)}>
