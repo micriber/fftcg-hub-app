@@ -23,7 +23,9 @@ const AuthStackScreen = ({userLogin}: Props) => {
   }, []);
 
   function loginScreen() {
-    userLogin(false);
+    setTimeout(() => {
+      userLogin(false);
+    }, 0);
     return (
       <AuthStack.Navigator
         screenOptions={{
@@ -35,7 +37,9 @@ const AuthStackScreen = ({userLogin}: Props) => {
   }
 
   function loggedScreen() {
-    userLogin(true);
+    setTimeout(() => {
+      userLogin(true);
+    }, 0);
     return <DrawerNavigator signOut={signOut} />;
   }
 
