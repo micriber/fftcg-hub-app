@@ -4,6 +4,7 @@ import {
   Dimensions,
   Easing,
   Linking,
+  Platform,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -16,6 +17,7 @@ import {Button, withTheme} from 'react-native-paper';
 // @ts-ignore
 import VectorLogin from '../../assets/svg/login.svg';
 import {screenFonts} from '../../theme';
+import {config} from '../../config';
 
 type Props = {
   theme: ReactNativePaper.Theme;
@@ -139,7 +141,9 @@ class Login extends React.Component<Props, State> {
                 style={this.styles.upgradeButton}
                 onPress={async () => {
                   await Linking.openURL(
-                    'market://details?id=com.square_enix.android_googleplay.ffxivcomapp_e',
+                    Platform.OS === 'ios'
+                      ? config.url.appStore
+                      : config.url.playStore,
                   );
                 }}>
                 Mettre a jour

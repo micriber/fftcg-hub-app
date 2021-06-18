@@ -8,11 +8,14 @@ type Props = {
 
 const SearchCardsContextProvider = ({children}: Props) => {
   const [cardsList, setCardsList] = React.useState<Card[]>([]);
+  const [filtersAreVisible, setFiltersAreVisible] = React.useState(false);
   return (
     <SearchCardsContext.Provider
       value={{
         cardsList,
         setCardsList,
+        filtersAreVisible,
+        setFiltersAreVisible,
       }}>
       {children}
     </SearchCardsContext.Provider>
