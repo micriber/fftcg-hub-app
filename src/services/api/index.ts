@@ -1,6 +1,9 @@
+import packageConfig from '../../../package.json';
+
 interface IApiConfigure {
   token?: string;
   refreshCallback?: () => {};
+  upgradeCallback?: () => void;
 }
 
 interface IRefreshWrapperOptions {
@@ -11,6 +14,7 @@ export class Api {
   private static instance: Api;
   private token?: string;
   private refreshCallback?: () => {};
+  private upgradeCallback?: () => void;
 
   static set Token(newToken: string | undefined) {
     const api = Api.getInstance();
@@ -31,7 +35,11 @@ export class Api {
     return Api.instance;
   }
 
-  public static configure({token, refreshCallback}: IApiConfigure) {
+  public static configure({
+    token,
+    refreshCallback,
+    upgradeCallback,
+  }: IApiConfigure) {
     const api = Api.getInstance();
 
     if (token) {
@@ -40,6 +48,10 @@ export class Api {
 
     if (refreshCallback) {
       api.refreshCallback = refreshCallback;
+    }
+
+    if (upgradeCallback) {
+      api.upgradeCallback = upgradeCallback;
     }
   }
 
@@ -56,14 +68,26 @@ export class Api {
     {json = true}: IRefreshWrapperOptions,
   ) {
     const res = await callback(this.token!);
-
-    if (res.status === 401) {
-      this.refreshCallback && (await this.refreshCallback());
-      const resAfterRefresh = await callback(this.token!);
-
-      return this.renderResponse(resAfterRefresh, json);
+    switch (res.status) {
+      case 426:
+        this.upgradeCallback && this.upgradeCallback();
+        break;
+      case 401:
+        this.refreshCallback && (await this.refreshCallback());
+        const resAfterRefresh = await callback(this.token!);
+        return this.renderResponse(resAfterRefresh, json);
     }
 
     return this.renderResponse(res, json);
+  }
+
+  public fetch(input: RequestInfo, init?: RequestInit): Promise<Response> {
+    return fetch(input, {
+      ...init,
+      headers: {
+        ...init?.headers,
+        'app-version': packageConfig.version,
+      },
+    });
   }
 }

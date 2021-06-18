@@ -3,6 +3,7 @@ import {
   Animated,
   Dimensions,
   Easing,
+  Linking,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -11,13 +12,14 @@ import {
 } from 'react-native';
 import {GoogleSigninButton} from '@react-native-community/google-signin';
 import {AuthContext} from '../../contexts/AuthContext';
-import {withTheme} from 'react-native-paper';
+import {Button, withTheme} from 'react-native-paper';
 // @ts-ignore
 import VectorLogin from '../../assets/svg/login.svg';
 import {screenFonts} from '../../theme';
 
 type Props = {
   theme: ReactNativePaper.Theme;
+  upgrade: boolean;
 };
 
 type ErrorWithCode = Error & {code?: string};
@@ -38,7 +40,6 @@ class Login extends React.Component<Props, State> {
 
   constructor(props: Props, state: State) {
     super(props, state);
-
     const spinValue = new Animated.Value(0);
     this.spin = spinValue.interpolate({
       inputRange: [0, 1],
@@ -77,13 +78,15 @@ class Login extends React.Component<Props, State> {
       alignItems: 'center',
       flex: 1,
       justifyContent: 'flex-start',
-      marginBottom: -(StatusBar.currentHeight ?? 0) * 2.5,
+      marginBottom: this.props.upgrade ? '60%' : '20%',
     },
     containerLogo: {
       alignItems: 'center',
       width: '100%',
+      marginBottom: this.props.upgrade ? '15%' : '25%',
     },
     titre: {
+      marginTop: '3%',
       fontSize: 48,
       color: this.props.theme.colors.lightGrey,
       fontFamily: screenFonts.login.title,
@@ -91,6 +94,18 @@ class Login extends React.Component<Props, State> {
     googleButton: {
       alignItems: 'center',
       flex: 1,
+    },
+    upgradeContainer: {
+      marginHorizontal: '12%',
+    },
+    upgradeText: {
+      fontSize: 18,
+      color: this.props.theme.colors.darkGrey,
+      marginBottom: '20%',
+      textAlign: 'center',
+    },
+    upgradeButton: {
+      backgroundColor: this.props.theme.colors.background,
     },
   });
 
@@ -114,15 +129,34 @@ class Login extends React.Component<Props, State> {
             />
             <Text style={this.styles.titre}>FFTCG Hub</Text>
           </View>
-          <SafeAreaView style={this.styles.googleButton}>
-            <GoogleSigninButton
-              size={GoogleSigninButton.Size.Standard}
-              color={GoogleSigninButton.Color.Light}
-              onPress={async () => {
-                this.context.signIn();
-              }}
-            />
-          </SafeAreaView>
+          {this.props.upgrade && (
+            <View style={this.styles.upgradeContainer}>
+              <Text style={this.styles.upgradeText}>
+                Votre application n'est plus compatible, merci de passer sur le
+                store pour mettre a jour avec la derniere version
+              </Text>
+              <Button
+                style={this.styles.upgradeButton}
+                onPress={async () => {
+                  await Linking.openURL(
+                    'market://details?id=com.square_enix.android_googleplay.ffxivcomapp_e',
+                  );
+                }}>
+                Mettre a jour
+              </Button>
+            </View>
+          )}
+          {!this.props.upgrade && (
+            <SafeAreaView style={this.styles.googleButton}>
+              <GoogleSigninButton
+                size={GoogleSigninButton.Size.Standard}
+                color={GoogleSigninButton.Color.Light}
+                onPress={async () => {
+                  this.context.signIn();
+                }}
+              />
+            </SafeAreaView>
+          )}
         </View>
         <View style={this.styles.svgBottom}>
           <VectorLogin
