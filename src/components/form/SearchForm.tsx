@@ -12,6 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ChipFilter, {filterData} from './ChipFilter';
 import SliderFilter from './SliderFilter';
+import {SearchCardsContext} from '../../contexts/SearchCardsContext';
 
 export type SubmitParams = {
   search: string;
@@ -304,7 +305,6 @@ export const raritiesData: filterData[] = [
 const SearchForm = (props: Props) => {
   const [search, setSearch] = React.useState('');
   const [owned, setOwned] = React.useState(false);
-  const [filter, setFilter] = React.useState(false);
 
   const [cost, setCost] = React.useState([0, 10]);
   const [power, setPower] = React.useState([0, 15000]);
@@ -316,6 +316,8 @@ const SearchForm = (props: Props) => {
 
   const filterHeight = useRef(new Animated.Value(0)).current;
   const filterOpacity = useRef(new Animated.Value(0)).current;
+
+  const searchCardsContext = React.useContext(SearchCardsContext);
 
   const {colors} = useTheme();
   const styles = StyleSheet.create({
@@ -366,7 +368,7 @@ const SearchForm = (props: Props) => {
   function showFilter() {
     Animated.timing(filterHeight, {
       useNativeDriver: false,
-      toValue: Dimensions.get('window').height * 0.7,
+      toValue: Dimensions.get('window').height * 0.65,
       duration: 500,
     }).start();
 
@@ -375,7 +377,8 @@ const SearchForm = (props: Props) => {
       toValue: 100,
       duration: 10000,
     }).start();
-    setFilter(true);
+
+    searchCardsContext.setFiltersAreVisible(true);
   }
   function hideFilter() {
     Animated.timing(filterHeight, {
@@ -389,7 +392,8 @@ const SearchForm = (props: Props) => {
       toValue: 0,
       duration: 100,
     }).start();
-    setFilter(false);
+
+    searchCardsContext.setFiltersAreVisible(false);
   }
 
   function resetFilter() {
@@ -498,7 +502,7 @@ const SearchForm = (props: Props) => {
       </Animated.View>
       <View style={styles.filterRowContainer}>
         <View style={styles.resetButtonContainer}>
-          {filter && (
+          {searchCardsContext.filtersAreVisible && (
             <Button
               style={styles.filterButton}
               labelStyle={styles.filterButtonLabel}
@@ -513,9 +517,18 @@ const SearchForm = (props: Props) => {
             style={styles.filterButton}
             labelStyle={styles.filterButtonLabel}
             mode="text"
-            onPress={filter ? hideFilter : showFilter}>
+            onPress={
+              searchCardsContext.filtersAreVisible ? hideFilter : showFilter
+            }>
             {getTotalFilter()} FILTRES{' '}
-            <Icon name={filter ? 'chevron-up' : 'chevron-down'} size={20} />
+            <Icon
+              name={
+                searchCardsContext.filtersAreVisible
+                  ? 'chevron-up'
+                  : 'chevron-down'
+              }
+              size={20}
+            />
           </Button>
         </View>
       </View>

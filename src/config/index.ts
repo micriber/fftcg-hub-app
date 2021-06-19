@@ -9,6 +9,11 @@ export const config = {
     webClientId: env('GOOGLE_WEB_CLIENT_ID'),
     adsBannerId: env('ADS_BANNER_ID', TestIds.BANNER),
   },
+  url: {
+    playStore:
+      'market://details?id=com.square_enix.android_googleplay.ffxivcomapp_e',
+    appStore: 'itms-apps://itunes.apple.com/us/app/apple-store/myiosappid?mt=8',
+  },
 };
 
 export type IConfig = typeof config;

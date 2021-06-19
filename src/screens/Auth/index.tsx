@@ -15,9 +15,16 @@ type Props = {
 
 const AuthStackScreen = ({userLogin}: Props) => {
   const {user, signIn, isLoading, signOut} = React.useContext(AuthContext);
+  const [needUpgrade, setNeedUpgrade] = React.useState(false);
 
   React.useEffect(() => {
-    Api.configure({refreshCallback: () => signIn(true)});
+    Api.configure({
+      refreshCallback: () => signIn(true),
+      upgradeCallback: () => {
+        signOut();
+        setNeedUpgrade(true);
+      },
+    });
     signIn(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -41,6 +48,10 @@ const AuthStackScreen = ({userLogin}: Props) => {
       userLogin(true);
     }, 0);
     return <DrawerNavigator signOut={signOut} />;
+  }
+
+  if (needUpgrade) {
+    return <Login upgrade={true} />;
   }
 
   if (isLoading) {

@@ -96,7 +96,8 @@ const _getCards = async ({
     params.power && params.power.length > 0
       ? `&power=${params.power?.join(',')}`
       : '';
-  return fetch(
+  const api = Api.getInstance();
+  return api.fetch(
     `${config.api.baseUri}/api/v1/cards?${page}${perPage}${search}${owned}${types}${elements}${opus}${rarities}${categories}${cost}${power}`,
     {
       method: 'GET',
@@ -130,7 +131,8 @@ const _addCard = ({
   version: CardVersion;
   quantity?: number;
 }) => {
-  return fetch(`${config.api.baseUri}/api/v1/cards/${code}/add`, {
+  const api = Api.getInstance();
+  return api.fetch(`${config.api.baseUri}/api/v1/cards/${code}/add`, {
     method: 'POST',
     headers: {
       authorization: `bearer ${token}`,
@@ -170,7 +172,8 @@ const _subtractCard = ({
   version: CardVersion;
   quantity?: number;
 }) => {
-  return fetch(`${config.api.baseUri}/api/v1/cards/${code}/subtract`, {
+  const api = Api.getInstance();
+  return api.fetch(`${config.api.baseUri}/api/v1/cards/${code}/subtract`, {
     method: 'POST',
     headers: {
       authorization: `bearer ${token}`,
