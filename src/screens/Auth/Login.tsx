@@ -146,7 +146,7 @@ class Login extends React.Component<Props, State> {
                       : config.url.playStore,
                   );
                 }}>
-                Mettre a jour
+                Mettre à jour
               </Button>
             </View>
           )}
