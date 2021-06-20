@@ -53,7 +53,7 @@ const DrawerNavigator = ({signOut}: Props) => {
         name="About"
         component={About}
         options={{
-          drawerLabel: 'A propos',
+          drawerLabel: 'À propos',
           drawerIcon: ({color, focused}) => (
             <Icon
               name="information"
