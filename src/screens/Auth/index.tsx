@@ -1,19 +1,16 @@
 import * as React from 'react';
 
-import {createStackNavigator} from '@react-navigation/stack';
 import {Api} from '../../services/api';
 import Login from './Login';
 import {AuthContext} from '../../contexts/AuthContext';
 import Loading from '../Loading';
 import DrawerNavigator from '../../components/navigation/drawer';
 
-const AuthStack = createStackNavigator();
-
 type Props = {
   userLogin: (userIsLogged: boolean) => void;
 };
 
-const AuthStackScreen = ({userLogin}: Props) => {
+const Auth = ({userLogin}: Props) => {
   const {user, signIn, isLoading, signOut} = React.useContext(AuthContext);
   const [needUpgrade, setNeedUpgrade] = React.useState(false);
 
@@ -33,14 +30,7 @@ const AuthStackScreen = ({userLogin}: Props) => {
     setTimeout(() => {
       userLogin(false);
     }, 0);
-    return (
-      <AuthStack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <AuthStack.Screen name="Login" component={Login} />
-      </AuthStack.Navigator>
-    );
+    return <Login upgrade={false} />;
   }
 
   function loggedScreen() {
@@ -61,4 +51,4 @@ const AuthStackScreen = ({userLogin}: Props) => {
   return !user.isSignedIn ? loginScreen() : loggedScreen();
 };
 
-export {AuthStack, AuthStackScreen};
+export default Auth;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Appearance, StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {AuthStackScreen} from './screens/Auth';
+import Auth from './screens/Auth';
 import AuthContextProvider from './contexts/AuthContextProvider';
 import SearchCardsContextProvider from './contexts/SearchCardsContextProvider';
 import {Provider as PaperProvider} from 'react-native-paper';
@@ -10,6 +10,7 @@ import themes from './theme';
 import {BannerAd, BannerAdSize, TestIds} from '@react-native-firebase/admob';
 import {useState} from 'react';
 import {config} from './config';
+import HeaderBarContextProvider from './contexts/HeaderBarContextProvider';
 
 const App = () => {
   const colorScheme = Appearance.getColorScheme();
@@ -23,19 +24,21 @@ const App = () => {
       <SafeAreaProvider>
         <AuthContextProvider>
           <SearchCardsContextProvider>
-            <NavigationContainer>
-              <AuthStackScreen
-                userLogin={(userLoginShowAds: boolean) =>
-                  setShowAds(userLoginShowAds)
-                }
-              />
-              {showAds && (
-                <BannerAd
-                  unitId={adUnitId}
-                  size={BannerAdSize.ADAPTIVE_BANNER}
+            <HeaderBarContextProvider>
+              <NavigationContainer>
+                <Auth
+                  userLogin={(userLoginShowAds: boolean) =>
+                    setShowAds(userLoginShowAds)
+                  }
                 />
-              )}
-            </NavigationContainer>
+                {showAds && (
+                  <BannerAd
+                    unitId={adUnitId}
+                    size={BannerAdSize.ADAPTIVE_BANNER}
+                  />
+                )}
+              </NavigationContainer>
+            </HeaderBarContextProvider>
           </SearchCardsContextProvider>
         </AuthContextProvider>
       </SafeAreaProvider>

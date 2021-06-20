@@ -5,6 +5,7 @@ import {SearchStackScreen} from '../../../screens/Search';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTheme} from 'react-native-paper';
 import {StyleSheet} from 'react-native';
+import About from '../../../screens/About';
 
 const Drawer = createDrawerNavigator();
 
@@ -41,6 +42,21 @@ const DrawerNavigator = ({signOut}: Props) => {
           drawerIcon: ({color, focused}) => (
             <Icon
               name="magnify"
+              size={24}
+              style={focused ? styles.iconFocus : styles.icon}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="About"
+        component={About}
+        options={{
+          drawerLabel: 'A propos',
+          drawerIcon: ({color, focused}) => (
+            <Icon
+              name="information"
               size={24}
               style={focused ? styles.iconFocus : styles.icon}
               color={color}
