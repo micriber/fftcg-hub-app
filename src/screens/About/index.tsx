@@ -25,7 +25,7 @@ const About = ({
   return (
     <>
       <Header
-        title={'A propos'}
+        title={'À propos'}
         left={<HeaderDrawerAction navigation={navigation} />}
       />
       <View style={styles.container}>
