@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import SearchInput from '../common/form-fields/SearchInput';
+import SearchInput from './SearchInput';
 import {Button, Switch, Text, useTheme} from 'react-native-paper';
 import {
   Animated,

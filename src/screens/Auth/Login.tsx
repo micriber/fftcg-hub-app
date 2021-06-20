@@ -58,87 +58,87 @@ class Login extends React.Component<Props, State> {
     }, 3000);
   }
 
-  styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: this.props.theme.colors.active,
-    },
-    svgTop: {
-      flex: 1,
-      marginTop: -(StatusBar.currentHeight ?? 0),
-    },
-    svgBottom: {
-      transform: [
-        {
-          rotate: '180deg',
-        },
-      ],
-      marginTop: StatusBar.currentHeight ?? 0,
-    },
-    containerCenter: {
-      flexDirection: 'column',
-      alignItems: 'center',
-      flex: 1,
-      justifyContent: 'flex-start',
-      marginBottom: this.props.upgrade ? '60%' : '20%',
-    },
-    containerLogo: {
-      alignItems: 'center',
-      width: '100%',
-      marginBottom: this.props.upgrade ? '15%' : '25%',
-    },
-    titre: {
-      marginTop: '3%',
-      fontSize: 48,
-      color: this.props.theme.colors.lightGrey,
-      fontFamily: screenFonts.login.title,
-    },
-    googleButton: {
-      alignItems: 'center',
-      flex: 1,
-    },
-    upgradeContainer: {
-      marginHorizontal: '12%',
-    },
-    upgradeText: {
-      fontSize: 18,
-      color: this.props.theme.colors.darkGrey,
-      marginBottom: '20%',
-      textAlign: 'center',
-    },
-    upgradeButton: {
-      backgroundColor: this.props.theme.colors.background,
-    },
-  });
-
   render() {
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        backgroundColor: this.props.theme.colors.active,
+      },
+      svgTop: {
+        flex: 1,
+        marginTop: -(StatusBar.currentHeight ?? 0),
+      },
+      svgBottom: {
+        transform: [
+          {
+            rotate: '180deg',
+          },
+        ],
+        marginTop: StatusBar.currentHeight ?? 0,
+      },
+      containerCenter: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        flex: 1,
+        justifyContent: 'flex-start',
+        marginBottom: this.props.upgrade ? '60%' : '20%',
+      },
+      containerLogo: {
+        alignItems: 'center',
+        width: '100%',
+        marginBottom: this.props.upgrade ? '15%' : '25%',
+      },
+      titre: {
+        marginTop: '3%',
+        fontSize: 48,
+        color: this.props.theme.colors.lightGrey,
+        fontFamily: screenFonts.login.title,
+      },
+      googleButton: {
+        alignItems: 'center',
+        flex: 1,
+      },
+      upgradeContainer: {
+        marginHorizontal: '12%',
+      },
+      upgradeText: {
+        fontSize: 18,
+        color: this.props.theme.colors.darkGrey,
+        marginBottom: '20%',
+        textAlign: 'center',
+      },
+      upgradeButton: {
+        backgroundColor: this.props.theme.colors.background,
+      },
+    });
+
     return (
-      <View style={this.styles.container}>
-        <View style={this.styles.svgTop}>
+      <View style={styles.container}>
+        <View style={styles.svgTop}>
           <VectorLogin
             height={(window.width + 10) / 2.25}
             width={window.width + 10}
             fill={this.props.theme.colors.accent}
           />
         </View>
-        <View style={this.styles.containerCenter}>
-          <View style={this.styles.containerLogo}>
+        <View style={styles.containerCenter}>
+          <View style={styles.containerLogo}>
             <Animated.Image
               source={require('../../assets/logo/round.png')}
               style={{
                 transform: [{rotateY: this.spin}],
               }}
             />
-            <Text style={this.styles.titre}>FFTCG Hub</Text>
+            <Text style={styles.titre}>FFTCG Hub</Text>
           </View>
           {this.props.upgrade && (
-            <View style={this.styles.upgradeContainer}>
-              <Text style={this.styles.upgradeText}>
+            <View style={styles.upgradeContainer}>
+              <Text style={styles.upgradeText}>
                 Votre application n'est plus compatible, merci de passer sur le
                 store pour mettre a jour avec la derniere version
               </Text>
               <Button
-                style={this.styles.upgradeButton}
+                style={styles.upgradeButton}
                 onPress={async () => {
                   await Linking.openURL(
                     Platform.OS === 'ios'
@@ -151,7 +151,7 @@ class Login extends React.Component<Props, State> {
             </View>
           )}
           {!this.props.upgrade && (
-            <SafeAreaView style={this.styles.googleButton}>
+            <SafeAreaView style={styles.googleButton}>
               <GoogleSigninButton
                 size={GoogleSigninButton.Size.Standard}
                 color={GoogleSigninButton.Color.Light}
@@ -162,7 +162,7 @@ class Login extends React.Component<Props, State> {
             </SafeAreaView>
           )}
         </View>
-        <View style={this.styles.svgBottom}>
+        <View style={styles.svgBottom}>
           <VectorLogin
             height={window.width / 2.25}
             width={window.width}
