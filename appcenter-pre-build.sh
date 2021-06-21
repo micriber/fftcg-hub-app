@@ -8,6 +8,9 @@ echo $GOOGLE_SERVICES_JSON | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/andr
 
 envsubst < "$APPCENTER_SOURCE_DIRECTORY/.env.dist" > "$APPCENTER_SOURCE_DIRECTORY/.env"
 
+echo "Updating firebase"
+echo $FIREBASE_JSON | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/firebase.json"
+
 #echo "Updating Google plist"
 #echo $GOOGLE_SERVICES_PLIST | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/ios/GoogleService-Info.plist"
 
