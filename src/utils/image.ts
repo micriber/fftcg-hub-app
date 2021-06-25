@@ -1,4 +1,4 @@
-type lang = 'fr' | 'eg' | 'de';
+export type lang = 'fr' | 'eg' | 'de';
 
 export const getCardImageUrl = (
   code: string,
