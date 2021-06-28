@@ -38,6 +38,7 @@ const ChipFilter = ({label, data, onValuesChange, values}: Props) => {
           return (
             <Chip
               selected={values.includes(filterData.value)}
+              key={filterData.value}
               style={[
                 styles.filterChoiceButton,
                 {

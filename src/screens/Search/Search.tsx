@@ -3,8 +3,6 @@ import {Keyboard, StyleSheet, Text, View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
 import {SearchStackParamList} from './type';
-import Header from '../../components/navigation/header';
-import HeaderSwitch from '../../components/common/HeaderSwitch';
 import SearchForm, {SubmitParams} from '../../components/form/SearchForm';
 import {Card} from '../../services/api/card';
 import {SearchCardsContext} from '../../contexts/SearchCardsContext';
@@ -12,6 +10,7 @@ import FFCardsGridList from '../../components/FFCardsGridList';
 import useFetchCards from '../../utils/hooks/useFetchCards';
 import Loading from '../Loading';
 import useDidMountEffect from '../../../external/hooks/useDidMountEffect';
+import {HeaderBarContext} from '../../contexts/HeaderBarContext';
 
 type SearchScreenNavigationProp = StackNavigationProp<
   SearchStackParamList,
@@ -25,7 +24,7 @@ type Props = {
 };
 
 const Search = ({navigation}: Props) => {
-  const [isListView, setIsListView] = React.useState(false);
+  const headerBarContext = React.useContext(HeaderBarContext);
   const [filters, setFilters] = React.useState({});
   const {
     page,
@@ -57,26 +56,15 @@ const Search = ({navigation}: Props) => {
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      header: (headerProps) => (
-        <Header
-          {...headerProps}
-          headerRight={
-            <HeaderSwitch
-              leftIconName="view-grid"
-              rightIconName="format-list-bulleted"
-              value={isListView}
-              onValueChange={setIsListView}
-            />
-          }
-        />
-      ),
+      headerRightContainerStyle: {
+        opacity: isEmpty || refreshing ? 0 : 1,
+      },
     });
-  }, [isListView, navigation]);
+  }, [isEmpty, navigation, refreshing]);
 
   const Layout = (
     <FFCardsGridList
-      viewType={!isListView ? 'simple' : 'detail'}
-      style={styles.listContainer}
+      viewType={!headerBarContext.switchValue ? 'simple' : 'detail'}
       cards={cardContext.cardsList}
       displayOwnPin={true}
       onCardPress={onCardPress}
@@ -111,9 +99,6 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     elevation: 10,
-  },
-  listContainer: {
-    height: '90%',
   },
 });
 

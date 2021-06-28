@@ -7,13 +7,14 @@ type Props = {
   label: string;
   values: number[];
   onValuesChange: (value: number[]) => void;
+  step: number;
 };
 
-const SliderFilter = ({label, values, onValuesChange}: Props) => {
+const SliderFilter = ({label, values, onValuesChange, step}: Props) => {
   const {colors} = useTheme();
   const styles = StyleSheet.create({
     filterContainer: {
-      marginBottom: 5,
+      marginBottom: -10,
     },
     filterLabel: {
       fontSize: 16,
@@ -29,9 +30,9 @@ const SliderFilter = ({label, values, onValuesChange}: Props) => {
       <MultiSlider
         values={[values[0], values[1]]}
         onValuesChange={(value) => onValuesChange(value)}
-        min={0}
-        max={10}
-        step={1}
+        min={values[0]}
+        max={values[1]}
+        step={step}
         allowOverlap={true}
         snapped
         containerStyle={styles.sliderContainer}

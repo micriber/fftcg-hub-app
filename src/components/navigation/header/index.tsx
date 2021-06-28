@@ -1,48 +1,24 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
+import {Animated} from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import Header, {
+  HeaderBackAction,
+  HeaderDrawerAction,
+} from '../../common/Header';
+import {ParamListBase, Route} from '@react-navigation/native';
+import {Scene, StackHeaderOptions} from '@react-navigation/stack/src/types';
+import {DrawerNavigationProp} from '@react-navigation/drawer/src/types';
 
-import {
-  Keyboard,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native';
-import {Appbar, useTheme} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {StackHeaderProps} from '@react-navigation/stack';
-
-type Props = StackHeaderProps & {
-  headerRight?: ReactElement;
+type HeaderStackNavigationProps = {
+  scene: Scene<Route<string>>;
+  navigation: StackNavigationProp<ParamListBase>;
 };
 
-type DrawerActions = {
-  openDrawer: () => any;
-  closeDrawer: () => any;
-  toggleDrawer: () => any;
-  pop: () => any;
-};
-
-type CustomNavigation = Pick<Props, 'navigation'> & DrawerActions;
-
-const styles = StyleSheet.create({
-  header: {
-    height: 47,
-  },
-  icon: {
-    marginHorizontal: 16,
-  },
-  content: {
-    marginBottom: 3,
-  },
-  title: {
-    fontSize: 20,
-  },
-});
-
-const Header = (props: Props) => {
-  const {scene, previous, headerRight} = props;
-  const navigation = (props.navigation as unknown) as CustomNavigation;
+export const HeaderStackNavigation = ({
+  scene,
+  navigation,
+}: HeaderStackNavigationProps) => {
   const {options} = scene.descriptor;
-  const theme = useTheme();
   const title =
     options.headerTitle !== undefined
       ? options.headerTitle
@@ -51,42 +27,45 @@ const Header = (props: Props) => {
       : scene.route.name;
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <Appbar.Header
-        theme={{colors: {primary: theme.colors.accent}}}
-        style={styles.header}>
-        {previous ? (
-          <Appbar.BackAction
-            onPress={() => {
-              Keyboard.dismiss();
-              navigation.pop();
-            }}
-            color={theme.colors.lightGrey}
-          />
-        ) : (
-          <TouchableOpacity
-            onPress={() => {
-              Keyboard.dismiss();
-              (navigation as any).toggleDrawer();
-            }}>
-            <Icon
-              name="menu"
-              size={24}
-              color={theme.colors.lightGrey}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
-        )}
-        <Appbar.Content
-          color={theme.colors.lightGrey}
-          title={title}
-          titleStyle={styles.title}
-          style={styles.content}
-        />
-        {headerRight}
-      </Appbar.Header>
-    </TouchableWithoutFeedback>
+    <Header
+      title={title}
+      left={<HeaderBackAction navigation={navigation} />}
+      right={headerRight(options)}
+    />
   );
 };
 
-export default Header;
+type HeaderDrawerNavigationProps = {
+  scene: Scene<Route<string>>;
+  navigation: DrawerNavigationProp<ParamListBase>;
+};
+
+export const HeaderDrawerNavigation = ({
+  scene,
+  navigation,
+}: HeaderDrawerNavigationProps) => {
+  const {options} = scene?.descriptor;
+  const title =
+    options.headerTitle !== undefined
+      ? options.headerTitle
+      : options.title !== undefined
+      ? options.title
+      : scene.route.name;
+
+  return (
+    <Header
+      title={title}
+      left={<HeaderDrawerAction navigation={navigation} />}
+      right={headerRight(options)}
+    />
+  );
+};
+
+const headerRight = (options: StackHeaderOptions) => (
+  <Animated.View
+    style={[
+      options.headerRightContainerStyle && options.headerRightContainerStyle,
+    ]}>
+    {options.headerRight && options.headerRight({})}
+  </Animated.View>
+);

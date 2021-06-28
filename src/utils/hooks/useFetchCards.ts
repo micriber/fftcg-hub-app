@@ -22,23 +22,28 @@ function useFetchCards({cardsContext}: Props) {
 
   // garder cardFilter ici
   const loadCards = async (cardsFilter?: GetCardsParams) => {
-    if (cardsFilter && !deepEqual(search, cardsFilter)) {
-      setPage(1);
+    const newSearch: boolean = !!(
+      cardsFilter && !deepEqual(search, cardsFilter)
+    );
+
+    if (newSearch && page !== 1) {
       cardContext.setCardsList([]);
+      cardsFilter && setSearch(cardsFilter);
+      setPage(1);
+      return;
     }
+
     const filter = cardsFilter || search;
-    cardsFilter && setSearch(cardsFilter);
     const data = await getCards({
-      params: {...filter, page, perPage},
+      params: {...filter, page: newSearch ? 1 : page, perPage},
     });
 
     if (data && 'cards' in data) {
       cardContext.setCardsList(
-        deepEqual(search, {})
-          ? [...data.cards]
-          : [...cardContext.cardsList, ...data.cards],
+        newSearch ? [...data.cards] : [...cardContext.cardsList, ...data.cards],
       );
     }
+
     cardsFilter && setSearch(cardsFilter);
     setStopFetch(false);
     setRefreshing(false);
@@ -56,7 +61,6 @@ function useFetchCards({cardsContext}: Props) {
       setPage(1);
       setStopFetch(true);
       toggleRerender();
-      // callback();
     }
   };
 
@@ -73,7 +77,7 @@ function useFetchCards({cardsContext}: Props) {
   };
 
   useDidMountEffect(() => {
-    callback();
+    callback(search);
   }, deps);
 
   return {

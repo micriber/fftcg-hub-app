@@ -1,161 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[Component] HeaderSwitch Switch value change 1`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "center",
-      "marginLeft": 10,
-      "marginRight": 5,
-      "paddingBottom": 10,
-      "paddingTop": 10,
-    }
-  }
->
-  <Text
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": undefined,
-          "fontSize": 20,
-        },
-        undefined,
-        Object {
-          "fontFamily": "Material Design Icons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    󰕰
-  </Text>
-  <RCTSwitch
-    accessibilityRole="switch"
-    onChange={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    onTintColor="#03dac4"
-    style={
-      Array [
-        Object {
-          "height": 31,
-          "width": 51,
-        },
-        Object {
-          "marginLeft": 2,
-        },
-      ]
-    }
-    testID="SwitcherState-0"
-    tintColor=""
-    value={false}
-  />
-  <Text
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": undefined,
-          "fontSize": 22,
-        },
-        undefined,
-        Object {
-          "fontFamily": "Material Design Icons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    󰉹
-  </Text>
-</View>
-`;
-
-exports[`[Component] HeaderSwitch Switch value change 2`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "center",
-      "marginLeft": 10,
-      "marginRight": 5,
-      "paddingBottom": 10,
-      "paddingTop": 10,
-    }
-  }
->
-  <Text
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": undefined,
-          "fontSize": 20,
-        },
-        undefined,
-        Object {
-          "fontFamily": "Material Design Icons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    󰕰
-  </Text>
-  <RCTSwitch
-    accessibilityRole="switch"
-    onChange={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    onTintColor="#03dac4"
-    style={
-      Array [
-        Object {
-          "height": 31,
-          "width": 51,
-        },
-        Object {
-          "marginLeft": 2,
-        },
-      ]
-    }
-    testID="SwitcherState-1"
-    tintColor=""
-    value={true}
-  />
-  <Text
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": undefined,
-          "fontSize": 22,
-        },
-        undefined,
-        Object {
-          "fontFamily": "Material Design Icons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    󰉹
-  </Text>
-</View>
-`;
-
 exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
 <View
   style={
@@ -175,7 +19,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
     style={
       Array [
         Object {
-          "color": undefined,
+          "color": "#D1DEEE",
           "fontSize": 20,
         },
         undefined,
@@ -195,7 +39,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
     onChange={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
-    onTintColor="#03dac4"
+    onTintColor="rgba(61,99,145,0.5)"
     style={
       Array [
         Object {
@@ -208,7 +52,8 @@ exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
       ]
     }
     testID="SwitcherState-0"
-    tintColor=""
+    thumbTintColor="#ffffff"
+    tintColor="rgba(148,174,206,0.3)"
     value={false}
   />
   <Text
@@ -216,85 +61,7 @@ exports[`[Component] HeaderSwitch renders correctly with switch false 1`] = `
     style={
       Array [
         Object {
-          "color": undefined,
-          "fontSize": 22,
-        },
-        undefined,
-        Object {
-          "fontFamily": "Material Design Icons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    󰉹
-  </Text>
-</View>
-`;
-
-exports[`[Component] HeaderSwitch renders correctly with switch right 1`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "center",
-      "marginLeft": 10,
-      "marginRight": 5,
-      "paddingBottom": 10,
-      "paddingTop": 10,
-    }
-  }
->
-  <Text
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": undefined,
-          "fontSize": 20,
-        },
-        undefined,
-        Object {
-          "fontFamily": "Material Design Icons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    󰕰
-  </Text>
-  <RCTSwitch
-    accessibilityRole="switch"
-    onChange={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    onTintColor="#03dac4"
-    style={
-      Array [
-        Object {
-          "height": 31,
-          "width": 51,
-        },
-        Object {
-          "marginLeft": 2,
-        },
-      ]
-    }
-    testID="SwitcherState-1"
-    tintColor=""
-    value={true}
-  />
-  <Text
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": undefined,
+          "color": "#D1DEEE",
           "fontSize": 22,
         },
         undefined,
