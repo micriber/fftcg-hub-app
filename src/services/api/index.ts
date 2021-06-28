@@ -81,6 +81,20 @@ export class Api {
     return this.renderResponse(res, json);
   }
 
+  public async UpgradeWrapper(
+    callback: () => Promise<Response>,
+    {json = true}: IRefreshWrapperOptions,
+  ) {
+    const res = await callback();
+    switch (res.status) {
+      case 426:
+        this.upgradeCallback && this.upgradeCallback();
+        break;
+    }
+
+    return this.renderResponse(res, json);
+  }
+
   public fetch(input: RequestInfo, init?: RequestInit): Promise<Response> {
     return fetch(input, {
       ...init,

@@ -1,4 +1,5 @@
 import {config} from '../../config';
+import {Api} from './index';
 
 export type UserInfo = {
   id: string;
@@ -16,17 +17,21 @@ export type UnauthorizedError = {
   message: string[];
 };
 
-export const googleLogin = (
+export const googleLogin = async (
   idToken: string,
 ): Promise<UserInfo | UnauthorizedError> => {
-  return fetch(`${config.api.baseUri}/api/v1/login/google`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      idToken,
-    }),
-  }).then((response) => response.json());
+  const api = Api.getInstance();
+  const _googleLogin = () =>
+    api.fetch(`${config.api.baseUri}/api/v1/login/google`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        idToken,
+      }),
+    });
+
+  return await api.UpgradeWrapper(_googleLogin, {});
 };
