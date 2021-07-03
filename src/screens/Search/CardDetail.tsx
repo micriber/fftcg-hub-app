@@ -9,7 +9,7 @@ import {
 import {Card} from '../../services/api/card';
 import FFCardSimple from '../../components/FFCardSimple';
 import FFCardQuantityActions from '../../components/FFCardQuantityActions';
-import {Text, useTheme} from 'react-native-paper';
+import {Button, Text, useTheme} from 'react-native-paper';
 import {ColorTranslator} from 'colortranslator';
 import replaceTextByIconOrStyle from '../../utils/icon';
 import ImageColors from 'react-native-image-colors';
@@ -19,6 +19,7 @@ import GameIcon from '../../components/icons/GameIcon';
 import {getElementIconFileByElement} from '../../enums/element';
 import {categoriesData, raritiesData} from '../../components/form/SearchForm';
 import {ImageColorsResult} from 'react-native-image-colors/src/types';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 type Props = {
   route: {params: {card: Card}};
@@ -132,7 +133,7 @@ const CardDetail = ({route}: Props) => {
         setAverageColorFromImageColor(await getImageColor('eg'));
       }
     }
-
+    crashlytics().log('fetchColor');
     fetchColor();
   }, [card.code, theme.colors.background]);
 
@@ -165,6 +166,9 @@ const CardDetail = ({route}: Props) => {
             />
           </View>
           <View style={styles.detailContainer}>
+            <Button onPress={() => {
+              undefinedVariable.notAFunction();
+            }}>Test Crash</Button>
             <View style={styles.detailBlock}>
               <Text style={styles.detailLabel}>Element:</Text>
               <Text
