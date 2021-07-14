@@ -9,7 +9,7 @@ import {
 import {Card} from '../../services/api/card';
 import FFCardSimple from '../../components/FFCardSimple';
 import FFCardQuantityActions from '../../components/FFCardQuantityActions';
-import {Button, Text, useTheme} from 'react-native-paper';
+import {Text, useTheme} from 'react-native-paper';
 import {ColorTranslator} from 'colortranslator';
 import replaceTextByIconOrStyle from '../../utils/icon';
 import ImageColors from 'react-native-image-colors';
