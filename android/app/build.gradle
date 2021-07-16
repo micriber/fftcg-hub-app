@@ -132,6 +132,12 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+/* calculated from git commits to give sequential integers */
+def countGitCommit() {
+    def process = "git rev-list master --first-parent --count".execute()
+    return process.text.toInteger()
+}
+
 def getVersionName() {
     def inputFile = new File("$rootDir/../package.json")
     def packageJson = new JsonSlurper().parseText(inputFile.text)
@@ -139,16 +145,13 @@ def getVersionName() {
 }
 
 def getVersionCode() {
-    def date = new Date()
-    def formattedDate = date.format('yyyyMMdd')
-    def formattedSeconds = date.format('HHmmssSSS')
-    def formatInt = formattedDate as int;
-    def SecondsInt = formattedSeconds as int;
-    return (formatInt + SecondsInt) as int
+    def gitVersion = countGitCommit()
+    return gitVersion
 }
 
 def generatedVersionName = getVersionName()
 def generatedVersionCode = getVersionCode()
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
