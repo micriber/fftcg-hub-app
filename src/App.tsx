@@ -11,18 +11,12 @@ import {BannerAd, BannerAdSize, TestIds} from '@react-native-firebase/admob';
 import {useState} from 'react';
 import {config} from './config';
 import HeaderBarContextProvider from './contexts/HeaderBarContextProvider';
-import * as Sentry from '@sentry/react-native';
 
 const App = () => {
   const colorScheme = Appearance.getColorScheme();
   const theme = colorScheme === 'dark' ? themes.primary : themes.primary;
   const adUnitId = __DEV__ ? TestIds.BANNER : config.google.adsBannerId;
   const [showAds, setShowAds] = useState(false);
-
-  Sentry.init({
-    dsn: config.sentry.dsn,
-    environment: config.sentry.environment,
-  });
 
   return (
     <PaperProvider theme={theme}>

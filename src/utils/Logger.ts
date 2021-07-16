@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/react-native';
+import {captureMessage, captureException} from '@sentry/react-native';
 
 class Logger {
   private transporter: Transporter;
@@ -45,11 +45,11 @@ class ConsoleTransporter implements Transporter {
 
 class SentryTransporter implements Transporter {
   log(message: string): void {
-    Sentry.captureMessage(message);
+    captureMessage(message);
   }
 
   error(error: Error): void {
-    Sentry.captureException(error);
+    captureException(error);
   }
 }
 
