@@ -132,7 +132,6 @@ const CardDetail = ({route}: Props) => {
         setAverageColorFromImageColor(await getImageColor('eg'));
       }
     }
-
     fetchColor();
   }, [card.code, theme.colors.background]);
 
