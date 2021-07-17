@@ -134,7 +134,7 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 
 /* calculated from git commits to give sequential integers */
 def countGitCommit() {
-    def process = "git rev-list master --first-parent --count".execute()
+    def process = "git rev-list origin/master --first-parent --count".execute()
     return process.text.toInteger()
 }
 
