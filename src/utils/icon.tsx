@@ -7,7 +7,7 @@ import {ElementIconFile, GameActionIconFile} from '../enums/element';
 import {makeID} from './string';
 
 const circleEnum: {[number: string]: string} = {
-  '0': '\u2775',
+  '0': '\u24ff',
   '1': '\u2776',
   '１': '\u2776',
   '2': '\u2777',
