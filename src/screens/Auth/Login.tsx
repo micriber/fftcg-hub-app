@@ -134,7 +134,8 @@ class Login extends React.Component<Props, State> {
           {this.props.upgrade && (
             <View style={styles.upgradeContainer}>
               <Text style={styles.upgradeText}>
-                Votre application n'est plus à jour. Merci de la mettre à jour sur le store.
+                Votre application n'est plus à jour. Merci de la mettre à jour
+                sur le store.
               </Text>
               <Button
                 style={styles.upgradeButton}
