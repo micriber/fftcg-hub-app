@@ -14,10 +14,11 @@ const SliderFilter = ({label, values, onValuesChange, step}: Props) => {
   const {colors} = useTheme();
   const styles = StyleSheet.create({
     filterContainer: {
-      marginBottom: -10,
+      marginBottom: -5,
     },
     filterLabel: {
       fontSize: 16,
+      marginBottom: -7,
     },
     sliderContainer: {marginHorizontal: '10%'},
   });

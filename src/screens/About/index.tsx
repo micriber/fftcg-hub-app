@@ -44,7 +44,7 @@ const About = ({
           marques déposées de Square Enix.
         </Text>
         <Text style={styles.text}>
-          Aucune violation du droit d'auteur est envisagé.
+          Aucune violation du droit d'auteur n'est envisagée.
         </Text>
       </View>
     </>

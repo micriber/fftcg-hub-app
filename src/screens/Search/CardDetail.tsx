@@ -149,7 +149,8 @@ const CardDetail = ({route}: Props) => {
         <ScrollView
           style={styles.scrollContainer}
           indicatorStyle={'black'}
-          showsVerticalScrollIndicator={true}>
+          showsVerticalScrollIndicator={true}
+          persistentScrollbar={true}>
           <View style={styles.containerQuantity}>
             <FFCardQuantityActions
               card={card}
