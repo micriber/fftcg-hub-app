@@ -11,6 +11,7 @@ import useFetchCards from '../../utils/hooks/useFetchCards';
 import Loading from '../Loading';
 import useDidMountEffect from '../../../external/hooks/useDidMountEffect';
 import {HeaderBarContext} from '../../contexts/HeaderBarContext';
+import analytics from '@react-native-firebase/analytics';
 
 type SearchScreenNavigationProp = StackNavigationProp<
   SearchStackParamList,
@@ -40,6 +41,7 @@ const Search = ({navigation}: Props) => {
   });
 
   const submit = async (fields: SubmitParams) => {
+    await analytics().logEvent('search', fields);
     setFilters(fields);
     Keyboard.dismiss();
   };
@@ -48,11 +50,16 @@ const Search = ({navigation}: Props) => {
     loadCards(filters);
   }, [filters]);
 
-  const onCardPress = (card: Card) =>
+  const onCardPress = async (card: Card) => {
+    await analytics().logEvent('card_press', {
+      code: card.code,
+      name: card.name,
+    });
     navigation.navigate('CardDetails', {
       card,
       pageTitle: `${card.name} | ${card.code}`,
     });
+  };
 
   React.useLayoutEffect(() => {
     navigation.setOptions({

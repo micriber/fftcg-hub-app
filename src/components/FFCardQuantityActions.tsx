@@ -10,6 +10,8 @@ import {Alert, StyleSheet, Text, View} from 'react-native';
 import {SearchCardsContext} from '../contexts/SearchCardsContext';
 import cloneDeep from 'lodash.clonedeep';
 import {Button} from 'react-native-paper';
+import analytics from '@react-native-firebase/analytics';
+import Logger from '../utils/Logger';
 
 type Props = {
   card: Card;
@@ -32,11 +34,18 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
         searchCardsContext.setCardsList(
           updateContext(searchCardsContext.cardsList, true),
         );
-      } catch (e) {
+        await analytics().logEvent('add_card', {
+          code: card.code,
+          name: card.name,
+          version: version,
+          newQuantity: quantity,
+        });
+      } catch (err) {
         Alert.alert(
-          `Cant add unity for ${card.code} version ${version}`,
-          e.message,
+          'Erreur',
+          `Un problème de connexion est survenue. Impossible d'ajouter la carte ${card.code}. Merci de réessayer ultérieurement.`,
         );
+        Logger.error(err);
       } finally {
         setLoading(false);
       }
@@ -55,11 +64,18 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
         searchCardsContext.setCardsList(
           updateContext(searchCardsContext.cardsList, false),
         );
-      } catch (e) {
+        await analytics().logEvent('subtract_card', {
+          code: card.code,
+          name: card.name,
+          version: version,
+          newQuantity: quantity,
+        });
+      } catch (err) {
         Alert.alert(
-          `Cant subtract unity for ${card.code} version ${version}`,
-          e.message,
+          'Erreur',
+          `Un problème de connexion est survenue. Impossible de retirer la carte ${card.code}. Merci de réessayer ultérieurement.`,
         );
+        Logger.error(err);
       } finally {
         setLoading(false);
       }
