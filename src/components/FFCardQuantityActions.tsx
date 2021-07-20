@@ -34,7 +34,7 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
         searchCardsContext.setCardsList(
           updateContext(searchCardsContext.cardsList, true),
         );
-        await analytics().logEvent('add_card', {
+        analytics().logEvent('add_card', {
           code: card.code,
           name: card.name,
           version: version,
@@ -64,7 +64,7 @@ const FFCardQuantityActions = ({card, label, version}: Props) => {
         searchCardsContext.setCardsList(
           updateContext(searchCardsContext.cardsList, false),
         );
-        await analytics().logEvent('subtract_card', {
+        analytics().logEvent('subtract_card', {
           code: card.code,
           name: card.name,
           version: version,

@@ -43,7 +43,7 @@ const App = () => {
                       navigationRef.current.getCurrentRoute()?.name ?? '';
                     const previousRouteName = routeNameRef.current;
                     if (previousRouteName !== currentRouteName) {
-                      await analytics().logScreenView({
+                      analytics().logScreenView({
                         screen_name: currentRouteName,
                         screen_class: currentRouteName,
                       });

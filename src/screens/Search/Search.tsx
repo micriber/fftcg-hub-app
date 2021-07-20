@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Keyboard, StyleSheet, Text, View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
@@ -41,7 +41,7 @@ const Search = ({navigation}: Props) => {
   });
 
   const submit = async (fields: SubmitParams) => {
-    await analytics().logEvent('search', fields);
+    analytics().logEvent('search', fields);
     setFilters(fields);
     Keyboard.dismiss();
   };
@@ -51,7 +51,7 @@ const Search = ({navigation}: Props) => {
   }, [filters]);
 
   const onCardPress = async (card: Card) => {
-    await analytics().logEvent('card_press', {
+    analytics().logEvent('card_press', {
       code: card.code,
       name: card.name,
     });
@@ -68,6 +68,12 @@ const Search = ({navigation}: Props) => {
       },
     });
   }, [isEmpty, navigation, refreshing]);
+
+  useEffect(() => {
+    analytics().logEvent('switch_view', {
+      value: !headerBarContext.switchValue ? 'simple' : 'detail',
+    });
+  }, [headerBarContext.switchValue]);
 
   const Layout = (
     <FFCardsGridList

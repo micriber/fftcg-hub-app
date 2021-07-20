@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ColorTranslator} from 'colortranslator';
 import themes from './../../theme';
 import {HeaderBarContext} from '../../contexts/HeaderBarContext';
-import analytics from '@react-native-firebase/analytics';
 
 type Props = {
   leftIconName?: string;
@@ -23,10 +22,7 @@ const HeaderSwitch = ({leftIconName, rightIconName}: Props) => {
       )}
       <Switch
         value={switchValue}
-        onValueChange={async (withValue: boolean) => {
-          await analytics().logEvent('switch_view', {
-            value: withValue ? 'simple' : 'detail',
-          });
+        onValueChange={(withValue: boolean) => {
           Keyboard.dismiss();
           setSwitchValue(withValue);
         }}
