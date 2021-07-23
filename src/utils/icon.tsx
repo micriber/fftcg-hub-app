@@ -7,6 +7,7 @@ import {ElementIconFile, GameActionIconFile} from '../enums/element';
 import {makeID} from './string';
 
 const circleEnum: {[number: string]: string} = {
+  '0': '\u24ff',
   '1': '\u2776',
   '１': '\u2776',
   '2': '\u2777',
@@ -141,7 +142,7 @@ export const replaceTagBR = _styllishBBCode(/\[\[(br)]] {0,10}/gm, {});
 
 export const replaceDot = _styllishBBCode(/(&middot;)/gm, {});
 
-export const replaceNumber = _styllishNumber(/《([123456789１])》/gm, {});
+export const replaceNumber = _styllishNumber(/《([0123456789１])》/gm, {});
 
 const replaceTextByIconOrStyle = (text: string) =>
   compose(

@@ -5,6 +5,8 @@ import {googleLogin, UnauthorizedError, UserInfo} from '../services/api/user';
 import {signOut} from '../services/google';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {AuthContext} from './AuthContext';
+import * as Sentry from '@sentry/react-native';
+import Logger from '../utils/Logger';
 
 type UserState = {
   isSignedIn: boolean;
@@ -49,11 +51,16 @@ const AuthContextProvider = ({children}: Props) => {
           userInfo = silently
             ? await GoogleSignin.signInSilently()
             : await GoogleSignin.signIn();
-        } catch (e) {
-          if (e.code === statusCodes.SIGN_IN_REQUIRED) {
+          Sentry.setUser({
+            id: userInfo.user.id,
+            email: userInfo.user.email,
+          });
+        } catch (err) {
+          if (err.code === statusCodes.SIGN_IN_REQUIRED) {
             setIsLoading(false);
             return;
           }
+          Logger.error(err);
         }
 
         const idToken = userInfo?.idToken;
@@ -69,11 +76,10 @@ const AuthContextProvider = ({children}: Props) => {
         try {
           const signedInUser = await googleLogin(idToken);
           if ((signedInUser as UnauthorizedError).message) {
-            await signOut();
-            Alert.alert(
-              'Erreur',
-              'Un problème de connexion est survenue. Merci de réessayer ultérieurement.',
-            );
+            const errorMessage = `google login error => ${
+              (signedInUser as UnauthorizedError).message
+            }`;
+            throw new Error(errorMessage);
           }
           if ((signedInUser as UserInfo).id) {
             setUser({
@@ -84,12 +90,13 @@ const AuthContextProvider = ({children}: Props) => {
             Api.configure({token: idToken});
           }
           setIsLoading(false);
-        } catch (e) {
+        } catch (err) {
           await signOut();
           Alert.alert(
             'Erreur',
-            'Un problème avec votre connexion est survenue. Merci de réessayer ultérieurement.',
+            'Un problème de connexion est survenue. Merci de réessayer ultérieurement.',
           );
+          Logger.error(err);
         } finally {
           setIsLoading(false);
         }

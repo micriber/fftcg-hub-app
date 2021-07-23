@@ -5,6 +5,7 @@ import {
   Animated,
   Dimensions,
   Keyboard,
+  ScrollView,
   StyleSheet,
   View,
   ViewStyle,
@@ -13,6 +14,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ChipFilter, {filterData} from './ChipFilter';
 import SliderFilter from './SliderFilter';
 import {SearchCardsContext} from '../../contexts/SearchCardsContext';
+import {ColorTranslator} from 'colortranslator';
 
 export type SubmitParams = {
   search: string;
@@ -319,6 +321,9 @@ const SearchForm = (props: Props) => {
 
   const searchCardsContext = React.useContext(SearchCardsContext);
 
+  const maxHeightFilter = Dimensions.get('screen').height * 0.58;
+  const minHeightFilter = 570;
+
   const {colors} = useTheme();
   const styles = StyleSheet.create({
     container: {
@@ -347,8 +352,8 @@ const SearchForm = (props: Props) => {
     filterButtonContainer: {
       width: '40%',
       alignItems: 'flex-end',
-      marginTop: -35,
-      marginBottom: 35,
+      marginTop: -37,
+      marginBottom: 37,
     },
     filterButton: {
       marginTop: -7,
@@ -363,12 +368,19 @@ const SearchForm = (props: Props) => {
       marginBottom: 35,
       alignItems: 'flex-start',
     },
+    filterScrollView: {
+      borderRadius: 3,
+      padding: '2%',
+      marginBottom: 50,
+      backgroundColor: new ColorTranslator(colors.active).setA(0.07).RGBA,
+    },
   });
 
   function showFilter() {
     Animated.timing(filterHeight, {
       useNativeDriver: false,
-      toValue: Dimensions.get('window').height * 0.65,
+      toValue:
+        maxHeightFilter < minHeightFilter ? maxHeightFilter : minHeightFilter,
       duration: 500,
     }).start();
 
@@ -457,48 +469,54 @@ const SearchForm = (props: Props) => {
           height: filterHeight,
           opacity: filterOpacity,
         }}>
-        <ChipFilter
-          data={typesData}
-          onValuesChange={setTypes}
-          values={types}
-          label={'Types'}
-        />
-        <ChipFilter
-          data={elementsData}
-          onValuesChange={setElements}
-          values={elements}
-          label={'Eléments'}
-        />
-        <ChipFilter
-          data={opusData}
-          onValuesChange={setOpus}
-          values={opus}
-          label={'Opus'}
-        />
-        <ChipFilter
-          data={raritiesData}
-          onValuesChange={setRarities}
-          values={rarities}
-          label={'Raretés'}
-        />
-        <ChipFilter
-          data={categoriesData}
-          onValuesChange={setCategories}
-          values={categories}
-          label={'Catégories'}
-        />
-        <SliderFilter
-          onValuesChange={setCost}
-          values={cost}
-          label={'Coût'}
-          step={1}
-        />
-        <SliderFilter
-          onValuesChange={setPower}
-          values={power}
-          label={'Puissance'}
-          step={1000}
-        />
+        <ScrollView
+          style={styles.filterScrollView}
+          indicatorStyle={'black'}
+          showsVerticalScrollIndicator={true}
+          persistentScrollbar={true}>
+          <ChipFilter
+            data={typesData}
+            onValuesChange={setTypes}
+            values={types}
+            label={'Types'}
+          />
+          <ChipFilter
+            data={elementsData}
+            onValuesChange={setElements}
+            values={elements}
+            label={'Eléments'}
+          />
+          <ChipFilter
+            data={opusData}
+            onValuesChange={setOpus}
+            values={opus}
+            label={'Opus'}
+          />
+          <ChipFilter
+            data={raritiesData}
+            onValuesChange={setRarities}
+            values={rarities}
+            label={'Raretés'}
+          />
+          <ChipFilter
+            data={categoriesData}
+            onValuesChange={setCategories}
+            values={categories}
+            label={'Catégories'}
+          />
+          <SliderFilter
+            onValuesChange={setCost}
+            values={cost}
+            label={'Coût'}
+            step={1}
+          />
+          <SliderFilter
+            onValuesChange={setPower}
+            values={power}
+            label={'Puissance'}
+            step={1000}
+          />
+        </ScrollView>
       </Animated.View>
       <View style={styles.filterRowContainer}>
         <View style={styles.resetButtonContainer}>

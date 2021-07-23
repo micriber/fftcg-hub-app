@@ -14,7 +14,7 @@ export type UserInfo = {
 };
 
 export type UnauthorizedError = {
-  message: string[];
+  message: string;
 };
 
 export const googleLogin = async (
