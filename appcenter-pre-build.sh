@@ -1,5 +1,8 @@
 echo "Injecting secrets..."
 
+echo "Updating keystore"
+echo $KEYSTORE_JSON | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/android/app/$KEYSTORE_FILE"
+
 echo "updating appcenter JSON"
 echo $APPCENTER_CONFIG_JSON | base64 --decode > "$APPCENTER_SOURCE_DIRECTORY/android/app/src/main/assets/appcenter-config.json"
 
