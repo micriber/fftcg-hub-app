@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-  Animated,
   Dimensions,
-  Easing,
   Linking,
   Platform,
   SafeAreaView,
@@ -16,6 +14,7 @@ import {AuthContext} from '../../contexts/AuthContext';
 import {Button, withTheme} from 'react-native-paper';
 // @ts-ignore
 import VectorLogin from '../../assets/svg/login.svg';
+// @ts-ignore
 import Logo from '../../assets/logo/logo.svg';
 import {screenFonts} from '../../theme';
 import {config} from '../../config';
@@ -39,25 +38,6 @@ class Login extends React.Component<Props, State> {
   state: State = {
     error: null,
   };
-  private readonly spin: any;
-
-  constructor(props: Props, state: State) {
-    super(props, state);
-    const spinValue = new Animated.Value(0);
-    this.spin = spinValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: ['0deg', '360deg'],
-    });
-    const anim = Animated.timing(spinValue, {
-      toValue: 1,
-      duration: 750,
-      easing: Easing.linear,
-      useNativeDriver: true,
-    });
-    setInterval(() => {
-      anim.start(() => spinValue.setValue(0));
-    }, 3000);
-  }
 
   render() {
     const styles = StyleSheet.create({
@@ -123,24 +103,12 @@ class Login extends React.Component<Props, State> {
         </View>
         <View style={styles.containerCenter}>
           <View style={styles.containerLogo}>
-            <View style={{
-              marginBottom: '8%'
-            }}>
-              <Logo
-                height={120}
-                width={120}
-              />
+            <View
+              style={{
+                marginBottom: '8%',
+              }}>
+              <Logo height={120} width={120} />
             </View>
-            {/*<Animated.Image*/}
-            {/*  source={require('../../assets/logo/round.png')}*/}
-            {/*  style={{*/}
-            {/*    transform: [{rotateY: this.spin}],*/}
-            {/*    marginBottom: '5%',*/}
-            {/*  }}*/}
-            {/*/>*/}
-            {/*<Text style={styles.titre}>Fantasy</Text>*/}
-            {/*<Text style={styles.titre}>Card</Text>*/}
-            {/*<Text style={styles.titre}>Collection</Text>*/}
           </View>
           {this.props.upgrade && (
             <View style={styles.upgradeContainer}>
