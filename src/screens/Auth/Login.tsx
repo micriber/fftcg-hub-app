@@ -16,6 +16,7 @@ import {AuthContext} from '../../contexts/AuthContext';
 import {Button, withTheme} from 'react-native-paper';
 // @ts-ignore
 import VectorLogin from '../../assets/svg/login.svg';
+import Logo from '../../assets/logo/logo.svg';
 import {screenFonts} from '../../theme';
 import {config} from '../../config';
 
@@ -81,7 +82,7 @@ class Login extends React.Component<Props, State> {
         alignItems: 'center',
         flex: 1,
         justifyContent: 'flex-start',
-        marginBottom: this.props.upgrade ? '60%' : '20%',
+        marginBottom: '60%',
       },
       containerLogo: {
         alignItems: 'center',
@@ -89,7 +90,6 @@ class Login extends React.Component<Props, State> {
         marginBottom: this.props.upgrade ? '15%' : '25%',
       },
       titre: {
-        marginTop: '3%',
         fontSize: 48,
         color: this.props.theme.colors.lightGrey,
         fontFamily: screenFonts.login.title,
@@ -123,13 +123,24 @@ class Login extends React.Component<Props, State> {
         </View>
         <View style={styles.containerCenter}>
           <View style={styles.containerLogo}>
-            <Animated.Image
-              source={require('../../assets/logo/round.png')}
-              style={{
-                transform: [{rotateY: this.spin}],
-              }}
-            />
-            <Text style={styles.titre}>FFTCG Hub</Text>
+            <View style={{
+              marginBottom: '8%'
+            }}>
+              <Logo
+                height={120}
+                width={120}
+              />
+            </View>
+            {/*<Animated.Image*/}
+            {/*  source={require('../../assets/logo/round.png')}*/}
+            {/*  style={{*/}
+            {/*    transform: [{rotateY: this.spin}],*/}
+            {/*    marginBottom: '5%',*/}
+            {/*  }}*/}
+            {/*/>*/}
+            {/*<Text style={styles.titre}>Fantasy</Text>*/}
+            {/*<Text style={styles.titre}>Card</Text>*/}
+            {/*<Text style={styles.titre}>Collection</Text>*/}
           </View>
           {this.props.upgrade && (
             <View style={styles.upgradeContainer}>

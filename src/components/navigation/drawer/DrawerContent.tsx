@@ -17,6 +17,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../../../contexts/AuthContext';
 import packageConfig from '../../../../package.json';
+import Logo from '../../../assets/logo/logo.svg';
 
 type Props = {
   signOut: () => {};
@@ -72,13 +73,16 @@ export const DrawerContent = (props: Props) => {
       contentContainerStyle={styles.contentContainerStyle}>
       <View style={styles.drawerContent}>
         <View style={[styles.userInfoSection]}>
-          <Avatar.Image
-            source={require('../../../assets/logo/ic_launcher_round.png')}
-            size={60}
+          {/*<Avatar.Image*/}
+          {/*  source={require('../../../assets/logo/ic_launcher_round.png')}*/}
+          {/*  size={60}*/}
+          {/*/>*/}
+          <Logo
+            height={60}
+            width={60}
           />
           <View style={styles.userInfoHeader}>
-            <Title style={styles.title}>FFTCG Hub</Title>
-            <Caption style={styles.caption}>
+            <Caption style={styles.title}>
               {user.info?.userName ?? user.info?.firstName ?? user.info?.email}
             </Caption>
           </View>
