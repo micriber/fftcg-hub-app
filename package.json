@@ -1,5 +1,5 @@
 {
-  "name": "fftcg-hub",
+  "name": "fantasy-card-collection",
   "version": "1.0.0",
   "private": true,
   "author": "Micriber",
@@ -7,7 +7,7 @@
   "description": "Mobile app for organizing your Final Fantasy Trading Card Game.",
   "main": "index.js",
   "scripts": {
-    "android": "react-native run-android",
+    "android": "react-native run-android --variant=debug",
     "android-release": "react-native run-android --variant=release",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -21,7 +21,7 @@
     "gradlew:clean": "cd android && ./gradlew clean",
     "ts:check": "tsc --noemit",
     "local:check-and-fix": "yarn run test:update && yarn run lint:fix && yarn run ts:check",
-    "adb:logcat": "adb logcat --pid=`adb shell pidof -s com.micriber.fftcghub`"
+    "adb:logcat": "adb logcat --pid=`adb shell pidof -s com.micriber.fcc`"
   },
   "repository": {
     "type": "git",

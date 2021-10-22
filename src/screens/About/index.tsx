@@ -30,7 +30,7 @@ const About = ({
       />
       <View style={styles.container}>
         <Text style={styles.text}>
-          FFTCGHUB est une application non officielle et gratuite créée par des
+          Fantasy Card Collection est une application non officielle et gratuite créée par des
           fans et n'est en aucun cas affiliée, approuvée ou soutenue par Square
           Enix.
         </Text>
