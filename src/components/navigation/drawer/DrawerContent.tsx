@@ -6,17 +6,12 @@ import {
   DrawerItem,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import {
-  Avatar,
-  Caption,
-  Drawer,
-  Text,
-  Title,
-  useTheme,
-} from 'react-native-paper';
+import {Caption, Drawer, Text, useTheme} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../../../contexts/AuthContext';
 import packageConfig from '../../../../package.json';
+// @ts-ignore
+import Logo from '../../../assets/logo/logo.svg';
 
 type Props = {
   signOut: () => {};
@@ -47,8 +42,9 @@ export const DrawerContent = (props: Props) => {
       backgroundColor: theme.colors.active,
     },
     userInfoHeader: {
-      marginLeft: 10,
+      marginLeft: 20,
       flexDirection: 'column',
+      marginVertical: 14,
     },
     drawerContent: {
       flex: 1,
@@ -72,13 +68,9 @@ export const DrawerContent = (props: Props) => {
       contentContainerStyle={styles.contentContainerStyle}>
       <View style={styles.drawerContent}>
         <View style={[styles.userInfoSection]}>
-          <Avatar.Image
-            source={require('../../../assets/logo/ic_launcher_round.png')}
-            size={60}
-          />
+          <Logo height={60} width={60} />
           <View style={styles.userInfoHeader}>
-            <Title style={styles.title}>FFTCG Hub</Title>
-            <Caption style={styles.caption}>
+            <Caption style={styles.title}>
               {user.info?.userName ?? user.info?.firstName ?? user.info?.email}
             </Caption>
           </View>

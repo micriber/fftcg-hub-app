@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-  Animated,
   Dimensions,
-  Easing,
   Linking,
   Platform,
   SafeAreaView,
@@ -16,6 +14,8 @@ import {AuthContext} from '../../contexts/AuthContext';
 import {Button, withTheme} from 'react-native-paper';
 // @ts-ignore
 import VectorLogin from '../../assets/svg/login.svg';
+// @ts-ignore
+import Logo from '../../assets/logo/logo.svg';
 import {screenFonts} from '../../theme';
 import {config} from '../../config';
 
@@ -38,25 +38,6 @@ class Login extends React.Component<Props, State> {
   state: State = {
     error: null,
   };
-  private readonly spin: any;
-
-  constructor(props: Props, state: State) {
-    super(props, state);
-    const spinValue = new Animated.Value(0);
-    this.spin = spinValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: ['0deg', '360deg'],
-    });
-    const anim = Animated.timing(spinValue, {
-      toValue: 1,
-      duration: 750,
-      easing: Easing.linear,
-      useNativeDriver: true,
-    });
-    setInterval(() => {
-      anim.start(() => spinValue.setValue(0));
-    }, 3000);
-  }
 
   render() {
     const styles = StyleSheet.create({
@@ -81,15 +62,14 @@ class Login extends React.Component<Props, State> {
         alignItems: 'center',
         flex: 1,
         justifyContent: 'flex-start',
-        marginBottom: this.props.upgrade ? '60%' : '20%',
+        marginBottom: '60%',
       },
       containerLogo: {
         alignItems: 'center',
         width: '100%',
-        marginBottom: this.props.upgrade ? '15%' : '25%',
+        marginBottom: this.props.upgrade ? '23%' : '33%',
       },
       titre: {
-        marginTop: '3%',
         fontSize: 48,
         color: this.props.theme.colors.lightGrey,
         fontFamily: screenFonts.login.title,
@@ -123,13 +103,7 @@ class Login extends React.Component<Props, State> {
         </View>
         <View style={styles.containerCenter}>
           <View style={styles.containerLogo}>
-            <Animated.Image
-              source={require('../../assets/logo/round.png')}
-              style={{
-                transform: [{rotateY: this.spin}],
-              }}
-            />
-            <Text style={styles.titre}>FFTCG Hub</Text>
+            <Logo height={120} width={120} />
           </View>
           {this.props.upgrade && (
             <View style={styles.upgradeContainer}>
