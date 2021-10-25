@@ -30,9 +30,9 @@ const About = ({
       />
       <View style={styles.container}>
         <Text style={styles.text}>
-          Fantasy Card Collection est une application non officielle et gratuite créée par des
-          fans et n'est en aucun cas affiliée, approuvée ou soutenue par Square
-          Enix.
+          Fantasy Card Collection est une application non officielle et gratuite
+          créée par des fans et n'est en aucun cas affiliée, approuvée ou
+          soutenue par Square Enix.
         </Text>
         <Text style={styles.text}>
           Certaines images utilisées dans l'application sont protégées par le
