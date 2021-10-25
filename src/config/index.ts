@@ -12,7 +12,7 @@ export const config = {
   sentry: {
     dsn:
       'https://09bc5872e61446bf8067714028ff5340@o919929.ingest.sentry.io/5864591',
-    environment: env('SENTRY_ENVIRONMENT'),
+    environment: env('SENTRY_ENVIRONMENT', 'development'),
   },
   url: {
     playStore:
