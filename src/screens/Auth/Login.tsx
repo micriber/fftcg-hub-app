@@ -67,7 +67,7 @@ class Login extends React.Component<Props, State> {
       containerLogo: {
         alignItems: 'center',
         width: '100%',
-        marginBottom: this.props.upgrade ? '15%' : '25%',
+        marginBottom: this.props.upgrade ? '23%' : '33%',
       },
       titre: {
         fontSize: 48,
@@ -103,12 +103,7 @@ class Login extends React.Component<Props, State> {
         </View>
         <View style={styles.containerCenter}>
           <View style={styles.containerLogo}>
-            <View
-              style={{
-                marginBottom: '8%',
-              }}>
-              <Logo height={120} width={120} />
-            </View>
+            <Logo height={120} width={120} />
           </View>
           {this.props.upgrade && (
             <View style={styles.upgradeContainer}>
