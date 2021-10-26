@@ -161,7 +161,8 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.micriber.fftcghub"
+        applicationId "com.micriber.fcc"
+        ndkVersion "22.1.7171670"
         minSdkVersion 21 // target android 5 minimum, kitkat isn't really these days. Plus, appcenter require at least version 21
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode generatedVersionCode
@@ -184,7 +185,7 @@ android {
             keyPassword 'android'
         }
         release {
-            storeFile file(System.getenv("KEYSTORE_FILE"))
+            storeFile file(System.getenv("KEYSTORE_FILE")?:'debug.keystore')
             storePassword System.getenv("KEYSTORE_PASSWORD")
             keyAlias System.getenv("KEY_ALIAS")
             keyPassword System.getenv("KEY_PASSWORD")
