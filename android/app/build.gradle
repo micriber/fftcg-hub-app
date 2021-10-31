@@ -163,7 +163,7 @@ android {
     defaultConfig {
         applicationId "com.micriber.fcc"
         ndkVersion "22.1.7171670"
-        minSdkVersion 21 // target android 5 minimum, kitkat isn't really these days. Plus, appcenter require at least version 21
+        minSdkVersion rootProject.ext.minSdkVersion // target android 5 minimum, kitkat isn't really these days. Plus, appcenter require at least version 21
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode generatedVersionCode
         versionName generatedVersionName
