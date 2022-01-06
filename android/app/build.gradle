@@ -162,7 +162,7 @@ android {
 
     defaultConfig {
         applicationId "com.micriber.fcc"
-        minSdkVersion 21 // target android 5 minimum, kitkat isn't really these days. Plus, appcenter require at least version 21
+        minSdkVersion 23 // target android 5 minimum, kitkat isn't really these days. Plus, appcenter require at least version 21
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode generatedVersionCode
         versionName generatedVersionName
@@ -173,7 +173,7 @@ android {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
-            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+            include "armeabi-v7a", "x86"
         }
     }
     signingConfigs {
@@ -221,8 +221,9 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'com.google.firebase:firebase-analytics'
     implementation platform('com.google.firebase:firebase-bom:28.1.0')
-
+    implementation "androidx.core:core-splashscreen:1.0.0-alpha02"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+//     implementation project(':react-native-bootsplash')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
